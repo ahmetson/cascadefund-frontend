@@ -71,6 +71,9 @@ const ProcessSteps: React.FC = () => {
 
   return (
     <section className="py-20 bg-gray-200 relative overflow-hidden">
+      <p className="text-gray-700 mt-4 text-4xl my-4 text-center">
+        How Cascade Fund will work?
+      </p>
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 w-20 h-20 bg-gray-400 rounded-full"></div>
         <div className="absolute top-32 right-20 w-16 h-16 bg-gray-400 rounded-full"></div>
@@ -86,9 +89,12 @@ const ProcessSteps: React.FC = () => {
         </div>
         
         <div className="text-center mt-16">
-          <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
+          {/* <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
             Sign Up
-          </button>
+          </button> */}
+          <a href='https://t.me/arasangha' target='_blank' className='bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors'>
+            Join Telegram for release
+          </a>
         </div>
       </div>
     </section>
