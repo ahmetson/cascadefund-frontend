@@ -5,12 +5,9 @@ import react from '@astrojs/react';
 
 import tailwindcss from '@tailwindcss/vite';
 import node from '@astrojs/node';
-console.log(`Don't forget to use node adapter in the localhost only, using NODE_ENV`);
 
-// https://astro.build/config
-export default defineConfig({
+const config = {
   integrations: [react()],
-  adapter: node({mode: 'standalone'}),
   vite: {
     plugins: [tailwindcss()],
     build: {
@@ -20,4 +17,12 @@ export default defineConfig({
       }
     }
   }
-});
+}
+if (process.env.NODE_ENV === "DEVELOPMENT") {
+  // @ts-ignore
+  config["adapter"] = node({mode: 'standalone'});
+}
+
+// https://astro.build/config
+// @ts-ignore
+export default defineConfig(config);
