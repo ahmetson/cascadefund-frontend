@@ -1,12 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-    --color-brown: #8B4513;
-    --color-green: #4ADE80;
-    --color-purple: #A855F7;
-    --color-pink: #EC4899;
-    --font-sans: "Inter", sans-serif;
-    --font-serif: "Merriweather", serif;
+  --color-brown: #8B4513;
+  --color-green: #4ADE80;
+  --color-purple: #A855F7;
+  --color-pink: #EC4899;
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Merriweather", serif;
+  --color-cascade-green: #7dd3c0;
+  --color-cascade-blue: #4a90e2;
+  --color-cascade-red: #ff6b6b;
 }
 
 body {
@@ -46,4 +49,23 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #6B9EFF;
+  text-decoration: none;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  color: #5A8EEF;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
 }

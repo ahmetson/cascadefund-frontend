@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/added.css";
+import Header from "../../components/reactComponents/Header"
+import Footer from "../../components/reactComponents/Footer";
+import ProjectAdded from "../../components/pmPages/ProjectAdded";
+---
+
+<BaseLayout>
+    <Header darkMode={false}></Header>
+    <ProjectAdded client:load ></ProjectAdded>
+    <Footer></Footer>
+</BaseLayout>
