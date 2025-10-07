@@ -1,0 +1,30 @@
+---
+import "../../../styles/v2/3.1_public_page.css";
+import V2Layout from "../../../layouts/V2Layout.astro";
+
+import Header from '../../../components/v2/3.1_public_page/Header'
+import HeroSection from '../../../components/v2/3.1_public_page/HeroSection'
+import FundingTransparency from '../../../components/v2/3.1_public_page/FundingTransparency'
+import WhySupportSection from '../../../components/v2/3.1_public_page/WhySupportSection'
+import TopInfluencers from '../../../components/v2/3.1_public_page/TopInfluencers'
+import HighlightedIssues from '../../../components/v2/3.1_public_page/HighlightedIssues'
+import Footer from '../../../components/v2/3.1_public_page/Footer'
+
+---
+<V2Layout>
+<div class="min-h-screen bg-gray-50">
+      <div class="max-w-768px mx-auto bg-white">
+        <Header />
+        <HeroSection />
+        <main class="px-4 py-8 space-y-8">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <FundingTransparency />
+            <WhySupportSection />
+          </div>
+          <TopInfluencers />
+          <HighlightedIssues />
+        </main>
+        <Footer />
+      </div>
+    </div>
+</V2Layout>

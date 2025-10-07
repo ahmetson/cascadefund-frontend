@@ -1,0 +1,19 @@
+---
+import "../../../../styles/v2/5.4_update_project.css";
+import V2Layout from "../../../../layouts/V2Layout.astro";
+
+import Header from '../../../../components/v2/5.4_update_project/Header'
+import ProjectForm from '../../../../components/v2/5.4_update_project/ProjectForm'
+import Footer from '../../../../components/v2/5.4_update_project/Footer'
+
+---
+
+<V2Layout>
+<div class="min-h-screen bg-gray-50 flex flex-col">
+      <Header />
+      <main class="flex-1 max-w-4xl mx-auto w-full px-4 py-8">
+        <ProjectForm />
+      </main>
+      <Footer />
+    </div>
+</V2Layout>

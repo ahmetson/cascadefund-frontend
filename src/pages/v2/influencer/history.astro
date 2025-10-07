@@ -1,0 +1,33 @@
+---
+import "../../../styles/v2/3.5_history.css";
+import V2Layout from "../../../layouts/V2Layout.astro";
+
+import Header from '../../../components/v2/3.5_history/Header';
+import Sidebar from '../../../components/v2/3.5_history/Sidebar';
+import TransactionTable from '../../../components/v2/3.5_history/TransactionTable';
+import Footer from '../../../components/v2/3.5_history/Footer';
+import { mockUser, mockTransactions } from '../../../data/mockData';
+
+---
+<V2Layout>
+  <div class="min-h-screen bg-gray-100 flex flex-col">
+      <Header user={mockUser} />
+      
+      <div class="flex flex-1">
+        <Sidebar />
+        
+        <main class="flex-1 p-6">
+          <div class="max-w-full">
+            <TransactionTable
+              transactions={mockTransactions}
+              currentPage={1}
+              totalPages={3}
+              onPageChange={console.log}
+            />
+          </div>
+        </main>
+      </div>
+      
+      <Footer />
+    </div>
+</V2Layout>

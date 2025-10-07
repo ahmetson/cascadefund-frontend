@@ -1,0 +1,30 @@
+---
+import "../../../styles/v2/6.2_cbalance.css";
+import V2Layout from "../../../layouts/V2Layout.astro";
+
+import Header from '../../../components/v2/6.4.3_cmaintainer/Header'
+import SideBar from '../../../components/v2/6.3_work/Sidebar'
+import MainContent from '../../../components/v2/6.2_cbalance/MainContent'
+import Footer from '../../../components/v2/6.2_cbalance/Footer'
+
+---
+
+<V2Layout>
+  <div class="min-h-screen bg-gray-50 flex flex-col">
+      <Header activeRight={2}/>
+      <div class="flex-1 max-w-6xl mx-auto px-4 py-8 w-full">
+        <!-- Upper menu with todo -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <div class="lg:col-span-1">
+            <SideBar activeMenuItem="cbalance" />
+          </div>
+          <div class="lg:col-span-2">
+            <MainContent />
+          </div>
+          <div class="lg:col-span-1">
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </div>
+</V2Layout>

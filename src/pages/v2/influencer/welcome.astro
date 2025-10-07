@@ -1,0 +1,43 @@
+---
+import "../../../styles/v2/3.2_welcome.css";
+import V2Layout from "../../../layouts/V2Layout.astro";
+
+import Header from '../../../components/v2/3.2_welcome/Header'
+import WelcomeSection from '../../../components/v2/3.2_welcome/WelcomeSection'
+import InfoCard from '../../../components/v2/3.2_welcome/InfoCard'
+import CollaborationSection from '../../../components/v2/3.2_welcome/CollaborationSection'
+import Footer from '../../../components/v2/3.2_welcome/Footer'
+
+---
+<V2Layout>
+  <div class="min-h-screen bg-gray-50">
+      <Header />
+      
+      <main class="max-w-4xl mx-auto px-4 py-8">
+        <WelcomeSection />
+        
+        <div class="space-y-6 mb-12">
+          <InfoCard
+            
+            title="You got 100 Voting Power"
+            description="This voting power is to raise your word as an issue, and to take the scarce maintainer's resource. You also help to raise improve the project for other people as well."
+            subtitle="You spent 15, to the maintainer."
+          />
+          <!-- icon={
+              <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            } -->
+          
+          <InfoCard
+            title="You initiated a task for the maintainer"
+            description="The maintainer has a quest, and will have to reply to you. Otherwise, his rating will reduce."
+            subtitle="If the rating is not done, no worry, open-source means, others could fork and address it, to get the 1$."
+            />
+        </div>
+        <CollaborationSection />
+      </main>
+      
+      <Footer />
+    </div>
+</V2Layout>

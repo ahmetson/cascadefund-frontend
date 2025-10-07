@@ -10,6 +10,11 @@
   --color-cascade-green: #7dd3c0;
   --color-cascade-blue: #4a90e2;
   --color-cascade-red: #ff6b6b;
+    --breakpoint-*: initial;
+    --breakpoint-xl: 1280px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-md: 900px;
+    --breakpoint-sm: 600px;
 }
 
 body {

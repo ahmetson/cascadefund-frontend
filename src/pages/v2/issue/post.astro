@@ -1,0 +1,23 @@
+---
+import "../../../styles/v2/4.1_post_issue.css";
+import V2Layout from "../../../layouts/V2Layout.astro";
+
+import Header from '../../../components/v2/4.1_post_issue/Header'
+import IssueForm from '../../../components/v2/4.1_post_issue/IssueForm'
+import NotificationBanner from '../../../components/v2/4.1_post_issue/NotificationBanner'
+import Footer from '../../../components/v2/4.1_post_issue/Footer'
+
+---
+
+<V2Layout>
+  <div class="min-h-screen bg-gray-100">
+      <Header />
+      <NotificationBanner 
+          type="warning"
+          title="Adding a new issue"
+          message="You are adding new"
+      />
+      <IssueForm />
+      <Footer />
+    </div>
+</V2Layout>

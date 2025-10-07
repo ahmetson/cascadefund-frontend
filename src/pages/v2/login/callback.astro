@@ -1,0 +1,19 @@
+---
+import "../../../styles/v2/2.2_callback.css";
+import V2Layout from "../../../layouts/V2Layout.astro";
+
+import Header from '../../../components/v2/2.2_callback/Header'
+import AuthSuccessCard from '../../../components/v2/2.2_callback/AuthSuccessCard'
+import Footer from '../../../components/v2/2.2_callback/Footer'
+
+---
+
+<V2Layout>
+  <div class="min-h-screen bg-gray-100 flex flex-col">
+      <Header />
+      <main class="flex-1 flex items-center justify-center px-4 py-8">
+        <AuthSuccessCard client:visible />
+      </main>
+      <Footer />
+    </div>
+</V2Layout>

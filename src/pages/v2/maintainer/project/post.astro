@@ -1,0 +1,23 @@
+---
+import "../../../../styles/v2/5.1_post_project.css";
+import V2Layout from "../../../../layouts/V2Layout.astro";
+
+import Header from '../../../../components/v2/5.1_post_project/Header'
+import ProjectCard from '../../../../components/v2/5.1_post_project/ProjectCard'
+import AddRepositoryCard from '../../../../components/v2/5.1_post_project/AddRepositoryCard'
+import Footer from '../../../../components/v2/5.1_post_project/Footer'
+
+---
+
+<V2Layout>
+      <div class="min-h-screen bg-gray-50 flex flex-col">
+      <Header />
+      
+      <main class="flex-1 max-w-6xl mx-auto px-4 py-8 w-full">
+        <ProjectCard />
+        <AddRepositoryCard />
+      </main>
+      
+      <Footer />
+    </div>
+</V2Layout>

@@ -1,0 +1,55 @@
+import React from 'react'
+import InfoCard from './InfoCard'
+import FormField from './FormField'
+import TextArea from './TextArea'
+import RepositorySummary from './RepositorySummary'
+import LinkBtn from '../LinkBtn'
+
+const ProjectForm: React.FC = () => {
+  return (
+    <div className="space-y-8">
+      <InfoCard 
+        title="Edit Project Information"
+        description="Review and edit the information fetched from your GitHub repository"
+      />
+      
+      <div className="space-y-6">
+        <FormField 
+          label="Project Title"
+          value="blockchain-verification-tool"
+          type="text"
+        />
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-gray-200 px-3 py-2 rounded text-sm">
+            <span className="text-gray-600">License:</span> <span className="font-medium">MIT</span>
+          </div>
+          <div className="bg-gray-200 px-3 py-2 rounded text-sm">
+            <span className="text-gray-600">Created At:</span> <span className="font-medium">12/05/2023</span>
+          </div>
+          <div className="bg-gray-200 px-3 py-2 rounded text-sm">
+            <span className="text-gray-600">Primary Language:</span> <span className="font-medium">Javascript</span>
+          </div>
+        </div>
+        
+        <TextArea 
+          label="Repository Description"
+          value="An open-source tool for verifying software components on the blockchain, ensuring transparency and security in the software supply chain."
+        />
+        
+        <TextArea 
+          label="What are the advantages compared to other projects?"
+          placeholder="Describe what makes your app different."
+        />
+        
+        <RepositorySummary />
+        
+        <div className="flex justify-center pt-6">
+          <LinkBtn variant="blue" label="Next" href="/v2/maintainer/project/blockchain" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default ProjectForm

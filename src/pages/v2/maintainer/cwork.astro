@@ -1,0 +1,52 @@
+---
+import "../../../styles/v2/6.4.1_cwork.css";
+import V2Layout from "../../../layouts/V2Layout.astro";
+
+import Header from '../../../components/v2/6.4.3_cmaintainer/Header'
+import SideBar from '../../../components/v2/6.3_work/Sidebar'
+import MainContent from '../../../components/v2/6.4.1_cwork/MainContent'
+import AlertBanner from '../../../components/v2/6.4.1_cwork/ui/AlertBanner'
+import TaskSection from '../../../components/v2/6.4.1_cwork/TaskSection'
+import HelpSection from '../../../components/v2/6.4.1_cwork/HelpSection'
+import DependenciesInfo from '../../../components/v2/6.4.1_cwork/DependenciesInfo'
+import Footer from '../../../components/v2/6.3_work/Footer'
+
+---
+
+<V2Layout>
+  <div class="min-h-screen bg-gray-50 flex flex-col">
+      <Header activeRight={2} />
+      <div class="flex-1 max-w-6xl mx-auto px-4 py-8 w-full">
+        <!-- Upper menu with todo -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <div class="lg:col-span-1">
+            <SideBar activeMenuItem="cwork" />
+          </div>
+          <div class="lg:col-span-2">
+            <AlertBanner 
+              type="warning"
+              title="Cascading Work page is a quest based interaction with the library maintainers."
+              description="Got a bug, need a feature, have a question? Then, help to make the library better for you and for the world"
+            />
+            <div class="mt-8">
+              <TaskSection />
+            </div>
+          </div>
+          <div class="lg:col-span-1">
+            <HelpSection />
+          </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <div class="lg:col-span-1">
+          </div>
+          <div class="lg:col-span-2">
+            <MainContent />
+          </div>
+          <div class="lg:col-span-1">
+            <DependenciesInfo />
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </div>
+</V2Layout>
