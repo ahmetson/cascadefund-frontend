@@ -7,26 +7,30 @@ import {
   Conversation,
 
 } from "@chatscope/chat-ui-kit-react";
+import Button from '../v2/Button';
 
 export interface Props {
-  showChatPanel?: (arg0: boolean) => void;
+  onElementClick?: (arg0: boolean) => void;
+  onNewDiscussionClick?: (arg0: boolean) => void;
 }
 
 
-const Panel: React.FC<Props> = ({showChatPanel}) => {
+const Panel: React.FC<Props> = ({onElementClick, onNewDiscussionClick}) => {
   return (<div>
-      <Search placeholder="Search..." />
-    <ConversationList className='h-40 overflow-y-auto'>
-      <Sidebar position="right">
+  <Search placeholder="Search..." />
+  <ConversationList style={{
+    height: '340px'
+  }} className='overflow-y-auto'>
+    <Sidebar position="right">
         <Conversation 
           className='hover:bg-accent'
           info="Yes i can do it for you" lastSenderName="Lilly" name="Lilly"
-          onClick={() => { showChatPanel && showChatPanel(true);}}
+          onClick={() => { onElementClick && onElementClick(true);}}
         >
-              <Avatar
-                name="Lilly"
-                src="https://chatscope.io/storybook/react/assets/lilly-aj6lnGPk.svg"
-                status="available"
+          <Avatar
+            name="Lilly"
+            src="https://chatscope.io/storybook/react/assets/lilly-aj6lnGPk.svg"
+            status="available"
         />
         </Conversation>
         <Conversation
@@ -109,8 +113,11 @@ const Panel: React.FC<Props> = ({showChatPanel}) => {
                 status="invisible"
               />
         </Conversation>
-      </Sidebar>
+    </Sidebar>
   </ConversationList>
+  <div className='flex justify-center mt-4'>
+    <Button onClick={() => onNewDiscussionClick && onNewDiscussionClick(true)} className='bg-blue-300'>New Discussion</Button>
+  </div>
   </div>);
 }
 

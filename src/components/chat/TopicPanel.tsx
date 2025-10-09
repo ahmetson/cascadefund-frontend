@@ -1,16 +1,28 @@
 import React, { useState } from 'react'
-import Card from './Card'
-import LinkBtn from '../LinkBtn'
+import { ConversationHeader } from '@chatscope/chat-ui-kit-react'
+import Button from '../v2/Button';
 
-const ChatCard: React.FC = () => {
+export interface Props {
+  onBackClick?: (arg0: boolean) => void;
+  onActionClick?: (arg0: boolean) => void;
+}
+
+const ChatCard: React.FC<Props> = ({onBackClick, onActionClick}) => {
   const [topic, setTopic] = useState('')
   const [autoGenerate, setAutoGenerate] = useState(true)
 
   return (
-    <Card>
-      <h3 className="font-semibold text-gray-900 mb-4">Chat Topic</h3>
-      
-      <div className="space-y-4">
+    <div style={{
+          height: '300px'
+        }}>
+      <ConversationHeader>
+        <ConversationHeader.Back onClick={() => {onBackClick && onBackClick(false)}} />
+        <ConversationHeader.Content
+          info="Enter the topic to discussAbout"
+          userName="New Discussion"
+        />
+      </ConversationHeader>
+      <div className="space-y-4 mt-2">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Title</label>
           <input
@@ -35,14 +47,14 @@ const ChatCard: React.FC = () => {
           </label>
         </div>
         
-        <div className="pt-4">
-          <LinkBtn variant="green" href='/v2/issue/chatbox' className="w-full" label="Open Chat" />
-          <p className="text-xs text-gray-500 text-center mt-2">
-            (Todo) its a tooltip when button disabled: Either check the auto topic name, or type topic name
-          </p>
+        <div className='flex justify-center flex-column mt-4'>
+          <Button onClick={() => onActionClick && onActionClick(true)} className='bg-blue-300 w-60 mr-2'>Open Chat</Button><br />
         </div>
+        <p className="text-xs text-gray-500 text-center -mt-4">
+            (Todo) its a tooltip when button disabled: Either check the auto topic name, or type topic name
+        </p>
       </div>
-    </Card>
+    </div>
   )
 }
 

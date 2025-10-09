@@ -19,11 +19,13 @@ export interface ChatContainerProps {
 
 const ChatPanel: React.FC<ChatContainerProps> = ({onBackClick}) => {
   return (
-    <ChatContainer className=''>
-          <ConversationHeader>
-            <ConversationHeader.Back onClick={() => {onBackClick && onBackClick(false)}} />
-            <Avatar
-              name="Zoe"
+    <ChatContainer style={{
+      height: '500px'
+    }}>
+      <ConversationHeader>
+        <ConversationHeader.Back onClick={() => {onBackClick && onBackClick(false)}} />
+        <Avatar
+          name="Zoe"
               src="https://chatscope.io/storybook/react/assets/zoe-E7ZdmXF0.svg"
             />
             <ConversationHeader.Content
@@ -35,11 +37,11 @@ const ChatPanel: React.FC<ChatContainerProps> = ({onBackClick}) => {
               <VideoCallButton />
               <InfoButton />
             </ConversationHeader.Actions>
-          </ConversationHeader>
-          <MessageList typingIndicator={<TypingIndicator content="Zoe is typing" />}>
-            <MessageSeparator content="Saturday, 30 November 2019" />
-            <Message
-              model={{
+      </ConversationHeader>
+      <MessageList typingIndicator={<TypingIndicator content="Zoe is typing" />}>
+      <MessageSeparator content="Saturday, 30 November 2019" />
+      <Message
+        model={{
                 direction: 'incoming',
                 message: 'Hello my friend',
                 position: 'single',

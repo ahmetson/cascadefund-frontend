@@ -23,9 +23,9 @@ interface CworkTabProps {
 
 const CworkTab: React.FC<CworkTabProps> = ({activeTab, tabs}) => {
   return (
-      <Tabs defaultValue={activeTab} className="bg-rounded-lg relative border-radius-lg bg-white shadow-lg mb-6 pt-2">
+    <Tabs defaultValue={activeTab} className="bg-rounded-lg relative border-radius-lg bg-white mb-6 pt-2 pb-0">
       <TabsHighlight className="">
-        <TabsList className="h-10 inline-flex p-1 w-full">
+        <TabsList className="h-10 inline-flex p-1 pb-0 w-full">
           {tabs.map((tab) => 
           <TabsHighlightItem key={tab.key} value={tab.key} className="flex-1 hover:bg-accent/50 data-[state=active]:bg-background data-[state=active]:shadow">
             <TabsTrigger
