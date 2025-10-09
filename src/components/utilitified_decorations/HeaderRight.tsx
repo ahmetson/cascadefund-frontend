@@ -1,8 +1,8 @@
 import React from 'react'
-import Badge from '../v2/6.4.3_cmaintainer/ui/Badge'
-import MenuAvatar from '../v2/MenuAvatar'
-import Link from '../v2/Link'
-import LinkBtn from '../v2/LinkBtn'
+import Badge from '@/components/v2/Badge'
+import MenuAvatar from '@/components/v2/MenuAvatar'
+import Link from '@/components/v2/Link'
+import LinkBtn from '@/components/v2/LinkBtn'
 import NavLabelElement from './NavigatingElement'
 
 export enum NavigationName {

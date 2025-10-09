@@ -1,6 +1,6 @@
 import React from 'react'
 import CascadeFundLogo from './CascadeFundLogo'
-import Link from '../v2/Link'
+import Link from '@/components/v2/Link'
 
 const Footer: React.FC = () => {
   return (

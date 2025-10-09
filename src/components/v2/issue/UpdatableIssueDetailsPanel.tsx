@@ -1,18 +1,15 @@
 import React from 'react'
-import Button from './Button'
-import Tag from './Tag'
+import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Button from '@/components/v2/Button'
+import Tag from '@/components/v2/Tag'
 
-const IssueDetails: React.FC = () => {
+const Panel: React.FC = () => {
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200">
-      <div className="p-6">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-lg font-medium text-gray-900">ISSUE DETAILS</h2>
-          <Button variant="outline" size="sm">
-            Rating Issue
-          </Button>
-        </div>
-
+    <Card title="Updateable Issue Details" actions={[{
+      variant: "blue",
+      href: "/v2/issue",
+      label: "Save"
+    }]} >
         <div className="space-y-4">
           <div className="flex justify-between">
             <span className="text-sm text-gray-600">Status:</span>
@@ -47,9 +44,9 @@ const IssueDetails: React.FC = () => {
                 Follow
               </Button>
             </div>
-          </div>
+        </div>
 
-          <div>
+        <div>
             <span className="text-sm text-gray-600 block mb-2">Tags</span>
             <div className="flex flex-wrap gap-2 mb-3">
               <Tag label="Suggested" variant="orange" removable />
@@ -61,18 +58,8 @@ const IssueDetails: React.FC = () => {
             </select>
           </div>
         </div>
-
-        <div className="flex space-x-3 mt-6 pt-6 border-t border-gray-200">
-          <Button variant="secondary" className="flex-1">
-            Cancel
-          </Button>
-          <Button variant="primary" className="flex-1">
-            Save
-          </Button>
-        </div>
-      </div>
-    </div>
+    </Card>
   )
 }
 
-export default IssueDetails
+export default Panel

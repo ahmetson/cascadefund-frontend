@@ -1,6 +1,6 @@
 import React from 'react'
-import Link from "../v2/Link"
-import LinkBtn from "../v2/LinkBtn"
+import Link from "@/components/v2/Link"
+import LinkBtn from "@/components/v2/LinkBtn"
 
 interface Props {
   href?: string

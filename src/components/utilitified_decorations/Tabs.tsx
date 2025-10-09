@@ -7,7 +7,7 @@ import {
   TabsHighlightItem,
   TabsList,
   TabsTrigger,
-} from '../animate-ui/primitives/animate/tabs';
+} from '@/components/animate-ui/primitives/animate/tabs';
 
 export type TabProps = {
   label: string, 

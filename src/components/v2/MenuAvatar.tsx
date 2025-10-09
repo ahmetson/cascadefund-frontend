@@ -1,6 +1,6 @@
 import React from 'react'
-import Badge from './6.4.3_cmaintainer/ui/Badge'
-import Link from './Link'
+import Badge from '@/components/v2/Badge'
+import Link from '@/components/v2/Link'
 
 interface Props {
   active?: boolean

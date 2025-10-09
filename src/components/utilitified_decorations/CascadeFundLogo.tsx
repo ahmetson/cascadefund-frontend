@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from '../v2/Link'
+import Link from '@/components/v2/Link'
 
 interface Props {
   subtitle?: any

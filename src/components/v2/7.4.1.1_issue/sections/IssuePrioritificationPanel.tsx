@@ -1,36 +1,9 @@
 import React from 'react'
-import Card from '../ui/Card'
-import Button from '../ui/Button'
-import Badge from '../ui/Badge'
+import Card from '@/components/v2/Card'
+import Button from '@/components/v2/Button'
 
 const IssueContent: React.FC = () => {
   return (
-    <div className="space-y-6">
-      <Card>
-        <div className="prose max-w-none">
-          <p className="text-gray-700 mb-4">
-            We need to implement OAuth 2.0 integration with major third-party services 
-            (Google, Facebook, Twitter, GitHub) to streamline the user authentication 
-            process. Current implementation requires separate authentication flows for 
-            each service, creating inconsistent user experiences.
-          </p>
-          
-          <p className="text-gray-700 mb-6">
-            The integration should handle token refresh, permission scopes, and 
-            user profile data synchronization across all platforms.
-          </p>
-          
-          <h3 className="text-lg font-semibold text-gray-900 mb-3">Technical Requirements:</h3>
-          <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
-            <li>Implement unified OAuth client library</li>
-            <li>Create consistent token storage mechanism</li>
-            <li>Design user permission management interface</li>
-            <li>Develop automated token refresh process</li>
-            <li>Ensure GDPR compliance for all data transfers</li>
-          </ul>
-        </div>
-      </Card>
-
       <Card>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -110,7 +83,6 @@ const IssueContent: React.FC = () => {
           </div>
         </div>
       </Card>
-    </div>
   )
 }
 

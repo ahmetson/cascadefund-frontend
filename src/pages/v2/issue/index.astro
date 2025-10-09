@@ -1,23 +1,18 @@
 ---
 import "../../../styles/v2/7.4.1.1_issue.css";
-import V2Layout from "../../../layouts/V2Layout.astro";
-import Header from '../../../components/utilitified_decorations/Header'
-import Footer from '../../../components/utilitified_decorations/Footer'
+import V2Layout from "../../../layouts/PanelViewLayout.astro";
 import NavigatingSubtitledElement from '../../../components/utilitified_decorations/NavigatingSubtitledElement'
 import NavigatingElement from '../../../components/utilitified_decorations/NavigatingElement'
 import BackButton from '../../../components/utilitified_decorations/BackButton'
 
-import IssueHeader from '../../../components/v2/7.4.1.1_issue/sections/IssueHeader'
-import IssueContent from '../../../components/v2/7.4.1.1_issue/sections/IssueContent'
-
-import IssueDetails from '../../../components/v2/4_issue_addition/IssueDetailsPanel'
-// import ChatPanel from '../../../components/chat/Panel'
-// import ChatPanel from '../../../components/chat/index.astro'
-import ChatPanel from '../../../components/chat/ExampleContainer'
+import IssueContent from '@/components/v2/issue/IssueContentPanel'
+import PriorityPanel from '@/components/v2/issue/IssuePrioritificationPanel'
+import IssueDetails from '@/components/v2/issue/IssueDetailsPanel'
+import ChatPanel from '@/components/chat/ExampleContainer'
 import RecentActivity from '../../../components/v2/4_issue_addition/RecentActivityPanel'
 import RelatedIssues from '../../../components/v2/4_issue_addition/RelatedIssuesPanel'
 
-import NotificationBanner from "../../../components/v2/7.4.1.1_issue/ui/NotificationBanner";
+import NotificationBanner from "../../../components/v2/NotificationBanner";
 
 const additional = [
   await NavigatingElement({href: "/v2/maintainer/work", children: "Cascading Work"}),
@@ -26,32 +21,23 @@ const additional = [
 ].reverse();
 ---
 
-<V2Layout>
-  <Header 
-        landingPageTopMenu={false}  
-        cascadeLogoSubtitle="Data Section: Issue"
-        additional={additional}  
-  />
-  <main class="max-w-7xl mx-auto mt-6 px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-4">
-      <div class='col-span-1 py-6 space-y-6 mr-6'><BackButton /></div>
-      
-      <div class="mx-6 lg:col-span-2 space-y-6">
-        <NotificationBanner 
-          type="warning"
-          title="Complete a quest..."
-          message='Please reply to the "Project Timeline" chat.'
-        />
-        <IssueHeader />
-        <IssueContent />
-      </div>
-      <div class="lg:col-span-1 space-y-8">
-        <IssueDetails />
-        <ChatPanel client:idle />
-        <RecentActivity />
-        <RelatedIssues />
-      </div>
-  </main>
-  <Footer />
+<V2Layout landingPageTopMenu={false} cascadeLogoSubtitle="Data Section: Issue" additional={additional}>
+  <BackButton slot="left" />
+    <NotificationBanner 
+      type="warning"
+      title="Complete a quest..."
+      slot="center"
+    >
+      Please reply to the "Project Timeline" chat.'
+    </NotificationBanner>
+
+    <IssueContent slot="center" />
+    <PriorityPanel slot="center" />
+    
+    <IssueDetails slot="right" client:visible />
+    <ChatPanel slot="right" client:visible />
+    <RecentActivity slot="right" />
+    <RelatedIssues slot="right" />
 </V2Layout>
 
 <style is:global>

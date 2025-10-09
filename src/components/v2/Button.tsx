@@ -2,7 +2,7 @@ import React from 'react'
 
 interface ButtonProps {
   children: React.ReactNode
-  variant?: 'primary' | 'secondary' | 'danger' | 'success' | 'outline'
+  variant?: string
   size?: 'sm' | 'md' | 'lg'
   onClick?: () => void
   disabled?: boolean

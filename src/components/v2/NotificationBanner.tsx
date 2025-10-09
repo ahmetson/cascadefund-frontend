@@ -3,10 +3,10 @@ import React from 'react'
 interface NotificationBannerProps {
   type: 'warning' | 'info' | 'success' | 'error'
   title: string
-  message: string
+  children: any
 }
 
-const NotificationBanner: React.FC<NotificationBannerProps> = ({ type, title, message }) => {
+const NotificationBanner: React.FC<NotificationBannerProps> = ({ type, title, children }) => {
   const getStyles = () => {
     switch (type) {
       case 'warning':
@@ -36,12 +36,12 @@ const NotificationBanner: React.FC<NotificationBannerProps> = ({ type, title, me
   }
 
   return (
-    <div className={`border border-l-4 p-4 rounded-r-lg ${getStyles()}`}>
-      <div className="flex items-start space-x-3">
+    <div className={`border-0 border-l-4 -pl-4 ${getStyles()}`}>
+      <div className={`p-4 border-2 border-dashed flex items-start space-x-3 rounded-lg rounded-r-0 shadow-md ${getStyles()}`}>
         {getIcon()}
-        <div>
-          <h3 className="text-sm font-medium text-gray-800">{title}</h3>
-          <p className="text-sm text-gray-600 mt-1">{message}</p>
+        <div className='text-sm text-gray-600 mt-1'>
+          <h3 className="text-sm font-medium text-gray-800 mb-1">{title}</h3>
+          {children}
         </div>
       </div>
     </div>

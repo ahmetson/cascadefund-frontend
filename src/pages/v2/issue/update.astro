@@ -1,37 +1,19 @@
 ---
-import "../../../styles/v2/7.4.2_update_issue.css";
-import V2Layout from "../../../layouts/V2Layout.astro";
+import "@/styles/v2/7.4.2_update_issue.css";
+import V2Layout from "@/layouts/PanelViewLayout.astro";
 
-import Header from '../../../components/v2/7.4.2_update_issue/Header'
-import IssueEditingAlert from '../../../components/v2/7.4.2_update_issue/IssueEditingAlert'
-import BackButton from '../../../components/v2/7.4.2_update_issue/BackButton'
-import IssueCard from '../../../components/v2/7.4.2_update_issue/IssueCard'
-import IssueDetails from '../../../components/v2/7.4.2_update_issue/IssueDetails'
-import Footer from '../../../components/v2/7.4.2_update_issue/Footer'
+import IssueCard from '@/components/v2/issue/UpdatableIssueContentPanel'
+import IssueDetails from '@/components/v2/issue/UpdatableIssueDetailsPanel'
+import BackButton from "@/components/utilitified_decorations/BackButton";
+import NotificationBanner from "@/components/v2/NotificationBanner";
+
 ---
 
-<V2Layout>
-    <div class="min-h-screen bg-gray-50">
-      <Header />
-      
-      <main class="max-w-7xl mx-auto px-4 py-6">
-        <IssueEditingAlert />
-        
-        <div class="mb-6">
-          <BackButton />
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div class="lg:col-span-2">
-            <IssueCard />
-          </div>
-          
-          <div class="lg:col-span-1">
-            <IssueDetails />
-          </div>
-        </div>
-      </main>
-
-      <Footer />
-    </div>
+<V2Layout landingPageTopMenu={false} cascadeLogoSubtitle="Update Data Section: Issue" additional={[]}>
+        <BackButton href="/v2/issue" slot="left" />
+        <NotificationBanner slot="center" type="info" title="Updating the issue">
+            You are adding new changes to the issue data.
+        </NotificationBanner>
+        <IssueCard slot="center" />
+        <IssueDetails slot="right" />
 </V2Layout>

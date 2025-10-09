@@ -5,6 +5,7 @@ interface TextAreaProps {
   value?: string
   placeholder?: string
   rows?: number
+  className?: string
   onChange?: (value: string) => void
 }
 
@@ -13,10 +14,11 @@ const TextArea: React.FC<TextAreaProps> = ({
   value, 
   placeholder, 
   rows = 4,
+  className = '',
   onChange 
 }) => {
   return (
-    <div>
+    <div className={className}>
       <label className="block text-sm font-medium text-gray-700 mb-2">
         {label}
       </label>

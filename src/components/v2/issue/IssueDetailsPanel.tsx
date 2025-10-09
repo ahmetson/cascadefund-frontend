@@ -3,9 +3,9 @@ import Card from '@/components/utilitified_decorations/PagelikeCard'
 import Button from '@/components/v2/Button'
 import Badge from '@/components/v2/Badge'
 
-const Sidebar: React.FC = () => {
+const Panel: React.FC = () => {
   return (
-    <Card title="Issue Details" actions={[{
+    <Card title="Issue Details" className="mb-8" actions={[{
       variant: "blue",
       href: "/v2/issue/update",
       label: "Edit"
@@ -54,4 +54,4 @@ const Sidebar: React.FC = () => {
   )
 }
 
-export default Sidebar
+export default Panel

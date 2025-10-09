@@ -1,9 +1,5 @@
 import React from 'react'
-import Card from '../Card'
-import Button from '../Button'
-import Badge from '../Badge'
-import LinkBtn from '../LinkBtn'
-import ChatPanel from '../../chat/Panel'
+import Card from '@/components/v2/Card'
 
 const Sidebar: React.FC = () => {
   return (

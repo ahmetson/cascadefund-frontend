@@ -1,6 +1,6 @@
 import React from 'react'
-import Button from '../v2/6.4.3_cmaintainer/ui/Button'
-import Link from '../v2/Link'
+import Button from '@/components/v2/Button'
+import Link from '@/components/v2/Link'
 
 interface Props {
   subtitle: string;

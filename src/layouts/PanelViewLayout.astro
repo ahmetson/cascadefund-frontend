@@ -1,0 +1,39 @@
+---
+import "../styles/v2/7.4.1.1_issue.css";
+import V2Layout from "./V2Layout.astro";
+import Header from '../components/utilitified_decorations/Header'
+import Footer from '../components/utilitified_decorations/Footer'
+
+interface Props {
+  cascadeLogoSubtitle?: string;
+  landingPageTopMenu?: boolean;
+  additional?: any[];
+}
+const { landingPageTopMenu, cascadeLogoSubtitle, additional } = Astro.props;
+
+---
+
+<V2Layout>
+  <Header 
+        landingPageTopMenu={landingPageTopMenu}  
+        cascadeLogoSubtitle={cascadeLogoSubtitle}
+        additional={additional}  
+  />
+  <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-4">
+      <div class='col-span-1 space-y-4 mr-2'>
+        <slot name="left" />
+      </div>
+      
+      <div class="lg:col-span-2 space-y-4 mx-2">
+        <slot name="center"/>
+      </div>
+      <div class="lg:col-span-1 space-y-8 py-8 pt-0 ml-2">
+        <slot name="right" />
+      </div>
+  </main>
+  <Footer />
+</V2Layout>
+
+<style is:global>
+  @import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
+</style>

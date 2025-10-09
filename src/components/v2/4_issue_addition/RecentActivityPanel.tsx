@@ -1,9 +1,9 @@
 import React from 'react'
-import Card from '../Card'
+import Card from '@/components/v2/Card'
 
 const Sidebar: React.FC = () => {
   return (
-      <Card>
+      <Card className='mt-8'>
         <h3 className="text-sm font-medium text-gray-900 mb-3">Recent Activity</h3>
         <div className="space-y-3">
           <div className="flex items-start space-x-2">
