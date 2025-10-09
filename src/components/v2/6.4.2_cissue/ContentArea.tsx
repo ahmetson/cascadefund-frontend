@@ -1,5 +1,5 @@
 import React from 'react'
-import CworkTab from '../6.4.1_cwork/CworkTab'
+import LinkTab from '../../utilitified_decorations/LinkTab';
 import FilterBar from './FilterBar'
 import IssueCard from './IssueCard'
 import AlertBanner from '../6.4.1_cwork/ui/AlertBanner'
@@ -51,7 +51,7 @@ const ContentArea: React.FC = () => {
         <div className="mt-8 mb-8">
           <TaskSection />
         </div>
-        <CworkTab activeTab='following-issues' />
+        <LinkTab activeTab='following-issues' />
         <FilterBar />
         <div className="grid gap-6 mt-6">
           {issues.map(issue => (

@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import Card from './ui/Card'
 import Button from './ui/Button'
 import DependencyCard from './ui/DependencyCard'
-import CworkTab from './CworkTab'
+import LinkTab from '../../utilitified_decorations/LinkTab';
 
 const DependenciesSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('dependencies')
   const [activeFilter, setActiveFilter] = useState('all')
 
   const dependencies = [
@@ -49,8 +48,7 @@ const DependenciesSection: React.FC = () => {
 
   return (
     <div>
-      <CworkTab activeTab={'dependencies'} />
-
+      <LinkTab activeTab={'dependencies'} />
       <Card className="bg-task-yellow">
         <div className="flex space-x-2 mb-4">
           <Button 

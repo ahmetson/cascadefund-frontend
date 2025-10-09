@@ -1,0 +1,63 @@
+---
+
+import {
+  TypingIndicator,
+  MessageInput,
+  ConversationHeader,
+  Avatar,
+  VoiceCallButton,
+  VideoCallButton,
+  InfoButton,
+  InputToolbox,
+  AttachmentButton,
+  SendButton
+} from "@chatscope/chat-ui-kit-react";
+import ExampleMessages from './ExampleMessages'
+
+---
+
+<div class="bg-white rounded-lg shadow p-4 border border-gray-200">
+    <div class="cs-conversation-header w-full h-16" is="ConversationHeader">
+      <Avatar src={"https://0.academia-photos.com/56949482/15765358/16298056/s200_medet.ahmetson.jpg"} name="Kai" />
+      <ConversationHeader.Back key="back" className="w-8 h-8"></ConversationHeader.Back>
+      <ConversationHeader.Content key="content" userName="Ahmetson" info="Active 10 mins ago"></ConversationHeader.Content>
+      <ConversationHeader.Actions className="flex text-right items-end">
+        <VoiceCallButton className="w-5 h-5" />
+        <VideoCallButton className="w-5 h-5" />
+        <InfoButton className="w-5 h-5" />
+      </ConversationHeader.Actions>
+    </div>
+
+      <div class="cs-chat-container" is="ChatContainer">
+        <ExampleMessages />
+        <div class="w-full">
+          <TypingIndicator content="Emily is typing" />
+          <MessageInput placeholder="Type message here" className="w-full" sendButton={false} attachButton={false} />
+          <InputToolbox key="4">
+            <AttachmentButton border />
+            <SendButton border />
+          </InputToolbox>
+        </div>
+      </div>
+
+</div>;
+<style is:global>
+  @import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
+
+
+  .cs-conversation-header__back > button {
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+  }
+
+  .cs-conversation-header__actions {
+    width: 10rem;
+    height: 2.5rem;
+  }
+
+.cs-input-toolbox .cs-button {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+</style>

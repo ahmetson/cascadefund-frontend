@@ -1,14 +1,16 @@
 ---
 import "../../../styles/v2/1.footer.3_quest.css";
 import V2Layout from "../../../layouts/V2Layout.astro";
-import Header from '../../../components/v2/1.footer.3_quest/Header'
 import HeroSection from '../../../components/v2/1.footer.3_quest/HeroSection'
 import QuestTable from '../../../components/v2/1.footer.3_quest/QuestTable'
-import Footer from '../../../components/v2/1.footer.3_quest/Footer'
+
+import Header from '../../../components/utilitified_decorations/Header'
+import Footer from '../../../components/utilitified_decorations/Footer'
+
 ---
 <V2Layout>
     <div class="min-h-screen bg-gray-100">
-      <Header />
+      <Header landingPageTopMenu={true} cascadeLogoSubtitle="Quest Tasks and their affects" />
       <main class="max-w-6xl mx-auto px-4 py-8">
         <HeroSection />
         <QuestTable />

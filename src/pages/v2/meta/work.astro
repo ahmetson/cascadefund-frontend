@@ -1,8 +1,10 @@
 ---
 import "../../../styles/v2/1.header.3_work.css";
 import V2Layout from "../../../layouts/V2Layout.astro";
+import Header from '../../../components/utilitified_decorations/Header'
+import Footer from '../../../components/utilitified_decorations/Footer'
+import { NavigationName } from "../../../components/utilitified_decorations/HeaderRight";
 
-import Header from '../../../components/v2/1.header.3_work/Header'
 import HeroSection from '../../../components/v2/1.header.3_work/HeroSection'
 import CastSection from '../../../components/v2/1.header.3_work/CastSection'
 import StorySection from '../../../components/v2/1.header.3_work/StorySection'
@@ -10,12 +12,11 @@ import MaintainerSection from '../../../components/v2/1.header.3_work/Maintainer
 import RatingsSection from '../../../components/v2/1.header.3_work/RatingsSection'
 import VideoSection from '../../../components/v2/1.header.3_work/VideoSection'
 import CTASection from '../../../components/v2/1.header.3_work/CTASection'
-import Footer from '../../../components/v2/1.header.3_work/Footer'
 ---
 
 <V2Layout>
-  <div className="min-h-screen bg-white">
-      <Header />
+  <div class="min-h-screen bg-white">
+      <Header landingPageTopMenu={true} activeLink={NavigationName.HowItWork} cascadeLogoSubtitle="How does CascadeFund work?" />
       <main>
         <HeroSection />
         <CastSection />

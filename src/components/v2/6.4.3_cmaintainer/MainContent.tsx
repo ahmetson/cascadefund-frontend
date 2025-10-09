@@ -1,9 +1,9 @@
 import React from 'react'
 import FilterBar from './ui/FilterBar'
 import UserCard from './ui/UserCard'
-import CworkTab from '../6.4.1_cwork/CworkTab'
 import AlertBanner from '../6.4.1_cwork/ui/AlertBanner'
 import TaskSection from '../6.4.1_cwork/TaskSection'
+import LinkTab from '../../utilitified_decorations/LinkTab';
 
 const MainContent: React.FC = () => {
   const filters = [
@@ -24,7 +24,7 @@ const MainContent: React.FC = () => {
         <div className="mt-8 mb-8">
           <TaskSection />
         </div>
-        <CworkTab activeTab='following-rockstars' />
+        <LinkTab activeTab='following-rockstars' />
         
         <div className="mt-6">
           <FilterBar 

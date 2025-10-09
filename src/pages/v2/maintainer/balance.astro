@@ -1,17 +1,18 @@
 ---
 import "../../../styles/v2/6.1_balance.css";
 import V2Layout from "../../../layouts/V2Layout.astro";
+import Header from '../../../components/utilitified_decorations/Header'
+import Footer from '../../../components/utilitified_decorations/Footer'
+import { NavigationName } from "../../../components/utilitified_decorations/HeaderRight";
 
-import Header from '../../../components/v2/6.4.3_cmaintainer/Header'
 import SideBar from '../../../components/v2/6.3_work/Sidebar'
 import MainContent from '../../../components/v2/6.1_balance/MainContent'
-import Footer from '../../../components/v2/6.1_balance/Footer'
 
 ---
 
 <V2Layout>
   <div class="min-h-screen bg-gray-50 flex flex-col">
-      <Header activeRight={2} />
+      <Header activeLink={NavigationName.ProjectName} />
       <div class="flex-1 max-w-6xl mx-auto px-4 py-8 w-full">
         <!-- Upper menu with todo -->
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">

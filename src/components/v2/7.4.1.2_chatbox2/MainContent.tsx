@@ -1,5 +1,5 @@
 import React from 'react'
-import BackButton from "../../../components/v2/4.2_topic/BackButton";
+import BackButton from '../../../components/utilitified_decorations/BackButton'
 import IssueHeader from './IssueHeader'
 import IssueContent from './IssueContent'
 import DiscussionPanel from './DiscussionPanel'

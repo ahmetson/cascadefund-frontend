@@ -1,17 +1,59 @@
 ---
 import "../../../styles/v2/7.4.1.1_issue.css";
 import V2Layout from "../../../layouts/V2Layout.astro";
+import Header from '../../../components/utilitified_decorations/Header'
+import Footer from '../../../components/utilitified_decorations/Footer'
+import NavigatingSubtitledElement from '../../../components/utilitified_decorations/NavigatingSubtitledElement'
+import NavigatingElement from '../../../components/utilitified_decorations/NavigatingElement'
+import BackButton from '../../../components/utilitified_decorations/BackButton'
 
-import Header from '../../../components/v2/4.1_post_issue/Header'
-import MainContent from '../../../components/v2/7.4.1.1_issue/MainContent'
-import Footer from '../../../components/v2/7.4.1.1_issue/Footer'
+import IssueHeader from '../../../components/v2/7.4.1.1_issue/sections/IssueHeader'
+import IssueContent from '../../../components/v2/7.4.1.1_issue/sections/IssueContent'
 
+import IssueDetails from '../../../components/v2/4_issue_addition/IssueDetailsPanel'
+// import ChatPanel from '../../../components/chat/Panel'
+// import ChatPanel from '../../../components/chat/index.astro'
+import ChatPanel from '../../../components/chat/ExampleContainer'
+import RecentActivity from '../../../components/v2/4_issue_addition/RecentActivityPanel'
+import RelatedIssues from '../../../components/v2/4_issue_addition/RelatedIssuesPanel'
+
+import NotificationBanner from "../../../components/v2/7.4.1.1_issue/ui/NotificationBanner";
+
+const additional = [
+  await NavigatingElement({href: "/v2/maintainer/work", children: "Cascading Work"}),
+  await NavigatingSubtitledElement({subtitle: "Issues List/Roadmap", active: true, children: "Version"}),
+  await NavigatingElement({active: true, children: "Issue"})
+].reverse();
 ---
 
 <V2Layout>
-  <div class="min-h-screen bg-gray-100">
-      <Header />
-      <MainContent />
-      <Footer />
-    </div>
+  <Header 
+        landingPageTopMenu={false}  
+        cascadeLogoSubtitle="Data Section: Issue"
+        additional={additional}  
+  />
+  <main class="max-w-7xl mx-auto mt-6 px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-4">
+      <div class='col-span-1 py-6 space-y-6 mr-6'><BackButton /></div>
+      
+      <div class="mx-6 lg:col-span-2 space-y-6">
+        <NotificationBanner 
+          type="warning"
+          title="Complete a quest..."
+          message='Please reply to the "Project Timeline" chat.'
+        />
+        <IssueHeader />
+        <IssueContent />
+      </div>
+      <div class="lg:col-span-1 space-y-8">
+        <IssueDetails />
+        <ChatPanel client:idle />
+        <RecentActivity />
+        <RelatedIssues />
+      </div>
+  </main>
+  <Footer />
 </V2Layout>
+
+<style is:global>
+  @import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
+</style>

@@ -1,23 +1,56 @@
 ---
 import "../../../styles/v2/4.1_post_issue.css";
 import V2Layout from "../../../layouts/V2Layout.astro";
+import Header from '../../../components/utilitified_decorations/Header'
+import Footer from '../../../components/utilitified_decorations/Footer'
+import NavigatingSubtitledElement from '../../../components/utilitified_decorations/NavigatingSubtitledElement'
+import NavigatingElement from '../../../components/utilitified_decorations/NavigatingElement'
+import BackButton from '../../../components/utilitified_decorations/BackButton'
 
-import Header from '../../../components/v2/4.1_post_issue/Header'
-import IssueForm from '../../../components/v2/4.1_post_issue/IssueForm'
+import IssueCard from '../../../components/v2/4.1_post_issue/IssueCard'
+import VotingSection from '../../../components/v2/4.1_post_issue/VotingSection'
+import ChatSection from '../../../components/v2/4.1_post_issue/ChatSection'
+import IssueDetails from '../../../components/v2/4.1_post_issue/IssueDetails'
+
 import NotificationBanner from '../../../components/v2/4.1_post_issue/NotificationBanner'
-import Footer from '../../../components/v2/4.1_post_issue/Footer'
+import LinkBtn from "../../../components/v2/LinkBtn";
 
+const additional = [
+  await NavigatingElement({href: "/v2/maintainer/work", children: "Cascading Work"}),
+  await NavigatingSubtitledElement({subtitle: "Issues List/Roadmap", active: true, children: "Version"}),
+  await NavigatingElement({active: true, children: "Adding Issue"})
+].reverse();
 ---
 
 <V2Layout>
-  <div class="min-h-screen bg-gray-100">
-      <Header />
-      <NotificationBanner 
-          type="warning"
-          title="Adding a new issue"
-          message="You are adding new"
-      />
-      <IssueForm />
-      <Footer />
-    </div>
+  <Header 
+        landingPageTopMenu={false}  
+        cascadeLogoSubtitle="Data Section: Issue"
+        additional={additional}  
+  />
+  <main class="max-w-7xl mx-auto mt-6 px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-4">
+      <div class='col-span-1 py-6 space-y-6 mr-6'><BackButton /></div>
+      
+      <div class="mx-6 lg:col-span-2 space-y-6">
+        <NotificationBanner 
+            type="warning"
+            title="Adding a new issue"
+            message="You are adding new"
+        />
+
+        <IssueCard />
+        <VotingSection />
+        <div class="flex justify-center mt-8">
+          <LinkBtn variant="blue" href="/v2/issue/post" label="Add Issue" />
+        </div>
+        <p class="text-center text-sm text-gray-500 -mt-2 mb-8">
+            Issue will be automatically followed by you.
+        </p>
+      </div>
+      <div class="lg:col-span-1 space-y-6">
+        <IssueDetails />
+        <ChatSection />
+      </div>
+  </main>
+  <Footer />
 </V2Layout>

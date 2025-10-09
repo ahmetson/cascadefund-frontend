@@ -15,7 +15,9 @@ const MenuAvatar: React.FC<Props> = ({active = false}) => {
             <div className='text-center'>
               <Badge variant="yellow" size="sm">220 rating</Badge><br />
               {!active ? (
-              <Link href="/v2/data/profile" className="text-gray-600 text-sm" label="Ahmetcan" />
+              <Link href="/v2/data/profile" className="hover:bg-gray-200 text-sm">
+                Ahmetson
+              </Link>
               ): (<strong className='text-gray-900 text-sm'>Ahmetson</strong>)} 
             </div>
           </div>
