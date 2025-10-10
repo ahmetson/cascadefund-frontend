@@ -1,6 +1,7 @@
 import React from 'react'
+import type { PanelEvents } from '@/types/eventTypes';
 
-interface CardProps {
+export type CardProps = PanelEvents & {
   children: React.ReactNode
   className?: string
   padding?: 'none' | 'sm' | 'md' | 'lg'

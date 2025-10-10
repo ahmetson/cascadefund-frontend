@@ -1,0 +1,23 @@
+---
+import V2Layout from "@/layouts/PanelViewLayout.astro";
+import { NavigationName, type Navigation } from "@/components/utilitified_decorations/HeaderRight";
+import NavLabelElement from '@/components/utilitified_decorations/NavigatingElement'
+export const replacement: Navigation = {};
+replacement[NavigationName.ProjectName] = await NavLabelElement({children: "Add New Project", active: true})
+
+import NewProjectIcon from '@/components/v2/icon/NewProjectIcon'
+import AddRepositoryCard from '@/components/v2/project/RepositoryForm'
+import NotificationBanner from "@/components/v2/NotificationBanner";
+import InfoPanel from '@/components/v2/project/RepositoryFormFeedbackPanel'
+
+---
+
+<V2Layout activeLink={NavigationName.ProjectName} replacement={replacement}>
+        <NotificationBanner slot="center" icon={NewProjectIcon} type="info" title='Your first project'>
+                <p class="text-gray-600">
+                You just signed up, and choose to be a maintainer. Adding the project is the first step in the CascadeFund.
+                </p>
+        </NotificationBanner>
+        <AddRepositoryCard slot="center" />
+        <InfoPanel slot="right" />
+</V2Layout>

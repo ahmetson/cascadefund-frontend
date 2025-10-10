@@ -1,29 +1,21 @@
 ---
-import "../../../../styles/v2/7.1.1_profile.css";
-import V2Layout from "../../../../layouts/V2Layout.astro";
-import Header from '../../../../components/utilitified_decorations/Header'
-import Footer from '../../../../components/utilitified_decorations/Footer'
-import { NavigationName } from "../../../../components/utilitified_decorations/HeaderRight";
+import V2Layout from "@/layouts/PanelViewLayout.astro";
+import { NavigationName } from "@/components/utilitified_decorations/HeaderRight";
 
-import ProfileSection from '../../../../components/v2/7.1.1_profile/ProfileSection'
-import WorkStyleSection from '../../../../components/v2/7.1.1_profile/WorkStyleSection'
-import Sidebar from '../../../../components/v2/7.1.1_profile/Sidebar'
+import ProfileInfo from '@/components/v2/profile/ProfileInfoPanel'
+import BackButton from "@/components/utilitified_decorations/BackButton";
+import RecentActivity from "@/components/v2/profile/RecentActivityPanel";
+import Discovery from "@/components/v2/profile/DiscoveryPanel";
+import FinanceInfo from "@/components/v2/profile/FinanceInfoPanel";
+import ProfileMetric from "@/components/v2/profile/ProfileMetricPanel";
 
 ---
-<V2Layout>
- <div class="min-h-screen bg-gray-50">
-      <Header landingPageTopMenu={false} activeLink={NavigationName.Avatar} hideLinks={[NavigationName.ProjectName]} cascadeLogoSubtitle="Data Section: Profile" />
-      <main class="max-w-7xl mx-auto px-4 py-6">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div class="lg:col-span-2 space-y-6">
-            <ProfileSection />
-            <WorkStyleSection />
-          </div>
-          <div class="lg:col-span-1">
-            <Sidebar />
-          </div>
-        </div>
-      </main>
-      <Footer />
-    </div>
+<V2Layout landingPageTopMenu={false} activeLink={NavigationName.Avatar} hideLinks={[NavigationName.ProjectName]} cascadeLogoSubtitle="Data Section: Profile" >
+  <BackButton href="/v2/maintainer/work" slot="left" />    
+  <ProfileInfo slot="center" client:visible />
+  <FinanceInfo />
+  <ProfileMetric slot="center" client:visible />
+
+  <RecentActivity slot="right" />
+  <Discovery slot="right" client:visible />
 </V2Layout>

@@ -1,53 +1,22 @@
 ---
-import "../../../styles/v2/6.3_work.css";
-import V2Layout from "../../../layouts/V2Layout.astro";
+import V2Layout from "@/layouts/PanelViewLayout.astro";
+import Sidebar from "@/components/utilitified_decorations/MenuPanel"
 
-import Header from '../../../components/utilitified_decorations/Header'
-import Footer from '../../../components/utilitified_decorations/Footer'
-import { NavigationName } from "../../../components/utilitified_decorations/HeaderRight";
+import { NavigationName } from "@/components/utilitified_decorations/HeaderRight";
 
-import TaskNotice from '../../../components/v2/6.3_work/TaskNotice'
-import IssuesNotice from '../../../components/v2/6.3_work/IssuesNotice'
-import Sidebar from '../../../components/v2/6.3_work/Sidebar'
-import TasksSection from '../../../components/v2/6.3_work/TasksSection'
-import IssuesSection from '../../../components/v2/6.3_work/IssuesSection'
-import RoadmapSection from '../../../components/v2/6.3_work/RoadmapSection'
+import TaskNotice from '@/components/v2/maintainer/QuestHowtoPanel'
+import IssuesNotice from '@/components/v2/maintainer/IssueHowtoPanel'
+import TasksSection from '@/components/v2/maintainer/QuestPanel'
+import IssuesSection from '@/components/v2/maintainer/IssueListPanel'
+import RoadmapSection from '@/components/v2/maintainer/RoadmapPanel'
 ---
 
-<V2Layout>
-<div class="min-h-screen bg-gray-50 flex flex-col">
-      <Header activeLink={NavigationName.ProjectName} />
-      <div class="flex-1 max-w-6xl mx-auto px-4 py-8 w-full">
-        <!-- Upper menu with todo -->
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          <div class="lg:col-span-1">
-            <Sidebar activeMenuItem="work" />
-          </div>
-          <div class="lg:col-span-2">
-            <TasksSection />
-          </div>
-          <div class="lg:col-span-1">
-            <TaskNotice />
-          </div>
-        </div>
-
-        <!-- bottom menu if no issue -->
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          <div class="lg:col-span-1">
-            <IssuesNotice />
-          </div>
-          <div class="lg:col-span-2">
-            <div class="mt-6">
-              <IssuesSection />
-            </div>
-          </div>
-          <div class="lg:col-span-1">
-            <RoadmapSection />
-          </div>
-        </div>
-
-      </div>
-      <Footer />
-    </div>
+<V2Layout landingPageTopMenu={false} activeLink={NavigationName.ProjectName}>
+            <Sidebar activeMenuItem="work" slot="left" />
+            <TasksSection slot="center" />
+            <TaskNotice slot="right" />
+            <IssuesNotice slot="left" />
+              <IssuesSection slot="center" />
+            <RoadmapSection slot="right" />
   )
 </V2Layout>

@@ -1,4 +1,4 @@
-import { type Transaction, type User } from '../types/3.5_history';
+import { type Transaction, type User } from '../types/influencer';
 
 export const mockUser: User = {
   name: 'Ahmeton',

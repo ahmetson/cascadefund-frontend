@@ -2,22 +2,35 @@ import React from 'react'
 
 interface TagProps {
   label: string
-  variant?: 'orange' | 'red' | 'blue' | 'gray'
+  variant?: string
   removable?: boolean
   onRemove?: () => void
+  score?: number
 }
 
-const Tag: React.FC<TagProps> = ({ label, variant = 'gray', removable = false, onRemove }) => {
-  const variantClasses = {
-    orange: 'bg-orange-100 text-orange-800',
-    red: 'bg-red-100 text-red-800',
-    blue: 'bg-blue-100 text-blue-800',
-    gray: 'bg-gray-100 text-gray-800'
+const Tag: React.FC<TagProps> = ({ score, label, variant = 'gray', removable = false, onRemove }) => {
+  let variantClasses = variant;
+  if (variant === 'orange') {
+    variantClasses = 'bg-orange-100 text-orange-800'
+  }
+  if (variant === 'red') {
+    variantClasses = 'bg-red-100 text-red-800'
+  }
+  if (variant === 'blue') {
+    variantClasses = 'bg-blue-100 text-blue-800'
+  }
+  if (variant === 'gray') {
+    variantClasses = 'bg-gray-100 text-gray-800'
   }
 
   return (
-    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${variantClasses[variant]}`}>
+    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${variantClasses}`}>
       {label}
+      {score && (
+        <span className="ml-1 px-1.5 py-0.5 bg-white rounded-full text-xs font-bold">
+          {score}
+        </span>
+      )}
       {removable && (
         <button
           onClick={onRemove}

@@ -1,16 +1,18 @@
 ---
-import "../../../styles/v2/3.3_work.css";
-import V2Layout from "../../../layouts/V2Layout.astro";
-
-import Header from '../../../components/v2/3.3_work/Header'
-import MainContent from '../../../components/v2/3.3_work/MainContent'
-import Footer from '../../../components/v2/3.3_work/Footer'
+import V2Layout from "@/layouts/PanelViewLayout.astro";
+import MainMenu from "@/components/utilitified_decorations/MenuPanel"
+import IssuesHowToInfo from '@/components/v2/influencer/IssuesHowToInfoPanel'
+import QuestPanel from '@/components/v2/influencer/QuestPanel'
+import IssueBoard from '@/components/v2/influencer/IssueBoardPanel'
+import QuestHowToInfo from '@/components/v2/influencer/QuestHowToInfoPanel'
+import VotingPower from '@/components/v2/influencer/VotingPowerPanel'
 
 ---
-<V2Layout>
-  <div class="min-h-screen bg-gray-100">
-      <Header />
-      <MainContent />
-      <Footer />
-    </div>
+<V2Layout landingPageTopMenu={false}>
+  <MainMenu slot="left" activeMenuItem="iwork" client:load />
+  <IssuesHowToInfo slot="left" />
+  <QuestPanel slot="center" />
+  <IssueBoard slot="center" />
+  <QuestHowToInfo slot="right" />
+  <VotingPower slot="right" />
 </V2Layout>
