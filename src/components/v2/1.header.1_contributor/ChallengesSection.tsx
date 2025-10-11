@@ -1,5 +1,5 @@
 import React from 'react'
-import ChallengeCard from './ui/ChallengeCard'
+import ChallengeCard from '@/components/v2/InfoPanel'
 
 const ChallengesSection: React.FC = () => {
   const challenges = [

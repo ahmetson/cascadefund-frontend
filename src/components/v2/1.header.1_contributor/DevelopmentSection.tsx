@@ -3,7 +3,7 @@ import Button from './ui/Button'
 
 const DevelopmentSection: React.FC = () => {
   return (
-    <section className="py-16 bg-blue-gradient text-white">
+    <section className="py-16 bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 text-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="mb-8">
           <svg className="w-16 h-16 text-white mx-auto mb-6" fill="currentColor" viewBox="0 0 20 20">

@@ -1,0 +1,14 @@
+---
+interface Props {
+  cols?: number
+  gap?: number
+  className?: string
+}
+
+let {className, cols, gap} = Astro.props
+cols = cols === undefined ? 2 : cols;
+gap = gap === undefined ? 6 : gap;
+---
+    <div class={`grid grid-cols-1 md:grid-cols-${cols} gap-${gap} ${className || ''}`}>
+      <slot />
+    </div>

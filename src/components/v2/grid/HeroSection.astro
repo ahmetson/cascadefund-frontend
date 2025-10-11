@@ -1,0 +1,30 @@
+---
+import Button from '@/components/v2/Button'
+import type { SectionProps } from '@/types/eventTypes'
+import DynamicReactImporteraction from './DynamicReactImporter'
+
+type Props = SectionProps;
+
+const {title, actions, children} = Astro.props
+---
+
+    <section class="bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 text-white py-20">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          {title}
+        </h1>
+        
+        <p class="text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
+          {children}
+        </p>
+                
+        {actions &&
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            {actions.map((action) => (
+              action.replaceWithChildren ? <DynamicReactImporteraction element={action.children} /> : 
+              <Button variant={action.variant} size="lg">{action.children}</Button>
+            ))}
+          </div>
+        }
+      </div>
+    </section>

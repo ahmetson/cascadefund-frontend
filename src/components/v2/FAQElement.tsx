@@ -3,13 +3,14 @@ import React, { useState } from 'react'
 interface FAQItemProps {
   question: string
   answer: string
+  key: string|number
 }
 
-const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
+const FAQItem: React.FC<FAQItemProps> = ({ question, answer, key }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="bg-white rounded-lg shadow-sm">
+    <div className="bg-white rounded-lg shadow-sm" key={key}>
       <button
         className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
         onClick={() => setIsOpen(!isOpen)}

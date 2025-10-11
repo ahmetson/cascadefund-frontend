@@ -3,10 +3,10 @@ import React from 'react'
 interface FeatureCardProps {
   icon: React.ReactNode
   title: string
-  iconColor: string
+  iconBgColor: string
 }
 
-const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, iconColor }) => {
+const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, iconBgColor: iconColor }) => {
   return (
     <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-sm">
       <div className={`flex-shrink-0 ${iconColor}`}>

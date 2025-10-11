@@ -1,0 +1,36 @@
+---
+import WorkflowCard from '@/components/v2/InfoPanel'
+import Horizontally from '@/components/v2/grid/HorizontalRow.astro'
+import SectionTitle from './SectionTitle.astro'
+import type {SectionProps} from '@/types/eventTypes'
+import TitledInfoPanel from '@/components/utilitified_decorations/TitledInfoPanel'
+
+type Props = SectionProps & {cols?: number}
+
+let {panels, bottomPanel, title, prefix, cols, className} = Astro.props
+if (!cols) {
+  cols = panels && panels.length > 4 ? 3 : panels!.length || 0;
+}
+
+---
+
+    <section class={`py-16 bg-white ${className}`}>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionTitle title={title} />
+        <Horizontally cols={cols}>
+          {panels && panels.map((step, index) => (
+            step.description === undefined ? <TitledInfoPanel title={step.title} icon={step.icon} iconBgColor={step.iconBgColor || 'blue'}></TitledInfoPanel> : 
+            <WorkflowCard
+              key={prefix!+index}
+              {...step}
+            />
+          ))}
+        </Horizontally>
+
+        {bottomPanel === undefined ? null : 
+        <WorkflowCard 
+          key={"bottom-panel"}
+          {...bottomPanel}
+        />}
+      </div>
+    </section>

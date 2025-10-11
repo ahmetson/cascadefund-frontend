@@ -3,7 +3,7 @@ import Button from './ui/Button'
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="bg-hero-gradient text-white py-20">
+    <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 text-white py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">

@@ -1,0 +1,45 @@
+---
+import { ClientRouter } from "astro:transitions";
+import "@/styles/global.css";
+import Header from '@/components/utilitified_decorations/Header'
+import Footer from '@/components/utilitified_decorations/Footer'
+import type { Navigation, NavigationName } from "@/components/utilitified_decorations/HeaderRight";
+
+interface Props {
+  cascadeLogoSubtitle?: string;
+  landingPageTopMenu?: boolean;
+  additional?: any[];
+
+  activeLink?: NavigationName;
+  hideLinks?: NavigationName[];
+  replacement?: Navigation;
+}
+const { landingPageTopMenu, cascadeLogoSubtitle, additional } = Astro.props;
+
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>CascadeFund</title>
+		<ClientRouter />
+	</head>
+	<body class="min-h-screen bg-gray-200"></body>
+  <Header 
+        landingPageTopMenu={landingPageTopMenu}  
+        cascadeLogoSubtitle={cascadeLogoSubtitle}
+        additional={additional}  
+  />
+    <slot />
+  <Footer />
+  	</body>
+</html>
+
+
+<style is:global>
+  @import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
+</style>

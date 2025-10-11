@@ -5,6 +5,7 @@ import Button from '@/components/v2/Button';
 import type { ActionProps } from '@/types/eventTypes';
 
 export type Props = CardProps & {
+  key?: number | string;
   title: any;
   actions?: ActionProps[];
   children: any;
@@ -16,7 +17,7 @@ export type Props = CardProps & {
 
 const Panel: React.FC<Props> = (props) => {
   const pageLike = 
-    <Card bg={props.bg} className={props.className || ''}>
+    <Card bg={props.bg} className={props.className || ''} key={props.key}>
       <h3 className="font-medium text-gray-700 mb-3 flex items-center justify-between">{props.title}{props.rightHeader}</h3>
       <div className="space-y-3 text-sm">
         {props.children}

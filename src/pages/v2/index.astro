@@ -1,27 +1,206 @@
 ---
-import "../../styles/v2/landing_page.css";
-import V2Layout from "@/layouts/PanelViewLayout.astro"
+import "@/styles/v2/landing_page.css";
+import V2Layout from "@/layouts/LandingLayout.astro"
+import { NavigationName } from "@/components/utilitified_decorations/HeaderRight";
 
-import HeroSection from '../../components/v2/landing_page/HeroSection'
-import WhyMaintainersStruggle from '../../components/v2/landing_page/WhyMaintainersStruggle'
-import HowItWorks from '../../components/v2/landing_page/HowItWorks'
-import BeAFoundingMaintainer from '../../components/v2/landing_page/BeAFoundingMaintainer'
-import AraProject from '../../components/v2/landing_page/AraProject'
-import FAQ from '../../components/v2/landing_page/FAQ'
-import CallToAction from '../../components/v2/landing_page/CallToAction'
-import { NavigationName } from "../../components/utilitified_decorations/HeaderRight";
+import HeroSection from '@/components/v2/grid/HeroSection.astro'
+import LeftImageRightPanels from '@/components/v2/grid/LeftImageRightPanelsSection.astro'
+import HorizontalPanels from '@/components/v2/grid/HorizontalPanelsSection.astro'
+import Section from '@/components/v2/grid/Section.astro'
+import SectionScrollButton from "@/components/v2/SectionScrollButton";
+import ClockIcon from '@/components/v2/icon/ClockIcon'
+import FireIcon from '@/components/v2/icon/FireIcon'
+import TenPmTenMinIcon from '@/components/v2/icon/TenPmTenMinIcon'
+import EnergyIcon from '@/components/v2/icon/EnergyIcon'
+import RecognitionIcon from "@/components/v2/icon/RecognitionIcon";
+import VotePriorityIcon from "@/components/v2/icon/VotePriorityIcon";
+import BetterFeaturesIcon from "@/components/v2/icon/BetterFeaturesIcon";
+import EarlyVisibilityIcon from "@/components/v2/icon/EarlyVisibilityIcon";
+import InfluencePlatformIcon from "@/components/v2/icon/InfluencePlatformIcon";
+import FirstAccessToCascadeFundIcon from "@/components/v2/icon/FirstAccessToCascadeFundIcon";
+import PioneerRecognitionIcon from "@/components/v2/icon/PioneerRecognitionIcon";
+import { SectionBgType } from "@/types/eventTypes";
+import type { SectionProps } from "@/types/eventTypes";
+import FAQItem from '@/components/v2/FAQElement'
+import EnergyIcon2 from '@/components/v2/icon/EnergyIcon2'
+
+const heroSection = {
+        title: 'Platform where Open Source Maintainers Connect, Collaborate, and Get Funded',
+        children: 
+                "Discover similar projects, network with fellow maintainers and enhance your portfolio through quests " +
+                "— all while earning support from users in a reputation-driven ecosystem."
+        ,
+        actions: [
+                {variant: "primary", children: "Sign Up as a Maintainer"},
+                {variant: "blue", replaceWithChildren: true, children: (await SectionScrollButton({children: 'Learn More', href: '#WhyMaintainersStruggle', className: ' text-white hover:text-gray-200'}))}
+        ]
+}
+
+const whyMaintainersStruggleSection = {
+        prefix: 'whyMaintainersStruggle',
+        panels: [
+    {
+      icon: (
+        await ClockIcon({})
+      ),
+      title: "Unsustainable work",
+      description: "Maintaining open source often means unpaid overtime, burnout from constant demands, and inadequate support.",
+      iconBgColor: "text-green-600"
+    },
+    {
+      icon: (
+        await FireIcon({})
+      ),
+      title: "Burnout",
+      description: "The pressure to keep projects running while balancing other responsibilities leads to exhaustion and decreased motivation.",
+      iconBgColor: "text-orange-600"
+    },
+    {
+      icon: (
+        await TenPmTenMinIcon({})
+      ),
+      title: "Scalable priorities",
+      description: "Balancing feature requests against maintenance and bug fixing, leading to challenging prioritization and frustration with users.",
+      iconBgColor: "text-purple-600"
+    },
+    {
+      icon: (
+        await EnergyIcon({})
+      ),
+      title: "Dependency struggles",
+      description: "Managing complex dependency chains affects stability with other projects, creates technical debt and integration issues.",
+      iconBgColor: "text-gray-600"
+    }
+  ],
+  title: "Why Maintainers Struggle?",
+  img: {
+        src: "https://dummyimage.com/500x400/f8fafc/64748b?text=Struggling+Developer",
+        alt: "Struggling developer"
+  }
+}
+
+const howItWorksSection = {
+        prefix: 'howItWorks',
+        title: 'How it works?',
+        panels: [
+    {
+      icon: await BetterFeaturesIcon({}),
+      title: "Users donate → Unlock better features",
+      description: "When users support projects financially, they gain the ability to access premium features and priority support.",
+      iconBgColor: "bg-green-100 text-green-600"
+    },
+    {
+      icon: await VotePriorityIcon({}),
+      title: "Votes shape priorities & ratings",
+      description: "Community input helps determine what features get built next and provides feedback on project quality and direction.",
+      iconBgColor: "bg-purple-100 text-purple-600"
+    },
+    {
+      icon: await RecognitionIcon({}),
+      title: "Maintainers gain funding and recognition",
+      description: "Direct lines, great rating for all maintainers, and sustainable funding for projects. Get helped to other devs as well.",
+      iconBgColor: "bg-blue-100 text-blue-600"
+    }
+  ]
+}
+
+const beAFoundingMaintainerSection = {
+        cols: 2,
+        title: 'Be a Founding Maintainer',
+        className: 'px-10',
+  panels: [
+    {
+      icon: (await EarlyVisibilityIcon({})),
+      title: "Early visibility in the ecosystem",
+      color: "text-blue-600"
+    },
+    {
+        icon: (await InfluencePlatformIcon({})),
+      title: "Influence platform development",
+      color: "text-blue-600"
+    },
+    {
+        icon: (await FirstAccessToCascadeFundIcon({})),
+      title: "Easy management of the project in the quest based way",
+      color: "text-blue-600"
+    },
+    {
+        icon: (await PioneerRecognitionIcon({})),
+      title: "Recognition as a pioneer",
+      color: "text-blue-600"
+    }
+  ]
+}
+
+const partOfAraProjectSection: SectionProps = {
+        title: "CascadeFund is part of Ara Project",
+        bg: {
+                overlay: 'circles',
+                sectionBgType: SectionBgType.heroSection
+        },
+}
+
+const faqSection: SectionProps = {
+        title: "Frequently Asked Questions",
+        bg: {
+                sectionBgType: SectionBgType.infoSection
+        },
+}
+
+const faqs = [
+    {
+      question: "Is it free to join?",
+      answer: "Yes, joining the platform is completely free for all open source maintainers. We believe in removing barriers to entry and helping maintainers get started without any upfront costs."
+    },
+    {
+      question: "How is this different from GitHub Sponsors?",
+      answer: "While GitHub Sponsors focuses on direct sponsorship, our platform creates a comprehensive ecosystem with project discovery, collaborative features, quest-based funding, and community-driven prioritization that helps maintainers build sustainable businesses."
+    },
+    {
+      question: "Is my project too small?",
+      answer: "Not at all! Projects of all sizes are welcome. Whether you're just starting out or managing a large-scale project, our platform provides tools and opportunities to help you grow and connect with the right supporters and collaborators."
+    },
+    {
+      question: "Do I need a big community already?",
+      answer: "No, you don't need an existing large community. Our platform helps you build and grow your community organically by connecting you with users who value your work and want to support your project's development."
+    }
+]
+
+const ctaSection: SectionProps = {
+        icon: await EnergyIcon2({}),
+        title: "Ready to Shape the Future of Open Source?",
+        bg: {
+                overlay: 'rectangles',
+                sectionBgType: SectionBgType.normalSection
+        },
+}
+
 ---
 
 <V2Layout landingPageTopMenu={true} activeLink={NavigationName.MaintainerLanding}>
-    <div class="min-h-screen bg-white" slot="hero">
-      <main>
-        <HeroSection />
-        <WhyMaintainersStruggle />
-        <HowItWorks />
-        <BeAFoundingMaintainer />
-        <AraProject />
-        <FAQ />
-        <CallToAction />
-      </main>
-    </div>
+        <HeroSection {...heroSection} />
+        <LeftImageRightPanels {...whyMaintainersStruggleSection} />
+        <HorizontalPanels {...howItWorksSection} />
+        <HorizontalPanels {...beAFoundingMaintainerSection} />
+        <Section title={partOfAraProjectSection.title} bg={partOfAraProjectSection.bg}>
+                Together, we can make the internet open, affordable, and sustainable for " +
+          "everyone — where collaborative tech innovation and maintainers thrive without " +
+          "burnout.
+        </Section>
+        <Section client:visible title={faqSection.title} bg={faqSection.bg}>
+                {faqs.map((faq, index) => (
+                <FAQItem
+                key={index}
+                question={faq.question}
+                answer={faq.answer}
+                />
+                ))}
+        </Section>
+        <Section client:visible title={ctaSection.title} bg={ctaSection.bg} actions={[{
+                href: '/v2/login',
+                variant: 'blue',
+                children: 'Sign In as a Maintainer'
+        }]} icon={ctaSection.icon}>
+                Join a growing community of maintainers who are changing how open source development works.        
+        </Section>
 </V2Layout>
