@@ -1,6 +1,6 @@
 import React from 'react'
 import CascadeFundLogo from './CascadeFundLogo'
-import Link from '@/components/v2/Link'
+import Link from '@/components/Link'
 
 const Footer: React.FC = () => {
   return (
@@ -27,16 +27,16 @@ const Footer: React.FC = () => {
             <h3 className="font-semibold mb-4">Platform</h3>
             <ul className="space-y-2 text-sm text-gray-400">
               <li><Link href="/" className="hover:text-white transition-colors">For Maintainers</Link></li>
-              <li><Link href="/v2/meta/influencer" className="hover:text-white transition-colors">For Open source Enthuasists</Link></li>
-              <li><Link href="/v2/meta/contributor" className="hover:text-white transition-colors">For Contributors</Link></li>
+              <li><Link href="/meta/influencer" className="hover:text-white transition-colors">For Open source Enthuasists</Link></li>
+              <li><Link href="/meta/contributor" className="hover:text-white transition-colors">For Contributors</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="font-semibold mb-4">Resources</h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><Link href="/v2/meta/work" className="hover:text-white transition-colors">How it Works?</Link></li>
-              <li><Link href="/v2/meta/quest" className="hover:text-white transition-colors">Quest Task List</Link></li>
+              <li><Link href="/meta/work" className="hover:text-white transition-colors">How it Works?</Link></li>
+              <li><Link href="/meta/quest" className="hover:text-white transition-colors">Quest Task List</Link></li>
               <li><Link href="#" className="hover:text-white transition-colors">
                 <svg className="h-4 w-4 text-blue-400 inline mr-2" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
@@ -55,8 +55,8 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="font-semibold mb-4">Organization</h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><Link href="/v2/meta/team" className="hover:text-white transition-colors">Team</Link></li>
-              <li><Link href="/v2/meta/policy" className="hover:text-white transition-colors">Privacy Policy (no-boring-lawyer-edition)</Link></li>
+              <li><Link href="/meta/team" className="hover:text-white transition-colors">Team</Link></li>
+              <li><Link href="/meta/policy" className="hover:text-white transition-colors">Privacy Policy (no-boring-lawyer-edition)</Link></li>
               <li>
                 Contact/Follow:
                 <div className="flex space-x-4 mt-1">

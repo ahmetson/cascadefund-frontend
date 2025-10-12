@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from './PagelikeCard'
-import NotificationBanner from '@/components/v2/NotificationBanner'
+import NotificationBanner from '@/components/NotificationBanner'
 import MenuItem from './MenuItem';
 
 type MenuName = 'ihistory' | 'iwork' | 'balance' | 'cbalance' | 'project' | 'marketing' | 'work' | 'cwork';
@@ -24,20 +24,20 @@ const maintainerMainItems = (activeMenuItem: MenuName): React.ReactNode[] => {
     <MenuItem
       icon={BalanceIcon()}
       label="Balance"
-      url={"/v2/maintainer/balance"}
+      url={"/maintainer/balance"}
       isActive={activeMenuItem === 'balance'}
     />,
     <MenuItem
             icon={CascadingBalanceIcon()}
             label="Cascading balance"
-            url={"/v2/maintainer/cbalance"}
+            url={"/maintainer/cbalance"}
             isActive={activeMenuItem === 'cbalance'}
     />,
     <MenuItem
             icon={ProjectInfoIcon()}
             label="Project Info"
             badge="2+"
-            url={"/v2/data/project"}
+            url={"/data/project"}
             isActive={activeMenuItem === 'project'}
     />,
   ]
@@ -47,7 +47,7 @@ const influencerMainItems = (activeMenuItem: MenuName): React.ReactNode[] => {
     <MenuItem
             icon={InfluencerHistoryIcon()}
             label="Transaction History"
-            url="/v2/influencer/history"
+            url="/influencer/history"
             isActive={activeMenuItem === 'ihistory'}
     />
   ]
@@ -59,21 +59,21 @@ const maintainerCollabItems = (activeMenuItem: MenuName): React.ReactNode[] => {
             icon={MarketingIcon()}
             label="Marketing"
             badge={1}
-            url="/v2/maintainer/marketing"
+            url="/maintainer/marketing"
             isActive={activeMenuItem === 'marketing'}
     />,
     <MenuItem
             icon={WorkIcon()}
             label="Work"
             badge={3}
-            url="/v2/maintainer/work"
+            url="/maintainer/work"
             isActive={activeMenuItem === 'work'}
     />,
     <MenuItem
             icon={CascadingWorkIcon()}
             label="Cascading work"
             badge="?"
-            url="/v2/maintainer/cwork"
+            url="/maintainer/cwork"
             isActive={activeMenuItem === 'cwork'}
     />
   ]
@@ -83,7 +83,7 @@ const influencerCollabItems = (activeMenuItem: MenuName): React.ReactNode[] => {
     <MenuItem
            icon={InfluencerWorkIcon()}
             label="Influencer Work"
-            url="/v2/influencer/work"
+            url="/influencer/work"
             isActive={activeMenuItem === 'iwork'}
     />
   ]

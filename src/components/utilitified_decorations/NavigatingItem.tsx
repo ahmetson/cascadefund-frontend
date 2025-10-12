@@ -1,6 +1,6 @@
 import React from 'react'
-import Button from '@/components/v2/Button'
-import Link from '@/components/v2/Link'
+import Button from '@/components/Button'
+import Link from '@/components/Link'
 
 interface Props {
   active?: boolean;

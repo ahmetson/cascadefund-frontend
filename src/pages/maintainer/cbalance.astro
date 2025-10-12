@@ -1,0 +1,15 @@
+---
+import V2Layout from "@/layouts/PanelViewLayout.astro";
+import Menu from "@/components/utilitified_decorations/MenuPanel"
+import { NavigationName } from "@/components/utilitified_decorations/HeaderRight";
+
+import CascadingBalance from '@/components/maintainer/CascadingBalancePanel'
+import TransactionHistory from '@/components/maintainer/RecentTransactionPanel'
+
+---
+
+<V2Layout activeLink={NavigationName.ProjectName}>
+  <Menu activeMenuItem="cbalance" slot="left" />
+  <CascadingBalance slot="center" />
+  <TransactionHistory slot="center" />
+</V2Layout>

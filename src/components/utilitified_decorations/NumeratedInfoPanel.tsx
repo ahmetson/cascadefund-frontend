@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/v2/Card'
+import Card from '@/components/Card'
 
 export type NumeratedInfoProps = {
   number: number

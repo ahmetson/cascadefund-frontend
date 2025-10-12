@@ -7,7 +7,7 @@ import {
   Conversation,
 
 } from "@chatscope/chat-ui-kit-react";
-import Button from '@/components/v2/Button';
+import Button from '@/components/Button';
 
 export interface Props {
   onElementClick?: (arg0: boolean) => void;

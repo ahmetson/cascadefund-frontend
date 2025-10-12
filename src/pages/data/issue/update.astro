@@ -1,0 +1,18 @@
+---
+import V2Layout from "@/layouts/PanelViewLayout.astro";
+
+import IssueCard from '@/components/issue/UpdatableIssueContentPanel'
+import IssueDetails from '@/components/issue/UpdatableIssueDetailsPanel'
+import BackButton from "@/components/utilitified_decorations/BackButton";
+import NotificationBanner from "@/components/NotificationBanner";
+
+---
+
+<V2Layout landingPageTopMenu={false} cascadeLogoSubtitle="Update Data Section: Issue" additional={[]}>
+        <BackButton href="/data/issue" slot="left" />
+        <NotificationBanner slot="center" type="info" title="Updating the issue">
+            You are adding new changes to the issue data.
+        </NotificationBanner>
+        <IssueCard slot="center" />
+        <IssueDetails slot="right" />
+</V2Layout>

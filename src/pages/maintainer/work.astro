@@ -1,0 +1,22 @@
+---
+import V2Layout from "@/layouts/PanelViewLayout.astro";
+import Panel from "@/components/utilitified_decorations/MenuPanel"
+
+import { NavigationName } from "@/components/utilitified_decorations/HeaderRight";
+
+import TaskNotice from '@/components/maintainer/QuestHowtoPanel'
+import IssuesNotice from '@/components/maintainer/IssueHowtoPanel'
+import TasksSection from '@/components/maintainer/QuestPanel'
+import IssuesSection from '@/components/maintainer/IssueListPanel'
+import RoadmapSection from '@/components/maintainer/RoadmapPanel'
+---
+
+<V2Layout landingPageTopMenu={false} activeLink={NavigationName.ProjectName}>
+            <Panel activeMenuItem="work" slot="left" />
+            <TasksSection slot="center" />
+            <TaskNotice slot="right" />
+            <IssuesNotice slot="left" />
+              <IssuesSection slot="center" />
+            <RoadmapSection slot="right" />
+  )
+</V2Layout>

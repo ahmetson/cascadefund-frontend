@@ -1,0 +1,18 @@
+---
+import V2Layout from "@/layouts/PanelViewLayout.astro"
+import { LandingRightMenu } from "@/components/utilitified_decorations/HeaderRight";
+
+import Loading from '@/components/utilitified_decorations/LoadingPanel'
+
+const sectionInfo = {
+  title: "Successful Authentication",
+  children: "Please wait for automatic redirection",
+  gotoLink: '/login/getting-started',
+  gotoLabel: 'Getting Started'
+}
+
+---
+
+<V2Layout landingPageTopMenu={true} hideLinks={LandingRightMenu} cascadeLogoSubtitle="Wait a bit please...">
+        <Loading slot="center" client:visible {...sectionInfo} />
+</V2Layout>

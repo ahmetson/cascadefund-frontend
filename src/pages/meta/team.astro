@@ -1,0 +1,148 @@
+---
+import V2Layout from "@/layouts/LandingLayout.astro";
+import TeamCard, { type TeamCardProps } from '@/components/profile/ProfileInfoPanel2'
+import HeroSection from '@/components/grid/HeroSection.astro'
+import HorizontalPanelsSection from "@/components/grid/HorizontalPanelsSection.astro";
+import { SectionBgType, type SectionProps } from "@/types/eventTypes";
+import LeftImageRightPanelsSection from "@/components/grid/LeftImageRightPanelsSection.astro";
+import ThreeColumnGrid from "@/components/grid/ThreeColumnGrid.astro";
+import Section from "@/components/grid/Section.astro";
+import Card from '@/components/utilitified_decorations/PagelikeCard'
+
+const teamGlanceProps: SectionProps = {
+        title: "First, Meet the Team at a Glance",
+        bg: {
+                overlay: 'circles',
+                sectionBgType: SectionBgType.heroToInfoViaBlue
+        },
+}
+
+const teamMembers: TeamCardProps[] = [
+    {
+      name: "Medet Ahmetson",
+      description: "Startup kid who flipped into open source. Turned blockchain games into libraries for devs.",
+      image: "https://dummyimage.com/80x80/4A90E2/ffffff?text=MA",
+      socialLinks: [
+        { type: 'telegram', url: '#' },
+        { type: 'github', url: '#' },
+        { type: 'linkedin', url: '#' }
+      ]
+    },
+    {
+      name: "Sergey Pak",
+      description: "Built CRMs before Medet was even born. Still shipping useful code decades later.",
+      image: "https://dummyimage.com/80x80/6B46C1/ffffff?text=SP",
+      socialLinks: [
+        { type: 'telegram', url: '#' },
+        { type: 'github', url: '#' },
+        { type: 'linkedin', url: '#' }
+      ]
+    }
+  ]
+
+---
+
+<V2Layout landingPageTopMenu={true} cascadeLogoSubtitle="Team, our story and goals">
+  <HeroSection 
+    title={"Meet the Team it's story and why CascadeFund?"}
+  >
+    <p class="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
+          CascadeFund is built by two people who care about open source. No company 
+          walls, no anonymous teams — just us, telling our story as it is.
+    </p>
+  </HeroSection>
+  <HorizontalPanelsSection title={teamGlanceProps.title} bg={teamGlanceProps.bg} cols={2}>
+    {teamMembers.map((member) => (
+      <TeamCard {...member} slot="grid" />
+    ))}
+  </HorizontalPanelsSection>
+  <LeftImageRightPanelsSection
+          title="Medet Ahmetson"
+          img={{src: "https://dummyimage.com/400x300/4A90E2/ffffff?text=Medet+Working"}}
+          prefix="ahmetson"
+          bg={{
+            sectionBgType: SectionBgType.infoToInfoViaBlue
+        }}
+  >
+    <p class="text-gray-700 mb-4">
+      I'm Medet. Born in Turkmenistan, living abroad for over a decade, most of it spent chasing startups. I was a 
+            classic startup kid — pitch decks, investors, products, the usual.
+          </p>
+          <p class="text-gray-700 mb-4">
+            Eventually, I ended up in blockchain around 2018. While most people were running into it for money, 
+            blockchain flipped me the other way: it pulled me into an open-source guy.
+          </p>
+          <p class="text-gray-700 mb-4">
+            <strong>Here's why:</strong> In crypto there's this unwritten law — the code must be open. That principle hit me harder 
+            than the hype around tokens. While others were trading tokens, I was building games. And instead of 
+            cashing out, I was taking the game logic, documenting it, and turning it into libraries so other devs could use 
+            it. That felt like the right thing to do.
+          </p>
+          <p class="text-gray-700 mb-4">
+            But there was a fork in the road. My team was focused on the game business. I kept asking the 
+            philosophical "why" questions — why games, why ownership, why closed systems at all? I realized my old 
+            dream: computers should work with IT — no software engines. And what really matters isn't hardware or 
+            corporations, it's who owns the software.
+          </p>
+          <p class="text-gray-700">
+            That's how Ara was born — an attempt to connect people directly with open-source developers, bypassing 
+            the giants that lock everything down. For three years, I worked on Ara.
+          </p>
+          <p class="text-gray-700 mt-4">
+            The culmination of all that work became CascadeFund. If Ara was the dream, CascadeFund is the tool that 
+            makes it practical.
+          </p>
+  </LeftImageRightPanelsSection>
+  <LeftImageRightPanelsSection
+          title="Sergey Pak"
+          img={{src: "https://dummyimage.com/400x300/6B46C1/ffffff?text=Sergey+Coding"}}
+          prefix="pak"
+  >
+    <p class="text-gray-700 mb-4">
+            Sergey has been in IT since the mid-90s — before I was even born. He built CRMs and hotel booking apps 
+            back when the internet was dial-up.
+          </p>
+          <p class="text-gray-700 mb-4">
+            If I bring the restless startup kid energy, Sergey brings decades of perspective. He's the one who takes my 
+            messy vision and says, "Okay, let's strip it down, simplify it, and actually ship it."
+          </p>
+          <p class="text-gray-700">
+            He believed in CascadeFund early on, and helped cut through the noise to make it real. Where I'm the "big 
+            idea" person, he's the "make it work" person.
+          </p>
+  </LeftImageRightPanelsSection>
+  <ThreeColumnGrid>
+    <Card
+      slot="center"
+            title="What we believe"
+            className="text-cascade-purple text-center"
+          >
+            <ul class="text-left">
+              <li>"Open source is the backbone of the internet."</li>
+    <li>"Developers should be able to survive and grow doing the work they love.",</li>
+    <li>"Transparency and honesty are the foundation.",</li>
+    <li>"CascadeFund was built because we needed it ourselves."</li>
+            </ul>
+          </Card>
+  </ThreeColumnGrid>
+      <Section 
+        title="Ready to Join the CascadeFund Ecosystem?"
+        bg={{sectionBgType: SectionBgType.purpleToTealViaBlue}}
+        actions={[{
+          variant: 'blue',
+          children: 'Sign In as a Maintainer',
+          href: '/login'
+        }]}
+      >
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-lg text-white opacity-90 mb-8">
+          Be part of a growing community that's changing how open source development works.
+        </p>
+      </div>
+    </Section>
+</V2Layout>
+<style>
+  .bg-gradient-cascade {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+</style>

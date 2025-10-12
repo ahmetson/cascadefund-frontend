@@ -1,8 +1,8 @@
 import React from 'react'
-import Badge from '@/components/v2/Badge'
-import MenuAvatar from '@/components/v2/MenuAvatar'
-import Link from '@/components/v2/Link'
-import LinkBtn from '@/components/v2/LinkBtn'
+import Badge from '@/components/Badge'
+import MenuAvatar from '@/components/MenuAvatar'
+import Link from '@/components/Link'
+import LinkBtn from '@/components/LinkBtn'
 import NavLabelElement from './NavigatingItem'
 
 export enum NavigationName {
@@ -51,13 +51,13 @@ const getNavigation = (landingPageMenu = false, active?: NavigationName, hideLin
   if (!landingPageMenu) {
     if (hideLinks === undefined || hideLinks.findIndex(el => el === NavigationName.ProjectName) == -1) {
       navigation[NavigationName.ProjectName] = 
-      <NavLabelElement href="/v2/data/project" active={active === NavigationName.ProjectName}>
+      <NavLabelElement href="/data/project" active={active === NavigationName.ProjectName}>
           Reflect
       </NavLabelElement>;
     }
     if (hideLinks === undefined || hideLinks.findIndex(el => el === NavigationName.ProjectList) == -1) {
       navigation[NavigationName.ProjectList] = 
-      <NavLabelElement href="/v2/data/projects" active={active === NavigationName.ProjectList}>
+      <NavLabelElement href="/data/projects" active={active === NavigationName.ProjectList}>
           Projects
           <Badge variant="blue">2</Badge>
           <Badge variant="red">2</Badge>
@@ -74,27 +74,27 @@ const getNavigation = (landingPageMenu = false, active?: NavigationName, hideLin
   if (active !== NavigationName.MaintainerLanding && (hideLinks === undefined || hideLinks.findIndex(el => el === NavigationName.MaintainerLanding) == -1)) {
     navigation[NavigationName.MaintainerLanding] =  <div className="text-sm text-gray-600">
       I'm an:<br />
-      <Link href="/v2/">Open Source Maintainer</Link>
+      <Link href="/">Open Source Maintainer</Link>
     </div>;
   }
   if (active !== NavigationName.ContributorLanding && (hideLinks === undefined || hideLinks.findIndex(el => el === NavigationName.ContributorLanding) == -1)) {
     navigation[NavigationName.ContributorLanding] =  <div className="text-sm text-gray-600">
       I'm an:<br />
-      <Link href="/v2/meta/contributor">Open Source Contributor</Link>
+      <Link href="/meta/contributor">Open Source Contributor</Link>
     </div>;
   }
   if (active !== NavigationName.UserLanding && (hideLinks === undefined || hideLinks.findIndex(el => el === NavigationName.UserLanding) == -1)) {
     navigation[NavigationName.UserLanding] = <div className="text-sm text-gray-600">
             I'm an:<br />
-            <Link href="/v2/meta/influencer" >Open Source User</Link>
+            <Link href="/meta/influencer" >Open Source User</Link>
     </div>;
   }
   if (active !== NavigationName.HowItWork && (hideLinks === undefined || hideLinks.findIndex(el => el === NavigationName.HowItWork) == -1)) {
-    navigation[NavigationName.HowItWork] = <Link href="/v2/meta/work" >How it works?</Link>;
+    navigation[NavigationName.HowItWork] = <Link href="/meta/work" >How it works?</Link>;
   }
   if (active !== NavigationName.Check && (hideLinks === undefined || hideLinks.findIndex(el => el === NavigationName.Check) == -1)) {
     navigation[NavigationName.Check] = <div>
-          <Link href="/v2/maintainer/check" >
+          <Link href="/maintainer/check" >
             Check Balance?
           </Link>
           <span className="ml-1 w-4 h-4 bg-gray-300 rounded-full p-2 py-1 justify-center text-xs no-underline text-gray-600">?</span>
@@ -102,7 +102,7 @@ const getNavigation = (landingPageMenu = false, active?: NavigationName, hideLin
   }
 
   if (hideLinks === undefined || hideLinks.findIndex(el => el === NavigationName.Avatar) == -1) {
-    navigation[NavigationName.Avatar] = <LinkBtn href="/v2/login" variant="purple" >Log In</LinkBtn>
+    navigation[NavigationName.Avatar] = <LinkBtn href="/login" variant="purple" >Log In</LinkBtn>
   }
   return navigation;
 }

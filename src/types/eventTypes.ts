@@ -1,5 +1,5 @@
-import type { InfoPanelProps } from "@/components/v2/InfoPanel";
-import type { RoleCardProps } from "@/components/v2/RoleCard";
+import type { InfoPanelProps } from "@/components/InfoPanel";
+import type { RoleCardProps } from "@/components/RoleCard";
 
 export interface PanelEvents {
     onBackClick?: (arg0?: boolean) => void;

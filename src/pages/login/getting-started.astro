@@ -1,0 +1,67 @@
+---
+import V2Layout from "@/layouts/LandingLayout.astro"
+import { SignedRightMenuExceptAvatar } from "@/components/utilitified_decorations/HeaderRight";
+
+import HorizontalPanelsSection from "@/components/grid/HorizontalPanelsSection.astro";
+import MaintainerIcon from "@/components/icon/MaintainerIcon";
+import ContributorIcon from "@/components/icon/ContributorIcon";
+import InfluencerIcon from "@/components/icon/InfluencerIcon";
+import type { RoleCardProps } from "@/components/RoleCard";
+
+const roles: RoleCardProps[] = [
+    {
+      roleCard: true,
+      id: 'maintainer',
+      title: 'Maintainer',
+      description: 'You maintain a project?\nAdd your project by Repo.',
+      buttonText: 'Add Project',
+      buttonVariant: 'primary' as const,
+      href: '/data/project/post',
+      helpLinkLabel: 'What are the benefits of adding your project?',
+      helpLinkHref: '/',
+      iconBgColor: 'bg-red-50',
+      iconColor: 'text-blue-600',
+      icon: (await MaintainerIcon({})),
+      avatar: "https://dummyimage.com/120x120/f0f0f0/666666?text=Maintainer"
+    },
+    {
+      roleCard: true,
+      id: 'contributor',
+      title: 'Contributor',
+      href: '/data/projects',
+      description: 'You want to contribute to a project?\nDiscover the projects',
+      buttonText: 'All Projects',
+      buttonVariant: 'secondary' as const,
+      helpLinkLabel: 'Why to contribute projects on CascadeFund?',
+      helpLinkHref: '/meta/contributor',
+      iconBgColor: 'bg-blue-50',
+      iconColor: 'text-blue-600',
+      icon: (await ContributorIcon({})),
+      avatar: "https://dummyimage.com/120x120/f0f0f0/666666?text=Contributor"
+    },
+    {
+      roleCard: true,
+      id: 'influencer',
+      title: 'Influencer',
+      href: '/data/projects',
+      description: 'You want to help the project?\nDiscover the projects',
+      buttonText: 'All Projects',
+      buttonVariant: 'secondary' as const,
+      helpLinkLabel: 'Why to donate on projects and be an influencer?',
+      helpLinkHref: '/meta/influencer',
+      iconBgColor: 'bg-blue-50',
+      iconColor: 'text-blue-600',
+      icon: (await InfluencerIcon({})),
+      avatar: "https://dummyimage.com/120x120/f0f0f0/666666?text=Influencer"
+    }
+  ]
+
+---
+
+<V2Layout hideLinks={SignedRightMenuExceptAvatar} cascadeLogoSubtitle="Getting Started">
+        <HorizontalPanelsSection className=" bg-gray-200" title="Getting Started" cols={roles.length} panels={roles} >
+          <p class="text-gray-600 text-center mb-4">
+            You just signed up. Let's choose the first action based on our role
+          </p>
+        </HorizontalPanelsSection>
+</V2Layout>

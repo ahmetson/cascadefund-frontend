@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from '@/components/v2/Link'
+import Link from '@/components/Link'
 
 interface Props {
   subtitle?: any
@@ -14,7 +14,7 @@ const Logo: React.FC<Props> = ({subtitle}) => {
             </svg>
           </div>
           <div>
-            <Link href="/v2/"><h1 className="text-xl font-bold text-blue-600 no-underline">CascadeFund</h1></Link>
+            <Link href="/"><h1 className="text-xl font-bold text-blue-600 no-underline">CascadeFund</h1></Link>
             {subtitle && 
             (<p className="text-xs text-gray-500">{subtitle}</p>)}
           </div>

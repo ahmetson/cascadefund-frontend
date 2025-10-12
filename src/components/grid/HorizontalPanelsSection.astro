@@ -1,0 +1,38 @@
+---
+import WorkflowCard from '@/components/InfoPanel'
+import Horizontally from '@/components/grid/RowGrid'
+import type {SectionProps} from '@/types/eventTypes'
+import TitledInfoPanel from '@/components/utilitified_decorations/TitledInfoPanel'
+import type { RoleCardProps } from '@/components/RoleCard'
+import RoleCard from '@/components/RoleCard'
+import Section from './Section.astro'
+
+type Props = SectionProps & {cols?: number}
+
+let {panels, bottomPanel, title, prefix, cols, className, bg} = Astro.props
+if (!cols) {
+  cols = panels && panels.length > 4 ? 3 : panels!.length || 0;
+}
+
+---
+    <Section bg={bg} title={title} className={className}>
+        <slot name="top" />
+        <Horizontally cols={cols} className='mb-6'>
+          <slot name="grid" >
+          {panels && panels.map((step, index) => (
+            (step as RoleCardProps).roleCard ? 
+            <RoleCard {...(step as RoleCardProps)} />:
+            step.description === undefined ? <TitledInfoPanel title={step.title} icon={step.icon} iconBgColor={step.iconBgColor || 'blue'}></TitledInfoPanel> : 
+            <WorkflowCard
+              key={prefix!+index}
+              {...step}
+            />
+          ))}
+        </Horizontally>
+
+        {bottomPanel === undefined ? null : 
+        <WorkflowCard 
+          key={"bottom-panel"}
+          {...bottomPanel}
+        />}
+    </Section>

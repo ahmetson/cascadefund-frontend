@@ -1,0 +1,43 @@
+---
+import V2Layout from "@/layouts/PanelViewLayout.astro"
+import { LandingRightMenu } from "@/components/utilitified_decorations/HeaderRight";
+
+import Card from '@/components/utilitified_decorations/PagelikeCard'
+import LinkBtn from "@/components/LinkBtn";
+import Link from "@/components/Link";
+
+---
+
+<V2Layout landingPageTopMenu={true} hideLinks={LandingRightMenu} cascadeLogoSubtitle="Sign In" >
+  <Card slot="center" title="Welcome to CascadeFund" titleCenter={true} className="bg-cyan-50 border-cyan-100">
+      <p class="text-gray-600 text-center">
+        Sign in to continue to the alpha version
+      </p>
+      <div class="text-center space-y-6">
+        <LinkBtn href="/login/callback" variant="blue" >Sign in with GitHub</LinkBtn>
+        <p class="text-sm text-gray-600 mt-3">
+          By signing in, you agree to our{' '}
+          <Link href="#" className="text-blue-600 hover:text-blue-800">
+            Privacy Policy
+          </Link>
+        </p>
+      </div>
+    </Card>
+    <Card slot="right" title="What if I don't want to use GitHub?" className="bg-cyan-50 border-cyan-100" actions={[{
+      children: '"CascadeFund" Influencer',
+      variant: 'blue',
+      href: '/inlfuencer/project'
+    }]}>
+          <p>
+            CascadeFund works with GitHub for now.
+          </p>
+          <p>
+            If you want to speed it up, then fund the CascadeFund project.
+            Then, after obtaining Voting Power, influence the project by voting {' '}
+            <Link href="/data/issue" className="text-blue-600 hover:text-blue-800 underline">
+              "non-github" feature, CascadeFund
+            </Link>
+            .
+          </p>
+    </Card>
+</V2Layout>

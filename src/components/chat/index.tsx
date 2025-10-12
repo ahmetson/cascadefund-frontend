@@ -4,7 +4,7 @@ import ConversationPanel from './ConversationPanel';
 import NotesPanel from './NotesPanel';
 import ChatPanel from './ChatPanel';
 import { AnimatePresence, motion } from 'motion/react';
-import Card from '@/components/v2/Card';
+import Card from '@/components/Card';
 import TopicPanel from './TopicPanel';
 
 const Panel: React.FC = () => {

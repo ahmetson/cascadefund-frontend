@@ -1,0 +1,15 @@
+---
+import V2Layout from "@/layouts/PanelViewLayout.astro";
+import Panel from "@/components/utilitified_decorations/MenuPanel"
+import { NavigationName } from "@/components/utilitified_decorations/HeaderRight";
+
+import BalanceCard from '@/components/maintainer/BalancePanel'
+import TransactionsCard from '@/components/maintainer/RecentTransactionPanel'
+
+---
+
+<V2Layout activeLink={NavigationName.ProjectName}>
+            <Panel activeMenuItem="balance" slot="left" />
+            <BalanceCard slot="center" />
+      <TransactionsCard slot="center" />
+</V2Layout>

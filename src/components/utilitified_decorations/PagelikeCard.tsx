@@ -1,7 +1,7 @@
 import React from 'react'
-import Card, {type CardProps} from '@/components/v2/Card'
-import LinkBtn from '@/components/v2/LinkBtn'
-import Button from '@/components/v2/Button';
+import Card, {type CardProps} from '@/components/Card'
+import LinkBtn from '@/components/LinkBtn'
+import Button from '@/components/Button';
 import type { ActionProps } from '@/types/eventTypes';
 
 export type Props = CardProps & {
