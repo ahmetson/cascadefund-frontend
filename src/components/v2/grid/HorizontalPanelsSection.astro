@@ -1,24 +1,27 @@
 ---
 import WorkflowCard from '@/components/v2/InfoPanel'
-import Horizontally from '@/components/v2/grid/HorizontalRow.astro'
-import SectionTitle from './SectionTitle.astro'
+import Horizontally from '@/components/v2/grid/RowGrid'
 import type {SectionProps} from '@/types/eventTypes'
 import TitledInfoPanel from '@/components/utilitified_decorations/TitledInfoPanel'
+import type { RoleCardProps } from '@/components/v2/RoleCard'
+import RoleCard from '@/components/v2/RoleCard'
+import Section from './Section.astro'
 
 type Props = SectionProps & {cols?: number}
 
-let {panels, bottomPanel, title, prefix, cols, className} = Astro.props
+let {panels, bottomPanel, title, prefix, cols, className, bg} = Astro.props
 if (!cols) {
   cols = panels && panels.length > 4 ? 3 : panels!.length || 0;
 }
 
 ---
-
-    <section class={`py-16 bg-white ${className}`}>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle title={title} />
-        <Horizontally cols={cols}>
+    <Section bg={bg} title={title} className={className}>
+        <slot name="top" />
+        <Horizontally cols={cols} className='mb-6'>
+          <slot name="grid" >
           {panels && panels.map((step, index) => (
+            (step as RoleCardProps).roleCard ? 
+            <RoleCard {...(step as RoleCardProps)} />:
             step.description === undefined ? <TitledInfoPanel title={step.title} icon={step.icon} iconBgColor={step.iconBgColor || 'blue'}></TitledInfoPanel> : 
             <WorkflowCard
               key={prefix!+index}
@@ -32,5 +35,4 @@ if (!cols) {
           key={"bottom-panel"}
           {...bottomPanel}
         />}
-      </div>
-    </section>
+    </Section>

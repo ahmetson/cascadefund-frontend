@@ -1,0 +1,47 @@
+---
+interface Props {
+  firstPercents?: 10 | 20 | 25 | 50 | 75 | 80 | 90
+}
+
+let {firstPercents} = Astro.props;
+if (firstPercents === undefined) {
+  firstPercents = 50
+}
+
+const cols = 
+  firstPercents === 10 ? 10 : // cols:1, L:1, R:9
+  firstPercents === 20 ? 5 : // cols:5, L:1, R:4
+  firstPercents === 25 ? 4 : // cols:4, L:1, R:3
+  firstPercents === 50 ? 2 : // cols:2, L:1, R:1
+  firstPercents === 75 ? 4 : // cols:4, L:1, R:3
+  firstPercents === 80 ? 5 : // cols:5, L:4, R:1
+  10 // firstPercents:90%, cols:10, L:9, R:1
+const leftSpans = 
+  firstPercents === 10 ? 1 : 
+  firstPercents === 20 ? 1 : 
+  firstPercents === 25 ? 1 : 
+  firstPercents === 50 ? 1 : 
+  firstPercents === 75 ? 3 : 
+  firstPercents === 80 ? 4 : 
+  9
+const rightSpans =
+  firstPercents === 10 ? 9 : 
+  firstPercents === 20 ? 5 : 
+  firstPercents === 25 ? 3 : 
+  firstPercents === 50 ? 1 : 
+  firstPercents === 75 ? 1 : 
+  firstPercents === 80 ? 1 : 
+  1
+
+console.log('TwoColumnGrid:', {firstPercents, cols, leftSpans, rightSpans});
+---
+
+<main class={`max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-${cols}`}>
+  <!-- <div class={`lg:col-span-${leftSpans} space-y-4 mx-2 py-8 pt-0 mr-2`}> -->
+  <div class={`lg:col-span-${leftSpans} `}>
+    <slot name="two-column-left"/>
+  </div>
+  <div class={`lg:col-span-${rightSpans} `}>
+    <slot name="two-column-right"/>
+  </div>
+</main>

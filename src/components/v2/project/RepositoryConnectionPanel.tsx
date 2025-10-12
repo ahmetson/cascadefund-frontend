@@ -52,7 +52,7 @@ const ConnectionCard: React.FC = () => {
         actions={[{
           variant: 'blue',
           children: 'Next',
-          href: 'v2/data/project/fork'
+          href: '/v2/data/project/fork'
         }]}
       >
         <p className="text-gray-600 mb-4">

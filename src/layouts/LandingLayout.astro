@@ -14,7 +14,7 @@ interface Props {
   hideLinks?: NavigationName[];
   replacement?: Navigation;
 }
-const { landingPageTopMenu, cascadeLogoSubtitle, additional } = Astro.props;
+const { landingPageTopMenu, cascadeLogoSubtitle, additional, activeLink, hideLinks } = Astro.props;
 
 ---
 
@@ -30,9 +30,11 @@ const { landingPageTopMenu, cascadeLogoSubtitle, additional } = Astro.props;
 	</head>
 	<body class="min-h-screen bg-gray-200"></body>
   <Header 
-        landingPageTopMenu={landingPageTopMenu}  
-        cascadeLogoSubtitle={cascadeLogoSubtitle}
-        additional={additional}  
+    activeLink={activeLink}
+    landingPageTopMenu={landingPageTopMenu}  
+    cascadeLogoSubtitle={cascadeLogoSubtitle}
+    additional={additional}  
+    hideLinks={hideLinks}
   />
     <slot />
   <Footer />

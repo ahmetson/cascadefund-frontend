@@ -1,6 +1,6 @@
 ---
 import V2Layout from "@/layouts/PanelViewLayout.astro";
-import Sidebar from "@/components/utilitified_decorations/MenuPanel"
+import Panel from "@/components/utilitified_decorations/MenuPanel"
 
 import { NavigationName } from "@/components/utilitified_decorations/HeaderRight";
 
@@ -12,7 +12,7 @@ import RoadmapSection from '@/components/v2/maintainer/RoadmapPanel'
 ---
 
 <V2Layout landingPageTopMenu={false} activeLink={NavigationName.ProjectName}>
-            <Sidebar activeMenuItem="work" slot="left" />
+            <Panel activeMenuItem="work" slot="left" />
             <TasksSection slot="center" />
             <TaskNotice slot="right" />
             <IssuesNotice slot="left" />

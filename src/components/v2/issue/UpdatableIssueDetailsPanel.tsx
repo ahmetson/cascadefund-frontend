@@ -7,8 +7,8 @@ const Panel: React.FC = () => {
   return (
     <Card title="Updateable Issue Details" actions={[{
       variant: "blue",
-      href: "/v2/issue",
-      label: "Save"
+      href: "/v2/data/issue",
+      children: "Save"
     }]} >
         <div className="space-y-4">
           <div className="flex justify-between">

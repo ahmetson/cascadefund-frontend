@@ -1,13 +1,12 @@
 ---
-import "@/styles/v2/landing_page.css";
 import V2Layout from "@/layouts/LandingLayout.astro"
 import { NavigationName } from "@/components/utilitified_decorations/HeaderRight";
 
-import HeroSection from '@/components/v2/grid/HeroSection.astro'
 import LeftImageRightPanels from '@/components/v2/grid/LeftImageRightPanelsSection.astro'
 import HorizontalPanels from '@/components/v2/grid/HorizontalPanelsSection.astro'
+import HeroSection from '@/components/v2/grid/HeroSection.astro'
 import Section from '@/components/v2/grid/Section.astro'
-import SectionScrollButton from "@/components/v2/SectionScrollButton";
+import SectionScrollButton from "@/components/v2/ScrollingToSectionButton";
 import ClockIcon from '@/components/v2/icon/ClockIcon'
 import FireIcon from '@/components/v2/icon/FireIcon'
 import TenPmTenMinIcon from '@/components/v2/icon/TenPmTenMinIcon'
@@ -31,9 +30,9 @@ const heroSection = {
                 "— all while earning support from users in a reputation-driven ecosystem."
         ,
         actions: [
-                {variant: "primary", children: "Sign Up as a Maintainer"},
+                {variant: "blue", children: "Sign Up as a Maintainer", href: "/v2/login/"},
                 {variant: "blue", replaceWithChildren: true, children: (await SectionScrollButton({children: 'Learn More', href: '#WhyMaintainersStruggle', className: ' text-white hover:text-gray-200'}))}
-        ]
+        ],
 }
 
 const whyMaintainersStruggleSection = {
@@ -136,7 +135,7 @@ const partOfAraProjectSection: SectionProps = {
         title: "CascadeFund is part of Ara Project",
         bg: {
                 overlay: 'circles',
-                sectionBgType: SectionBgType.heroSection
+                sectionBgType: SectionBgType.normalSection
         },
 }
 
@@ -178,14 +177,14 @@ const ctaSection: SectionProps = {
 ---
 
 <V2Layout landingPageTopMenu={true} activeLink={NavigationName.MaintainerLanding}>
-        <HeroSection {...heroSection} />
-        <LeftImageRightPanels {...whyMaintainersStruggleSection} />
+        <HeroSection {...heroSection}>{heroSection.children}</HeroSection>
+        <LeftImageRightPanels cols={2} {...whyMaintainersStruggleSection} />
         <HorizontalPanels {...howItWorksSection} />
         <HorizontalPanels {...beAFoundingMaintainerSection} />
         <Section title={partOfAraProjectSection.title} bg={partOfAraProjectSection.bg}>
-                Together, we can make the internet open, affordable, and sustainable for " +
-          "everyone — where collaborative tech innovation and maintainers thrive without " +
-          "burnout.
+          Together, we can make the internet open, affordable, and sustainable for
+          everyone — where collaborative tech innovation and maintainers thrive without
+          burnout.
         </Section>
         <Section client:visible title={faqSection.title} bg={faqSection.bg}>
                 {faqs.map((faq, index) => (

@@ -1,5 +1,4 @@
 ---
-import "@/styles/v2/7.4.2_update_issue.css";
 import V2Layout from "@/layouts/PanelViewLayout.astro";
 
 import IssueCard from '@/components/v2/issue/UpdatableIssueContentPanel'
@@ -10,7 +9,7 @@ import NotificationBanner from "@/components/v2/NotificationBanner";
 ---
 
 <V2Layout landingPageTopMenu={false} cascadeLogoSubtitle="Update Data Section: Issue" additional={[]}>
-        <BackButton href="/v2/issue" slot="left" />
+        <BackButton href="/v2/data/issue" slot="left" />
         <NotificationBanner slot="center" type="info" title="Updating the issue">
             You are adding new changes to the issue data.
         </NotificationBanner>

@@ -1,0 +1,72 @@
+---
+import Button from '@/components/v2/Button'
+import Badge from '@/components/v2/Badge'
+import Card from '@/components/v2/Card'
+import NotificationBanner from '@/components/v2/NotificationBanner'
+import Horizontally from '@/components/v2/grid/RowGrid'
+import ForkIcon from '../icon/ForkIcon'
+import RatingStarIcon from '../icon/RatingStarIcon'
+import HeartIcon from '../icon/HeartIcon'
+import WarningIcon from '../icon/WarningIcon'
+import DescriptionIcon from '../icon/DescriptionIcon'
+import AdvantageIcon from '../icon/AdvantageIcon'
+
+---
+    <Card className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 md:p-6 mb-6">
+      <Horizontally>
+          <h1 class="text-2xl font-bold text-gray-900 mb-2">Project Title</h1>
+          <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
+          <div class="flex items-center space-x-2">
+            <span class="text-sm text-gray-600">Rating:</span>
+            <RatingStarIcon />
+            <span class="text-sm font-medium">1.0</span>
+            <ForkIcon />
+            <span class="text-sm">1</span>
+          </div>
+          
+          <div class="flex items-center space-x-2">
+            <HeartIcon />
+            <span class="text-sm">23</span>
+            <Button variant="primary" size="sm">Follow</Button>
+          </div>
+          </div>
+      </Horizontally>
+      
+      <div class="flex items-center space-x-2 text-sm text-gray-600 mb-2">
+            <span>Fork of</span>
+            <a href="#" class="text-blue-600 hover:underline">Original Project</a>
+            <span>•</span>
+            <a href="#" class="text-blue-600 hover:underline">Issue "Windows support"</a>
+      </div>
+
+      <NotificationBanner type="warning" title={'Not registered on CascadeFund'} 
+        icon={await WarningIcon({})}
+        className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+            <p class="text-sm text-gray-600 mb-2">
+              This project doesn't receive link unrelated tokens and can't engage in the rating system.
+            </p>
+            <p class="text-sm text-gray-600">
+              Cascade should reach them out!
+              <Badge variant="info">Info</Badge>
+              <Badge variant="green">Tip</Badge>
+            </p>
+      </NotificationBanner>
+      
+      <div class="bg-gray-50 rounded-lg p-3">
+        <div class="text-sm text-gray-600 mb-1">License: MIT</div>
+        
+        <div class="flex items-center space-x-4 text-sm">
+          <div class="flex items-center">
+            <DescriptionIcon />
+            <span>Enterprise Task Management System, and other small description of the project</span>
+          </div>
+        </div>
+        
+        <div class="flex items-center space-x-4 text-sm mt-2">
+          <div class="flex items-center">
+            <AdvantageIcon />
+            <span>What are the advantages compared to other projects?</span>
+          </div>
+        </div>
+      </div>
+    </Card>

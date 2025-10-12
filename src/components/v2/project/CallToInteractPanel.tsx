@@ -12,7 +12,7 @@ const Sidebar: React.FC = () => {
         </div>
         }
       
-        actions={[{variant: 'blue', children: 'Add Issue', href: '/v2/issue/post'}]}
+        actions={[{variant: 'blue', children: 'Add Issue', href: '/v2/data/issue/post'}]}
       >
         <p className="text-xs text-gray-500 mb-4">How does this affect the rating of the project</p>
       </Card>

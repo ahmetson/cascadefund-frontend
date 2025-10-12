@@ -3,7 +3,7 @@ import Badge from '@/components/v2/Badge'
 import MenuAvatar from '@/components/v2/MenuAvatar'
 import Link from '@/components/v2/Link'
 import LinkBtn from '@/components/v2/LinkBtn'
-import NavLabelElement from './NavigatingElement'
+import NavLabelElement from './NavigatingItem'
 
 export enum NavigationName {
   // Signed
@@ -86,7 +86,7 @@ const getNavigation = (landingPageMenu = false, active?: NavigationName, hideLin
   if (active !== NavigationName.UserLanding && (hideLinks === undefined || hideLinks.findIndex(el => el === NavigationName.UserLanding) == -1)) {
     navigation[NavigationName.UserLanding] = <div className="text-sm text-gray-600">
             I'm an:<br />
-            <Link href="/v2/meta/user" >Open Source User</Link>
+            <Link href="/v2/meta/influencer" >Open Source User</Link>
     </div>;
   }
   if (active !== NavigationName.HowItWork && (hideLinks === undefined || hideLinks.findIndex(el => el === NavigationName.HowItWork) == -1)) {
@@ -102,7 +102,7 @@ const getNavigation = (landingPageMenu = false, active?: NavigationName, hideLin
   }
 
   if (hideLinks === undefined || hideLinks.findIndex(el => el === NavigationName.Avatar) == -1) {
-    navigation[NavigationName.Avatar] = <LinkBtn label="Log In" href="/v2/login" variant="purple" />
+    navigation[NavigationName.Avatar] = <LinkBtn href="/v2/login" variant="purple" >Log In</LinkBtn>
   }
   return navigation;
 }

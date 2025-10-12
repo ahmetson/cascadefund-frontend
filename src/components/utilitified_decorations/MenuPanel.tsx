@@ -1,115 +1,111 @@
 import React from 'react'
 import Card from './PagelikeCard'
 import NotificationBanner from '@/components/v2/NotificationBanner'
-
-interface MenuItemProps {
-  icon: React.ReactNode
-  label: string
-  url: string
-  badge?: number | string
-  isActive?: boolean
-}
+import MenuItem from './MenuItem';
 
 type MenuName = 'ihistory' | 'iwork' | 'balance' | 'cbalance' | 'project' | 'marketing' | 'work' | 'cwork';
 
+type MenuType = 'influencer' | 'maintainer' | 'custom'
+type ContentType = 'main' | 'collaboration' | 'custom'
 
-const MenuItem: React.FC<MenuItemProps> = ({ icon, label, badge, url, isActive = false }) => {
-  return (
-    <a href={url} className={`flex items-center justify-between px-3 py-2 rounded-md cursor-pointer ${
-      isActive ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-50'
-    }`}>
-      <div className="flex items-center space-x-3">
-        {icon}
-        <span className="text-sm font-medium">{label}</span>
-      </div>
-      {badge && (
-        <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-          typeof badge === 'number' && badge > 0 
-            ? 'bg-red-100 text-red-800' 
-            : 'bg-blue-100 text-blue-800'
-        }`}>
-          {badge}
-        </span>
-      )}
-    </a>
-  )
-}
-
-interface SidebarProps {
+interface Props {
+  title?: string
   activeMenuItem: MenuName
+  onlyCustomChildren?: boolean
+  children?: any
 }
 
 const isOnlyInfluencerMenu = (activeMenuItem: MenuName): boolean => {
   return activeMenuItem === 'ihistory' || activeMenuItem === 'iwork';
 }
 
-const Sidebar: React.FC<SidebarProps> = ({activeMenuItem}) => {
-  return <Card title="Main Menu" className="bg-white rounded-lg shadow-sm p-4">
-      {isOnlyInfluencerMenu(activeMenuItem) ? <NotificationBanner dropdown={true} title='Maintainer Menu Not Available' type="error" >
-          <ul className="text-xs space-y-1 ml-6">
-              <li>The project management is available for the maintainers</li>
-              <li>It will be available if you are appointed as the maintainer</li>
-          </ul>
-      </NotificationBanner> : null}
-      <div className="space-y-1 mb-6">
-          {!isOnlyInfluencerMenu(activeMenuItem) ? <MenuItem
-            icon={BalanceIcon()}
-            label="Balance"
-            url={"/v2/maintainer/balance"}
-            isActive={activeMenuItem === 'balance'}
-          />: null}
-          {!isOnlyInfluencerMenu(activeMenuItem) ? <MenuItem
+const maintainerMainItems = (activeMenuItem: MenuName): React.ReactNode[] => {
+  return [
+    <MenuItem
+      icon={BalanceIcon()}
+      label="Balance"
+      url={"/v2/maintainer/balance"}
+      isActive={activeMenuItem === 'balance'}
+    />,
+    <MenuItem
             icon={CascadingBalanceIcon()}
             label="Cascading balance"
             url={"/v2/maintainer/cbalance"}
             isActive={activeMenuItem === 'cbalance'}
-          />: null}
-          {!isOnlyInfluencerMenu(activeMenuItem) ? <MenuItem
+    />,
+    <MenuItem
             icon={ProjectInfoIcon()}
             label="Project Info"
             badge="2+"
-            url={"/v2/maintainer/project/update"}
+            url={"/v2/data/project"}
             isActive={activeMenuItem === 'project'}
-          />: null}
-          {isOnlyInfluencerMenu(activeMenuItem) ? <MenuItem
+    />,
+  ]
+}
+const influencerMainItems = (activeMenuItem: MenuName): React.ReactNode[] => {
+  return [
+    <MenuItem
             icon={InfluencerHistoryIcon()}
             label="Transaction History"
             url="/v2/influencer/history"
             isActive={activeMenuItem === 'ihistory'}
-          />: null}
-      </div>
-      
-      <div>
-        <h3 className="text-sm font-medium text-gray-500 mb-3">Collaboration Menu</h3>
-        <div className="space-y-1">
-          {!isOnlyInfluencerMenu(activeMenuItem) ? <MenuItem
+    />
+  ]
+}
+
+const maintainerCollabItems = (activeMenuItem: MenuName): React.ReactNode[] => {
+  return [
+    <MenuItem
             icon={MarketingIcon()}
             label="Marketing"
             badge={1}
             url="/v2/maintainer/marketing"
             isActive={activeMenuItem === 'marketing'}
-          />: null}
-          {!isOnlyInfluencerMenu(activeMenuItem) ? <MenuItem
+    />,
+    <MenuItem
             icon={WorkIcon()}
             label="Work"
             badge={3}
             url="/v2/maintainer/work"
             isActive={activeMenuItem === 'work'}
-          />: null}
-          {!isOnlyInfluencerMenu(activeMenuItem) ? <MenuItem
+    />,
+    <MenuItem
             icon={CascadingWorkIcon()}
             label="Cascading work"
             badge="?"
             url="/v2/maintainer/cwork"
             isActive={activeMenuItem === 'cwork'}
-          />: null}
-          {isOnlyInfluencerMenu(activeMenuItem) ? <MenuItem
+    />
+  ]
+}
+const influencerCollabItems = (activeMenuItem: MenuName): React.ReactNode[] => {
+  return [
+    <MenuItem
            icon={InfluencerWorkIcon()}
             label="Influencer Work"
             url="/v2/influencer/work"
             isActive={activeMenuItem === 'iwork'}
-          />: null}
+    />
+  ]
+}
+
+const Panel: React.FC<Props> = ({activeMenuItem, title = 'Main Menu', onlyCustomChildren = false, children}) => {
+  return <Card title={<div className='text-sm font-medium text-gray-500 -ml-6'>{title}</div>} className="bg-white rounded-lg shadow-sm p-4">
+      {!onlyCustomChildren && (isOnlyInfluencerMenu(activeMenuItem) ? <NotificationBanner dropdown={true} title='Maintainer Menu Not Available' type="error" >
+          <ul className="text-xs space-y-1 ml-6">
+              <li>The project management is available for the maintainers</li>
+              <li>It will be available if you are appointed as the maintainer</li>
+          </ul>
+      </NotificationBanner> : null)}
+      <div>
+        {children}
+        {!onlyCustomChildren && (!isOnlyInfluencerMenu(activeMenuItem) ? maintainerMainItems(activeMenuItem) : influencerMainItems(activeMenuItem))}
+        {!onlyCustomChildren && 
+        (<><h3 className="text-sm font-medium text-gray-500 mb-3 mt-3">Collaboration Menu</h3>
+        <div className="space-y-1">
+          {!isOnlyInfluencerMenu(activeMenuItem) ? maintainerCollabItems(activeMenuItem) : influencerCollabItems(activeMenuItem)}
         </div>
+        </>)}
       </div>
     </Card>
 }
@@ -163,4 +159,4 @@ const CascadingWorkIcon = () => (
 )
 
 
-export default Sidebar
+export default Panel

@@ -1,10 +1,10 @@
 ---
 import V2Layout from "@/layouts/PanelViewLayout.astro";
-import NavigatingSubtitledElement from '@/components/utilitified_decorations/NavigatingSubtitledElement'
-import NavigatingElement from '@/components/utilitified_decorations/NavigatingElement'
+import NavigatingSubtitledElement from '@/components/utilitified_decorations/NavigatingSubtitledItem'
+import NavigatingElement from '@/components/utilitified_decorations/NavigatingItem'
 import BackButton from '@/components/utilitified_decorations/BackButton'
 import IssueContent from '@/components/v2/issue/IssueContentPanel'
-import PriorityPanel from '@/components/v2/issue/IssuePrioritificationPanel'
+import PriorityPanel from '@/components/v2/issue/IssuePrioritificationPanel.astro'
 import IssueDetails from '@/components/v2/issue/IssueDetailsPanel'
 import RecentActivity from '@/components/v2/issue/RecentActivityPanel'
 import RelatedIssues from '@/components/v2/issue/RelatedIssuesPanel'
@@ -19,7 +19,7 @@ const additional = [
 ---
 
 <V2Layout landingPageTopMenu={false} cascadeLogoSubtitle="Data Section: Issue" additional={additional}>
-  <BackButton slot="left" />
+  <BackButton slot="left" href="/v2/data/project" />
     <NotificationBanner 
       type="warning"
       title="Complete a quest..."

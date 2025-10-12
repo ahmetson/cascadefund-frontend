@@ -1,7 +1,7 @@
 ---
 import V2Layout from "@/layouts/PanelViewLayout.astro";
 import { NavigationName, type Navigation } from "@/components/utilitified_decorations/HeaderRight";
-import NavLabelElement from '@/components/utilitified_decorations/NavigatingElement'
+import NavLabelElement from '@/components/utilitified_decorations/NavigatingItem'
 export const replacement: Navigation = {};
 replacement[NavigationName.ProjectName] = await NavLabelElement({children: "Add New Project", active: true})
 

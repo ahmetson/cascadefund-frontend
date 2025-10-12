@@ -6,9 +6,10 @@ type NotificationBannerProps = {
   title: string
   children: any
   icon?: any
+  className?: string
 } & Omit<Props, "children" | "title">
 
-const NotificationBanner: React.FC<NotificationBannerProps> = ({ icon, type, title, children, dropdown }) => {
+const NotificationBanner: React.FC<NotificationBannerProps> = ({ className, icon, type, title, children, dropdown }) => {
   const getStyles = () => {
     switch (type) {
       case 'warning':
@@ -48,7 +49,7 @@ const NotificationBanner: React.FC<NotificationBannerProps> = ({ icon, type, tit
   }
 
   return (
-    <Card dropdown={dropdown} className={`p-4 border-2 border-dashed flex items-start rounded-lg rounded-r-0 shadow-md ${getStyles()}`} title={<>{title}{getIcon()}</>}>
+    <Card dropdown={dropdown} className={`p-4 border-2 border-dashed flex items-start rounded-lg rounded-r-0 shadow-md ${getStyles()} ${className}`} title={<>{title}{getIcon()}</>}>
         {children}
     </Card>
   )

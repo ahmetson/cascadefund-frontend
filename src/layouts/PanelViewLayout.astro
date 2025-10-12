@@ -14,7 +14,7 @@ interface Props {
   hideLinks?: NavigationName[];
   replacement?: Navigation;
 }
-const { landingPageTopMenu, cascadeLogoSubtitle, additional } = Astro.props;
+const { landingPageTopMenu, cascadeLogoSubtitle, additional, hideLinks } = Astro.props;
 
 ---
 
@@ -32,7 +32,8 @@ const { landingPageTopMenu, cascadeLogoSubtitle, additional } = Astro.props;
   <Header 
         landingPageTopMenu={landingPageTopMenu}  
         cascadeLogoSubtitle={cascadeLogoSubtitle}
-        additional={additional}  
+        additional={additional}
+        hideLinks={hideLinks}
   />
   <section >
   <slot name="hero" />

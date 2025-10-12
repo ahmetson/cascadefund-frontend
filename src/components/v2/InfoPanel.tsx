@@ -3,7 +3,7 @@ import Card from '@/components/utilitified_decorations/PagelikeCard'
 
 export interface InfoPanelProps {
   key?: number | string
-  icon: React.ReactNode
+  icon?: React.ReactNode
   title: string
   description?: string
   iconBgColor?: string
