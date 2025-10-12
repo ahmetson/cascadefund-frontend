@@ -186,7 +186,7 @@ const ctaSection: SectionProps = {
           everyone — where collaborative tech innovation and maintainers thrive without
           burnout.
         </Section>
-        <Section client:visible title={faqSection.title} bg={faqSection.bg}>
+        <Section title={faqSection.title} bg={faqSection.bg}>
                 {faqs.map((faq, index) => (
                 <FAQItem
                 key={index}
@@ -195,7 +195,7 @@ const ctaSection: SectionProps = {
                 />
                 ))}
         </Section>
-        <Section client:visible title={ctaSection.title} bg={ctaSection.bg} actions={[{
+        <Section title={ctaSection.title} bg={ctaSection.bg} actions={[{
                 href: '/login',
                 variant: 'blue',
                 children: 'Sign In as a Maintainer'

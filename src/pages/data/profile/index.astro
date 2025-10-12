@@ -12,10 +12,10 @@ import ProfileMetric from "@/components/profile/ProfileMetricPanel";
 ---
 <V2Layout landingPageTopMenu={false} activeLink={NavigationName.Avatar} hideLinks={[NavigationName.ProjectName]} cascadeLogoSubtitle="Data Section: Profile" >
   <BackButton href="/maintainer/work" slot="left" />    
-  <ProfileInfo slot="center" client:visible />
+  <ProfileInfo slot="center" client:load />
   <FinanceInfo />
-  <ProfileMetric slot="center" client:visible />
+  <ProfileMetric slot="center" client:load />
 
   <RecentActivity slot="right" />
-  <Discovery slot="right" client:visible />
+  <Discovery slot="right" client:load />
 </V2Layout>
