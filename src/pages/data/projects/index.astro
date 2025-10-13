@@ -1,51 +1,57 @@
 ---
 import V2Layout from "@/layouts/PanelViewLayout.astro";
-import { NavigationName } from "@/components/utilitified_decorations/HeaderRight";
+import { ItemName } from "@/components/utilitified_decorations/WorkNavbar.astro";
 
-import ProjectsSection from '@/components/maintainer/ProjectListPanel'
+import ProjectsSection from "@/components/maintainer/ProjectListPanel";
 import BackButton from "@/components/utilitified_decorations/BackButton";
 
 const projectData = {
-    title: "Hyperpayment",
-    isInfluencer: true,
-    rating: 4.8,
-    forks: 1,
-    likes: 23,
-    isFollowing: true,
-    originalProject: "Original project",
-    issue: "Issue: Windows support",
-    description: "A protocol and it's implementation to transfer a resource between arbitrary amount parties. Used for example in the CascadeFund to distribute donations",
-    license: "MIT License",
-    balance: "$1,240.00",
-    cascadeBalance: "$350.00",
-    totalAmount: "$45.00 Total",
-    duration: "38 days",
-    lastActivity: "1 day ago",
-    totalCommits: "2,000",
-    commitsPerDay: "8 commits / day",
-    openIssues: 12,
-    closedIssues: 45,
-    avgResponseTime: "1 day for reply",
-    collaborators: [
-      { name: "Core Maintainers", percentage: 65, color: "bg-blue-500" },
-      { name: "Repeat Contributors", percentage: 25, color: "bg-blue-400" },
-      { name: "One-time Contributors", percentage: 10, color: "bg-gray-400" }
-    ],
-    activeYears: 8,
-    maintainer: {
-      name: "Jhansson",
-      rating: "220 rating"
-    },
-    influencers: [
-      { avatar: "https://dummyimage.com/32x32/4A90E2/ffffff?text=A" },
-      { avatar: "https://dummyimage.com/32x32/4A90E2/ffffff?text=B" },
-      { avatar: "https://dummyimage.com/32x32/4A90E2/ffffff?text=C" },
-      { avatar: "https://dummyimage.com/32x32/4A90E2/ffffff?text=D" }
-    ]
-}
-
+  title: "Hyperpayment",
+  isInfluencer: true,
+  rating: 4.8,
+  forks: 1,
+  likes: 23,
+  isFollowing: true,
+  originalProject: "Original project",
+  issue: "Issue: Windows support",
+  description:
+    "A protocol and it's implementation to transfer a resource between arbitrary amount parties. Used for example in the CascadeFund to distribute donations",
+  license: "MIT License",
+  balance: "$1,240.00",
+  cascadeBalance: "$350.00",
+  totalAmount: "$45.00 Total",
+  duration: "38 days",
+  lastActivity: "1 day ago",
+  totalCommits: "2,000",
+  commitsPerDay: "8 commits / day",
+  openIssues: 12,
+  closedIssues: 45,
+  avgResponseTime: "1 day for reply",
+  collaborators: [
+    { name: "Core Maintainers", percentage: 65, color: "bg-blue-500" },
+    { name: "Repeat Contributors", percentage: 25, color: "bg-blue-400" },
+    { name: "One-time Contributors", percentage: 10, color: "bg-gray-400" },
+  ],
+  activeYears: 8,
+  maintainer: {
+    name: "Jhansson",
+    rating: "220 rating",
+  },
+  influencers: [
+    { avatar: "https://dummyimage.com/32x32/4A90E2/ffffff?text=A" },
+    { avatar: "https://dummyimage.com/32x32/4A90E2/ffffff?text=B" },
+    { avatar: "https://dummyimage.com/32x32/4A90E2/ffffff?text=C" },
+    { avatar: "https://dummyimage.com/32x32/4A90E2/ffffff?text=D" },
+  ],
+};
 ---
-<V2Layout landingPageTopMenu={false} activeLink={NavigationName.ProjectList} hideLinks={[NavigationName.ProjectName]} cascadeLogoSubtitle="Data Section: Project" >
-  <BackButton href="/maintainer/work" slot="left" />    
+
+<V2Layout
+  landingPageTopMenu={false}
+  activeLink={ItemName.ProjectList}
+  hideLinks={[ItemName.ProjectName]}
+  subtitle="Data Section: Project"
+>
+  <BackButton href="/maintainer/work" slot="left" />
   <ProjectsSection slot="center" projects={[projectData, projectData]} />
 </V2Layout>

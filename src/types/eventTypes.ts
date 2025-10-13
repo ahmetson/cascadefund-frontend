@@ -1,6 +1,48 @@
 import type { InfoPanelProps } from "@/components/InfoPanel";
 import type { RoleCardProps } from "@/components/RoleCard";
 
+export type Coordinate = {
+  x?: number
+  y?: number
+}
+
+export type Positioning = {
+  padding?: Coordinate
+  margin?: Coordinate
+  gap?: Coordinate
+}
+
+export const GridStyle: { [key: string]: Positioning } = {
+  page: {
+    padding: {
+      x: 1,
+      y: 1
+    }
+  },
+  section: {
+    padding: {
+      x: 1,
+      y: 1
+    },
+    gap: {
+      x: 4,
+      y: 4
+    }
+  },
+  panel: {
+    gap: {
+      x: 4,
+      y: 4
+    }
+  },
+  content: {
+    gap: {
+      x: 6,
+      y: 6
+    }
+  }
+}
+
 export interface Props {
   children?: any
   className?: string

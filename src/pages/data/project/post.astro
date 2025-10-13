@@ -1,21 +1,32 @@
 ---
 import V2Layout from "@/layouts/PanelViewLayout.astro";
-import { NavigationName, type Navigation } from "@/components/utilitified_decorations/HeaderRight";
-import NavLabelElement from '@/components/utilitified_decorations/NavigatingItem'
+import {
+        ItemName,
+        type Navigation,
+} from "@/components/utilitified_decorations/WorkNavbar.astro";
+import NavLabelElement from "@/components/utilitified_decorations/NavigatingItem";
 export const replacement: Navigation = {};
-replacement[NavigationName.ProjectName] = await NavLabelElement({children: "Add New Project", active: true})
+replacement[ItemName.ProjectName] = await NavLabelElement({
+        children: "Add New Project",
+        active: true,
+});
 
-import NewProjectIcon from '@/components/icon/NewProjectIcon'
-import AddRepositoryCard from '@/components/project/RepositoryForm'
+import NewProjectIcon from "@/components/icon/NewProjectIcon";
+import AddRepositoryCard from "@/components/project/RepositoryForm";
 import NotificationBanner from "@/components/NotificationBanner";
-import InfoPanel from '@/components/project/RepositoryFormFeedbackPanel'
-
+import InfoPanel from "@/components/project/RepositoryFormFeedbackPanel";
 ---
 
-<V2Layout activeLink={NavigationName.ProjectName} replacement={replacement}>
-        <NotificationBanner slot="center" icon={NewProjectIcon} type="info" title='Your first project'>
+<V2Layout activeLink={ItemName.ProjectName} replacement={replacement}>
+        <NotificationBanner
+                slot="center"
+                icon={NewProjectIcon}
+                type="info"
+                title="Your first project"
+        >
                 <p class="text-gray-600">
-                You just signed up, and choose to be a maintainer. Adding the project is the first step in the CascadeFund.
+                        You just signed up, and choose to be a maintainer.
+                        Adding the project is the first step in the CascadeFund.
                 </p>
         </NotificationBanner>
         <AddRepositoryCard slot="center" />

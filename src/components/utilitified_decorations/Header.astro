@@ -1,35 +1,46 @@
 ---
-import HeaderRight, { NavigationName, type Navigation } from "./HeaderRight";
+import Row from "@/components/grid/ThreeColumnGrid.astro";
+import Navbar from "./Navbar.astro";
 import CascadeFundLogo from "./Logo.astro";
+import LoginNavItem, { ActiveLoginNavItem } from "./LoginNavItem";
+import { GridStyle } from "@/types/eventTypes";
 
 interface Props {
-  activeLink?: NavigationName;
-  hideLinks?: NavigationName[];
-  replacement?: Navigation;
+  active?: string;
+  hideLinks?: string[];
   additional?: React.ReactNode[];
-  cascadeLogoSubtitle?: any; // header left
+  subtitle?: any; // header left
   landingPageTopMenu?: boolean; // header right
 }
 
 const {
   additional,
-  cascadeLogoSubtitle,
-  activeLink,
+  subtitle,
+  active,
   landingPageTopMenu = false,
   hideLinks,
-  replacement,
 } = Astro.props;
 ---
 
-<header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
-  <div class="flex items-center justify-between px-8">
-    <CascadeFundLogo subtitle={cascadeLogoSubtitle} />
-    <HeaderRight
-      landingPageMenu={landingPageTopMenu}
-      active={activeLink}
-      hideLinks={hideLinks}
-      replacement={replacement}
-      additional={additional}
-    />
-  </div>
+<header
+  class={`h-14 -pt-2 bg-white shadow-sm border-b border-gray-200 px-${GridStyle.section.padding!.x} fixed top-0 right-0 left-0 z-10`}
+>
+  <Row className="sm:grid-cols-2" centerClassName="hidden lg:flex">
+    <CascadeFundLogo slot="left" subtitle={subtitle} />
+
+    <div slot="center" class="flex items-center justify-between">
+      <Navbar
+        landingPageMenu={landingPageTopMenu}
+        active={active}
+        hideLinks={hideLinks}
+        additional={additional}
+      />
+    </div>
+    <div slot="right" class="flex items-center h-14 justify-end">
+      <LoginNavItem
+        active={active === ActiveLoginNavItem}
+        landingPageMenu={landingPageTopMenu}
+      />
+    </div>
+  </Row>
 </header>

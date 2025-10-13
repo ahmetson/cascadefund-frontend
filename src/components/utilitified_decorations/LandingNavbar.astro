@@ -1,0 +1,87 @@
+---
+import Link from "@/components/Link";
+import { GridStyle } from "@/types/eventTypes";
+import Tooltip from "@/components/utilitified_decorations/Tooltip";
+
+export enum ItemName {
+  ContributorLanding = "ContributorLanding",
+  InfluencerLanding = "InfluencerLanding",
+  MaintainerLanding = "MaintainerLanding",
+  HowItWork = "HowItWork",
+  Check = "Check",
+}
+
+interface Props {
+  active?: ItemName;
+  hideLinks?: ItemName[];
+  additional?: React.ReactNode[];
+}
+
+const { additional, active, hideLinks } = Astro.props;
+
+const isItemShown = (itemName: ItemName): boolean => {
+  const hidden =
+    active === itemName ||
+    hideLinks?.findIndex((hiddenItemName) => hiddenItemName === itemName);
+  return hidden === -1 || hidden === undefined;
+};
+---
+
+<nav
+  class={`hidden md:flex items-center justify-center w-full text-sm center h-14 space-x-${GridStyle.content.gap!.x} `}
+>
+  {additional && additional.map((el) => el)}
+  {
+    isItemShown(ItemName.MaintainerLanding) && (
+      <Link href="/">For Maintainers</Link>
+    )
+  }
+
+  {
+    isItemShown(ItemName.ContributorLanding) && (
+      <Tooltip
+        content={
+          "Contributing to Open Source? We made a special landing page for you"
+        }
+        client:load
+      >
+        <Link href="/meta/contributor">Contributors</Link>
+      </Tooltip>
+    )
+  }
+  {
+    isItemShown(ItemName.InfluencerLanding) && (
+      <Tooltip
+        content={
+          "You want to help open-source, but something makes it not motivating? We made a special landing page for you"
+        }
+        client:load
+      >
+        <div class="flex items-center w-full">
+          <Link href="/meta/contributor">"Maybe" a donator?</Link>
+        </div>
+      </Tooltip>
+    )
+  }
+
+  {
+    isItemShown(ItemName.HowItWork) && (
+      <Link href="/meta/work">How it works?</Link>
+    )
+  }
+
+  {
+    isItemShown(ItemName.Check) && (
+      <Tooltip
+        content={
+          "According to hyperpayment protocol, part of all project donations goes to the libraries/assets used in the project. Check if your 'asset' recieved an indirect donation"
+        }
+        client:load
+      >
+        <div class="flex items-center w-full">
+          <Link href="/maintainer/check">Check Balance</Link>
+        </div>
+      </Tooltip>
+    )
+  }
+</nav>

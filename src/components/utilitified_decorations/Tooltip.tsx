@@ -1,0 +1,29 @@
+import { GridStyle } from "@/types/eventTypes";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../animate-ui/components/animate/tooltip";
+
+interface Props {
+  content: string | React.ReactNode;
+  children: any
+}
+
+const Component: React.FC<Props> = ({ children, content }) => {
+  return (
+    <TooltipProvider openDelay={50}>
+      <Tooltip>
+        <TooltipTrigger className={`px-${GridStyle.content.gap!.x}`}>
+          {children}
+        </TooltipTrigger>
+        <TooltipContent className="bg-teal-900 text-blue-100 border-color-teal-900">
+          {content}
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  )
+}
+
+export default Component

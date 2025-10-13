@@ -1,37 +1,61 @@
 ---
+import { GridStyle } from "@/types/eventTypes";
+
 interface Props {
-  centerPercents?: '1/3' | 50 | '3/4' | '4/5'
-  centerClassName?: string
-  leftClassName?: string
-  rightClassName?: string
+  centerPercents?: "1/3" | 50 | "3/4" | "4/5";
+  centerClassName?: string;
+  leftClassName?: string;
+  rightClassName?: string;
+  className?: string;
 }
 
-let {centerPercents, centerClassName, leftClassName, rightClassName} = Astro.props;
+let {
+  className,
+  centerPercents,
+  centerClassName,
+  leftClassName,
+  rightClassName,
+} = Astro.props;
+if (className === undefined) {
+  className = "mx-auto ";
+}
 if (centerPercents === undefined) {
-  centerPercents = 50
+  centerPercents = 50;
 }
 
-const cols = 
-  centerPercents === '1/3' ? 3 : // center: 1/3 = Cols: 6 L:2, C:2, R:2
-  centerPercents === 50 ? 4 :   // center: 50% = Cols: 4, L:1, C:2, R:1
-  centerPercents === '3/4' ? 8 : // center: 3/4 = Cols: 8, L:1, C:6, R:1
-  10 // center: 4/5 = Cols: 10, L:1, C:8, R:1
-const centerSpan = 
-  centerPercents === '1/3' ? 1 :
-  centerPercents === 50 ? 2 :  
-  centerPercents === '3/4' ? 6 : 
-  8
+const cols =
+  centerPercents === "1/3"
+    ? 3 // center: 1/3 = Cols: 6 L:2, C:2, R:2
+    : centerPercents === 50
+      ? 4 // center: 50% = Cols: 4, L:1, C:2, R:1
+      : centerPercents === "3/4"
+        ? 8 // center: 3/4 = Cols: 8, L:1, C:6, R:1
+        : 10; // center: 4/5 = Cols: 10, L:1, C:8, R:1
+const centerSpan =
+  centerPercents === "1/3"
+    ? 1
+    : centerPercents === 50
+      ? 2
+      : centerPercents === "3/4"
+        ? 6
+        : 8;
 ---
 
-<main class={`max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-${cols}`}>
-  <div class={`lg:col-span-1 space-y-4 py-8 pt-0 mr-2 ${leftClassName || ''}`}>
+<main class={` grid grid-cols-1 lg:grid-cols-${cols} ${className}`}>
+  <div
+    class={`lg:col-span-1 space-y-${GridStyle.panel.gap!.y} mr-${GridStyle.section.padding!.x} ${leftClassName || ""}`}
+  >
     <slot name="left" />
   </div>
-      
-  <div class={`lg:col-span-${centerSpan} space-y-4 py-8 pt-0 mx-2 ${centerClassName || ''}`}>
-    <slot name="center"/>
+
+  <div
+    class={`lg:col-span-${centerSpan} space-y-${GridStyle.panel.gap!.y} mx-${GridStyle.section.padding!.x} ${centerClassName || ""}`}
+  >
+    <slot name="center" />
   </div>
-  <div class={`lg:col-span-1 space-y-4 py-8 pt-0 ml-2 ${rightClassName || ''}`}>
+  <div
+    class={`lg:col-span-1 space-y-${GridStyle.panel.gap!.y} ml-${GridStyle.section.padding!.x} ${rightClassName || ""}`}
+  >
     <slot name="right" />
   </div>
 </main>

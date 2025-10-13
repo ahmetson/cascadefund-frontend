@@ -1,6 +1,6 @@
 ---
 import V2Layout from "@/layouts/LandingLayout.astro";
-import { NavigationName } from "@/components/utilitified_decorations/HeaderRight";
+import { ItemName } from "@/components/utilitified_decorations/LandingNavbar.astro";
 
 import LeftImageRightPanels from "@/components/grid/LeftImageRightPanelsSection.astro";
 import HorizontalPanels from "@/components/grid/HorizontalPanelsSection.astro";
@@ -187,9 +187,9 @@ const ctaSection: SectionProps = {
 ---
 
 <V2Layout
-  cascadeLogoSubtitle="For Open Source Maintainers"
+  subtitle="For Open Source Maintainers"
   landingPageTopMenu={true}
-  activeLink={NavigationName.MaintainerLanding}
+  active={ItemName.MaintainerLanding}
 >
   <HeroSection {...heroSection}>
     {heroSection.children}

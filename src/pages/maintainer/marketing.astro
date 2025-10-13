@@ -1,26 +1,32 @@
 ---
 import V2Layout from "@/layouts/PanelViewLayout.astro";
-import Menu from "@/components/utilitified_decorations/MenuPanel"
-import { NavigationName } from "@/components/utilitified_decorations/HeaderRight";
-import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Menu from "@/components/utilitified_decorations/MenuPanel";
+import { ItemName } from "@/components/utilitified_decorations/WorkNavbar.astro";
+import Card from "@/components/utilitified_decorations/PagelikeCard";
 
-import ShareTools from '@/components/maintainer/ShareToolsPanel'
+import ShareTools from "@/components/maintainer/ShareToolsPanel";
 
 import MarketingAnalyticsPanel from "@/components/maintainer/MarketingTabs";
 import RowGrid from "@/components/grid/RowGrid";
 import CommentFeedback from "@/components/maintainer/CommentFeedbackPanel";
 import CallToAction from "@/components/maintainer/MarketingActionsPanel";
 import InsightPanel from "@/components/maintainer/InsightPanel";
-
 ---
 
-<V2Layout activeLink={NavigationName.ProjectName}>
+<V2Layout activeLink={ItemName.ProjectName}>
   <Menu slot="left" activeMenuItem="marketing" />
-  <Card slot="center" title="CascadeFund Marketing Tools" actions={[{variant: 'green', children: 'Help me where to start', href: '#'}]}>
-        <p class="text-gray-600">
-          This page is all about helping your project grow. Whether you want more users, donations, or
-          contributors, CascadeFund gives you simple share tools to spread the word and onboard people.
-        </p>
+  <Card
+    slot="center"
+    title="CascadeFund Marketing Tools"
+    actions={[
+      { variant: "green", children: "Help me where to start", href: "#" },
+    ]}
+  >
+    <p class="text-gray-600">
+      This page is all about helping your project grow. Whether you want more
+      users, donations, or contributors, CascadeFund gives you simple share
+      tools to spread the word and onboard people.
+    </p>
   </Card>
   <MarketingAnalyticsPanel slot="center" client:load />
   <RowGrid slot="center" cols={2}>

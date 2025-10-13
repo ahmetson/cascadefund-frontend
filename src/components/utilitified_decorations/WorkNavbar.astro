@@ -1,0 +1,52 @@
+---
+import Badge from "@/components/Badge";
+import NavLabelElement from "./NavigatingItem";
+
+export enum ItemName {
+  ProjectName = "ProjectName",
+  ProjectList = "ProjectList",
+}
+export type Navigation = { [key in ItemName]?: React.ReactNode };
+
+interface Props {
+  active?: ItemName;
+  hideLinks?: ItemName[];
+  additional?: React.ReactNode[];
+}
+
+const { additional, active, hideLinks } = Astro.props;
+
+const isItemShown = (item: ItemName): boolean => {
+  return (
+    active !== item &&
+    (hideLinks === undefined || hideLinks.findIndex((el) => el === item) == -1)
+  );
+};
+---
+
+<nav class="hidden md:flex items-center space-x-6 h-14">
+  {additional && additional.map((el) => el)}
+  {
+    isItemShown(ItemName.ProjectName) && (
+      <NavLabelElement
+        href="/data/project"
+        active={active === ItemName.ProjectName}
+      >
+        Reflect
+      </NavLabelElement>
+    )
+  }
+
+  {
+    isItemShown(ItemName.ProjectList) && (
+      <NavLabelElement
+        href="/data/projects"
+        active={active === ItemName.ProjectList}
+      >
+        Projects
+        <Badge variant="blue">2</Badge>
+        <Badge variant="red">2</Badge>
+      </NavLabelElement>
+    )
+  }
+</nav>

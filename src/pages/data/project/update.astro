@@ -1,26 +1,30 @@
 ---
 import V2Layout from "@/layouts/PanelViewLayout.astro";
-import { NavigationName, type Navigation } from "@/components/utilitified_decorations/HeaderRight";
-import NavLabelElement from '@/components/utilitified_decorations/NavigatingItem'
+import {
+  ItemName,
+  type Navigation,
+} from "@/components/utilitified_decorations/WorkNavbar.astro";
+import NavLabelElement from "@/components/utilitified_decorations/NavigatingItem";
 export const replacement: Navigation = {};
-replacement[NavigationName.ProjectName] = await NavLabelElement({children: "Add New Project", active: true})
+replacement[ItemName.ProjectName] = await NavLabelElement({
+  children: "Add New Project",
+  active: true,
+});
 
-import ProjectForm from '@/components/project/EditableProjectInfoPanel'
-import RepositorySummary from '@/components/project/RepositorySummaryPanel'
-import ActivityList from '@/components/project/RecentActivityPanel'
-import NotificationBanner from '@/components/NotificationBanner'
+import ProjectForm from "@/components/project/EditableProjectInfoPanel";
+import RepositorySummary from "@/components/project/RepositorySummaryPanel";
+import ActivityList from "@/components/project/RecentActivityPanel";
+import NotificationBanner from "@/components/NotificationBanner";
 
-  const activities = [
-    'Last commit: 2 hours ago',
-    'Open pull requests: 5',
-    'Last release: 2 weeks ago'
-  ]
-
+const activities = [
+  "Last commit: 2 hours ago",
+  "Open pull requests: 5",
+  "Last release: 2 weeks ago",
+];
 ---
 
-<V2Layout activeLink={NavigationName.ProjectName} replacement={replacement}>
-  <NotificationBanner type="info"
-    title="Edit Project Information"
+<V2Layout activeLink={ItemName.ProjectName} replacement={replacement}>
+  <NotificationBanner type="info" title="Edit Project Information"
     >Review and edit the information fetched from your GitHub repository
   </NotificationBanner>
   <ProjectForm slot="center" />

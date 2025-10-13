@@ -3,12 +3,17 @@ import Link from "@/components/Link";
 
 interface Props {
   subtitle?: any;
+  className?: string;
 }
 
-const { subtitle } = Astro.props;
+const { subtitle, className } = Astro.props;
 ---
 
-<Link id="logo" href="/" className=" flex flex-start -ml-2 h-14 items-center">
+<Link
+  id="logo"
+  href="/"
+  className={" flex flex-start h-14 items-center " + className}
+>
   <div class="w-8 h-8 bg-transparent rounded flex items-center justify-center">
     <img
       src="/cascadefund_logo.png"

@@ -1,17 +1,23 @@
 ---
 import V2Layout from "@/layouts/PanelViewLayout.astro";
-import { NavigationName } from "@/components/utilitified_decorations/HeaderRight";
+import { ItemName } from "@/components/utilitified_decorations/WorkNavbar.astro";
 
-import ProfileInfo from '@/components/profile/ProfileInfoPanel'
+import ProfileInfo from "@/components/profile/ProfileInfoPanel";
 import BackButton from "@/components/utilitified_decorations/BackButton";
 import RecentActivity from "@/components/profile/RecentActivityPanel";
 import Discovery from "@/components/profile/DiscoveryPanel";
 import FinanceInfo from "@/components/profile/FinanceInfoPanel";
 import ProfileMetric from "@/components/profile/ProfileMetricPanel";
-
+import { ActiveLoginNavItem } from "@/components/utilitified_decorations/LoginNavItem";
 ---
-<V2Layout landingPageTopMenu={false} activeLink={NavigationName.Avatar} hideLinks={[NavigationName.ProjectName]} cascadeLogoSubtitle="Data Section: Profile" >
-  <BackButton href="/maintainer/work" slot="left" />    
+
+<V2Layout
+  landingPageTopMenu={false}
+  active={ActiveLoginNavItem}
+  hideLinks={[ItemName.ProjectName]}
+  subtitle="Data Section: Profile"
+>
+  <BackButton href="/maintainer/work" slot="left" />
   <ProfileInfo slot="center" client:load />
   <FinanceInfo />
   <ProfileMetric slot="center" client:load />
