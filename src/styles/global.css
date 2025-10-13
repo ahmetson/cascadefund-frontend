@@ -91,3 +91,12 @@ body {
 .no-visible-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+.hyperlink {
+  cursor: pointer;
+  transition: transform 0.18s ease-in-out;
+}
+
+.hyperlink:hover {
+  transform: scale(1.1);
+}

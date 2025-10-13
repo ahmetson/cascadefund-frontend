@@ -1,0 +1,61 @@
+---
+import Link from "@/components/Link";
+
+interface Props {
+  subtitle?: any;
+}
+
+const { subtitle } = Astro.props;
+---
+
+<Link id="logo" href="/" className=" flex flex-start -ml-2 h-14 items-center">
+  <div class="w-8 h-8 bg-transparent rounded flex items-center justify-center">
+    <img
+      src="/cascadefund_logo.png"
+      id="logoImg"
+      alt="CascadeFund Logo"
+      class="w-full h-full"
+    />
+    <img
+      src="/cascadefund_logo_hover.png"
+      id="hoveredLogoImg"
+      alt="CascadeFund Logo"
+      class="w-full h-full"
+    />
+  </div>
+  <div class="flex flex-col">
+    <h1 class="text-xl mt-0">CascadeFund</h1>
+    {
+      subtitle && (
+        <p class="text-xs text-gray-500 w-full -mt-1" id="logoSubtitle">
+          {subtitle}
+        </p>
+      )
+    }
+  </div>
+</Link>
+<style>
+  :global(.hyperlink) #logoImg {
+    display: block;
+  }
+  :global(.hyperlink) #hoveredLogoImg {
+    display: none;
+  }
+  :global(.hyperlink) #logoSubtitle {
+    display: block;
+    transition: font-size 0.1s ease-out;
+  }
+
+  :global(.hyperlink):hover #logoSubtitle {
+    opacity: 0.4;
+    font-size: 0.65rem;
+  }
+
+  :global(.hyperlink):hover #logoImg {
+    display: none;
+  }
+
+  :global(.hyperlink):hover #hoveredLogoImg {
+    display: block;
+  }
+</style>

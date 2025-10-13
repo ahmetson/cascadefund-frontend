@@ -1,9 +1,12 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import "@/styles/global.css";
-import Header from '@/components/utilitified_decorations/Header'
-import Footer from '@/components/utilitified_decorations/Footer'
-import type { Navigation, NavigationName } from "@/components/utilitified_decorations/HeaderRight";
+import Header from "@/components/utilitified_decorations/Header.astro";
+import Footer from "@/components/utilitified_decorations/Footer.astro";
+import type {
+  Navigation,
+  NavigationName,
+} from "@/components/utilitified_decorations/HeaderRight";
 
 interface Props {
   cascadeLogoSubtitle?: string;
@@ -14,47 +17,46 @@ interface Props {
   hideLinks?: NavigationName[];
   replacement?: Navigation;
 }
-const { landingPageTopMenu, cascadeLogoSubtitle, additional, hideLinks } = Astro.props;
-
+const { landingPageTopMenu, cascadeLogoSubtitle, additional, hideLinks } =
+  Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>CascadeFund</title>
-		<ClientRouter />
-	</head>
-	<body class="min-h-screen bg-gray-200"></body>
-  <Header 
-        landingPageTopMenu={landingPageTopMenu}  
-        cascadeLogoSubtitle={cascadeLogoSubtitle}
-        additional={additional}
-        hideLinks={hideLinks}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/cascadefund_logo.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>CascadeFund</title>
+    <ClientRouter />
+  </head>
+  <body class="min-h-screen bg-gray-200"></body><Header
+    landingPageTopMenu={landingPageTopMenu}
+    cascadeLogoSubtitle={cascadeLogoSubtitle}
+    additional={additional}
+    hideLinks={hideLinks}
   />
-  <section >
-  <slot name="hero" />
+  <section>
+    <slot name="hero" />
   </section>
-  <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-4">
-      <div class='col-span-1 space-y-4 mr-2'>
-        <slot name="left" />
-      </div>
-      
-      <div class="lg:col-span-2 space-y-4 mx-2">
-        <slot name="center"/>
-      </div>
-      <div class="lg:col-span-1 space-y-8 py-8 pt-0 ml-2">
-        <slot name="right" />
-      </div>
+  <main
+    class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-4"
+  >
+    <div class="col-span-1 space-y-4 mr-2">
+      <slot name="left" />
+    </div>
+
+    <div class="lg:col-span-2 space-y-4 mx-2">
+      <slot name="center" />
+    </div>
+    <div class="lg:col-span-1 space-y-8 py-8 pt-0 ml-2">
+      <slot name="right" />
+    </div>
   </main>
   <Footer />
-  	</body>
 </html>
 
-
 <style is:global>
-  @import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
+  @import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 </style>

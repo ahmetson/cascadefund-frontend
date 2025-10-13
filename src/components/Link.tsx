@@ -1,20 +1,18 @@
 import React from 'react'
+import { type Props as ComponentProps } from '@/types/eventTypes'
 
-interface Props {
-  children: any
+type Props = ComponentProps & {
   href: string
-  className?: string
   active?: boolean
+  asNewTab?: boolean
 }
 
-const CollaborationSection: React.FC<Props> = ({ className: additionalNames, href, children }) => {
-    const className = `text-blue-500 hover:text-teal-900 py-2 transition-colors` + additionalNames;
-
-    return (
-      <a href={href} className={className}>
-        {children}
-      </a>
-    )
+const Component: React.FC<Props> = ({ asNewTab = false, className, href, children }) => {
+  return (
+    <a target={asNewTab ? '_blank' : '_self'} href={href} className={`hyperlink text-blue-500 hover:text-teal-900 py-2 transition-colors ${className}`}>
+      {children}
+    </a>
+  )
 }
 
-export default CollaborationSection
+export default Component

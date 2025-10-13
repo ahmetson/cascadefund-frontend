@@ -1,15 +1,22 @@
 import type { InfoPanelProps } from "@/components/InfoPanel";
 import type { RoleCardProps } from "@/components/RoleCard";
 
-export interface PanelEvents {
-    onBackClick?: (arg0?: boolean) => void;
-    // For list data
-    onElementClick?: (arg0?: boolean) => void;
-    onActionClick?: (arg0?: boolean) => void;
-    onClick?: (arg0: boolean) => void;  // if the panel itself clicked
+export interface Props {
+  children?: any
+  className?: string
+  id?: string
+  key?: string | number
 }
 
-export interface ActionProps {variant?: string, href?: string, replaceWithChildren?: boolean, children: any, onClick?: () => void, className?: string}
+export interface PanelEvents {
+  onBackClick?: (arg0?: boolean) => void;
+  // For list data
+  onElementClick?: (arg0?: boolean) => void;
+  onActionClick?: (arg0?: boolean) => void;
+  onClick?: (arg0: boolean) => void;  // if the panel itself clicked
+}
+
+export interface ActionProps { variant?: string, href?: string, replaceWithChildren?: boolean, children: any, onClick?: () => void, className?: string }
 
 export enum SectionBgType {
   heroSection = "hero",
@@ -24,8 +31,8 @@ export enum SectionBgType {
 }
 
 export type SectionBgProps = {
-    sectionBgType: SectionBgType,
-    overlay?: 'circles' | 'rectangles'
+  sectionBgType: SectionBgType,
+  overlay?: 'circles' | 'rectangles'
 }
 
 export interface SectionProps {
@@ -37,6 +44,6 @@ export interface SectionProps {
   prefix?: string // If panels are listed how to group according to this session
   actions?: ActionProps[]
   children?: any
-  panels?: (InfoPanelProps|RoleCardProps)[]
+  panels?: (InfoPanelProps | RoleCardProps)[]
   bottomPanel?: InfoPanelProps
 }
