@@ -1,17 +1,23 @@
 ---
-import { type SectionProps, SectionBgType} from '@/types/eventTypes'
-import Section from './Section.astro';
+import { type SectionProps, SectionBgType } from "@/types/eventTypes";
+import Section from "./Section.astro";
 
 type Props = SectionProps;
 
-let {title, actions, bg, subtitle} = Astro.props
+let { title, actions, bg, subtitle } = Astro.props;
 if (bg === undefined) {
   bg = {
-    sectionBgType: SectionBgType.heroSection
-  }
+    sectionBgType: SectionBgType.heroSection,
+  };
 }
-
 ---
-<Section title={title} actions={actions} bg={bg} subtitle={subtitle}>
+
+<Section
+  className="h-[80vh]"
+  title={title}
+  actions={actions}
+  bg={bg}
+  subtitle={subtitle}
+>
   <slot />
 </Section>
