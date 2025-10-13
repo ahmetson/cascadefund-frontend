@@ -177,29 +177,29 @@ const ctaSection: SectionProps = {
 ---
 
 <V2Layout landingPageTopMenu={true} activeLink={NavigationName.MaintainerLanding}>
-        <HeroSection {...heroSection}>{heroSection.children}</HeroSection>
-        <LeftImageRightPanels cols={2} {...whyMaintainersStruggleSection} />
+  <HeroSection {...heroSection}>
+    {heroSection.children}
+  </HeroSection>
+    <LeftImageRightPanels cols={2} {...whyMaintainersStruggleSection} />
         <HorizontalPanels {...howItWorksSection} />
         <HorizontalPanels {...beAFoundingMaintainerSection} />
         <Section title={partOfAraProjectSection.title} bg={partOfAraProjectSection.bg}>
           Together, we can make the internet open, affordable, and sustainable for
           everyone — where collaborative tech innovation and maintainers thrive without
           burnout.
-        </Section>
-        <Section title={faqSection.title} bg={faqSection.bg}>
-                {faqs.map((faq, index) => (
-                <FAQItem
-                key={index}
-                question={faq.question}
-                answer={faq.answer}
-                />
-                ))}
+  </Section>
+  <Section title={faqSection.title} bg={faqSection.bg}>
+          {faqs.map((faq, index) => (<FAQItem
+            key={index}
+            question={faq.question}
+            answer={faq.answer}
+          />))}
         </Section>
         <Section title={ctaSection.title} bg={ctaSection.bg} actions={[{
-                href: '/login',
-                variant: 'blue',
-                children: 'Sign In as a Maintainer'
+          href: '/login',
+          variant: 'blue',
+          children: 'Sign In as a Maintainer'
         }]} icon={ctaSection.icon}>
-                Join a growing community of maintainers who are changing how open source development works.        
-        </Section>
+          Join a growing community of maintainers who are changing how open source development works.        
+  </Section>
 </V2Layout>
