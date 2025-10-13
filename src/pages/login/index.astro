@@ -1,6 +1,6 @@
 ---
 import V2Layout from "@/layouts/PanelViewLayout.astro";
-import { LandingRightMenu } from "@/components/utilitified_decorations/LandingNavbar.astro";
+import { ItemName } from "@/components/utilitified_decorations/LandingNavbar.astro";
 
 import Card from "@/components/utilitified_decorations/PagelikeCard";
 import LinkBtn from "@/components/LinkBtn";
@@ -9,7 +9,7 @@ import Link from "@/components/Link";
 
 <V2Layout
   landingPageTopMenu={true}
-  hideLinks={LandingRightMenu}
+  hideLinks={Object.values(ItemName)}
   subtitle="Sign In"
 >
   <Card

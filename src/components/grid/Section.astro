@@ -13,7 +13,7 @@ if (bg === undefined) {
   };
 }
 
-const bgClassNames: { [key in SectionBgType]: string } = {
+export const bgClassNames: { [key in SectionBgType]: string } = {
   [SectionBgType.heroSection]:
     "bg-gradient-to-br from-blue-500 via-blue-800 to-purple-500 text-white ",
   [SectionBgType.heroToInfoViaBlue]:
@@ -30,6 +30,8 @@ const bgClassNames: { [key in SectionBgType]: string } = {
     "bg-gradient-to-br from-teal-500 via-lime-600 to-red-500 text-white ",
   [SectionBgType.redToPurpleViaLime]:
     "bg-gradient-to-bl from-red-500 via-lime-600 to-purple-600 text-white ",
+  [SectionBgType.footerToTransparent]:
+    "bg-gradient-to-b from-gray-900 to-transparent text-gray-600 ",
 };
 
 const sectionClassName =

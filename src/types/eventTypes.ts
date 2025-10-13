@@ -70,6 +70,7 @@ export enum SectionBgType {
   blueToPurple = "fun2",
   tealToRedViaLime = "fun3",
   redToPurpleViaLime = "fun4",
+  footerToTransparent = "footer"
 }
 
 export type SectionBgProps = {

@@ -2,17 +2,16 @@
 import Link from "@/components/Link";
 
 interface Props {
-  subtitle?: any;
   className?: string;
 }
 
-const { subtitle, className } = Astro.props;
+const { className } = Astro.props;
 ---
 
 <Link
   id="logo"
   href="/"
-  className={" flex flex-start h-14 items-center " + className}
+  className={" flex flex-start h-14 items-center " + (className || "")}
 >
   <div class="w-8 h-8 bg-transparent rounded flex items-center justify-center">
     <img
@@ -30,13 +29,12 @@ const { subtitle, className } = Astro.props;
   </div>
   <div class="flex-col hidden md:flex">
     <h1 class="text-xl mt-0">CascadeFund</h1>
-    {
-      subtitle && (
-        <p class="text-xs text-gray-500 w-full -mt-1" id="logoSubtitle">
-          {subtitle}
-        </p>
-      )
-    }
+    <div
+      class="flex flex-start text-sm text-gray-500 w-full -mt-1"
+      id="logoSubtitle"
+    >
+      <slot />
+    </div>
   </div>
 </Link>
 <style>

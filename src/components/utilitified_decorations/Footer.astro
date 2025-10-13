@@ -1,67 +1,56 @@
 ---
 import CascadeFundLogo from "./Logo.astro";
 import Link from "@/components/Link";
+
+const footerContentClass =
+  ` peer-checked:backdrop-blur-sm` +
+  ` bg-gradient-to-b` +
+  ` from-blue-800` +
+  ` to-teal-900/85` +
+  ` peer-checked:text-gray-200`;
+` hover:text-gray-200`;
+` text-gray-900`;
+const footerTitleClass =
+  ` text-white ` +
+  ` backdrop-blur-sm` +
+  ` bg-blue-800` +
+  ` hover:text-gray-200` +
+  ` text-black` +
+  ` h-14` +
+  ` p-0` +
+  ` flex`;
 ---
 
-<footer class="bg-gray-900">
+<footer
+  class="fixed bottom-0 right-0 left-0 z-10 backdrop-blur-lg opacity-50 hover:opacity-100"
+>
   <div class="collapse collapse-arrow rounded-none">
     <input type="checkbox" class="peer" />
-    <div
-      class="collapse-title peer-checked:bg-gray-950 peer-checked:text-gray-100 bg-gray-900 text-gray-100 flex"
-    >
-      <CascadeFundLogo />
+    <div class={`collapse-title ${footerTitleClass}`}>
+      <CascadeFundLogo className={footerTitleClass}>
+        © 2025 Ara Foundation
+      </CascadeFundLogo>
     </div>
-    <div
-      class="collapse-content bg-gray-900 text-gray-100 peer-checked:bg-gray-950 peer-checked:text-gray-100"
-    >
-      <div class="grid md:grid-cols-4 gap-8">
-        <div>
-          <p class="text-gray-400 text-sm mb-4">
-            Empowering open source maintainers through sustainable funding and
-            community collaboration.
-          </p>
-          <p class="text-gray-500 text-xs">Part of the Ara project ecosystem</p>
-        </div>
-
-        <div>
-          <h3 class="font-semibold mb-4">Platform</h3>
-          <ul class="space-y-2 text-sm text-gray-400">
-            <li>
-              <Link href="/" className="hover:text-white transition-colors"
-                >For Maintainers</Link>
-            </li>
-            <li>
-              <Link
-                href="/meta/influencer"
-                className="hover:text-white transition-colors"
-                >For Open source Enthuasists</Link>
-            </li>
-            <li>
-              <Link
-                href="/meta/contributor"
-                className="hover:text-white transition-colors"
-                >For Contributors</Link>
-            </li>
-          </ul>
-        </div>
-
+    <div class={`collapse-content ${footerContentClass}`}>
+      <div class="grid md:grid-cols-2 gap-8">
         <div>
           <h3 class="font-semibold mb-4">Resources</h3>
           <ul class="space-y-2 text-sm text-gray-400">
             <li>
               <Link
                 href="/meta/work"
-                className="hover:text-white transition-colors"
-                >How it Works?</Link>
+                className="text-gray-400 transition-colors">How it Works?</Link
+              >
             </li>
             <li>
               <Link
                 href="/meta/quest"
-                className="hover:text-white transition-colors"
-                >Quest Task List</Link>
+                className="text-gray-400 transition-colors"
+                >Quest Task List</Link
+              >
             </li>
             <li>
-              <Link href="#" className="hover:text-white transition-colors">
+              <Link href="#" className="text-gray-400 transition-colors">
                 <svg
                   class="h-4 w-4 text-blue-400 inline mr-2"
                   viewBox="0 0 24 24"
@@ -75,7 +64,7 @@ import Link from "@/components/Link";
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-white transition-colors">
+              <Link href="#" className="text-gray-400 transition-colors">
                 <svg
                   class="h-4 w-4 text-blue-400 inline mr-2"
                   viewBox="0 0 24 24"
@@ -97,20 +86,22 @@ import Link from "@/components/Link";
             <li>
               <Link
                 href="/meta/team"
-                className="hover:text-white transition-colors">Team</Link>
+                className="text-gray-400 transition-colors">Team</Link
+              >
             </li>
             <li>
               <Link
                 href="/meta/policy"
-                className="hover:text-white transition-colors"
-                >Privacy Policy (no-boring-lawyer-edition)</Link>
+                className="text-gray-400 transition-colors"
+                >Privacy Policy (no-boring-lawyer-edition)</Link
+              >
             </li>
             <li>
               Contact/Follow:
               <div class="flex space-x-4 mt-1">
                 <Link
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 text-gray-400 transition-colors"
                 >
                   <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                     <path
@@ -120,7 +111,7 @@ import Link from "@/components/Link";
                 </Link>
                 <Link
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 text-gray-400 transition-colors"
                 >
                   <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                     <path
@@ -130,7 +121,7 @@ import Link from "@/components/Link";
                 </Link>
                 <Link
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 text-gray-400 transition-colors"
                 >
                   <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                     <path
@@ -144,16 +135,5 @@ import Link from "@/components/Link";
         </div>
       </div>
     </div>
-    <div class="pt-2 border-t border-gray-600 bg-gray-950">
-      <div
-        class="flex items-center justify-self-center justify-center px-4 text-sm text-center text-gray-400"
-      >
-        <span class="pr-2">© 2025</span>
-        <Link href="https://ara.foundation/" className="ml-2">
-          Ara Foundation</Link
-        >
-      </div>
-    </div>
   </div>
 </footer>
-) } export default Footer
