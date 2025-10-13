@@ -22,7 +22,7 @@ Inside of your Astro project, you'll see the following folders and files:
 │   └── favicon.svg
 ├── src
 │   ├── assets
-│   │   └── astro.svg
+│   │   └── cascadefund_logo.png
 │   ├── components
 │   │   └── Welcome.astro
 │   ├── layouts
