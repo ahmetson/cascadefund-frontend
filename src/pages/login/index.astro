@@ -14,23 +14,26 @@ import Link from "@/components/Link";
 >
   <Card
     slot="center"
-    title="Welcome to CascadeFund"
+    title="Login"
     titleCenter={true}
     className="bg-cyan-50 border-cyan-100"
   >
-    <p class="text-gray-600 text-center">
-      Sign in to continue to the alpha version
-    </p>
     <div class="text-center space-y-6">
-      <LinkBtn href="/login/callback" variant="blue"
-        >Sign in with GitHub</LinkBtn
-      >
-      <p class="text-sm text-gray-600 mt-3">
-        By signing in, you agree to our{" "}
-        <Link href="#" className="text-blue-600 hover:text-blue-800">
-          Privacy Policy
-        </Link>
-      </p>
+      <div class="mt-14">
+        <LinkBtn href="/login/callback" variant="blue"
+          >Sign in with GitHub</LinkBtn
+        >
+        <p class="text-sm text-gray-500 mt-4 -mb-4">
+          By signing in, you agree to our{" "}
+          <Link
+            href="/meta/policy"
+            className="text-blue-600 hover:text-blue-800"
+            asNewTab={true}
+          >
+            Privacy Policy
+          </Link>
+        </p>
+      </div>
     </div>
   </Card>
   <Card
