@@ -33,8 +33,11 @@ const { className } = Astro.props;
       class="flex flex-start text-sm text-gray-500 w-full -mt-1"
       id="logoSubtitle"
     >
-      <slot />
+      <div class="hidden lg:flex"><slot /></div>
     </div>
+  </div>
+  <div class="text-sm text-gray-600 flex flex-col lg:hidden">
+    Full functionality available<br /> on larger screens
   </div>
 </Link>
 <style>
