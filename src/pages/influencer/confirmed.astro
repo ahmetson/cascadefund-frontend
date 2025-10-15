@@ -1,10 +1,11 @@
 ---
 import V2Layout from "@/layouts/PanelViewLayout.astro";
 
-import Sidebar from "@/components/cascade_fund/ImproveCascadeFundPanel";
+import InfoPanel from "@/components/InfoPanel2.astro";
 import Votes from "@/components/project/VotedIssueListPanel";
 import BackButton from "@/components/utilitified_decorations/BackButton";
 import NotificationBanner from "@/components/NotificationBanner";
+import Link from "@/components/Link";
 ---
 
 <V2Layout>
@@ -32,5 +33,25 @@ import NotificationBanner from "@/components/NotificationBanner";
   </NotificationBanner>
 
   <Votes slot="center" />
-  <Sidebar slot="right" />
+  <InfoPanel
+    slot="right"
+    slot="right"
+    title="Became CascadeFund influencer"
+    icon="info"
+    actions={[
+      {
+        children: '"CascadeFund" Influencer',
+        href: "/inlfuencer/project",
+      },
+    ]}
+  >
+    <p>
+      Have some questions or requests about CascadeFund? Become our influencer
+      as well.
+    </p>
+    <p>
+      Obtain Voting Power. Make CascadeFund better for users by creating or
+      upvoting the issues. Get rating.
+    </p>
+  </InfoPanel>
 </V2Layout>
