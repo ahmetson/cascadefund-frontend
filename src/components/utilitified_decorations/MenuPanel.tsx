@@ -90,7 +90,9 @@ const influencerCollabItems = (activeMenuItem: MenuName): React.ReactNode[] => {
 }
 
 const Panel: React.FC<Props> = ({ activeMenuItem, title = 'Main Menu', onlyCustomChildren = false, children }) => {
-  return <Card title={<div className='text-sm font-medium text-gray-500 -ml-6'>{title}</div>} className="bg-white rounded-lg shadow-sm p-4">
+  const titleC = <div className='text-sm font-medium text-gray-500'>{title}</div>
+
+  return <Card title={titleC} className="bg-white rounded-lg shadow-sm p-4">
     {!onlyCustomChildren && (isOnlyInfluencerMenu(activeMenuItem) ? <NotificationBanner dropdown={true} title='Maintainer Menu Not Available' type="error" >
       <ul className="text-xs space-y-1 ml-6">
         <li>The project management is available for the maintainers</li>
