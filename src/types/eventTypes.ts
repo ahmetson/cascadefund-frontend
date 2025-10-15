@@ -54,7 +54,7 @@ export interface PanelEvents {
   onBackClick?: (arg0?: boolean) => void;
   // For list data
   onElementClick?: (arg0?: boolean) => void;
-  onActionClick?: (arg0?: boolean) => void;
+  onActionClick?: (arg0?: any) => void;
   onClick?: (arg0: boolean) => void;  // if the panel itself clicked
 }
 
@@ -83,6 +83,7 @@ export interface SectionProps {
   bg?: SectionBgProps,
   icon?: React.ReactNode,
   title?: string
+  titleClassName?: string
   subtitle?: string
   prefix?: string // If panels are listed how to group according to this session
   actions?: ActionProps[]
