@@ -3,7 +3,7 @@ import V2Layout from "@/layouts/LandingLayout.astro";
 
 import HeroSection from "@/components/grid/HeroSection.astro";
 import ContentSection from "@/components/utilitified_decorations/InfoPanel";
-import SuperpowersCard from "@/components/SuperpowersInfoPanel";
+import SuperpowersPanel from "@/components/SuperpowersInfoPanel";
 import ThreeColumnGrid from "@/components/grid/ThreeColumnGrid.astro";
 import MenuPanel from "@/components/utilitified_decorations/MenuPanel";
 import MenuItem from "@/components/utilitified_decorations/MenuItem";
@@ -27,7 +27,7 @@ const ContentMenuItems = [
 ];
 ---
 
-<V2Layout landingPageTopMenu={true} subtitle="Privacy Policy">
+<V2Layout subtitle="Privacy Policy">
   <HeroSection
     title={"CascadeFund Privacy Policy"}
     subtitle="(the no-boring-lawyer edition)"
@@ -50,7 +50,7 @@ const ContentMenuItems = [
     >
       {ContentMenuItems.map((menuItem) => <MenuItem {...menuItem} />)},
     </MenuPanel>
-    <SuperpowersCard slot="right" />
+    <SuperpowersPanel slot="right" />
     <div slot="center" class="bg-white rounded-lg shadow-sm p-8 space-y-12">
       <ContentSection
         title="1. GitHub and Repos stuff"

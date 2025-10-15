@@ -1,34 +1,36 @@
 ---
 import V2Layout from "@/layouts/PanelViewLayout.astro";
 
-import Sidebar from '@/components/cascade_fund/ImproveCascadeFundPanel'
-import Votes from '@/components/project/VotedIssueListPanel'
+import Sidebar from "@/components/cascade_fund/ImproveCascadeFundPanel";
+import Votes from "@/components/project/VotedIssueListPanel";
 import BackButton from "@/components/utilitified_decorations/BackButton";
 import NotificationBanner from "@/components/NotificationBanner";
-
 ---
-<V2Layout landingPageTopMenu={false}>
+
+<V2Layout>
   <BackButton slot="left" />
   <NotificationBanner
     slot="center"
-            icon="✉️"
-            title="You completed the quest"
-            type="success"
-          >
-          You are now following these projects and will receive notification once the maintainer or contributor replies. The maintainers of the project received the quest, expect the reply within the upcoming hours/days.
-        </NotificationBanner>
+    icon="✉️"
+    title="You completed the quest"
+    type="success"
+  >
+    You are now following these projects and will receive notification once the
+    maintainer or contributor replies. The maintainers of the project received
+    the quest, expect the reply within the upcoming hours/days.
+  </NotificationBanner>
 
-          
-          <NotificationBanner
+  <NotificationBanner
     slot="center"
-            icon="⭐"
-            title="Potentially earning +2.0 rating"
-            type="warning"
-          >
-            You are now following these projects and will receive notification once the maintainer or contributor replies. The maintainers of the project received the quest, expect the reply within the upcoming hours/days.
-        </NotificationBanner>
-          
-          <Votes slot="center" />
-          <Sidebar slot="right" />
+    icon="⭐"
+    title="Potentially earning +2.0 rating"
+    type="warning"
+  >
+    You are now following these projects and will receive notification once the
+    maintainer or contributor replies. The maintainers of the project received
+    the quest, expect the reply within the upcoming hours/days.
+  </NotificationBanner>
 
+  <Votes slot="center" />
+  <Sidebar slot="right" />
 </V2Layout>

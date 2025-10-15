@@ -2,13 +2,13 @@ import React from 'react'
 import FilterTabs from '@/components/project/ProjectFilterTabs'
 import ProjectCard, { type ProjectInfoProps } from '@/components/project/ProjectInfoPanel2'
 import Pagination from '@/components/Pagination'
-import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Card from '@/components/utilitified_decorations/PagePanel'
 
 interface Props {
   projects: ProjectInfoProps[]
 }
 
-const ProjectsSection: React.FC<Props> = ({projects}) => {
+const ProjectsSection: React.FC<Props> = ({ projects }) => {
 
   return (
     <Card title={<h1 className="text-2xl font-semibold text-gray-900">Projects
@@ -35,11 +35,11 @@ const ProjectsSection: React.FC<Props> = ({projects}) => {
       </div>
 
       <FilterTabs />
-      
+
       <div className="space-y-4">
         {projects.map((projectData) => <ProjectCard {...projectData} />)}
       </div>
-      
+
       <Pagination />
     </Card>
   )

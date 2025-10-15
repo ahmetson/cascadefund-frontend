@@ -1,8 +1,15 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Card from '@/components/utilitified_decorations/PagePanel'
 import ProgressStep from '@/components/ProgressStep'
+import { PanelEvents } from '@/types/eventTypes'
 
-const ConnectionCard: React.FC = () => {
+/**
+ * onActionClick will pass the fork information if a fork detected
+ * otherwise will show the update panel
+ * @param param0 
+ * @returns 
+ */
+const ConnectionCard: React.FC<PanelEvents> = ({ onActionClick }) => {
   const steps = [
     {
       id: 1,
@@ -43,21 +50,21 @@ const ConnectionCard: React.FC = () => {
 
   return (
     <Card title={<div className='flex justify-left'>
-          <svg className='mr-2' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        Connecting to Repo Host</div>
-        }
-        
-        actions={[{
-          variant: 'blue',
-          children: 'Next',
-          href: '/data/project/fork'
-        }]}
-      >
-        <p className="text-gray-600 mb-4">
-          We're establishing a connection to GitHub and retrieving information about your repository. This process may take a few moments.
-        </p>
+      <svg className='mr-2' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+      Connecting to Repo Host</div>
+    }
+
+      actions={[{
+        variant: 'blue',
+        children: 'Next',
+        onClick: (() => { onActionClick && onActionClick({}) })
+      }]}
+    >
+      <p className="text-gray-600 mb-4">
+        We're establishing a connection to GitHub and retrieving information about your repository. This process may take a few moments.
+      </p>
 
       <div className="space-y-6 mb-8">
         {steps.map((step) => (

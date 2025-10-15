@@ -6,11 +6,10 @@ export const ActiveLoginNavItem = "loginItem"
 
 interface Props {
   active?: boolean
-  landingPageMenu?: boolean;
 }
 
-const C: React.FC<Props> = ({ landingPageMenu = true, active }) => {
-  if (!landingPageMenu) {
+const C: React.FC<Props> = ({ active }) => {
+  if (Math.random() < 0.5) {
     return <MenuAvatar active={active} />
   }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Card from '@/components/utilitified_decorations/PagePanel'
 import LinkBtn from '@/components/LinkBtn'
 import Badge from '@/components/Badge'
 import IssueCard from '@/components/issue/IssueLinkPanel2'

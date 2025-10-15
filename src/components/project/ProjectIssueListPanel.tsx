@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import SearchBar from '@/components/SearchBar'
 import IssueCard from './SelectableIssuePanel'
-import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Card from '@/components/utilitified_decorations/PagePanel'
+import { PanelEvents } from '@/types/eventTypes'
 
 interface Issue {
   id: string
@@ -11,12 +12,12 @@ interface Issue {
   type: 'improvement' | 'feature' | 'bug' | 'enhancement' | 'custom'
 }
 
-interface IssueSelectorProps {
+export type IssueSelectorProps = PanelEvents & {
   selectedIssues: string[]
   onIssueSelect: (issueId: string) => void
 }
 
-const IssueSelector: React.FC<IssueSelectorProps> = ({ selectedIssues, onIssueSelect }) => {
+const IssueSelector: React.FC<IssueSelectorProps> = ({ onActionClick, selectedIssues, onIssueSelect }) => {
   const [searchQuery, setSearchQuery] = useState('')
 
   const issues: Issue[] = [
@@ -64,16 +65,16 @@ const IssueSelector: React.FC<IssueSelectorProps> = ({ selectedIssues, onIssueSe
 
   return (
     <Card title={"Which issue or problem is your fork addressing?"}
-    actions={[{
-      variant: 'blue',
-      href: '/data/project/update',
-      children: 'Next'
-    }]}>
+      actions={[{
+        variant: 'blue',
+        onClick: (() => { onActionClick && onActionClick({}) }),
+        children: 'Next'
+      }]}>
       <p className="text-sm text-gray-600 mb-4">
         Using the issues from GitHub, as CascadeFund issues doesn't exist yet. You can select multiple issues that you review.
       </p>
-      
-      <SearchBar 
+
+      <SearchBar
         value={searchQuery}
         onChange={setSearchQuery}
         placeholder="Search for issues in the original repository..."

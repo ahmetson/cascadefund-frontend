@@ -1,16 +1,16 @@
 import React from 'react'
-import Card from '@/components/Card'
+import Component from '@/components/utilitified_decorations/Panel'
 import LinkBtn from '@/components/LinkBtn'
 import Link from '@/components/Link'
 import type { PanelEvents } from '@/types/eventTypes'
 import Button from '@/components/Button'
 
-const ProfileCard: React.FC<PanelEvents> = ({onActionClick}) => {
+const ProfileCard: React.FC<PanelEvents> = ({ onActionClick }) => {
   return (
     <>
       <div className="flex items-start space-x-4">
         <div className="relative">
-          <img 
+          <img
             src="https://dummyimage.com/80x80/4A5568/ffffff?text=User"
             alt="Ahmetson"
             className="w-20 h-20 rounded-full"
@@ -20,23 +20,23 @@ const ProfileCard: React.FC<PanelEvents> = ({onActionClick}) => {
             ✓
           </div>
         </div>
-        
+
         <div className="flex-1">
           <div className="bg-gray-200 rounded px-3 py-2 mb-2">
             <h2 className="text-xl font-semibold text-gray-800">Ahmetson</h2>
           </div>
-          
+
           <p className="text-gray-600 text-sm mb-2">Full Stack Developer & Open Source Enthusiast</p>
           <p className="text-gray-500 text-xs mb-4">San Francisco, CA</p>
-          
+
           <div className="flex items-center space-x-4 text-xs text-gray-500 mb-4">
             <span>Github since 2018, CascadeFund member since January 2022</span>
           </div>
-          
+
           <p className="text-sm text-gray-700 mb-4">
             Passionate about building scalable web applications and contributing to open source projects. Specialized in JavaScript ecosystems and distributed systems. Always looking for challenging problems to solve and new technologies to explore.
           </p>
-          
+
           <div className="flex items-center space-x-4 text-sm text-gray-500 mb-4">
             <div className="flex items-center space-x-1">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -45,13 +45,13 @@ const ProfileCard: React.FC<PanelEvents> = ({onActionClick}) => {
               <span>linkedin.com/in/ahmetson</span>
             </div>
           </div>
-          
+
           <div className="flex items-center space-x-2 mb-4">
             <input type="checkbox" id="financial-status" className="rounded" />
             <label htmlFor="financial-status" className="text-sm text-gray-600">Public Financial Status</label>
           </div>
         </div>
-        
+
         <div className="text-right">
           <div className="mb-2">
             <span className="text-sm text-gray-500">Rating:</span>
@@ -60,7 +60,7 @@ const ProfileCard: React.FC<PanelEvents> = ({onActionClick}) => {
               <span className="text-green-500 text-xs">+24</span>
             </div>
           </div>
-          
+
           <div className="mb-4">
             <span className="text-xs text-gray-500">Voting Power</span>
             <div className="flex items-center space-x-1">
@@ -68,11 +68,11 @@ const ProfileCard: React.FC<PanelEvents> = ({onActionClick}) => {
               <span className="text-sm">23</span>
             </div>
           </div>
-          
+
           <Button variant="blue" onClick={onActionClick} >Save Changes</Button>
         </div>
       </div>
-    <div className="mt-4 pt-4 border-t">
+      <div className="mt-4 pt-4 border-t">
         <LinkBtn variant="orange" label="Log out" href="/" />
         <Link className="ml-4 text-sm text-blue-600 cursor-pointer" href='/data/projects'>
           View All Projects

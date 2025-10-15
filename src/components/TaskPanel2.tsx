@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from './Card'
+import Component from './utilitified_decorations/Panel'
 import TaskItem from './TaskItem'
 import StarRating from './StarRating'
 
@@ -43,7 +43,7 @@ const TaskSection: React.FC = () => {
   ]
 
   return (
-    <Card>
+    <Component>
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
           <h2 className="text-lg font-semibold">My Cascading Tasks</h2>
@@ -55,19 +55,19 @@ const TaskSection: React.FC = () => {
           <span className="text-sm font-medium">6/10</span>
         </div>
       </div>
-      
+
       <div className="mb-4">
         <div className="text-sm text-gray-600">
           Points left to reach next star: <span className="font-semibold text-cascade-blue">650</span>
         </div>
       </div>
-      
+
       <div className="mb-4">
         <p className="text-sm text-gray-600">
           Complete the tasks below, to improve the rating, here are the quests for today:
         </p>
       </div>
-      
+
       <div className="space-y-2">
         {tasks.map((task) => (
           <TaskItem
@@ -79,7 +79,7 @@ const TaskSection: React.FC = () => {
           />
         ))}
       </div>
-    </Card>
+    </Component>
   )
 }
 

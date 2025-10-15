@@ -1,6 +1,6 @@
 ---
 import V2Layout from "@/layouts/PanelViewLayout.astro";
-import { LandingRightMenu } from "@/components/utilitified_decorations/LandingNavbar.astro";
+import { ItemName } from "@/components/utilitified_decorations/LandingNavbar.astro";
 
 import Loading from "@/components/utilitified_decorations/LoadingPanel";
 
@@ -12,10 +12,6 @@ const sectionInfo = {
 };
 ---
 
-<V2Layout
-  landingPageTopMenu={true}
-  hideLinks={LandingRightMenu}
-  subtitle="Wait a bit please..."
->
+<V2Layout hideLinks={Object.values(ItemName)} subtitle="Wait a bit please...">
   <Loading slot="center" client:load {...sectionInfo} />
 </V2Layout>

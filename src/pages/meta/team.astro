@@ -1,7 +1,7 @@
 ---
 import V2Layout from "@/layouts/LandingLayout.astro";
-import TeamCard, {
-  type TeamCardProps,
+import TeamPanel, {
+  type Props as TeamPanelProps,
 } from "@/components/profile/ProfileInfoPanel2";
 import HeroSection from "@/components/grid/HeroSection.astro";
 import HorizontalPanelsSection from "@/components/grid/HorizontalPanelsSection.astro";
@@ -9,7 +9,7 @@ import { SectionBgType, type SectionProps } from "@/types/eventTypes";
 import LeftImageRightPanelsSection from "@/components/grid/LeftImageRightPanelsSection.astro";
 import ThreeColumnGrid from "@/components/grid/ThreeColumnGrid.astro";
 import Section from "@/components/grid/Section.astro";
-import Card from "@/components/utilitified_decorations/PagelikeCard";
+import Panel from "@/components/utilitified_decorations/PagePanel";
 
 const teamGlanceProps: SectionProps = {
   title: "First, Meet the Team at a Glance",
@@ -19,7 +19,7 @@ const teamGlanceProps: SectionProps = {
   },
 };
 
-const teamMembers: TeamCardProps[] = [
+const teamMembers: TeamPanelProps[] = [
   {
     name: "Medet Ahmetson",
     description:
@@ -45,7 +45,7 @@ const teamMembers: TeamCardProps[] = [
 ];
 ---
 
-<V2Layout landingPageTopMenu={true} subtitle="Team, our story and goals">
+<V2Layout subtitle="Team, our story and goals">
   <HeroSection title={"Meet the Team it's story and why CascadeFund?"}>
     <p class="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
       CascadeFund is built by two people who care about open source. No company
@@ -57,7 +57,7 @@ const teamMembers: TeamCardProps[] = [
     bg={teamGlanceProps.bg}
     cols={2}
   >
-    {teamMembers.map((member) => <TeamCard {...member} slot="grid" />)}
+    {teamMembers.map((member) => <TeamPanel {...member} slot="grid" />)}
   </HorizontalPanelsSection>
   <LeftImageRightPanelsSection
     title="Medet Ahmetson"
@@ -126,7 +126,7 @@ const teamMembers: TeamCardProps[] = [
     </p>
   </LeftImageRightPanelsSection>
   <ThreeColumnGrid>
-    <Card
+    <Panel
       slot="center"
       title="What we believe"
       className="text-cascade-purple text-center"
@@ -140,7 +140,7 @@ const teamMembers: TeamCardProps[] = [
         <li>"Transparency and honesty are the foundation.",</li>
         <li>"CascadeFund was built because we needed it ourselves."</li>
       </ul>
-    </Card>
+    </Panel>
   </ThreeColumnGrid>
   <Section
     title="Ready to Join the CascadeFund Ecosystem?"

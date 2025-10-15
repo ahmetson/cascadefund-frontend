@@ -1,43 +1,43 @@
 import React from 'react'
 import Button from '@/components/Button'
 import Badge from '@/components/Badge'
-import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Card from '@/components/utilitified_decorations/PagePanel'
 import IssueCard from '@/components/issue/IssueLinkPanel3'
 import Link from '@/components/Link'
 
 const IssuesSection: React.FC = () => {
   return (
     <Card title="Issues" rightHeader={<div className="flex items-center space-x-2">
-              <span className="text-sm text-gray-600">Last version / Total releases</span>
-              <span className="text-sm font-medium">v1.0 / 23 tags</span>
-              <Badge variant="success">avg: 5 day for release</Badge>
-            </div>
+      <span className="text-sm text-gray-600">Last version / Total releases</span>
+      <span className="text-sm font-medium">v1.0 / 23 tags</span>
+      <Badge variant="success">avg: 5 day for release</Badge>
+    </div>
     }>
       <div className="p-6 border-b border-gray-200">
-          <div className="flex items-center space-x-4">
-            <div className="text-sm text-gray-600">
-              <span className="text-red-600 font-medium">8 open</span> / 23 closed
-            </div>
-            <div className="text-sm text-gray-600">avg: 1 day for reply</div>
+        <div className="flex items-center space-x-4">
+          <div className="text-sm text-gray-600">
+            <span className="text-red-600 font-medium">8 open</span> / 23 closed
           </div>
-        
+          <div className="text-sm text-gray-600">avg: 1 day for reply</div>
+        </div>
+
         <div className="flex items-center space-x-4 mb-4 w-full">
-            <Link href="/maintainer/work" className="text-blue-600 hover:underline">
+          <Link href="/maintainer/work" className="text-blue-600 hover:underline">
             <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>Issues and roadmap</Link>
 
-            <Link href="/influencer/project" className="text-blue-600 hover:underline">
+          <Link href="/influencer/project" className="text-blue-600 hover:underline">
             <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>Become an Influencer</Link>
         </div>
       </div>
-      
+
       <div className="p-6">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-6 space-y-4 lg:space-y-0">
           <h3 className="text-lg font-medium text-gray-900">All Issues</h3>
-          
+
           <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
             <div className="flex flex-wrap gap-1">
               <Button variant="secondary" size="sm">All</Button>
@@ -49,7 +49,7 @@ const IssuesSection: React.FC = () => {
               <Button variant="primary" size="sm">Released</Button>
               <Button variant="secondary" size="sm">On Roadmap</Button>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
               <div className="flex items-center space-x-2">
                 <span className="text-sm text-gray-600">Sort by:</span>
@@ -57,7 +57,7 @@ const IssuesSection: React.FC = () => {
                   <option>Priority</option>
                 </select>
               </div>
-              
+
               <div className="relative">
                 <input
                   type="text"
@@ -71,7 +71,7 @@ const IssuesSection: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <IssueCard
             title="Fix responsive layout on tablet devices"
@@ -83,7 +83,7 @@ const IssuesSection: React.FC = () => {
             type="bug"
             priority="high"
           />
-          
+
           <IssueCard
             title="Data export feature crashes with large datasets"
             author=""

@@ -14,10 +14,12 @@ export enum ItemName {
 interface Props {
   active?: ItemName;
   hideLinks?: ItemName[];
-  additional?: React.ReactNode[];
+  tabIndex?: any;
+  className?: string;
+  vertical?: boolean;
 }
 
-const { additional, active, hideLinks } = Astro.props;
+const { tabIndex, className, active, hideLinks, vertical } = Astro.props;
 
 const isItemShown = (itemName: ItemName): boolean => {
   const hidden =
@@ -28,15 +30,9 @@ const isItemShown = (itemName: ItemName): boolean => {
 ---
 
 <nav
-  class={`hidden md:flex items-center justify-center w-full text-sm center h-14 space-x-${GridStyle.content.gap!.x} `}
+  tabindex={tabIndex}
+  class={`flex ${vertical ? " flex-col " : ` items-center justify-between w-full text-sm center h-14 px-${GridStyle.content.gap!.x}`} ${className || ""}`}
 >
-  {additional && additional.map((el) => el)}
-  {
-    isItemShown(ItemName.MaintainerLanding) && (
-      <Link href="/">For Maintainers</Link>
-    )
-  }
-
   {
     isItemShown(ItemName.ContributorLanding) && (
       <Tooltip
@@ -58,7 +54,7 @@ const isItemShown = (itemName: ItemName): boolean => {
         client:load
       >
         <div class="flex items-center w-full">
-          <Link href="/meta/contributor">"Maybe" a donator?</Link>
+          <Link href="/meta/influencer">"Maybe" a donator?</Link>
         </div>
       </Tooltip>
     )

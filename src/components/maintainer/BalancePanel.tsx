@@ -1,12 +1,12 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Card from '@/components/utilitified_decorations/PagePanel'
 import Button from '@/components/Button'
 
 const BalanceCard: React.FC = () => {
   return (
     <Card title="Balance" rightHeader={<><span className="text-sm text-gray-500">Updated 2 min ago</span>
       <Button variant="secondary" size="sm">Refresh Data</Button></>}>
-      
+
       <div className="mb-6">
         <h3 className="text-sm font-medium text-gray-700 mb-2">Withdrawing Wallet Address</h3>
         <div className="flex items-center justify-between">
@@ -16,7 +16,7 @@ const BalanceCard: React.FC = () => {
           <Button size="sm">Save</Button>
         </div>
       </div>
-      
+
       <div className="mb-6">
         <p className="text-sm text-gray-600 mb-2">Learn more about wallet addresses</p>
         <ul className="text-sm text-gray-600 space-y-1">
@@ -30,7 +30,7 @@ const BalanceCard: React.FC = () => {
           </li>
         </ul>
       </div>
-      
+
       <div className="border-t border-gray-200 pt-6">
         <div className="flex items-center justify-between">
           <div>

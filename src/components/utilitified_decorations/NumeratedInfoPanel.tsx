@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/Card'
+import Component from '@/components/utilitified_decorations/Panel'
 
 export type NumeratedInfoProps = {
   number: number
@@ -63,18 +63,18 @@ const StoryStep: React.FC<NumeratedInfoProps> = ({ number, title, description, i
         </svg>
       )
     }
-    
+
     return iconMap[iconName] || iconMap['code']
   }
-  
+
   return (
-    <Card className="flex items-start space-x-4 p-4">
+    <Component className="flex items-start space-x-4 p-4">
       <div className="flex-shrink-0">
         <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
           <span className="text-blue-600 font-bold text-sm">{number}</span>
         </div>
       </div>
-      
+
       <div className="flex-1 min-w-0">
         <div className="flex items-center space-x-3 mb-2">
           <div className="text-blue-600">
@@ -88,7 +88,7 @@ const StoryStep: React.FC<NumeratedInfoProps> = ({ number, title, description, i
           {description}
         </p>
       </div>
-    </Card>
+    </Component>
   )
 }
 

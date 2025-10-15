@@ -3,7 +3,7 @@ import V2Layout from "@/layouts/LandingLayout.astro";
 import HeroSection from '@/components/grid/HeroSection.astro'
 import QuestTable from '@/components/QuestTable'
 import RowGrid from "@/components/grid/RowGrid";
-import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Panel from '@/components/utilitified_decorations/PagePanel'
 import { getIcon } from "@/components/icon";
 import ReactComponentImporter from "@/components/grid/ReactComponentImporter";
 import TaskPanel from "@/components/TaskPanel";
@@ -22,14 +22,14 @@ const quests = [{
 }]
 
 ---
-<V2Layout landingPageTopMenu={true} subtitle="Quest Tasks and their affects">
+<V2Layout subtitle="Quest Tasks and their affects">
   <HeroSection 
     title={"CascadeFund – Quest Task List"}
     subtitle="CascadeFund is a quest based social network for the open-source communities. We as CascadeFund prioritize the transparency. Every quest (task) is public, trackable — so maintainers, contributors and influencers could verify and check how the rating of the project was presented."
   >
   <RowGrid cols={3}>
     {quests.map((quest) => 
-      <Card title={quest.title} className="bg-white bg-opacity-10 text-gray-900 rounded-lg p-6 shadow-sm border border-gray-200 relative"
+      <Panel title={quest.title} className="bg-white bg-opacity-10 text-gray-900 rounded-lg p-6 shadow-sm border border-gray-200 relative"
         actions={[
           {variant: quest.buttonVariant, children: quest.buttonText}
         ]}
@@ -38,7 +38,7 @@ const quests = [{
           <ReactComponentImporter element={getIcon(quest.title)}) />
         </div>
         <p class="text-gray-600 text-sm mb-6">{quest.description}</p>
-      </Card>
+      </Panel>
     )}
     <TaskPanel
           title="Tasks in CascadeFund"

@@ -6,13 +6,10 @@ import Footer from "@/components/utilitified_decorations/Footer.astro";
 
 interface Props {
   subtitle?: string;
-  landingPageTopMenu?: boolean;
-  additional?: any[];
-
   active?: string;
   hideLinks?: string[];
 }
-const { landingPageTopMenu, subtitle, additional, hideLinks } = Astro.props;
+const { subtitle, hideLinks } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,34 +20,32 @@ const { landingPageTopMenu, subtitle, additional, hideLinks } = Astro.props;
     <link rel="icon" type="image/png" href="/cascadefund_logo.png" />
     <meta name="generator" content={Astro.generator} />
     <title>CascadeFund</title>
+    <style is:global>
+      @import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+    </style>
     <ClientRouter />
   </head>
-  <body class="min-h-screen bg-gray-200 pt-14"></body><Header
-    landingPageTopMenu={landingPageTopMenu}
-    subtitle={subtitle}
-    additional={additional}
-    hideLinks={hideLinks}
-  />
-  <section>
-    <slot name="hero" />
-  </section>
-  <main
-    class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-4"
-  >
-    <div class="col-span-1 space-y-4 mr-2">
-      <slot name="left" />
-    </div>
+  <body class="min-h-screen bg-gray-200 pt-14">
+    <Header subtitle={subtitle} hideLinks={hideLinks}>
+      <slot name="header-navbar" />
+    </Header>
+    <section>
+      <slot name="hero" />
+    </section>
+    <main
+      class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-4"
+    >
+      <div class="col-span-1 space-y-4 mr-2">
+        <slot name="left" />
+      </div>
 
-    <div class="lg:col-span-2 space-y-4 mx-2">
-      <slot name="center" />
-    </div>
-    <div class="lg:col-span-1 space-y-8 py-8 pt-0 ml-2">
-      <slot name="right" />
-    </div>
-  </main>
-  <Footer />
+      <div class="lg:col-span-2 space-y-4 mx-2">
+        <slot name="center" />
+      </div>
+      <div class="lg:col-span-1 space-y-8 py-8 pt-0 ml-2">
+        <slot name="right" />
+      </div>
+    </main>
+    <Footer />
+  </body>
 </html>
-
-<style is:global>
-  @import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-</style>

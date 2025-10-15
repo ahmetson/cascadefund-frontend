@@ -1,20 +1,20 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Card from '@/components/utilitified_decorations/PagePanel'
 import Button from '@/components/Button'
 
 const CascadingBalance: React.FC = () => {
   return (
     <Card className="mb-6" title="Cascading Balance" rightHeader={<>
-    <p className="text-sm text-gray-600">Updated 2 min ago</p>
-        <Button variant="secondary" size="sm">
-          Refresh Data
-        </Button></>}>
+      <p className="text-sm text-gray-600">Updated 2 min ago</p>
+      <Button variant="secondary" size="sm">
+        Refresh Data
+      </Button></>}>
       <p className="text-sm text-gray-600 mb-4">
         Indirectly received funds from other projects. Withdraw, and transfer or use for yourself. Check out{' '}
         <a href="#" className="text-cascade-blue hover:underline">Work page</a>{' '}
         to improve the rating to have more funds.
       </p>
-      
+
       <div className="mb-6">
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Withdrawing Wallet Address
@@ -31,7 +31,7 @@ const CascadingBalance: React.FC = () => {
           </Button>
         </div>
       </div>
-      
+
       <div className="mb-4">
         <p className="text-sm text-gray-600 mb-2">Learn more about wallet addresses</p>
         <ul className="text-sm text-gray-600 space-y-1">
@@ -39,7 +39,7 @@ const CascadingBalance: React.FC = () => {
           <li>• Learn how to turn into fiat currency</li>
         </ul>
       </div>
-      
+
       <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
         <div>
           <span className="text-sm text-gray-600">Balance (USDC)</span>

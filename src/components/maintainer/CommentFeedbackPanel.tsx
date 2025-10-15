@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Card from '@/components/utilitified_decorations/PagePanel'
 
 interface KeywordTagProps {
   text: string
@@ -32,7 +32,7 @@ const SuggestionItem: React.FC<SuggestionItemProps> = ({ number, text }) => {
 const CommentFeedback: React.FC = () => {
   return (
     <Card title="Comment & Feedback Summary">
-      
+
       <div className="mb-6">
         <div className="flex items-center space-x-2 mb-3">
           <span className="text-sm text-gray-600">✏️ Common Keywords How people find your project</span>
@@ -48,7 +48,7 @@ const CommentFeedback: React.FC = () => {
           <KeywordTag text="roadmap" />
         </div>
       </div>
-      
+
       <div>
         <h4 className="text-sm font-medium text-gray-700 mb-3">Top 3 suggestions:</h4>
         <SuggestionItem number={1} text="Better documentation for setup." />

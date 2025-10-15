@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Card from '@/components/utilitified_decorations/PagePanel'
 
 export interface InfoPanelProps {
   key?: number | string
@@ -12,11 +12,12 @@ export interface InfoPanelProps {
 
 const WorkflowCard: React.FC<InfoPanelProps> = ({ key, icon, title, description, iconBgColor, className }) => {
   return (
-    <Card key={key} className={'border-none shadow-none ' + className} title={
-      <div className={`inline-flex items-center justify-center w-full h-8 ${iconBgColor} rounded-lg`}>
-        {icon}
-        {title}
-      </div>}>
+    <Card key={key} className={'border-none shadow-none ' + className}
+      title={
+        <div className={`inline-flex items-center justify-center w-full h-8 ${iconBgColor} rounded-lg`}>
+          {icon}
+          {title}
+        </div>}>
       <p className="text-gray-600">{description}</p>
     </Card>
   )

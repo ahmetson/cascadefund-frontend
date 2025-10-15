@@ -6,7 +6,8 @@ import DynamicReactImporter from "./ReactComponentImporter";
 
 type Props = SectionProps;
 
-let { title, actions, bg, icon, subtitle, className } = Astro.props;
+let { title, titleClassName, actions, bg, icon, subtitle, className } =
+  Astro.props;
 if (bg === undefined) {
   bg = {
     sectionBgType: SectionBgType.infoSection,
@@ -39,7 +40,7 @@ const sectionClassName =
   (bg.overlay ? " relative overflow-hidden " : "");
 ---
 
-<section class={"py-20 " + sectionClassName}>
+<section class={"py-14 " + sectionClassName}>
   {
     bg.overlay === "circles" && (
       <div class="absolute inset-0 opacity-10 z-0">
@@ -72,7 +73,15 @@ const sectionClassName =
         </Icon>
       )
     }
-    {title && <h1 class="text-4xl md:text-5xl font-bold mb-6">{title}</h1>}
+    {
+      title && (
+        <h1
+          class={`text-4xl md:text-5xl font-bold mb-6 ${titleClassName || ""}`}
+        >
+          {title}
+        </h1>
+      )
+    }
     {subtitle && <p class="text-lg opacity-90 mb-6">{subtitle}</p>}
 
     <slot />

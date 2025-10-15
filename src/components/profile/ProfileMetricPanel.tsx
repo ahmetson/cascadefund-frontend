@@ -3,7 +3,7 @@ import type { TabProps } from '@/components/utilitified_decorations/Tabs'
 import WorkStylePanel from './WorkStylePanel'
 import ProjectTimeAllocation from './ProjectTimeAllocationPanel'
 import Tabs from '@/components/utilitified_decorations/Tabs'
-import Card from '@/components/Card'
+import Component from '@/components/utilitified_decorations/Panel'
 
 const Panel: React.FC = () => {
   const activeTabeKey = "workStyle";
@@ -19,12 +19,12 @@ const Panel: React.FC = () => {
       key: "projectTimeAllocation",
       content: <ProjectTimeAllocation />,
     }
-]
+  ]
 
   return (
-    <Card>
+    <Component>
       <Tabs tabs={tabs} activeTab={activeTabeKey} />
-    </Card>
+    </Component>
   )
 }
 

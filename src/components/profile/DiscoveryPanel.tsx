@@ -1,7 +1,7 @@
 import React from 'react'
 import type { TabProps } from '@/components/utilitified_decorations/Tabs'
 import Tabs from '@/components/utilitified_decorations/Tabs'
-import Card from '@/components/Card'
+import Component from '@/components/utilitified_decorations/Panel'
 import NetworkingPanel from './NetworkingPanel'
 
 const Panel: React.FC = () => {
@@ -18,12 +18,12 @@ const Panel: React.FC = () => {
       key: "similarProfiles",
       content: <NetworkingPanel />,
     }
-]
+  ]
 
   return (
-    <Card>
+    <Component>
       <Tabs tabs={tabs} activeTab={activeTabeKey} />
-    </Card>
+    </Component>
   )
 }
 

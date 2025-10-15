@@ -1,23 +1,15 @@
 ---
 import V2Layout from "@/layouts/PanelViewLayout.astro";
-import {
-        ItemName,
-        type Navigation,
-} from "@/components/utilitified_decorations/WorkNavbar.astro";
-import NavLabelElement from "@/components/utilitified_decorations/NavigatingItem";
-export const replacement: Navigation = {};
-replacement[ItemName.ProjectName] = await NavLabelElement({
-        children: "Add New Project",
-        active: true,
-});
+import { ItemName } from "@/components/utilitified_decorations/WorkNavbar.astro";
 
 import NewProjectIcon from "@/components/icon/NewProjectIcon";
-import AddRepositoryCard from "@/components/project/RepositoryForm";
+import ProjectPostFlow from "@/components/project/ProjectPostFlow";
 import NotificationBanner from "@/components/NotificationBanner";
-import InfoPanel from "@/components/project/RepositoryFormFeedbackPanel";
+import InfoPanel2 from "@/components/InfoPanel2.astro";
+import Link from "@/components/Link";
 ---
 
-<V2Layout activeLink={ItemName.ProjectName} replacement={replacement}>
+<V2Layout hideLinks={[ItemName.ProjectName]}>
         <NotificationBanner
                 slot="center"
                 icon={NewProjectIcon}
@@ -29,6 +21,39 @@ import InfoPanel from "@/components/project/RepositoryFormFeedbackPanel";
                         Adding the project is the first step in the CascadeFund.
                 </p>
         </NotificationBanner>
-        <AddRepositoryCard slot="center" />
-        <InfoPanel slot="right" />
+        <ProjectPostFlow slot="center" client:load />
+        <InfoPanel2
+                slot="right"
+                title="Different Git Hosting Server?"
+                icon="info"
+                actions={[
+                        {
+                                children: '"CascadeFund" Influencer',
+                                href: "/inlfuencer/project",
+                        },
+                ]}
+        >
+                <p>Other git hosting servers are on the roadmap.</p>
+                <p>
+                        Obtain Voting Power, upvote the
+                        <Link
+                                href="/data/issue"
+                                className="text-blue-600 hover:text-blue-800 underline"
+                                >"Multiple Git Hostings" issue</Link
+                        > and get rating.
+                </p>
+        </InfoPanel2>
+        <InfoPanel2 slot="right" title="Uses blockchain" icon="question">
+                <p>
+                        The 20% of all donations to your project will be
+                        distributed to the Libraries, packages in your projects
+                        via <Link
+                                asNewTab={true}
+                                href="https://www.hyperpayment.org/specification/opensource-hyperpayment-specification"
+                                className="text-blue-600 hover:text-blue-800 underline"
+                                >"Opensource Hyperpayment"</Link
+                        >technology. Hyperpayment implemented on the blockchain,
+                        which ensures ripple effect of the money.
+                </p>
+        </InfoPanel2>
 </V2Layout>

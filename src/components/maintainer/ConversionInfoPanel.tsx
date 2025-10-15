@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Card from '@/components/utilitified_decorations/PagePanel'
 
 const ConversionFunnel: React.FC = () => {
   return (
@@ -16,7 +16,7 @@ const ConversionFunnel: React.FC = () => {
           </svg>
         </div>
       </div>
-      
+
       <div className="grid grid-cols-2 gap-4 text-center">
         <div>
           <div className="text-sm text-gray-600 mb-1">Clicks</div>

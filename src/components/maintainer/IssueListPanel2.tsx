@@ -1,7 +1,7 @@
 import React from 'react'
 import FilterBar from '@/components/issue/IssueFilterBar'
 import IssueCard from '@/components/issue/IssuePanel'
-import Card from '@/components/Card';
+import Component from '@/components/utilitified_decorations/Panel';
 
 
 const ContentArea: React.FC = () => {
@@ -39,14 +39,14 @@ const ContentArea: React.FC = () => {
   ]
 
   return (
-      <Card className="max-w-6xl mx-auto">
-        <FilterBar />
-        <div className="grid gap-6 mt-6">
-          {issues.map(issue => (
-            <IssueCard key={issue.id} issue={issue} />
-          ))}
-        </div>
-      </Card>
+    <Component className="max-w-6xl mx-auto">
+      <FilterBar />
+      <div className="grid gap-6 mt-6">
+        {issues.map(issue => (
+          <IssueCard key={issue.id} issue={issue} />
+        ))}
+      </div>
+    </Component>
   )
 }
 

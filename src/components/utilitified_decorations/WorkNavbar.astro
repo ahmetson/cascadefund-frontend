@@ -1,20 +1,21 @@
 ---
 import Badge from "@/components/Badge";
-import NavLabelElement from "./NavigatingItem";
+import C from "./NavigatingItem";
 
 export enum ItemName {
-  ProjectName = "ProjectName",
   ProjectList = "ProjectList",
+  ProjectName = "ProjectName",
 }
-export type Navigation = { [key in ItemName]?: React.ReactNode };
 
 interface Props {
+  tabIndex?: any;
   active?: ItemName;
   hideLinks?: ItemName[];
-  additional?: React.ReactNode[];
+  className?: string;
+  vertical?: boolean;
 }
 
-const { additional, active, hideLinks } = Astro.props;
+const { tabIndex, vertical, active, hideLinks, className } = Astro.props;
 
 const isItemShown = (item: ItemName): boolean => {
   return (
@@ -24,29 +25,30 @@ const isItemShown = (item: ItemName): boolean => {
 };
 ---
 
-<nav class="hidden md:flex items-center space-x-6 h-14">
-  {additional && additional.map((el) => el)}
-  {
-    isItemShown(ItemName.ProjectName) && (
-      <NavLabelElement
-        href="/data/project"
-        active={active === ItemName.ProjectName}
-      >
-        Reflect
-      </NavLabelElement>
-    )
-  }
-
-  {
-    isItemShown(ItemName.ProjectList) && (
-      <NavLabelElement
-        href="/data/projects"
-        active={active === ItemName.ProjectList}
-      >
-        Projects
-        <Badge variant="blue">2</Badge>
-        <Badge variant="red">2</Badge>
-      </NavLabelElement>
-    )
-  }
+<nav class={`w-full ${className || ""}`} tabindex={tabIndex}>
+  <slot />
+  <div class={vertical ? "text-sm" : "breadcrumbs text-sm"}>
+    <ul class={vertical ? "flex flex-col" : "w-full justify-center"}>
+      {
+        isItemShown(ItemName.ProjectList) && (
+          <li>
+            <C href="/data/projects" active={active === ItemName.ProjectList}>
+              Projects
+              <Badge variant="blue">2</Badge>
+              <Badge variant="red">2</Badge>
+            </C>
+          </li>
+        )
+      }
+      {
+        isItemShown(ItemName.ProjectName) && (
+          <li>
+            <C href="/data/project" active={active === ItemName.ProjectName}>
+              Reflect
+            </C>
+          </li>
+        )
+      }
+    </ul>
+  </div>
 </nav>

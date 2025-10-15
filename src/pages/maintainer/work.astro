@@ -11,7 +11,7 @@ import IssuesSection from "@/components/maintainer/IssueListPanel";
 import RoadmapSection from "@/components/maintainer/RoadmapPanel";
 ---
 
-<V2Layout landingPageTopMenu={false} activeLink={ItemName.ProjectName}>
+<V2Layout active={ItemName.ProjectName}>
   <Panel activeMenuItem="work" slot="left" />
   <TasksSection slot="center" />
   <TaskNotice slot="right" />

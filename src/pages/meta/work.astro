@@ -8,12 +8,12 @@ import ThreeColumnGrid from "@/components/grid/ThreeColumnGrid.astro";
 import RowGrid from "@/components/grid/RowGrid";
 import UserIcon from "@/components/icon/UserIcon";
 import { SectionBgType } from "@/types/eventTypes";
-import { type RoleCardProps } from "@/components/RoleCard";
+import { type RoleCardProps as RolePanelProps } from "@/components/RoleCard";
 import type { NumeratedInfoProps } from "@/components/utilitified_decorations/NumeratedInfoPanel";
 import Section from "@/components/grid/Section.astro";
 import NumeratedInfo from "@/components/utilitified_decorations/NumeratedInfoPanel";
 import TwoColumnGrid from "@/components/grid/TwoColumnGrid.astro";
-import Card from "@/components/utilitified_decorations/PagelikeCard";
+import Panel from "@/components/utilitified_decorations/PagePanel";
 import PlayIcon from "@/components/icon/PlayIcon";
 
 const heroSection = {
@@ -24,7 +24,7 @@ const heroSection = {
   },
 };
 
-const castMembers: RoleCardProps[] = [
+const castMembers: RolePanelProps[] = [
   {
     roleCard: true,
     id: "1",
@@ -195,11 +195,7 @@ const scenarios: Scenario[] = [
 ];
 ---
 
-<V2Layout
-  landingPageTopMenu={true}
-  activeLink={ItemName.HowItWork}
-  subtitle="How does CascadeFund work?"
->
+<V2Layout active={ItemName.HowItWork} subtitle="How does CascadeFund work?">
   <HeroSection {...heroSection}>
     A story of Maintainers, Contributors, and Influencers working together.
     <div class="mb-12">
@@ -254,7 +250,7 @@ const scenarios: Scenario[] = [
     bg={{ sectionBgType: SectionBgType.infoSection, overlay: "rectangles" }}
   >
     <ThreeColumnGrid centerPercents={"1/3"} centerClassName="flex">
-      <Card
+      <Panel
         slot="left"
         title={scenarios[0].title}
         key={scenarios[0].id}
@@ -282,8 +278,8 @@ const scenarios: Scenario[] = [
             ))
           }
         </div>
-      </Card>
-      <Card
+      </Panel>
+      <Panel
         slot="right"
         title={scenarios[1].title}
         key={scenarios[1].id}
@@ -311,7 +307,7 @@ const scenarios: Scenario[] = [
             ))
           }
         </div>
-      </Card>
+      </Panel>
       <h1 class="text-center text-xl m-auto" slot="center">
         When Maintainer Can't Do It All
       </h1>
@@ -323,26 +319,26 @@ const scenarios: Scenario[] = [
   >
     <TwoColumnGrid firstPercents={50}>
       <div class="space-y-2" slot="two-column-left">
-        <Card title="Voting Power" className="p-6">
+        <Panel title="Voting Power" className="p-6">
           <p class="text-gray-600">
             The more impact a contributor makes, the more voting power they earn
             to influence project decisions.
           </p>
-        </Card>
+        </Panel>
 
-        <Card title="Quest Completion" className="p-6">
+        <Panel title="Quest Completion" className="p-6">
           <p class="text-gray-600">
             Users earn reputation and voting power by completing quests and
             contributing meaningfully to projects.
           </p>
-        </Card>
+        </Panel>
 
-        <Card title="Transparency" className="p-6">
+        <Panel title="Transparency" className="p-6">
           <p class="text-gray-600">
             All ratings and contributions are visible to the community to ensure
             fairness and accountability.
           </p>
-        </Card>
+        </Panel>
       </div>
       <div class="flex justify-center h-full" slot="two-column-right">
         <div class="relative m-auto">

@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/Card'
+import Component from '@/components/utilitified_decorations/Panel'
 
 interface Issue {
   id: string
@@ -34,12 +34,11 @@ const IssueCard: React.FC<IssueCardProps> = ({ issue, isSelected, onSelect }) =>
   }
 
   return (
-    <Card 
-      className={`border rounded-lg p-4 cursor-pointer transition-colors ${
-        isSelected 
-          ? 'border-blue-500 bg-blue-50' 
-          : 'border-gray-200 hover:border-gray-300'
-      }`}
+    <Component
+      className={`border rounded-lg p-4 cursor-pointer transition-colors ${isSelected
+        ? 'border-blue-500 bg-blue-50'
+        : 'border-gray-200 hover:border-gray-300'
+        }`}
       onClick={onSelect}
     >
       <div className="flex items-start">
@@ -68,7 +67,7 @@ const IssueCard: React.FC<IssueCardProps> = ({ issue, isSelected, onSelect }) =>
           </p>
         </div>
       </div>
-    </Card>
+    </Component>
   )
 }
 

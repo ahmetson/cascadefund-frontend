@@ -15,7 +15,7 @@ const Component: React.FC<Props> = ({ children, content }) => {
   return (
     <TooltipProvider openDelay={50}>
       <Tooltip>
-        <TooltipTrigger className={`px-${GridStyle.content.gap!.x}`}>
+        <TooltipTrigger className={``}>
           {children}
         </TooltipTrigger>
         <TooltipContent className="bg-teal-900 text-blue-100 border-color-teal-900">

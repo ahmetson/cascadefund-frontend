@@ -10,7 +10,7 @@ import EnergyIcon2 from "@/components/icon/EnergyIcon2";
 import DevIcon from "@/components/icon/DevIcon";
 import PersonIcon from "@/components/icon/PersonIcon";
 import HorizontalSection from "@/components/grid/HorizontalPanelsSection.astro";
-import Card from "@/components/Card";
+import Component from "@/components/utilitified_decorations/Panel";
 
 const heroSection = {
   title:
@@ -172,8 +172,7 @@ const projectStats = [
 ---
 
 <V2Layout
-  landingPageTopMenu={true}
-  activeLink={ItemName.InfluencerLanding}
+  active={ItemName.InfluencerLanding}
   subtitle="For open source users (a.k.a influencers)"
 >
   <HeroSection {...heroSection} />
@@ -286,7 +285,7 @@ const projectStats = [
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {
           projectStats.map((stat, index) => (
-            <Card key={index} className="text-center">
+            <Component key={index} className="text-center">
               <div class="mb-4 round-lg border-round-lg bg-green-50">
                 <div class="text-3xl font-bold text-cascade-blue mb-1">
                   {stat.number}
@@ -299,7 +298,7 @@ const projectStats = [
               <p class="text-sm text-gray-600 leading-relaxed">
                 {stat.description}
               </p>
-            </Card>
+            </Component>
           ))
         }
       </div>

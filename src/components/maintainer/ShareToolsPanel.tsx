@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Card from '@/components/utilitified_decorations/PagePanel'
 
 interface ShareToolCardProps {
   icon: string
@@ -9,12 +9,12 @@ interface ShareToolCardProps {
   buttonText?: string
 }
 
-const ShareToolCard: React.FC<ShareToolCardProps> = ({ 
-  icon, 
-  title, 
-  description, 
-  link, 
-  buttonText 
+const ShareToolCard: React.FC<ShareToolCardProps> = ({
+  icon,
+  title,
+  description,
+  link,
+  buttonText
 }) => {
   return (
     <div className="bg-white p-4 rounded-lg border border-gray-200 mb-4">
@@ -49,14 +49,14 @@ const ShareTools: React.FC = () => {
         title="Goal: Onboard Users & Contributors"
         description="This marketing tool is not only about when people know about it. The link to your page reviews, tell to people about your project, and configuration goes on the CascadeFund."
       />
-      
+
       <ShareToolCard
         icon="📋"
         title="GitHub Issue for Users"
         description="The 'Issues and support moved to CascadeFund' Description: Hey, my time is scarce, for providing the best support, I moved to CascadeFund where I will help them. Sign up."
         buttonText="📋"
       />
-      
+
       <ShareToolCard
         icon="📄"
         title="Share Button for README"
@@ -64,14 +64,14 @@ const ShareTools: React.FC = () => {
         link="[CascadeFund](https://badge.cascad efund.io/project/)"
         buttonText="📋"
       />
-      
+
       <ShareToolCard
         icon="👥"
         title="Contributors Outreach Issue"
         description="Title: 'Contributors' On CascadeFund to help with this code base. Description: I need help with this code base. CascadeFund: I will help if code when you have questions or issues."
         buttonText="📋"
       />
-      
+
       <ShareToolCard
         icon="💰"
         title="Donation Link"

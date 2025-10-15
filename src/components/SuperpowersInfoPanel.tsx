@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '@/components/Button'
-import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Card from '@/components/utilitified_decorations/PagePanel'
 
 const SuperpowersCard: React.FC = () => {
   return (

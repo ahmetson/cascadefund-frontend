@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Card from '@/components/utilitified_decorations/PagePanel'
 import Button from '@/components/Button'
 import TransactionRow from './CTransactionRow'
 
@@ -98,25 +98,25 @@ const transactions: Transaction[] = [
 const TransactionHistory: React.FC = () => {
   return (
     <Card title="Transaction History">
-        <table className="w-full">
-          <thead>
-            <tr className="border-b border-gray-200">
-              <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Date</th>
-              <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Sender</th>
-              <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Receiver</th>
-              <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Amount</th>
-              <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Transaction ID</th>
-              <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Your Position</th>
-              <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Cascade Steps</th>
-            </tr>
-          </thead>
-          <tbody>
-            {transactions.map((transaction) => (
-              <TransactionRow key={transaction.id} transaction={transaction} />
-            ))}
-          </tbody>
-        </table>
-      
+      <table className="w-full">
+        <thead>
+          <tr className="border-b border-gray-200">
+            <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Date</th>
+            <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Sender</th>
+            <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Receiver</th>
+            <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Amount</th>
+            <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Transaction ID</th>
+            <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Your Position</th>
+            <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Cascade Steps</th>
+          </tr>
+        </thead>
+        <tbody>
+          {transactions.map((transaction) => (
+            <TransactionRow key={transaction.id} transaction={transaction} />
+          ))}
+        </tbody>
+      </table>
+
       <div className="flex items-center justify-between mt-6 pt-4 border-t border-gray-200">
         <span className="text-sm text-gray-600">Showing 5 of 42 transactions</span>
         <div className="flex space-x-2">

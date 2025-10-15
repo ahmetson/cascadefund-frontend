@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Card from '@/components/utilitified_decorations/PagePanel'
 
 const TrafficSources: React.FC = () => {
   return (
@@ -7,7 +7,7 @@ const TrafficSources: React.FC = () => {
       <p className="text-sm text-gray-600 mb-6">
         Where clicks came from
       </p>
-      
+
       <div className="flex justify-center mb-6">
         <div className="w-48 h-48 relative">
           <svg viewBox="0 0 200 200" className="w-full h-full">
@@ -18,7 +18,7 @@ const TrafficSources: React.FC = () => {
           </svg>
         </div>
       </div>
-      
+
       <div className="space-y-2">
         <div className="flex items-center space-x-2">
           <div className="w-3 h-3 bg-blue-500 rounded-full"></div>

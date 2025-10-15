@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/Card'
+import Component from '@/components/utilitified_decorations/Panel'
 
 interface StatsCardProps {
   title: string
@@ -9,11 +9,11 @@ interface StatsCardProps {
 
 const StatsCard: React.FC<StatsCardProps> = ({ title, value, subtitle }) => {
   return (
-    <Card className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <Component className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
       <h3 className="text-sm font-medium text-gray-700 mb-2">{title}</h3>
       <div className="text-2xl font-bold text-gray-900 mb-1">{value}</div>
       {subtitle && <div className="text-sm text-gray-500">{subtitle}</div>}
-    </Card>
+    </Component>
   )
 }
 

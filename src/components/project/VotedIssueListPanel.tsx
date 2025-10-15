@@ -1,6 +1,6 @@
 import React from 'react'
 import AllocationItem from './VotedIssueElement'
-import Card from '@/components/utilitified_decorations/PagelikeCard'
+import Card from '@/components/utilitified_decorations/PagePanel'
 
 interface Allocation {
   name: string
@@ -22,29 +22,29 @@ const VotesCard: React.FC = () => {
   return (
     <Card title={
       <div className="w-full h-8 flex items-center">
-          <svg className="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-          </svg>
-          Votes Confirmed
-        </div>
+        <svg className="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+        </svg>
+        Votes Confirmed
+      </div>
     } actions={[{
       variant: 'blue',
       href: '/influencer/history',
       children: 'View Transaction History'
     }]}>
-        <p className="text-gray-600 mb-2">Thank you for participating in the project development.</p>
-        <p className="text-gray-600">Your votes have been successfully recorded.</p>
+      <p className="text-gray-600 mb-2">Thank you for participating in the project development.</p>
+      <p className="text-gray-600">Your votes have been successfully recorded.</p>
 
       <Card title={"Allocation"} >
-          {allocations.map((allocation, index) => (
-            <AllocationItem
-              key={index}
-              name={allocation.name}
-              votes={allocation.votes}
-              link={allocation.link}
-            />
-          ))}
-        
+        {allocations.map((allocation, index) => (
+          <AllocationItem
+            key={index}
+            name={allocation.name}
+            votes={allocation.votes}
+            link={allocation.link}
+          />
+        ))}
+
         <div className="border-t border-gray-200 mt-4 pt-4">
           <div className="flex justify-between items-center">
             <span className="font-medium text-gray-700">Total:</span>

@@ -1,19 +1,20 @@
 ---
 import V2Layout from "@/layouts/LandingLayout.astro";
-import { SignedRightMenuExceptAvatar } from "@/components/utilitified_decorations/LandingNavbar.astro";
+import { ItemName } from "@/components/utilitified_decorations/LandingNavbar.astro";
 
 import HorizontalPanelsSection from "@/components/grid/HorizontalPanelsSection.astro";
 import MaintainerIcon from "@/components/icon/MaintainerIcon";
 import ContributorIcon from "@/components/icon/ContributorIcon";
 import InfluencerIcon from "@/components/icon/InfluencerIcon";
 import type { RoleCardProps } from "@/components/RoleCard";
+import { SectionBgType } from "@/types/eventTypes";
 
 const roles: RoleCardProps[] = [
   {
     roleCard: true,
     id: "maintainer",
     title: "Maintainer",
-    description: "You maintain a project?\nAdd your project by Repo.",
+    description: "You maintain a project?\nAdd your project.",
     buttonText: "Add Project",
     buttonVariant: "primary" as const,
     href: "/data/project/post",
@@ -29,7 +30,7 @@ const roles: RoleCardProps[] = [
     id: "contributor",
     title: "Contributor",
     href: "/data/projects",
-    description: "You want to contribute to a project?\nDiscover the projects",
+    description: "Discover projects and earn rating",
     buttonText: "All Projects",
     buttonVariant: "secondary" as const,
     helpLinkLabel: "Why to contribute projects on CascadeFund?",
@@ -44,7 +45,7 @@ const roles: RoleCardProps[] = [
     id: "influencer",
     title: "Influencer",
     href: "/data/projects",
-    description: "You want to help the project?\nDiscover the projects",
+    description: "Donate, obtain Voting Power and Connect",
     buttonText: "All Projects",
     buttonVariant: "secondary" as const,
     helpLinkLabel: "Why to donate on projects and be an influencer?",
@@ -57,15 +58,20 @@ const roles: RoleCardProps[] = [
 ];
 ---
 
-<V2Layout hideLinks={SignedRightMenuExceptAvatar} subtitle="Getting Started">
+<V2Layout hideLinks={Object.values(ItemName)} subtitle="Choose your role">
   <HorizontalPanelsSection
-    className=" bg-gray-200"
     title="Getting Started"
+    titleClassName="md:text-2xl font-normal -mt-6"
     cols={roles.length}
     panels={roles}
+    bg={{
+      overlay: "rectangles",
+      sectionBgType: SectionBgType.purpleToTealViaBlue,
+    }}
+    className="h-[90vh]"
   >
-    <p class="text-gray-600 text-center mb-4">
-      You just signed up. Let's choose the first action based on our role
+    <p slot="top" class="text-gray-200 text-center mb-4 -mt-4">
+      What role fits you the best?
     </p>
   </HorizontalPanelsSection>
 </V2Layout>

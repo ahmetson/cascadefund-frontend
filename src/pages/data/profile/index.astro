@@ -12,7 +12,6 @@ import { ActiveLoginNavItem } from "@/components/utilitified_decorations/LoginNa
 ---
 
 <V2Layout
-  landingPageTopMenu={false}
   active={ActiveLoginNavItem}
   hideLinks={[ItemName.ProjectName]}
   subtitle="Data Section: Profile"
@@ -23,5 +22,5 @@ import { ActiveLoginNavItem } from "@/components/utilitified_decorations/LoginNa
   <ProfileMetric slot="center" client:load />
 
   <RecentActivity slot="right" />
-  <Discovery slot="right" client:load />
+  <!-- <Discovery slot="right" client:load /> -->
 </V2Layout>
