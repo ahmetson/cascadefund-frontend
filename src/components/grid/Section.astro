@@ -68,9 +68,11 @@ const sectionClassName =
   >
     {
       icon && (
-        <Icon>
-          <DynamicReactImporter element={icon} />
-        </Icon>
+        <div class="mb-8">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-yellow-500 rounded-lg mb-6">
+            <DynamicReactImporter element={icon} />
+          </div>
+        </div>
       )
     }
     {
