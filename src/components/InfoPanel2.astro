@@ -1,0 +1,27 @@
+---
+import Panel from "@/components/utilitified_decorations/PagePanel";
+import type { ActionProps } from "@/types/eventTypes";
+
+interface Props {
+  title: string;
+  actions?: ActionProps[] | undefined;
+  icon?: string;
+}
+
+const { title, actions, icon } = Astro.props;
+if (actions !== undefined) {
+  actions.forEach((el, i) => {
+    el.variant = "gray";
+    actions[i] = el;
+  });
+}
+---
+
+<Panel
+  icon={icon}
+  title={title}
+  className="bg-cyan-50 border-cyan-100"
+  actions={actions}
+>
+  <slot />
+</Panel>
