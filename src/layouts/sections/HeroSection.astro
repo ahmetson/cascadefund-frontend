@@ -1,5 +1,5 @@
 ---
-import { type SectionProps, SectionBgType } from "@/types/eventTypes";
+import { type SectionProps, BgType } from "@/types/eventTypes";
 import Section from "./BaseSection.astro";
 
 type Props = SectionProps;
@@ -7,7 +7,7 @@ type Props = SectionProps;
 let { title, actions, bg, subtitle } = Astro.props;
 if (bg === undefined) {
   bg = {
-    sectionBgType: SectionBgType.heroSection,
+    sectionBgType: BgType.heroSection,
   };
 }
 ---

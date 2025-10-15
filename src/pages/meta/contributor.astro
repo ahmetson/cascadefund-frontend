@@ -8,7 +8,7 @@ import { ItemName } from "@/components/utilitified_decorations/LandingNavbar.ast
 import Button from "@/components/Button";
 import SectionScrollButton from "@/components/ScrollingToSectionButton";
 import HorizontalPanels from "@/components/grid/HorizontalPanelsSection.astro";
-import { SectionBgType } from "@/types/eventTypes";
+import { BgType } from "@/types/eventTypes";
 import NavigationIcon from "@/components/icon/NavigationIcon";
 import ChatIcon from "@/components/icon/ChatIcon";
 import PersonIcon from "@/components/icon/PersonIcon";
@@ -182,7 +182,7 @@ const projectStats = [
     cols={2}
     bottomPanel={howItWorksBottomPanel}
     panels={howItWorks}
-    bg={{ sectionBgType: SectionBgType.infoSection }}
+    bg={{ sectionBgType: BgType.infoSection }}
     title="How CascadeFund Works for Contributors"
   />
   <Section
@@ -200,7 +200,7 @@ const projectStats = [
     ]}
     icon={await DevIcon({})}
     title="The Contributor platform is still in development."
-    bg={{ sectionBgType: SectionBgType.normalSection, overlay: "rectangles" }}
+    bg={{ sectionBgType: BgType.normalSection, overlay: "rectangles" }}
   >
     <!-- <p class="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">Join CascadeFund today and start your journey as a valued open source contributor.</p> -->
     <div class="flex items-start space-x-4 text-left max-w-2xl mx-auto">

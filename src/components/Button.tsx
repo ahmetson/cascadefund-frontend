@@ -9,18 +9,18 @@ interface ButtonProps {
   className?: string
 }
 
-const Button: React.FC<ButtonProps> = ({ 
-  children, 
-  variant = 'primary', 
-  size = 'md', 
-  onClick, 
+const Button: React.FC<ButtonProps> = ({
+  children,
+  variant = 'primary',
+  size = 'md',
+  onClick,
   disabled = false,
   className = ''
 }) => {
   const getVariantStyles = () => {
     switch (variant) {
       case 'primary':
-        return 'bg-cascade-blue text-white hover:bg-blue-600'
+        return 'bg-red-500 text-white hover:bg-blue-600'
       case 'secondary':
         return 'bg-gray-500 text-white hover:bg-gray-600'
       case 'danger':
@@ -28,7 +28,9 @@ const Button: React.FC<ButtonProps> = ({
       case 'success':
         return 'bg-orange-500 text-white hover:bg-orange-600'
       case 'outline':
-        return 'border border-gray-300 text-gray-700 hover:bg-gray-50'
+        return 'border border-gray-300 text-gray-700 hover:bg-teal-50'
+      case 'secondary-outline':
+        return 'border bg-teal-100 border-gray-300 text-gray-700 hover:bg-gray-100'
       default:
         return 'bg-cascade-blue text-white hover:bg-blue-600'
     }

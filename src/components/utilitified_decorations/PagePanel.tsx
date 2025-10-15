@@ -2,13 +2,14 @@ import React from 'react'
 import Panel, { type Props as PanelProps } from '@/components/utilitified_decorations/Panel'
 import LinkBtn from '@/components/LinkBtn'
 import Button from '@/components/Button';
-import type { ActionProps } from '@/types/eventTypes';
+import { type ActionProps } from '@/types/eventTypes';
 import { getIcon } from '../icon';
 
 export type Props = PanelProps & {
   icon?: string;
   key?: number | string;
   title: any;
+  subtitle?: any;
   titleCenter?: boolean;  // If set true, it will put title at center ignoring right header
   actions?: ActionProps[];
   children: any;
@@ -21,8 +22,17 @@ export type Props = PanelProps & {
 const C: React.FC<Props> = (props) => {
   const pageLike =
     <Panel bg={props.bg} className={props.className || ''} key={props.key}>
-      {props.titleCenter ? <h2 className="mb-3 text-xl flex items-center justify-center">{props.icon && getIcon(props.icon)}{props.title}</h2>
-        : <h2 className="text-gray-500 mb-3 font-medium items-center flex justify-between"><div className='flex items-center'>{props.icon && getIcon(props.icon)}<div className='ml-1'>{props.title}</div></div>{props.rightHeader}</h2>
+      {props.titleCenter
+        ? <h2 className="mb-3 text-xl flex items-center justify-center">
+          {props.icon && getIcon(props.icon)}{props.title}
+        </h2>
+        : <h2 className={`mb-3 font-medium items-center flex  justify-between `}>
+          <div className={`flex items-center`}>
+            {props.icon && getIcon(props.icon)}
+            <div className='ml-1'>{props.title}</div>
+          </div>
+          {props.rightHeader}
+        </h2>
       }<div className="space-y-3 text-gray-500 text-sm">
         {props.children}
       </div>

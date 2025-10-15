@@ -5,7 +5,7 @@ import TeamPanel, {
 } from "@/components/profile/ProfileInfoPanel2";
 import HeroSection from "@/components/grid/HeroSection.astro";
 import HorizontalPanelsSection from "@/components/grid/HorizontalPanelsSection.astro";
-import { SectionBgType, type SectionProps } from "@/types/eventTypes";
+import { BgType, type SectionProps } from "@/types/eventTypes";
 import LeftImageRightPanelsSection from "@/components/grid/LeftImageRightPanelsSection.astro";
 import ThreeColumnGrid from "@/components/grid/ThreeColumnGrid.astro";
 import Section from "@/components/grid/Section.astro";
@@ -15,7 +15,7 @@ const teamGlanceProps: SectionProps = {
   title: "First, Meet the Team at a Glance",
   bg: {
     overlay: "circles",
-    sectionBgType: SectionBgType.heroToInfoViaBlue,
+    sectionBgType: BgType.heroToInfoViaBlue,
   },
 };
 
@@ -66,7 +66,7 @@ const teamMembers: TeamPanelProps[] = [
     }}
     prefix="ahmetson"
     bg={{
-      sectionBgType: SectionBgType.infoToInfoViaBlue,
+      sectionBgType: BgType.infoToInfoViaBlue,
     }}
   >
     <p class="text-gray-700 mb-4">
@@ -144,7 +144,7 @@ const teamMembers: TeamPanelProps[] = [
   </ThreeColumnGrid>
   <Section
     title="Ready to Join the CascadeFund Ecosystem?"
-    bg={{ sectionBgType: SectionBgType.purpleToTealViaBlue }}
+    bg={{ sectionBgType: BgType.purpleToTealViaBlue }}
     actions={[
       {
         variant: "blue",

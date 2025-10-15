@@ -1,6 +1,6 @@
 ---
 import Button from "@/components/Button";
-import { type SectionProps, SectionBgType } from "@/types/eventTypes";
+import { type SectionProps, bgClassNames, BgType } from "@/types/eventTypes";
 import DynamicReactImporter from "@/components/ReactComponentImporter";
 
 type Props = SectionProps;
@@ -9,30 +9,9 @@ let { title, titleClassName, actions, bg, icon, subtitle, className } =
   Astro.props;
 if (bg === undefined) {
   bg = {
-    sectionBgType: SectionBgType.infoSection,
+    sectionBgType: BgType.infoSection,
   };
 }
-
-export const bgClassNames: { [key in SectionBgType]: string } = {
-  [SectionBgType.heroSection]:
-    "bg-gradient-to-br from-blue-500 via-blue-800 to-purple-500 text-white ",
-  [SectionBgType.heroToInfoViaBlue]:
-    "bg-gradient-to-bl from-purple-500 via-blue-800 to-gray-100 ",
-  [SectionBgType.infoToInfoViaBlue]:
-    "bg-gradient-to-br from-gray-50 via-blue-200 to-gray-50 ",
-  [SectionBgType.normalSection]: "network-bg text-white ",
-  [SectionBgType.infoSection]: "bg-gray-100 ",
-  [SectionBgType.purpleToTealViaBlue]:
-    "bg-gradient-to-br from-purple-600 via-blue-600 to-teal-500 text-white ",
-  [SectionBgType.blueToPurple]:
-    "bg-gradient-to-r from-blue-600 to-purple-600 text-white ",
-  [SectionBgType.tealToRedViaLime]:
-    "bg-gradient-to-br from-teal-500 via-lime-600 to-red-500 text-white ",
-  [SectionBgType.redToPurpleViaLime]:
-    "bg-gradient-to-bl from-red-500 via-lime-600 to-purple-600 text-white ",
-  [SectionBgType.footerToTransparent]:
-    "bg-gradient-to-b from-gray-900 to-transparent text-gray-600 ",
-};
 
 const sectionClassName =
   `${className} ${bgClassNames[bg.sectionBgType]}` +

@@ -18,7 +18,7 @@ import EarlyVisibilityIcon from "@/components/icon/EarlyVisibilityIcon";
 import InfluencePlatformIcon from "@/components/icon/InfluencePlatformIcon";
 import FirstAccessToCascadeFundIcon from "@/components/icon/FirstAccessToCascadeFundIcon";
 import PioneerRecognitionIcon from "@/components/icon/PioneerRecognitionIcon";
-import { SectionBgType } from "@/types/eventTypes";
+import { BgType } from "@/types/eventTypes";
 import type { SectionProps } from "@/types/eventTypes";
 import FAQItem from "@/components/FAQElement";
 import EnergyIcon2 from "@/components/icon/EnergyIcon2";
@@ -142,14 +142,14 @@ const partOfAraProjectSection: SectionProps = {
   title: "CascadeFund is part of Ara Project",
   bg: {
     overlay: "circles",
-    sectionBgType: SectionBgType.normalSection,
+    sectionBgType: BgType.normalSection,
   },
 };
 
 const faqSection: SectionProps = {
   title: "Frequently Asked Questions",
   bg: {
-    sectionBgType: SectionBgType.infoSection,
+    sectionBgType: BgType.infoSection,
   },
 };
 
@@ -181,7 +181,7 @@ const ctaSection: SectionProps = {
   title: "Ready to Shape the Future of Open Source?",
   bg: {
     overlay: "rectangles",
-    sectionBgType: SectionBgType.normalSection,
+    sectionBgType: BgType.normalSection,
   },
 };
 ---

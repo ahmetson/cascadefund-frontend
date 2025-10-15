@@ -7,7 +7,7 @@ import MaintainerIcon from "@/components/icon/MaintainerIcon";
 import ContributorIcon from "@/components/icon/ContributorIcon";
 import InfluencerIcon from "@/components/icon/InfluencerIcon";
 import type { RoleCardProps } from "@/components/RoleCard";
-import { SectionBgType } from "@/types/eventTypes";
+import { BgType } from "@/types/eventTypes";
 
 const roles: RoleCardProps[] = [
   {
@@ -66,7 +66,7 @@ const roles: RoleCardProps[] = [
     panels={roles}
     bg={{
       overlay: "rectangles",
-      sectionBgType: SectionBgType.purpleToTealViaBlue,
+      sectionBgType: BgType.purpleToTealViaBlue,
     }}
     className="h-[90vh]"
   >

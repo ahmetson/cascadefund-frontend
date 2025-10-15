@@ -9,7 +9,7 @@ interface BadgeProps {
 
 const Badge: React.FC<BadgeProps> = ({ children, variant = 'gray', active = false }) => {
   const baseClasses = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium'
-  
+
   const variantClasses = {
     gray: active ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-800',
     blue: 'bg-blue-100 text-blue-800',
@@ -24,7 +24,7 @@ const Badge: React.FC<BadgeProps> = ({ children, variant = 'gray', active = fals
     info: 'bg-blue-100 text-blue-800',
     default: 'bg-gray-100 text-gray-800',
   }
-  
+
   return (
     <span className={`${baseClasses} ${variantClasses[variant]}`}>
       {children}
