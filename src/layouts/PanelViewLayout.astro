@@ -4,7 +4,7 @@ import "@/styles/global.css";
 import Header from "@/components/utilitified_decorations/Header.astro";
 import Footer from "@/components/utilitified_decorations/Footer.astro";
 import ThreeColumnGrid from "@/components/grid/ThreeColumnGrid.astro";
-
+import GridBackgrounded from "./GridBackgrounded";
 interface Props {
   subtitle?: string;
   active?: string;
@@ -27,17 +27,20 @@ const { subtitle, hideLinks } = Astro.props;
     <ClientRouter />
   </head>
   <body class="min-h-screen bg-gray-200 pt-14">
-    <Header subtitle={subtitle} hideLinks={hideLinks}>
-      <slot name="header-navbar" />
-    </Header>
-    <section>
-      <slot name="hero" />
-    </section>
-    <ThreeColumnGrid className="mx-auto py-8 px-4">
-      <slot name="left" slot="left" />
-      <slot name="center" slot="center" />
-      <slot name="right" slot="right" />
-    </ThreeColumnGrid>
-    <Footer />
+    <GridBackgrounded />
+    <div class="z-1 relative">
+      <Header subtitle={subtitle} hideLinks={hideLinks}>
+        <slot name="header-navbar" />
+      </Header>
+      <section>
+        <slot name="hero" />
+      </section>
+      <ThreeColumnGrid className="mx-auto py-8 px-4">
+        <slot name="left" slot="left" />
+        <slot name="center" slot="center" />
+        <slot name="right" slot="right" />
+      </ThreeColumnGrid>
+      <Footer />
+    </div>
   </body>
 </html>
