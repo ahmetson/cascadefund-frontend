@@ -13,7 +13,6 @@ import { BgType } from "@/types/eventTypes";
 import NavigationIcon from "@/components/icon/NavigationIcon";
 import ChatIcon from "@/components/icon/ChatIcon";
 import PersonIcon from "@/components/icon/PersonIcon";
-import RatingStarIcon2 from "@/components/icon/RatingStarIcon2";
 import Section from "@/layouts/sections/BaseSection.astro";
 import DevIcon from "@/components/icon/DevIcon";
 import Badge from "@/components/Badge";
@@ -88,7 +87,7 @@ const howItWorks = [
   },
 ];
 const howItWorksBottomPanel = {
-  icon: await RatingStarIcon2({}),
+  icon: getIcon("star"),
   title: "Reward",
   description:
     "Get rewarded, potentially to become a maintainer, or start your own project with your contributors.",

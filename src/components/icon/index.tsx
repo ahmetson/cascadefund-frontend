@@ -1,4 +1,16 @@
-export const getIcon = (iconType: string, width: string = 'w-4', height: string = 'h-4') => {
+type IconProps = {
+  iconType: string
+  width?: string,
+  height?: string
+  fill?: string
+}
+
+export const getIcon = (props: IconProps | string) => {
+  const iconType = typeof props === 'string' ? props : props.iconType;
+  const width = typeof props === 'object' && props.width ? props.width : 'w-4'
+  const height = typeof props === 'object' && props.height ? props.height : 'h-4'
+  const fill = typeof props === 'object' && props.fill ? props.fill : 'none'
+
   const className = `${width} ${height}`
 
   switch (iconType) {
@@ -30,18 +42,18 @@ export const getIcon = (iconType: string, width: string = 'w-4', height: string 
       )
     case 'info':
       return (
-        <svg className={className} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className={className} viewBox="0 0 20 20" fill={fill} xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" fill="#6B7280" />
         </svg>
       )
     case 'new-file':
       return (
-        <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className={className} viewBox="0 0 24 24" fill={fill} xmlns="http://www.w3.org/2000/svg">
           <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V21C3 22.11 3.89 23 5 23H11V21H5V3H13V9H21Z" fill="#22C55E" />
         </svg>
       )
     case 'question':
-      return (<svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
+      return (<svg className={className} viewBox="0 0 24 24" fill={fill} xmlns="http://www.w3.org/2000/svg" >
         <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
         <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M12 17h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -53,28 +65,33 @@ export const getIcon = (iconType: string, width: string = 'w-4', height: string 
         </svg>
       )
     case 'clock': return (
-      <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className={className} fill={fill} stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     )
     case 'heart': return (
-      <svg className={`${className} text-red-700`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className={`${className} text-red-700`} fill={fill} stroke="currentColor" viewBox="0 0 24 24">
         <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
       </svg>
     )
     case 'vote-priority': return (
-      <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className={className} fill={fill} stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
       </svg>
     )
     case 'energy': return (
-      <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className={className} fill={fill} stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
     )
     case 'project': return (
-      <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className={className} fill={fill} stroke="currentColor" viewBox="0 0 24 24">
         <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+      </svg>
+    )
+    case 'star': return (
+      <svg className={`${className} text-orange-600`} fill={fill} stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
       </svg>
     )
     default:
