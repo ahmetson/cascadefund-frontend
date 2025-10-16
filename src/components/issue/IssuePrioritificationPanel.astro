@@ -1,7 +1,8 @@
 ---
 import Card from "@/components/utilitified_decorations/PagePanel";
 import Horizontally from "@/components/grid/RowGrid";
-import ForkIcon2 from "../icon/ForkIcon2";
+import ReactComponentImporter from "../ReactComponentImporter";
+import { getIcon } from "../icon";
 ---
 
 <Card title="Issue Prioritization" actions={[]}>
@@ -14,7 +15,7 @@ import ForkIcon2 from "../icon/ForkIcon2";
       <div class="flex justify-between items-center">
         <span class="text-sm text-gray-600">+ 0 Rating Score</span>
         <div class="flex items-center space-x-1">
-          <ForkIcon2 />
+          <ReactComponentImporter element={getIcon("fork")} />
           <span class="text-sm text-gray-600">Forks</span>
         </div>
       </div>

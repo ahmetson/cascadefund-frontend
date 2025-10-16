@@ -4,11 +4,11 @@ import Badge from "@/components/Badge";
 import Component from "@/components/utilitified_decorations/Panel";
 import NotificationBanner from "@/components/NotificationBanner";
 import Horizontally from "@/components/grid/RowGrid";
-import ForkIcon from "../icon/ForkIcon";
 import WarningIcon from "../icon/WarningIcon";
 import DescriptionIcon from "../icon/DescriptionIcon";
 import AdvantageIcon from "../icon/AdvantageIcon";
 import { getIcon } from "../icon";
+import ReactComponentImporter from "../ReactComponentImporter";
 ---
 
 <Component
@@ -21,14 +21,14 @@ import { getIcon } from "../icon";
     >
       <div class="flex items-center space-x-2">
         <span class="text-sm text-gray-600">Rating:</span>
-        {getIcon("star")}
+        <ReactComponentImporter element={getIcon("star")} />
         <span class="text-sm font-medium">1.0</span>
-        <ForkIcon />
+        <ReactComponentImporter element={getIcon("fork")} />
         <span class="text-sm">1</span>
       </div>
 
       <div class="flex items-center space-x-2">
-        {getIcon("heart")}
+        <ReactComponentImporter element={getIcon("heart")} />
         <span class="text-sm">23</span>
         <Button variant="primary" size="sm">Follow</Button>
       </div>

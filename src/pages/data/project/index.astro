@@ -11,11 +11,7 @@ import ProjectPeople from "@/components/project/ProjectPeoplePanel";
 import HighlightedInteraction from "@/components/project/HighlightedInteractionPanel";
 ---
 
-<V2Layout
-  activeLink={ItemName.ProjectName}
-  hideLinks={[ItemName.ProjectName]}
-  subtitle="Data Section: Project"
->
+<V2Layout active={ItemName.ProjectName} subtitle="Data Section: Project">
   <NotificationBanner
     type="success"
     title="Quest System Updated!"
