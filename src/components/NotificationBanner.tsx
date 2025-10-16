@@ -4,7 +4,7 @@ import Card, { type Props } from '@/components/utilitified_decorations/PagePanel
 type NotificationBannerProps = {
   type: 'warning' | 'info' | 'success' | 'error'
   title: string
-  children: any
+  children?: any
   icon?: any
   className?: string
 } & Omit<Props, "children" | "title">

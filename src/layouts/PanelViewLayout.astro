@@ -5,12 +5,14 @@ import Header from "@/components/utilitified_decorations/Header.astro";
 import Footer from "@/components/utilitified_decorations/Footer.astro";
 import ThreeColumnGrid from "@/components/grid/ThreeColumnGrid.astro";
 import GridBackgrounded from "./GridBackgrounded";
+
 interface Props {
   subtitle?: string;
   active?: string;
   hideLinks?: string[];
+  isDraggable?: boolean;
 }
-const { subtitle, hideLinks } = Astro.props;
+const { subtitle, hideLinks, isDraggable } = Astro.props;
 ---
 
 <!doctype html>
@@ -35,10 +37,10 @@ const { subtitle, hideLinks } = Astro.props;
       <section>
         <slot name="hero" />
       </section>
-      <ThreeColumnGrid className="mx-auto py-8 px-4">
-        <slot name="left" slot="left" />
-        <slot name="center" slot="center" />
-        <slot name="right" slot="right" />
+      <ThreeColumnGrid className="mx-auto py-8 space-x-4 px-4">
+        <slot name="left" class="mr-4" slot="left" />
+        <slot name="center" class="mx-4" slot="center" />
+        <slot name="right" class="ml-4" slot="right" />
       </ThreeColumnGrid>
       <Footer />
     </div>

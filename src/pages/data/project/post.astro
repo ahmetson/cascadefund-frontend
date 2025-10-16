@@ -7,6 +7,13 @@ import ProjectPostFlow from "@/components/project/ProjectPostFlow";
 import NotificationBanner from "@/components/NotificationBanner";
 import InfoPanel2 from "@/components/InfoPanel2.astro";
 import Link from "@/components/Link";
+
+// Project ID + Not Yet Created + Fork Project means issue is created for the
+// original project forked by project ID.
+const projectId = Astro.url.searchParams.get("projectId") || undefined;
+const forkProjectId = Astro.url.searchParams.get("forkProjectId") || undefined;
+const createdIssueId =
+        Astro.url.searchParams.get("createdIssueId") || undefined;
 ---
 
 <V2Layout hideLinks={[ItemName.ProjectName]}>
@@ -21,7 +28,13 @@ import Link from "@/components/Link";
                         Adding the project is the first step in the CascadeFund.
                 </p>
         </NotificationBanner>
-        <ProjectPostFlow slot="center" client:load />
+        <ProjectPostFlow
+                projectId={projectId}
+                forkProjectId={forkProjectId}
+                createdIssueId={createdIssueId}
+                slot="center"
+                client:load
+        />
         <InfoPanel2
                 slot="right"
                 title="Different Git Hosting Server?"

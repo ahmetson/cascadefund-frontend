@@ -1,18 +1,18 @@
 ---
 import V2Layout from "@/layouts/PanelViewLayout.astro";
-import Panel from "@/components/utilitified_decorations/MenuPanel";
+import Menu from "@/components/utilitified_decorations/MenuPanel";
 
 import { ItemName } from "@/components/utilitified_decorations/WorkNavbar.astro";
 
 import InfoPanel from "@/components/InfoPanel2.astro";
 import IssuesNotice from "@/components/maintainer/IssueHowtoPanel";
 import TasksSection from "@/components/quest/QuestPanel";
-import IssuesSection from "@/components/maintainer/IssueListPanel";
-import RoadmapSection from "@/components/maintainer/RoadmapPanel";
+import RoadmapPanel from "@/components/maintainer/RoadmapPanel";
+import WorkPanel from "@/components/maintainer/WorkPanel";
 ---
 
-<V2Layout active={ItemName.ProjectName}>
-  <Panel activeMenuItem="work" slot="left" />
+<V2Layout active={ItemName.ProjectName} isDraggable={true}>
+  <Menu activeMenuItem="work" slot="left" />
   <!-- <TasksSection slot="center" client:load /> -->
   <!-- <InfoPanel
     slot="right"
@@ -36,7 +36,7 @@ import RoadmapSection from "@/components/maintainer/RoadmapPanel";
     </ul>
   </InfoPanel> -->
   <IssuesNotice slot="left" />
-  <IssuesSection slot="center" />
-  <RoadmapSection slot="right" />
+  <WorkPanel slot="center" client:load />
+  <RoadmapPanel slot="right" client:load />
   )
 </V2Layout>

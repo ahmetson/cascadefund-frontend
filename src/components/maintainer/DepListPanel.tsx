@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import Component from '@/components/utilitified_decorations/Panel'
+import Panel from '@/components/utilitified_decorations/Panel'
 import Button from '@/components/Button'
-import DependencyCard from './DepInfoPanel'
+import DepInfo from './DepInfoPanel'
 
-const DependenciesSection: React.FC = () => {
+const C: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('all')
 
   const dependencies = [
@@ -46,7 +46,7 @@ const DependenciesSection: React.FC = () => {
   ]
 
   return (
-    <Component className="bg-task-yellow">
+    <Panel className="bg-task-yellow">
       <div className="flex space-x-2 mb-4">
         <Button
           variant={activeFilter === 'all' ? 'primary' : 'secondary'}
@@ -87,11 +87,11 @@ const DependenciesSection: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {dependencies.map((dep, index) => (
-          <DependencyCard key={index} {...dep} />
+          <DepInfo key={index} {...dep} />
         ))}
       </div>
-    </Component>
+    </Panel>
   )
 }
 
-export default DependenciesSection
+export default C

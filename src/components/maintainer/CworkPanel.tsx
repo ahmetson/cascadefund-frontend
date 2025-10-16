@@ -6,22 +6,22 @@ import IssueList from '@/components/maintainer/IssueListPanel2'
 import ProfileList from '@/components/maintainer/ProfileListPanel'
 
 const DependenciesSection: React.FC = () => {
-    const tabs: TabProps[] = [
-      {
-        label: 'Dependencies',
-        key: "dependencies",
-        content: <DepList />
-      },
-      {
-        label: 'Following Issues',
-        key: "following-issues",
-        content: <IssueList />
-      },
-      {
-        label: 'Following Rockstars',
-        key: "following-rockstars",
-        content: <ProfileList />
-      }
+  const tabs: TabProps[] = [
+    {
+      label: 'Dependencies',
+      key: "dependencies",
+      content: <DepList />
+    },
+    {
+      label: 'Following Issues',
+      key: "following-issues",
+      content: <IssueList />
+    },
+    {
+      label: 'Following Rockstars',
+      key: "following-rockstars",
+      content: <ProfileList />
+    }
   ]
 
   return (

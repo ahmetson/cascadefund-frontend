@@ -1,7 +1,8 @@
 ---
+export const prerender = true;
 import V2Layout from "@/layouts/LandingLayout.astro";
 
-import HeroSection from "@/components/grid/HeroSection.astro";
+import HeroSection from "@/layouts/sections/HeroSection.astro";
 import ContentSection from "@/components/utilitified_decorations/InfoPanel";
 import SuperpowersPanel from "@/components/SuperpowersInfoPanel";
 import ThreeColumnGrid from "@/components/grid/ThreeColumnGrid.astro";
@@ -37,8 +38,7 @@ const ContentMenuItems = [
       no fine print, no trickery.
     </p>
     <p class="text-sm opacity-70 mt-8 text-right">
-      Written and responsible for it is Modest Ahmetson,<br />
-      The author of CascadeFund
+      Written by Medet Ahmetson.<br />
     </p>
   </HeroSection>
   <ThreeColumnGrid>

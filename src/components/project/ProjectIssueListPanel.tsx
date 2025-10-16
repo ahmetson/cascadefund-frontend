@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import SearchBar from '@/components/SearchBar'
 import IssueCard from './SelectableIssuePanel'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import Panel from '@/components/utilitified_decorations/PagePanel'
 import { PanelEvents } from '@/types/eventTypes'
+import Link from '../Link'
+import LinkBtn from '../LinkBtn'
 
 interface Issue {
   id: string
@@ -14,10 +16,11 @@ interface Issue {
 
 export type IssueSelectorProps = PanelEvents & {
   selectedIssues: string[]
+  className?: string
   onIssueSelect: (issueId: string) => void
 }
 
-const IssueSelector: React.FC<IssueSelectorProps> = ({ onActionClick, selectedIssues, onIssueSelect }) => {
+const IssueSelector: React.FC<IssueSelectorProps> = ({ className, onActionClick, selectedIssues, onIssueSelect }) => {
   const [searchQuery, setSearchQuery] = useState('')
 
   const issues: Issue[] = [
@@ -64,14 +67,28 @@ const IssueSelector: React.FC<IssueSelectorProps> = ({ onActionClick, selectedIs
   )
 
   return (
-    <Card title={"Which issue or problem is your fork addressing?"}
+    <Panel
+      className={className}
+      title={"Issues"}
+      rightHeader={<LinkBtn href={'/data/issue/post?projectId=1&notYetCreated=true&forkProject=git:ahmetson%2Fblockchain-verifier'}>
+        Create New Issue
+      </LinkBtn>}
       actions={[{
         variant: 'blue',
         onClick: (() => { onActionClick && onActionClick({}) }),
         children: 'Next'
       }]}>
+      <div>
+        Your project is forked from
+        <Link className='ml-1' href="https://github.com/ara-foundation/blockchain-verification-tool" >
+          ara-foundation/blockchain-verification-tool
+        </Link>
+      </div>
       <p className="text-sm text-gray-600 mb-4">
-        Using the issues from GitHub, as CascadeFund issues doesn't exist yet. You can select multiple issues that you review.
+
+        <span>
+          Showing the `blockchain-verification-tool` issues. You can select multiple issues.
+        </span>
       </p>
 
       <SearchBar
@@ -94,7 +111,7 @@ const IssueSelector: React.FC<IssueSelectorProps> = ({ onActionClick, selectedIs
       <p className="text-center text-sm text-red-500 mt-2">
         Select Issues first or create a new one
       </p>
-    </Card>
+    </Panel>
   )
 }
 

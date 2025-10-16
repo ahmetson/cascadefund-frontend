@@ -1,4 +1,5 @@
 ---
+export const prerender = true;
 import V2Layout from "@/layouts/LandingLayout.astro";
 import { ItemName } from "@/components/utilitified_decorations/LandingNavbar.astro";
 
@@ -7,12 +8,9 @@ import HorizontalPanels from "@/layouts/sections/HorizontalPanelsSection.astro";
 import HeroSection from "@/layouts/sections/HeroSection.astro";
 import Section from "@/layouts/sections/BaseSection.astro";
 import SectionScrollButton from "@/components/ScrollingToSectionButton";
-import ClockIcon from "@/components/icon/ClockIcon";
 import FireIcon from "@/components/icon/FireIcon";
 import TenPmTenMinIcon from "@/components/icon/TenPmTenMinIcon";
-import EnergyIcon from "@/components/icon/EnergyIcon";
 import RecognitionIcon from "@/components/icon/RecognitionIcon";
-import VotePriorityIcon from "@/components/icon/VotePriorityIcon";
 import BetterFeaturesIcon from "@/components/icon/BetterFeaturesIcon";
 import EarlyVisibilityIcon from "@/components/icon/EarlyVisibilityIcon";
 import InfluencePlatformIcon from "@/components/icon/InfluencePlatformIcon";
@@ -21,7 +19,7 @@ import PioneerRecognitionIcon from "@/components/icon/PioneerRecognitionIcon";
 import { BgType } from "@/types/eventTypes";
 import type { SectionProps } from "@/types/eventTypes";
 import FAQItem from "@/components/FAQElement";
-import EnergyIcon2 from "@/components/icon/EnergyIcon2";
+import { getIcon } from "@/components/icon";
 
 const heroSection = {
   title:
@@ -47,7 +45,7 @@ const whyMaintainersStruggleSection = {
   prefix: "whyMaintainersStruggle",
   panels: [
     {
-      icon: await ClockIcon({}),
+      icon: getIcon("clock"),
       title: "Unsustainable work",
       description:
         "Maintaining open source often means unpaid overtime, burnout from constant demands, and inadequate support.",
@@ -68,7 +66,7 @@ const whyMaintainersStruggleSection = {
       iconBgColor: "text-purple-600",
     },
     {
-      icon: await EnergyIcon({}),
+      icon: getIcon("energy"),
       title: "Dependency struggles",
       description:
         "Managing complex dependency chains affects stability with other projects, creates technical debt and integration issues.",
@@ -94,7 +92,7 @@ const howItWorksSection = {
       iconBgColor: "bg-green-100 text-green-600",
     },
     {
-      icon: await VotePriorityIcon({}),
+      icon: getIcon("vote-priority"),
       title: "Votes shape priorities & ratings",
       description:
         "Community input helps determine what features get built next and provides feedback on project quality and direction.",
@@ -177,7 +175,7 @@ const faqs = [
 ];
 
 const ctaSection: SectionProps = {
-  icon: await EnergyIcon2({}),
+  icon: getIcon("energy"),
   title: "Ready to Shape the Future of Open Source?",
   bg: {
     overlay: "rectangles",

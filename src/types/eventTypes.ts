@@ -21,8 +21,8 @@ export const GridStyle: { [key: string]: Positioning } = {
   },
   section: {
     padding: {
-      x: 1,
-      y: 1
+      x: 4,
+      y: 4
     },
     gap: {
       x: 4,
@@ -119,3 +119,5 @@ export const bgClassNames: { [key in BgType]: string } = {
   [BgType.listContent]:
     "bg-gradient-to-b from-gray-200 via-transparent to-gray-300 ",
 };
+
+

@@ -6,10 +6,10 @@ import NotificationBanner from "@/components/NotificationBanner";
 import Horizontally from "@/components/grid/RowGrid";
 import ForkIcon from "../icon/ForkIcon";
 import RatingStarIcon from "../icon/RatingStarIcon";
-import HeartIcon from "../icon/HeartIcon";
 import WarningIcon from "../icon/WarningIcon";
 import DescriptionIcon from "../icon/DescriptionIcon";
 import AdvantageIcon from "../icon/AdvantageIcon";
+import { getIcon } from "../icon";
 ---
 
 <Component
@@ -29,7 +29,7 @@ import AdvantageIcon from "../icon/AdvantageIcon";
       </div>
 
       <div class="flex items-center space-x-2">
-        <HeartIcon />
+        {getIcon("heart")}
         <span class="text-sm">23</span>
         <Button variant="primary" size="sm">Follow</Button>
       </div>

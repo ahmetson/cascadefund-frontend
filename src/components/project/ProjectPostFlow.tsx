@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import RepositoryForm from './RepositoryForm'
 import RepositoryConnection from "@/components/project/RepositoryConnectionPanel";
-import ForkOriginInfoPanel from './ForkOriginInfoPanel';
 import IssueSelector from './ProjectIssueListPanel';
 import EditableProjectInfoPanel from './EditableProjectInfoPanel';
 import BlockchainRecordingPanel from './BlockchainRecordingPanel';
 import AddingCompletionPanel from './AddingCompletionPanel';
+import NotificationBanner from '../NotificationBanner';
+import { GridStyle } from '@/types/eventTypes';
 
 export enum Step {
   Post,
@@ -17,8 +18,20 @@ export enum Step {
   Completed,
 }
 
-const C: React.FC = () => {
-  const [step, setStep] = useState(Step.Post);
+interface Props {
+  createdIssueId?: string
+  forkProjectId?: string
+  projectId?: string
+}
+
+const isForkStep = (projectId?: string, forkProjectId?: string, createdIssueId?: string): boolean => {
+  return projectId !== undefined && forkProjectId !== undefined && createdIssueId !== undefined;
+}
+
+const C: React.FC<Props> = ({ projectId, forkProjectId, createdIssueId }) => {
+  const [step, setStep] = useState(
+    isForkStep(projectId, forkProjectId, createdIssueId) ?
+      Step.Fork : Step.Post);
 
   return (
     <div className='bg-transparent'>
@@ -32,8 +45,12 @@ const C: React.FC = () => {
         >
           {step === Step.Post && <RepositoryForm onActionClick={(a: any) => { console.log(a); setStep(Step.Repository) }} />}
           {step === Step.Repository && <RepositoryConnection onActionClick={(a) => a === undefined ? setStep(Step.Update) : setStep(Step.Fork)} />}
-          {step === Step.Fork && <ForkOriginInfoPanel className="mb-4" />}
-          {step === Step.Fork && <IssueSelector selectedIssues={[]}
+          {step === Step.Fork && <NotificationBanner type={'warning'} title={'Issue why you fork'} >
+            Select or create a new issue. In CascadeFund,
+            we link the projects between each other via issues in order to make them discoverable
+            and self structurized.
+          </NotificationBanner>}
+          {step === Step.Fork && <IssueSelector className={`mt-${GridStyle.panel.gap!.y}`} selectedIssues={[]}
             onIssueSelect={console.log}
             onActionClick={(a) => setStep(Step.Update)} />}
           {step === Step.Update && <EditableProjectInfoPanel onActionClick={(a) => setStep(Step.Blockchain)} />}

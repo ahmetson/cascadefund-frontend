@@ -1,7 +1,15 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import Panel from '@/components/utilitified_decorations/Panel'
+import Tabs, { TabProps } from '../utilitified_decorations/Tabs'
+import Badge from '../Badge'
+import { ActionProps } from '@/types/eventTypes'
+import LinkBtn from '../LinkBtn'
+import Button from '../Button'
+import DropTarget from '../DropTarget'
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
-interface RoadmapVersionProps {
+interface VersionProps {
   version: string
   date: string
   status: 'completed' | 'active' | 'planned'
@@ -10,7 +18,7 @@ interface RoadmapVersionProps {
   totalIssues?: number
 }
 
-const RoadmapVersion: React.FC<RoadmapVersionProps> = ({
+const VersionPanel: React.FC<VersionProps> = ({
   version,
   date,
   status,
@@ -46,7 +54,7 @@ const RoadmapVersion: React.FC<RoadmapVersionProps> = ({
   }
 
   return (
-    <div className={`p-4 rounded-lg border-2 ${getStatusColor(status)} mb-4`}>
+    <Panel className={`p-2! w-full! rounded-lg border-2 ${getStatusColor(status)} mb-4`}>
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center space-x-2">
           <span className="font-semibold text-gray-900">{version}</span>
@@ -93,74 +101,113 @@ const RoadmapVersion: React.FC<RoadmapVersionProps> = ({
         </ul>
       </div>
 
-      <button className={`w-full py-2 px-4 text-sm font-medium rounded ${getStatusButton(status)}`}>
-        {getStatusText(status)}
-      </button>
+      {status !== 'completed' &&
+        <button className={`w-full py-2 px-4 text-sm font-medium rounded ${getStatusButton(status)}`}>
+          {getStatusText(status)}
+        </button>
+      }
 
       {status === 'planned' && (
         <div className="mt-2 text-center">
           <span className="text-xs text-gray-500">15 people</span>
         </div>
       )}
-    </div>
+    </Panel>
   )
 }
 
-const RoadmapSection: React.FC = () => {
+interface RoadmapProps {
+  actions?: ActionProps[]
+  versions: VersionProps[]
+}
+
+const RoadmapPanel: React.FC<RoadmapProps> = ({ actions, versions }) => {
   return (
-
-    <Card
-      actions={[{ className: "border-2 border-dashed border-gray-300", children: "Add another version", href: "#" }]}
-      className="space-y-6"
-      title={"Roadmap (Versions)"} rightHeader={<a href="#"
-        className="text-sm text-blue-600 hover:underline">View Archive</a>}>
-      <div className="space-y-4">
-        <RoadmapVersion
-          version="v2.4.0"
-          date="Oct 13, 2023"
-          status="completed"
-          features={[
-            "Discovered authentication system",
-            "New dashboard experience",
-            "Performance optimizations"
-          ]}
-          completedIssues={8}
-          totalIssues={8}
-        />
-
-        <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
-          <div className="flex items-center space-x-2 mb-2">
-            <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-            <span className="text-sm font-medium text-green-800">Marked as complete!</span>
-          </div>
-          <p className="text-xs text-green-700">
-            Wow! Informed 5 people who were waiting for this release.
-          </p>
-        </div>
-
-        <RoadmapVersion
-          version="v2.5.0"
-          date="Oct 12, 2023"
-          status="active"
-          features={[
-            "Dark mode implementation",
-            "Tablet responsive layout fixes",
-            "Google Calendar integration"
-          ]}
-        />
-
-        <RoadmapVersion
-          version="v2.6.0"
-          date="Oct 12, 2023"
-          status="planned"
-          features={[
-            "Advanced filtering options",
-            "API rate limit improvements"
-          ]}
-        />
+    <Panel className="space-y-6 p-0! border-none!">
+      <div>
+        {versions.map((version) =>
+          version.status === 'completed' ? <VersionPanel {...version} /> :
+            <DndProvider backend={HTML5Backend}><DropTarget id={version.version} accept={["issue"]} onDrop={(e) => console.log(e)}>
+              <VersionPanel
+                {...version}
+              />
+            </DropTarget>
+            </DndProvider>)}
       </div>
-    </Card>
+      <div className='flex justify-center mt-4'>
+        {actions && actions.map((action) => (
+          action.href ?
+            <LinkBtn variant={action.variant} href={action.href} className={"w-full mt-4" + action.className || ""} >{action.children}</LinkBtn>
+            :
+            <Button variant={action.variant} onClick={action.onClick!} className={"w-full mt-4" + action.className || ""} >{action.children}</Button>
+        ))}
+      </div>
+    </Panel>
   )
 }
 
-export default RoadmapSection
+const C: React.FC = () => {
+  const notificationBanner = <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+    <div className="flex items-center space-x-2 mb-2">
+      <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+      <span className="text-sm font-medium text-green-800">Marked as complete!</span>
+    </div>
+    <p className="text-xs text-green-700">
+      Wow! Informed 5 people who were waiting for this release.
+    </p>
+  </div>
+
+  const archive: VersionProps[] = [
+    {
+      version: "v2.4.0",
+      date: "Oct 13, 2023",
+      status: "completed",
+      features: [
+        "Discovered authentication system",
+        "New dashboard experience",
+        "Performance optimizations"
+      ],
+      completedIssues: 8,
+      totalIssues: 8
+    }
+  ]
+  const versions: VersionProps[] = [{
+    version: "v2.5.0",
+    date: "Oct 12, 2023",
+    status: "active",
+    features: [
+      "Dark mode implementation",
+      "Tablet responsive layout fixes",
+      "Google Calendar integration"
+    ]
+  }, {
+    version: "v2.6.0",
+    date: "Oct 12, 2023",
+    status: "planned",
+    features: [
+      "Advanced filtering options",
+      "API rate limit improvements"
+    ]
+  }]
+
+  const actions = [{ className: "border-2 border-dashed border-gray-300", children: "Add another version", href: "#" }]
+
+  const tabs: TabProps[] = [
+    {
+      label: <div className='flex items-center justify-left'>Roadmap <Badge variant='gray'>{versions.length}</Badge></div>,
+      key: "roadmap",
+      content: <RoadmapPanel actions={actions} versions={versions} />
+    },
+    {
+      label: <div className='flex items-center justify-left'>Archive <Badge variant='gray'>{archive.length}</Badge></div>,
+      key: "archive",
+      content: <RoadmapPanel versions={archive} />
+    },
+  ]
+
+  return (
+    <Tabs activeTab='roadmap' tabs={tabs} />
+  )
+}
+
+export default C

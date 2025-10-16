@@ -1,8 +1,17 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
-import LinkBtn from '@/components/LinkBtn'
+import { memo } from 'react'
+import PagePanel from '@/components/utilitified_decorations/PagePanel'
+import Panel from '@/components/utilitified_decorations/Panel'
+import { getIcon } from '../icon'
+import Link from '../Link'
+import AvatarList from '../AvatarList'
+import Badge from '../Badge'
+import LinkBtn from '../LinkBtn'
+import { DndProvider, useDrag } from 'react-dnd'
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 interface IssueCardProps {
+  id: string
   title: string
   author: string
   description: string
@@ -10,62 +19,83 @@ interface IssueCardProps {
   date: string
   replies: number
   readTime: string
+  fundedIssue?: boolean
   priority: 'Urgent' | 'Bug' | 'Wish'
   type: 'public' | 'funded'
+  isDropped?: boolean
 }
 
-const IssueCard: React.FC<IssueCardProps> = ({
+const IssueCard: React.FC<IssueCardProps> = memo(({
+  id,
   title,
   author,
-  description,
   likes,
   date,
   replies,
-  readTime,
   priority,
-  type
+  type,
+  isDropped
 }) => {
+  const [{ opacity }, drag] = useDrag(
+    () => ({
+      type: 'issue',
+      item: { id, title },
+      collect: (monitor) => ({
+        opacity: monitor.isDragging() ? 0.4 : 1,
+      }),
+    }),
+    [id, title],
+  )
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'Urgent': return 'bg-orange-500'
-      case 'Bug': return 'bg-red-500'
-      case 'Wish': return 'bg-green-500'
-      default: return 'bg-gray-500'
+      case 'Urgent': return 'border border-orange-500'
+      case 'Bug': return 'border border-red-500'
+      case 'Wish': return 'border border-green-500'
+      default: return 'border border-gray-500'
     }
   }
 
   return (
-    <Card title={title} rightHeader={<LinkBtn href="#" className="flex items-center space-x-1 text-blue-600">
-      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-        <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
-      </svg>
-      <span className="text-sm">{likes}</span>
-    </LinkBtn>} className={`p-4 rounded-lg border ${type === 'funded' ? 'bg-green-50 border-green-200' : 'bg-white border-gray-200'
-      }`}>
-      <div className="flex items-center space-x-2 mb-2">
-        <div className="w-6 h-6 bg-gray-300 rounded-full"></div>
-        <span className="text-xs text-gray-600">{author}</span>
-      </div>
+    <Link
+      ref={drag} data-testid={id}
+      className={`cursor-move! opacity-${opacity}`}
+      href={`/data/issue?id=${id}&questId=1`}
+    >
+      <PagePanel title={title}
+        rightHeader={type === 'funded' &&
+          <div className="flex items-center space-x-1 text-blue-600 py-0! px-1! flex">
+            {getIcon('energy')}
+            <span className="text-sm">{likes}</span>
+          </div>}
+        className={`p-1! text-gray-800 rounded-lg border ${type === 'funded' ? 'bg-green-50 border-green-200 hover:bg-green-100 border-green-300' : 'bg-white border-gray-200 hover:bg-gray-200 hover:border-gray-300'
+          }`}>
+        {type === 'funded' ? <AvatarList /> :
+          <div className="flex items-center space-x-2">
+            <div className="w-6 h-6 bg-gray-300 rounded-full"></div>
+            <span className="text-xs text-gray-600">{author}</span>
+          </div>}
 
-      <p className="text-xs text-gray-600 mb-3">{description}</p>
-
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-4 text-xs text-gray-500">
-          <span>{date}</span>
-          <span>{replies} followers</span>
-          <span>{readTime} read</span>
+        <div className="flex items-center justify-between">
+          <div className="flex space-x-4 text-xs text-gray-500">
+            <span className="flex space-x-1">{getIcon('clock')} {date}</span>
+            {type === 'funded' && <span className='flex space-x-1'>{getIcon('heart')} {replies}</span>}
+            {type === 'funded' && <span className='flex space-x-1 text-blue-500'>{getIcon('likes')}
+              <span className="text-gray-500">{likes}</span></span>}
+          </div>
+          <span className={`px-2 py-1 text-xs font-medium rounded ${getPriorityColor(priority)}`}>
+            {priority}
+          </span>
         </div>
-        <span className={`px-2 py-1 text-xs font-medium text-white rounded ${getPriorityColor(priority)}`}>
-          {priority}
-        </span>
-      </div>
-    </Card>
+      </PagePanel>
+    </Link>
   )
-}
+})
 
 const IssuesSection: React.FC = () => {
   return (
-    <Card className="bg-white rounded-lg shadow-sm border border-gray-200" title="Issues">
+    <Panel className="bg-white rounded-lg shadow-sm border border-gray-200"
+    >
+      <p className='text-xs mb-2 -mt-2.5'>To clean the board, drag and drop the issues onto the tabs or onto roadmap.</p>
       <div className="flex items-center justify-between mb-4">
         <div className="flex space-x-2">
           <button className="px-3 py-1 text-xs font-medium bg-blue-500 text-white rounded">All</button>
@@ -75,84 +105,95 @@ const IssuesSection: React.FC = () => {
           <button className="px-3 py-1 text-xs font-medium bg-green-500 text-white rounded">Wish</button>
           <button className="px-3 py-1 text-xs font-medium bg-gray-500 text-white rounded">Suggested</button>
         </div>
-        <select className="text-xs border border-gray-300 rounded px-2 py-1">
-          <option>Priority</option>
-        </select>
+        <div>
+          Sort:
+          <select className="text-xs ml-1 border border-gray-300 rounded px-2 py-1">
+            <option>All</option>
+            <option>Priority</option>
+          </select>
+        </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <div className="flex items-center space-x-2 mb-3">
-            <h4 className="text-sm font-medium text-gray-900">Public issues</h4>
-            <span className="w-5 h-5 bg-gray-400 text-white rounded-full flex items-center justify-center text-xs">2</span>
+          <div className="flex items-center space-x-2 h-5">
+            <h4 className="text-sm text-gray-600">Public issues <Badge variant='gray'>20000</Badge></h4>
           </div>
 
-          <div className="space-y-3">
-            <IssueCard
-              title="Authentication fails on slow connections"
-              author="Serkan Balguliyev"
-              description="Users are experiencing authentication failures when their connection speed drops below 100ms. The system needs to handle timeouts more gracefully."
-              likes={24}
-              date="Oct 5, 2023"
-              replies={5}
-              readTime="5 min"
-              priority="Urgent"
-              type="public"
-            />
+          <div className="flex flex-col">
+            <DndProvider backend={HTML5Backend}>
+              <IssueCard
+                id="1"
+                title="Authentication fails on slow connections"
+                author="Serkan Balguliyev"
+                description="Users are experiencing authentication failures when their connection speed drops below 100ms. The system needs to handle timeouts more gracefully."
+                likes={24}
+                date="Oct 5, 2023"
+                replies={5}
+                readTime="5 min"
+                priority="Urgent"
+                type="public"
+              />
 
-            <IssueCard
-              title="Implement dark mode across all pages"
-              author=""
-              description="Many users have requested a dark mode option to reduce eye strain during night time usage. This would require implementing a theme toggle."
-              likes={42}
-              date="Oct 3, 2023"
-              replies={5}
-              readTime="5 min"
-              priority="Urgent"
-              type="public"
-            />
+              <IssueCard
+                id="2"
+                title="Implement dark mode across all pages"
+                author="Serkan Balguliyev"
+                description="Many users have requested a dark mode option to reduce eye strain during night time usage. This would require implementing a theme toggle."
+                likes={42}
+                date="Oct 3, 2023"
+                replies={5}
+                readTime="5 min"
+                priority="Urgent"
+                type="public"
+              />
+            </DndProvider>
           </div>
-
-          <LinkBtn href="/issue/post">
-            Add an issue
-          </LinkBtn>
         </div>
 
         <div>
-          <div className="flex items-center space-x-2 mb-3">
-            <h4 className="text-sm font-medium text-gray-900">Funded issues</h4>
-            <span className="w-5 h-5 bg-gray-400 text-white rounded-full flex items-center justify-center text-xs">2</span>
+          <div className="flex space-x-2 h-5">
+            <h4 className="text-sm text-gray-600">Funded issues <Badge variant='blue'>20000</Badge></h4>
+
             <span className="text-xs text-gray-500">(+12 stars to rating)</span>
           </div>
 
-          <div className="space-y-3">
-            <IssueCard
-              title="Fix responsive layout on tablet devices"
-              author="Serkan Balguliyev"
-              description="The dashboard layout breaks on iPad and other tablet devices in landscape orientation. Need to implement proper responsive breakpoints."
-              likes={15}
-              date="Oct 6, 2023"
-              replies={6}
-              readTime="5 min"
-              priority="Bug"
-              type="funded"
-            />
+          <div className="flex flex-col">
+            <DndProvider backend={HTML5Backend}>
+              <IssueCard
+                id="3"
+                title="Fix responsive layout on tablet devices"
+                author="Serkan Balguliyev"
+                description="The dashboard layout breaks on iPad and other tablet devices in landscape orientation. Need to implement proper responsive breakpoints."
+                likes={15}
+                date="Oct 6, 2023"
+                replies={6}
+                readTime="5 min"
+                priority="Bug"
+                type="funded"
+              />
 
-            <IssueCard
-              title="Data export feature crashes with large datasets"
-              author=""
-              description="When attempting to export data sets larger than 10,000 records, the application crashes. We need to implement pagination or streaming."
-              likes={37}
-              date="Oct 5, 2023"
-              replies={6}
-              readTime="5 min"
-              priority="Wish"
-              type="funded"
-            />
+              <IssueCard
+                id="4"
+                title="Data export feature crashes with large datasets"
+                author="Serkan Balguliyev"
+                description="When attempting to export data sets larger than 10,000 records, the application crashes. We need to implement pagination or streaming."
+                likes={37}
+                date="Oct 5, 2023"
+                replies={6}
+                readTime="5 min"
+                priority="Wish"
+                type="funded"
+              />            </DndProvider>
+
           </div>
         </div>
       </div>
-    </Card>
+
+      <div className='flex justify-center mt-4'>
+        <LinkBtn variant={'gray'} href={'/data/issue/post'} className={"w-full mt-4"} >Add Issue</LinkBtn>
+      </div>
+    </Panel>
   )
 }
 

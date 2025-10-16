@@ -9,7 +9,8 @@ import node from '@astrojs/node';
 // @ts-ignore
 export default defineConfig({
   integrations: [react()],
-  adapter: process.env.NODE_ENV === "DEVELOPMENT" ? node({mode: 'standalone'}) : vercel(),
+  output: 'server',
+  adapter: process.env.NODE_ENV === "DEVELOPMENT" ? node({ mode: 'standalone' }) : vercel(),
   vite: {
     plugins: [tailwindcss()],
     build: {

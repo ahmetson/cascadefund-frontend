@@ -6,11 +6,11 @@ import { ItemName } from "@/components/utilitified_decorations/LandingNavbar.ast
 import { BgType, type SectionProps } from "@/types/eventTypes";
 import Section from "@/layouts/sections/BaseSection.astro";
 import HorizontalPanels from "@/layouts/sections/HorizontalPanelsSection.astro";
-import EnergyIcon2 from "@/components/icon/EnergyIcon2";
 import DevIcon from "@/components/icon/DevIcon";
 import PersonIcon from "@/components/icon/PersonIcon";
 import HorizontalSection from "@/layouts/sections/HorizontalPanelsSection.astro";
 import Component from "@/components/utilitified_decorations/Panel";
+import { getIcon } from "@/components/icon";
 
 const heroSection = {
   title:
@@ -224,7 +224,7 @@ const projectStats = [
   <Section
     title={uniqueFeature.title}
     bg={uniqueFeature.bg}
-    icon={await EnergyIcon2({})}
+    icon={getIcon("energy")}
   >
     <p class="text-lg text-gray-200 mb-8">
       CascadeFund's open-source, transparent management system makes it easy to

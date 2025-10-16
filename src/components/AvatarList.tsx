@@ -1,11 +1,10 @@
 import React from 'react'
-import Card, { type Props } from '@/components/utilitified_decorations/PagePanel'
+import { type Props } from '@/components/utilitified_decorations/PagePanel'
 
-export type AvatarListProps = Omit<Props, "children"> & {
-  title: string
+export type AvatarListProps = Omit<Props, "children" | "title"> & {
 }
 
-const ContributorAvatars: React.FC<AvatarListProps> = ({ title }) => {
+const ContributorAvatars: React.FC<AvatarListProps> = () => {
   const contributors = [
     { id: 1, name: 'User 1', avatar: 'https://dummyimage.com/32x32/4FC3F7/ffffff?text=U1' },
     { id: 2, name: 'User 2', avatar: 'https://dummyimage.com/32x32/2C3E50/ffffff?text=U2' },
@@ -14,20 +13,18 @@ const ContributorAvatars: React.FC<AvatarListProps> = ({ title }) => {
   ]
 
   return (
-    <Card title={title} className='border-none bg-none shadow-none'>
-      <div className="w-full h-8 rounded-full flex items-center">
-        {contributors.map((contributor) => (
-          <img
-            key={contributor.id}
-            src={contributor.avatar}
-            alt={contributor.name}
-            className="w-8 h-8 rounded-full border-2 border-white shadow-sm"
-            referrerPolicy="no-referrer"
-          />
-        ))}
-        <div className="w-8 h-8 text-gray-600 bg-gray-200 rounded-full text-xl text-center">+</div>
-      </div>
-    </Card>
+    <div className="w-full h-6 rounded-full flex items-center">
+      {contributors.map((contributor) => (
+        <img
+          key={contributor.id}
+          src={contributor.avatar}
+          alt={contributor.name}
+          className="w-6 h-6 rounded-full border-2 border-white shadow-sm"
+          referrerPolicy="no-referrer"
+        />
+      ))}
+      <div className=" text-gray-700 bg-gray-200 border-1 border-gray-400 text-xs p-1/2 rounded-full text-center">+3</div>
+    </div>
   )
 }
 

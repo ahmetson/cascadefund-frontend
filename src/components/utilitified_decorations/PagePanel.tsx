@@ -23,17 +23,19 @@ const C: React.FC<Props> = (props) => {
   const pageLike =
     <Panel bg={props.bg} className={props.className || ''} key={props.key}>
       {props.titleCenter
-        ? <h2 className="mb-3 text-xl flex items-center justify-center">
+        ? <h2 className="mb-2 text-xl flex items-center justify-center">
           {props.icon && getIcon(props.icon)}{props.title}
         </h2>
-        : <h2 className={`mb-3 font-medium items-center flex  justify-between `}>
+        : <h2 className={`mb-2 font-medium flex justify-between h-8`}>
           <div className={`flex items-center`}>
             {props.icon && getIcon(props.icon)}
             <div className='ml-1'>{props.title}</div>
           </div>
           {props.rightHeader}
         </h2>
-      }<div className="space-y-3 text-gray-500 text-sm">
+      }
+      {props.subtitle && <p className='text-xs mb-2 -mt-2.5'>{props.subtitle}</p>}
+      <div className="space-y-3 text-gray-500 text-sm">
         {props.children}
       </div>
       <div className='flex justify-center mt-4'>
