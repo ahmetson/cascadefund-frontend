@@ -191,7 +191,7 @@ const IssuesSection: React.FC = () => {
       </div>
 
       <div className='flex justify-center mt-4'>
-        <LinkBtn variant={'gray'} href={'/data/issue/post'} className={"w-full mt-4"} >Add Issue</LinkBtn>
+        <LinkBtn variant={'gray'} href={'/data/issue/post'}>Add Issue</LinkBtn>
       </div>
     </Panel>
   )

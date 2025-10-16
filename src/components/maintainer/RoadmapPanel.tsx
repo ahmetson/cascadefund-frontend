@@ -1,5 +1,6 @@
 import React from 'react'
 import Panel from '@/components/utilitified_decorations/Panel'
+import PagePanel from '@/components/utilitified_decorations/PagePanel'
 import Tabs, { TabProps } from '../utilitified_decorations/Tabs'
 import Badge from '../Badge'
 import { ActionProps } from '@/types/eventTypes'
@@ -8,6 +9,8 @@ import Button from '../Button'
 import DropTarget from '../DropTarget'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
+import AvatarList from '../AvatarList'
+import { getIcon } from '../icon'
 
 interface VersionProps {
   version: string
@@ -16,6 +19,7 @@ interface VersionProps {
   features: string[]
   completedIssues?: number
   totalIssues?: number
+  authors: string[]
 }
 
 const VersionPanel: React.FC<VersionProps> = ({
@@ -24,7 +28,8 @@ const VersionPanel: React.FC<VersionProps> = ({
   status,
   features,
   completedIssues,
-  totalIssues
+  totalIssues,
+  authors
 }) => {
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -54,16 +59,19 @@ const VersionPanel: React.FC<VersionProps> = ({
   }
 
   return (
-    <Panel className={`p-2! w-full! rounded-lg border-2 ${getStatusColor(status)} mb-4`}>
+    <PagePanel title={version} rightHeader={
+      status !== 'completed' &&
+      <Button className={`py-1 px-2 text-sm rounded-sm ${getStatusButton(status)}`} variant='gray'>
+        {getStatusText(status)}
+      </Button>
+    }
+      className={`p-2! w-full! rounded-lg border-2 ${getStatusColor(status)} mb-4`}>
       <div className="flex items-center justify-between mb-2">
-        <div className="flex items-center space-x-2">
-          <span className="font-semibold text-gray-900">{version}</span>
-          <div className="flex items-center space-x-1">
+        {status === 'active' ? <AvatarList /> :
+          <div className="flex items-center space-x-2">
             <div className="w-6 h-6 bg-gray-300 rounded-full"></div>
-            <div className="w-6 h-6 bg-gray-300 rounded-full"></div>
-          </div>
-        </div>
-        <span className="text-sm text-gray-600">{date}</span>
+            <span className="text-xs text-gray-600">{authors[0]}</span>
+          </div>}
       </div>
 
       {completedIssues !== undefined && totalIssues !== undefined && (
@@ -101,18 +109,17 @@ const VersionPanel: React.FC<VersionProps> = ({
         </ul>
       </div>
 
-      {status !== 'completed' &&
-        <button className={`w-full py-2 px-4 text-sm font-medium rounded ${getStatusButton(status)}`}>
-          {getStatusText(status)}
-        </button>
-      }
+      <div className="flex items-center justify-between space-x-4 text-xs text-gray-500">
+        <span className="flex space-x-1">{getIcon('clock')} {date}</span>
+        <span className='flex space-x-1'>{getIcon('heart')} 15</span>
+        <span className='flex space-x-1 text-blue-500'>
+          {getIcon('energy')}
+          <span className="text-gray-500">12</span>
+        </span>
+        <span className='flex space-x-1'>{getIcon('project')} {status}</span>
+      </div>
 
-      {status === 'planned' && (
-        <div className="mt-2 text-center">
-          <span className="text-xs text-gray-500">15 people</span>
-        </div>
-      )}
-    </Panel>
+    </PagePanel>
   )
 }
 
@@ -137,9 +144,9 @@ const RoadmapPanel: React.FC<RoadmapProps> = ({ actions, versions }) => {
       <div className='flex justify-center mt-4'>
         {actions && actions.map((action) => (
           action.href ?
-            <LinkBtn variant={action.variant} href={action.href} className={"w-full mt-4" + action.className || ""} >{action.children}</LinkBtn>
+            <LinkBtn variant={action.variant} href={action.href} className={action.className || ""} >{action.children}</LinkBtn>
             :
-            <Button variant={action.variant} onClick={action.onClick!} className={"w-full mt-4" + action.className || ""} >{action.children}</Button>
+            <Button variant={action.variant} onClick={action.onClick!} className={action.className || ""} >{action.children}</Button>
         ))}
       </div>
     </Panel>
@@ -160,6 +167,7 @@ const C: React.FC = () => {
   const archive: VersionProps[] = [
     {
       version: "v2.4.0",
+      authors: ["ahmetson"],
       date: "Oct 13, 2023",
       status: "completed",
       features: [
@@ -167,27 +175,33 @@ const C: React.FC = () => {
         "New dashboard experience",
         "Performance optimizations"
       ],
-      completedIssues: 8,
-      totalIssues: 8
+      completedIssues: 3,
+      totalIssues: 3
     }
   ]
   const versions: VersionProps[] = [{
     version: "v2.5.0",
+    authors: ["ahmetson"],
     date: "Oct 12, 2023",
     status: "active",
     features: [
       "Dark mode implementation",
       "Tablet responsive layout fixes",
       "Google Calendar integration"
-    ]
+    ],
+    completedIssues: 1,
+    totalIssues: 3
   }, {
     version: "v2.6.0",
     date: "Oct 12, 2023",
+    authors: ["ahmetson"],
     status: "planned",
     features: [
       "Advanced filtering options",
       "API rate limit improvements"
-    ]
+    ],
+    completedIssues: 0,
+    totalIssues: 2
   }]
 
   const actions = [{ className: "border-2 border-dashed border-gray-300", children: "Add another version", href: "#" }]

@@ -2,11 +2,11 @@
 import V2Layout from "@/layouts/PanelViewLayout.astro";
 import { ItemName } from "@/components/utilitified_decorations/WorkNavbar.astro";
 
-import NewProjectIcon from "@/components/icon/NewProjectIcon";
 import ProjectPostFlow from "@/components/project/ProjectPostFlow";
 import NotificationBanner from "@/components/NotificationBanner";
 import InfoPanel2 from "@/components/InfoPanel2.astro";
 import Link from "@/components/Link";
+import { getIcon } from "@/components/icon";
 
 // Project ID + Not Yet Created + Fork Project means issue is created for the
 // original project forked by project ID.
@@ -19,7 +19,7 @@ const createdIssueId =
 <V2Layout hideLinks={[ItemName.ProjectName]}>
         <NotificationBanner
                 slot="center"
-                icon={NewProjectIcon}
+                icon={getIcon("project")}
                 type="info"
                 title="Your first project"
         >
