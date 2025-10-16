@@ -111,12 +111,13 @@ const VersionPanel: React.FC<VersionProps> = ({
 
       <div className="flex items-center justify-between space-x-4 text-xs text-gray-500">
         <span className="flex space-x-1">{getIcon('clock')} {date}</span>
-        <span className='flex space-x-1'>{getIcon('heart')} 15</span>
+        <span className='flex space-x-1'>{getIcon({ iconType: 'heart', fill: 'currentColor' })} 15</span>
         <span className='flex space-x-1 text-blue-500'>
           {getIcon('energy')}
           <span className="text-gray-500">12</span>
         </span>
-        <span className='flex space-x-1'>{getIcon('project')} {status}</span>
+        {status === 'completed' ? <span className='flex space-x-1'>{getIcon({ iconType: 'star', fill: 'currentColor' })} + 1.2</span> :
+          <span className='flex space-x-1'>{getIcon('project')} {status}</span>}
       </div>
 
     </PagePanel>
