@@ -1,11 +1,11 @@
 ---
 import V2Layout from "@/layouts/PanelViewLayout.astro";
 import Menu from "@/components/utilitified_decorations/MenuPanel";
+import Link from "@/components/Link";
 
 import { ItemName } from "@/components/utilitified_decorations/WorkNavbar.astro";
 
 import InfoPanel from "@/components/InfoPanel2.astro";
-import IssuesNotice from "@/components/maintainer/IssueHowtoPanel";
 import TasksSection from "@/components/quest/QuestPanel";
 import RoadmapPanel from "@/components/maintainer/RoadmapPanel";
 import WorkPanel from "@/components/maintainer/WorkPanel";
@@ -35,7 +35,20 @@ import WorkPanel from "@/components/maintainer/WorkPanel";
       <li>• The icons next to each task helps to identify it.</li>
     </ul>
   </InfoPanel> -->
-  <IssuesNotice slot="left" />
+  <InfoPanel slot="left" title="About issues" icon="info">
+    <div class="mb-4">
+      <ul class="text-xs text-gray-600 space-y-1">
+        <li>
+          • Public issues are the app feedback, equiavalent to GitHub issues.
+        </li>
+        <li>• Funded issues are by your donators or by quest system.</li>
+        <li>
+          • Completing funded issues will result in the rating for all
+          participants.
+        </li>
+      </ul>
+    </div>
+  </InfoPanel>
   <WorkPanel slot="center" client:load />
   <RoadmapPanel slot="right" client:load />
   )

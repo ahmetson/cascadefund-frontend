@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ProjectRating from '@/components/rating/ProjectRating'
 import Panel from '@/components/utilitified_decorations/PagePanel'
 import Badge from '@/components/Badge'
@@ -10,7 +10,7 @@ import { useHotkeys } from 'react-hotkeys-hook';
 
 
 interface Props {
-  selectedTaskTitle?: string;
+  title?: string
 }
 
 interface TaskProps {
@@ -27,7 +27,7 @@ const findTaskById = (tasks: TaskProps[], id: string | undefined) => {
 
 const defaultLabel = "selects a task";
 
-const TasksSection: React.FC<Props> = ({ }) => {
+const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
   const [tasks, setTasks] = useState<TaskProps[]>([
     { title: "Complete project proposal", points: 50, time: "10:00 AM" },
     { title: "Review client feedback", points: 50, time: "11:30 AM" },
@@ -40,7 +40,7 @@ const TasksSection: React.FC<Props> = ({ }) => {
   const [selectedTaskId, setSelectedTaskId] = useState<string | undefined>();
   const [label, setLabel] = useState(defaultLabel)
   const [completedTaskId, setCompletedTaskId] = useState<string | undefined>();
-  const [hide, setHided] = useState();
+  const [hide, setHided] = useState(false);
 
   useEffect(() => {
     setLabel(selectedTaskId === undefined ? defaultLabel : 'Clear')
@@ -137,7 +137,7 @@ const TasksSection: React.FC<Props> = ({ }) => {
   return (
     tasks.length > 0 ?
       <Panel className={`mb-${GridStyle.panel.gap!.y}`} title={
-        <div>My Tasks<Badge variant='red'>{tasks.length}</Badge>
+        <div>{title}<Badge variant='red'>{tasks.length}</Badge>
           <p className="text-sm text-gray-500 font-normal text-center">
             Complete the management tasks.
           </p>

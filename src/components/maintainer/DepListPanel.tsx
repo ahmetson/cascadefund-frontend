@@ -47,6 +47,10 @@ const C: React.FC = () => {
 
   return (
     <Panel className="bg-task-yellow">
+      <p className='text-sm text-gray-600 -mt-3 mb-1'>
+        Browse projects, then create issue about your needed feature, suggestion.
+        Your issues might affect the rating of the package.
+      </p>
       <div className="flex space-x-2 mb-4">
         <Button
           variant={activeFilter === 'all' ? 'primary' : 'secondary'}
