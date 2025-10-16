@@ -2,15 +2,15 @@
 import V2Layout from "@/layouts/LandingLayout.astro";
 import { ItemName } from "@/components/utilitified_decorations/LandingNavbar.astro";
 
-import HeroSection from "@/components/grid/HeroSection.astro";
-import HorizontalPanels from "@/components/grid/HorizontalPanelsSection.astro";
+import HeroSection from "@/layouts/sections/HeroSection.astro";
+import HorizontalPanels from "@/layouts/sections/HorizontalPanelsSection.astro";
 import ThreeColumnGrid from "@/components/grid/ThreeColumnGrid.astro";
 import RowGrid from "@/components/grid/RowGrid";
 import UserIcon from "@/components/icon/UserIcon";
 import { BgType } from "@/types/eventTypes";
 import { type RoleCardProps as RolePanelProps } from "@/components/RoleCard";
 import type { NumeratedInfoProps } from "@/components/utilitified_decorations/NumeratedInfoPanel";
-import Section from "@/components/grid/Section.astro";
+import Section from "@/layouts/sections/BaseSection.astro";
 import NumeratedInfo from "@/components/utilitified_decorations/NumeratedInfoPanel";
 import TwoColumnGrid from "@/components/grid/TwoColumnGrid.astro";
 import Panel from "@/components/utilitified_decorations/PagePanel";

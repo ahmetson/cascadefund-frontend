@@ -3,12 +3,12 @@ import V2Layout from "@/layouts/LandingLayout.astro";
 import TeamPanel, {
   type Props as TeamPanelProps,
 } from "@/components/profile/ProfileInfoPanel2";
-import HeroSection from "@/components/grid/HeroSection.astro";
-import HorizontalPanelsSection from "@/components/grid/HorizontalPanelsSection.astro";
+import HeroSection from "@/layouts/sections/HeroSection.astro";
+import HorizontalPanelsSection from "@/layouts/sections/HorizontalPanelsSection.astro";
 import { BgType, type SectionProps } from "@/types/eventTypes";
-import LeftImageRightPanelsSection from "@/components/grid/LeftImageRightPanelsSection.astro";
+import LeftImageRightPanelsSection from "@/layouts/sections/LeftImageRightPanelsSection.astro";
 import ThreeColumnGrid from "@/components/grid/ThreeColumnGrid.astro";
-import Section from "@/components/grid/Section.astro";
+import Section from "@/layouts/sections/BaseSection.astro";
 import Panel from "@/components/utilitified_decorations/PagePanel";
 
 const teamGlanceProps: SectionProps = {
