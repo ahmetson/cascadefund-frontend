@@ -16,20 +16,22 @@ const footerTitleClass =
   ` bg-blue-800` +
   ` hover:text-gray-200` +
   ` text-black` +
-  ` h-14` +
+  ` h-6!` +
   ` p-0` +
   ` flex`;
 ---
 
 <footer
-  class="fixed bottom-0 right-0 left-0 z-10 backdrop-blur-lg opacity-50 hover:opacity-100"
+  class="fixed bottom-0 right-0 left-0 z-10 backdrop-blur-lg opacity-30 bg-blue-800 hover:opacity-100"
 >
   <div class="collapse collapse-arrow rounded-none">
     <input type="checkbox" class="peer" />
     <div class={`collapse-title ${footerTitleClass}`}>
-      <CascadeFundLogo className={footerTitleClass}>
-        © 2025 Ara Foundation
-      </CascadeFundLogo>
+      <CascadeFundLogo
+        titleClassName="text-sm!"
+        imgClassName="h-5! w-5!"
+        className={footerTitleClass}
+      />
     </div>
     <div class={`collapse-content ${footerContentClass}`}>
       <div class="grid md:grid-cols-2 gap-8">
@@ -134,6 +136,7 @@ const footerTitleClass =
           </ul>
         </div>
       </div>
+      <div class="flex items-center justify-center">© 2025 Ara Foundation</div>
     </div>
   </div>
 </footer>

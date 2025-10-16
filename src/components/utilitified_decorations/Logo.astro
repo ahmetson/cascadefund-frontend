@@ -3,9 +3,11 @@ import Link from "@/components/Link";
 
 interface Props {
   className?: string;
+  imgClassName?: string;
+  titleClassName?: string;
 }
 
-const { className } = Astro.props;
+const { className, imgClassName, titleClassName } = Astro.props;
 ---
 
 <Link
@@ -13,7 +15,9 @@ const { className } = Astro.props;
   href="/"
   className={" flex flex-start h-14 items-center " + (className || "")}
 >
-  <div class="w-8 h-8 bg-transparent rounded flex items-center justify-center">
+  <div
+    class={`w-8 h-8 bg-transparent rounded flex items-center justify-center ${imgClassName}`}
+  >
     <img
       src="/cascadefund_logo.png"
       id="logoImg"
@@ -28,7 +32,7 @@ const { className } = Astro.props;
     />
   </div>
   <div class="flex-col hidden md:flex">
-    <h1 class="text-xl mt-0">CascadeFund</h1>
+    <h1 class={`text-xl mt-0 ${titleClassName}`}>CascadeFund</h1>
     <div
       class="flex flex-start text-sm text-gray-500 w-full -mt-1"
       id="logoSubtitle"

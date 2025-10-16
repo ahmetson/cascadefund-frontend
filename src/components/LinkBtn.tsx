@@ -10,7 +10,7 @@ interface Props {
 }
 
 const CollaborationSection: React.FC<Props> = ({ className: additionalNames, href, children, variant = 'gray', textVariant = 'white', active = false }) => {
-  const className = `items-center bg-${variant}-400 hover:bg-${variant}-600 text-${textVariant} font-bold py-2 px-4 rounded transition-colors` + additionalNames;
+  const className = `items-center bg-${variant}-400 hover:bg-${variant}-600 text-${textVariant} font-bold py-2 px-4 rounded transition-colors ` + additionalNames;
 
   return (
     <a href={href} className={className}>
