@@ -1,1 +1,0 @@
-import{j as r}from"./Card.BLrwn_rG.js";import"./index.6otl1p8d.js";const i=({className:t,href:o,children:e})=>{const s="text-blue-500 hover:text-blue-900 py-2 underline transition-colors"+t;return r.jsx("a",{href:o,className:s,children:e})};export{i as C};

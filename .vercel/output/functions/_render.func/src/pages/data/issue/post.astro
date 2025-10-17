@@ -1,0 +1,68 @@
+---
+import V2Layout from "@/layouts/PanelViewLayout.astro";
+import NavigatingSubtitledElement from "@/components/utilitified_decorations/NavigatingSubtitledItem";
+import NavigatingElement from "@/components/utilitified_decorations/NavigatingItem";
+import BackButton from "@/components/utilitified_decorations/BackButton";
+
+import IssueCard from "@/components/issue/UpdatableIssueContentPanel";
+import VotingSection from "@/components/issue/IssuePrioritificationPanel.astro";
+import ChatPanel from "@/components/chat";
+import IssueDetails from "@/components/issue/UpdatableIssueDetailsPanel";
+
+import NotificationBanner from "@/components/NotificationBanner";
+
+const additional = [
+  await NavigatingElement({
+    href: "/maintainer/work",
+    children: "Cascading Work",
+  }),
+  await NavigatingSubtitledElement({
+    subtitle: "Issues List/Roadmap",
+    active: true,
+    children: "Version",
+  }),
+  await NavigatingElement({ active: true, children: "Adding Issue" }),
+].reverse();
+
+// Project ID + Not Yet Created + Fork Project means issue is created for the
+// original project forked by project ID.
+const projectId = Astro.url.searchParams.get("projectId") || undefined;
+const notYetCreated = Astro.url.searchParams.get("notYetCreated") || false;
+const forkProject = Astro.url.searchParams.get("forkProject") || undefined;
+
+const isForOriginal = projectId && notYetCreated && forkProject;
+
+const backHref = isForOriginal
+  ? "/data/project/post?projectId=1&forkProjectId=1&createdIssueId=1"
+  : "/data/issue";
+---
+
+<V2Layout>
+  <BackButton slot="left" href={backHref} />
+  <NotificationBanner slot="center" type="warning" title="Adding a new issue"
+    >{
+      isForOriginal
+        ? `Create an issue for '${forkProject}' that describes your fork`
+        : "You are adding a new issue"
+    }</NotificationBanner
+  >
+
+  <IssueCard
+    slot="center"
+    panelTitle="Add a new Issue"
+    actions={[
+      {
+        variant: "blue",
+        children: "Next",
+        href: "/data/issue",
+      },
+    ]}
+  />
+  <VotingSection slot="center" />
+  <IssueDetails slot="right" />
+  <ChatPanel slot="right" client:load />
+</V2Layout>
+
+<style is:global>
+  @import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+</style>

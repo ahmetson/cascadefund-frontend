@@ -1,0 +1,59 @@
+---
+import V2Layout from "@/layouts/PanelViewLayout.astro";
+import { ItemName } from "@/components/utilitified_decorations/WorkNavbar.astro";
+import Menu from "@/components/utilitified_decorations/MenuPanel";
+
+import TaskSection from "@/components/quest/QuestPanel";
+import NotificationBanner from "@/components/NotificationBanner";
+import Card from "@/components/utilitified_decorations/PagePanel";
+import CworkPanel from "@/components/maintainer/CworkPanel";
+---
+
+<V2Layout active={ItemName.ProjectName}>
+  <Menu slot="left" activeMenuItem="cwork" />
+  <NotificationBanner
+    slot="center"
+    type="warning"
+    title="Cascading Work page is a quest based interaction with the library maintainers."
+  >
+    Got a bug, need a feature, have a question? Then, help to make the library
+    better for you and for the world
+  </NotificationBanner>
+  <TaskSection slot="center" title="My Cascading Tasks" client:load />
+
+  <CworkPanel slot="center" client:load />
+  <Card slot="right" title="Dependencies Info">
+    <div class="space-y-3">
+      <div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-600">Current version:</span>
+          <span class="font-semibold">v2.4.3</span>
+        </div>
+      </div>
+      <div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-600">Recent version:</span>
+          <span class="font-semibold text-cascade-blue">v2.5.0</span>
+        </div>
+      </div>
+      <div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-600">Last commit:</span>
+          <span class="font-semibold">2 hours ago</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-4 pt-4 border-t border-gray-200">
+      <p class="text-xs text-gray-500 mb-2">
+        Dependencies List is generated using project's SBOM. To fetch the SBOM,
+        we use GitHub API.
+      </p>
+      <p class="text-xs text-gray-500">
+        The management of the packages is done on your IDE, once it's updated,
+        deleted or added a new package, then click on "Update Dependencies"
+        button above.
+      </p>
+    </div>
+  </Card>
+</V2Layout>

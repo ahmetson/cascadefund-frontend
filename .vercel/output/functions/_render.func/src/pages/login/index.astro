@@ -1,0 +1,55 @@
+---
+import V2Layout from "@/layouts/PanelViewLayout.astro";
+import { ItemName } from "@/components/utilitified_decorations/LandingNavbar.astro";
+
+import Panel from "@/components/utilitified_decorations/PagePanel";
+import LinkBtn from "@/components/LinkBtn";
+import Link from "@/components/Link";
+import InfoPanel2 from "@/components/InfoPanel2.astro";
+---
+
+<V2Layout hideLinks={Object.values(ItemName)}>
+  <Panel
+    slot="center"
+    title="Login"
+    titleCenter={true}
+    className="bg-cyan-50 border-cyan-100"
+  >
+    <div class="text-center space-y-6 mt-14">
+      <LinkBtn href="/login/callback" variant="blue"
+        >Sign in with GitHub</LinkBtn
+      >
+      <p class="text-sm text-gray-500 mt-4 -mb-4">
+        By signing in, you agree to our{" "}
+        <Link
+          href="/meta/policy"
+          className="text-blue-600 hover:text-blue-800"
+          asNewTab={true}
+        >
+          Privacy Policy
+        </Link>
+      </p>
+    </div>
+  </Panel>
+  <InfoPanel2
+    slot="right"
+    title="Don't want GitHub?"
+    icon="info"
+    actions={[
+      {
+        children: '"CascadeFund" Influencer',
+        href: "/inlfuencer/project",
+      },
+    ]}
+  >
+    <p>Other authentication providers are on the roadmap.</p>
+    <p>
+      Obtain Voting Power, upvote the
+      <Link
+        href="/data/issue"
+        className="text-blue-600 hover:text-blue-800 underline"
+        >"multi-auth" issue</Link
+      > and get rating.
+    </p>
+  </InfoPanel2>
+</V2Layout>

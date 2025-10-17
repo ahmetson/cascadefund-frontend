@@ -1,0 +1,43 @@
+---
+import V2Layout from "@/layouts/PanelViewLayout.astro";
+import { ItemName } from "@/components/utilitified_decorations/WorkNavbar.astro";
+
+import NotificationBanner from "@/components/NotificationBanner";
+import ProjectInfo from "@/components/project/ProjectInfoPanel.astro";
+import ProjectStats from "@/components/project/ProjectStatsPanel";
+import IssuesSection from "@/components/project/IssueListPanel";
+import CallToInteract from "@/components/project/CallToInteractPanel";
+import ProjectPeople from "@/components/project/ProjectPeoplePanel";
+import HighlightedInteraction from "@/components/project/HighlightedInteractionPanel";
+---
+
+<V2Layout active={ItemName.ProjectName} subtitle="Data Section: Project">
+  <NotificationBanner
+    type="success"
+    title="Quest System Updated!"
+    slot="center"
+  >
+    <span class="text-sm text-gray-700"
+      >A quick task was added on CascadeFund page. You are automatically
+      following the issue.</span
+    >
+  </NotificationBanner>
+  <NotificationBanner
+    type="success"
+    title="Quest System Updated!"
+    slot="center"
+  >
+    <span class="text-sm text-gray-700"
+      >You are now following the project. Whenever it appears on the
+      CascadeFund, you will be notified.</span
+    >
+  </NotificationBanner>
+
+  <ProjectInfo slot="center" />
+  <ProjectStats slot="center" />
+  <IssuesSection slot="center" />
+
+  <ProjectPeople slot="right" />
+  <HighlightedInteraction slot="right" />
+  <CallToInteract slot="right" />
+</V2Layout>

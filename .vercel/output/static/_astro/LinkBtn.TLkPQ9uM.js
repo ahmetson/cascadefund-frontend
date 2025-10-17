@@ -1,1 +1,0 @@
-import{j as n}from"./Card.BLrwn_rG.js";import"./index.6otl1p8d.js";const m=({className:t,href:e,children:s,variant:o="gray",textVariant:r="white",active:i=!1})=>{const a=`items-center bg-${o}-400 hover:bg-${o}-600 text-${r} font-bold py-2 px-4 rounded transition-colors`+t;return n.jsx("a",{href:e,className:a,children:s})};export{m as C};
