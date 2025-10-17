@@ -21,9 +21,13 @@ export type Props = PanelProps & {
 
 const C: React.FC<Props> = (props) => {
   const pageLike =
-    <Panel bg={props.bg} className={props.className || ''} key={props.key}>
+    <Panel bg={props.bg}
+      bgImgUrl={props.bgImgUrl}
+      bgImgClassName={props.bgImgClassName}
+      bgImgLabel={props.bgImgLabel}
+      className={props.className || ''} key={props.key}>
       {props.titleCenter
-        ? <h2 className="mb-2 text-xl flex items-center justify-center">
+        ? <h2 className="mb-2 text-xl flex items-center h-8 justify-center">
           {props.icon && getIcon(props.icon)}{props.title}
         </h2>
         : <h2 className={`mb-2 font-medium flex justify-between h-8`}>

@@ -28,6 +28,19 @@ const createdIssueId =
                         Adding the project is the first step in the CascadeFund.
                 </p>
         </NotificationBanner>
+        {
+                forkProjectId && (
+                        <NotificationBanner
+                                type={"warning"}
+                                title={"Issue why you fork"}
+                        >
+                                Select or create a new issue. In CascadeFund, we
+                                link the projects between each other via issues
+                                in order to make them discoverable and self
+                                structurized.
+                        </NotificationBanner>
+                )
+        }
         <ProjectPostFlow
                 projectId={projectId}
                 forkProjectId={forkProjectId}

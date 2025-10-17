@@ -7,9 +7,12 @@ export type Props = PanelEvents & {
   className?: string
   padding?: 'none' | 'sm' | 'md' | 'lg'
   bg?: string
+  bgImgUrl?: string
+  bgImgLabel?: string
+  bgImgClassName?: string
 }
 
-const Component: React.FC<Props> = ({ key, children, className = '', padding = 'md', bg = 'white' }) => {
+const Component: React.FC<Props> = ({ key, children, className = '', padding = 'md', bg = 'white', bgImgUrl, bgImgClassName, bgImgLabel }) => {
   const getPaddingStyles = () => {
     switch (padding) {
       case 'none':
@@ -26,8 +29,18 @@ const Component: React.FC<Props> = ({ key, children, className = '', padding = '
   }
 
   return (
-    <div key={key} className={`bg-${bg} rounded-lg border border-gray-200 shadow-sm ${getPaddingStyles()} ${className}`}>
-      {children}
+    <div key={key} className={` bg-${bg} rounded-lg border border-gray-200 shadow-sm ${getPaddingStyles()} ${className}`}>
+      {bgImgUrl && <figure className='w-full h-full z-0 absolute'>
+        <img
+          src={bgImgUrl}
+          alt={bgImgLabel}
+          referrerPolicy="no-referrer"
+          className={bgImgClassName || ''}
+        />
+      </figure>}
+      <div className='z-1'>
+        {children}
+      </div>
     </div>
   )
 }
