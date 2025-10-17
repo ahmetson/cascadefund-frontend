@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import RepositoryForm from './RepositoryForm'
 import RepositoryConnection from "@/components/project/RepositoryConnectionPanel";
@@ -23,11 +23,19 @@ const C: React.FC<Props> = ({ projectId, forkProjectId, createdIssueId }) => {
   const [repositoryUrl, setRepositoryUrl] = useState<string>()
   const [isFork, setIsFork] = useState(isForkStep(projectId, forkProjectId, createdIssueId))
 
+  const scrollTop = () => {
+    window.scrollTo({
+      top: 10,
+      behavior: 'smooth', // Scrolls smoothly to the top
+
+    });
+  };
+
   return (
     <Stepper
       initialStep={1}
-      onStepChange={(step) => {
-        console.log(step);
+      onStepChange={() => {
+        scrollTop();
       }}
       onFinalStepCompleted={() => {
         window.location.href = '/maintainer/work'; // Or window.location.replace('/new-page');
