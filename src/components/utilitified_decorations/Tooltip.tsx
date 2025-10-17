@@ -1,4 +1,3 @@
-import { GridStyle } from "@/types/eventTypes";
 import {
   Tooltip,
   TooltipContent,

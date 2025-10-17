@@ -136,7 +136,7 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
 
   return (
     tasks.length > 0 ?
-      <Panel className={`mb-${GridStyle.panel.gap!.y}`} title={
+      <Panel className={`${GridStyle.panel.margin!.bottom}`} title={
         <div>{title}<Badge variant='red'>{tasks.length}</Badge>
           <p className="text-sm text-gray-500 font-normal text-center">
             Complete the management tasks.
@@ -200,7 +200,7 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
             </Tooltip>
           }
         </div>
-      </Panel> : hide ? null : <Panel className={`mb-${GridStyle.panel.gap!.y}`} title={
+      </Panel> : hide ? null : <Panel className={`${GridStyle.panel.margin!.bottom}`} title={
         <div>Tasks are completed<Badge variant='info'>{tasks.length}</Badge>
         </div>} rightHeader={<ProjectRating />}>
         <div className={`p-4 space-y-3 lg:max-h-[30vh] overflow-y-auto`}>

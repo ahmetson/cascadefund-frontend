@@ -50,7 +50,7 @@ const C: React.FC<Props> = ({ projectId, forkProjectId, createdIssueId }) => {
             we link the projects between each other via issues in order to make them discoverable
             and self structurized.
           </NotificationBanner>}
-          {step === Step.Fork && <IssueSelector className={`mt-${GridStyle.panel.gap!.y}`} selectedIssues={[]}
+          {step === Step.Fork && <IssueSelector className={`${GridStyle.panel.margin!.top}`} selectedIssues={[]}
             onIssueSelect={console.log}
             onActionClick={(a) => setStep(Step.Update)} />}
           {step === Step.Update && <EditableProjectInfoPanel onActionClick={(a) => setStep(Step.Blockchain)} />}

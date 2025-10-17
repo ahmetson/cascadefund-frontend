@@ -2,8 +2,12 @@ import type { InfoPanelProps } from "@/components/InfoPanel";
 import type { RoleCardProps } from "@/components/RoleCard";
 
 export type Coordinate = {
-  x?: number
-  y?: number
+  x?: string
+  y?: string
+  left?: string
+  right?: string
+  top?: string
+  bottom?: string
 }
 
 export type Positioning = {
@@ -15,34 +19,66 @@ export type Positioning = {
 export const GridStyle: { [key: string]: Positioning } = {
   page: {
     padding: {
-      x: 1,
-      y: 1
+      x: 'px-1',
+      y: 'py-1',
+      left: 'pl-1',
+      right: 'pr-1',
+      top: 'pt-1',
+      bottom: 'pb-1',
     }
   },
   section: {
     padding: {
-      x: 4,
-      y: 4
+      x: 'px-4',
+      y: 'py-4',
+      left: 'pl-4',
+      right: 'pr-4',
+      top: 'pt-4',
+      bottom: 'pb-4',
     },
     gap: {
-      x: 4,
-      y: 4
-    }
+      x: 'p-space-x-4',
+      y: 'p-space-y-4',
+      left: 'p-space-l-4',
+      right: 'p-space-r-4',
+      top: 'p-space-t-4',
+      bottom: 'p-space-b-4',
+    },
   },
   panel: {
     gap: {
-      x: 4,
-      y: 4
+      x: 'p-space-x-4',
+      y: 'p-space-y-4',
+      left: 'p-space-l-4',
+      right: 'p-space-r-4',
+      top: 'p-space-t-4',
+      bottom: 'p-space-b-4',
+    },
+    margin: {
+      x: 'mx-4',
+      y: 'my-4',
+      left: 'ml-4',
+      right: 'mr-4',
+      top: 'mt-4',
+      bottom: 'mb-4',
     }
   },
   content: {
     padding: {
-      x: 1,
-      y: 1
+      x: 'px-1',
+      y: 'py-1',
+      left: 'pl-1',
+      right: 'pr-1',
+      top: 'pt-1',
+      bottom: 'pb-1',
     },
     gap: {
-      x: 6,
-      y: 6
+      x: 'p-space-x-6',
+      y: 'p-space-y-6',
+      left: 'p-space-l-6',
+      right: 'p-space-r-6',
+      top: 'p-space-t-6',
+      bottom: 'p-space-b-6',
     }
   }
 }
