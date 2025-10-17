@@ -25,11 +25,8 @@ const ConnectionCard: React.FC = () => {
         </svg>
         Project Added Successfully
       </div>
-    } actions={[{
-      variant: 'blue',
-      href: '/maintainer/work',
-      children: 'Go to Work'
-    }]}>
+    }
+    >
       {steps.map((step) => (
         <ProgressStep
           key={step.id}

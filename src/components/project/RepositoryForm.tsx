@@ -4,15 +4,18 @@ import Input from '@/components/Input'
 import { getIcon } from '../icon'
 import { PanelEvents } from '@/types/eventTypes'
 
-const C: React.FC<PanelEvents> = ({ onActionClick }) => {
-  const [repositoryUrl, setRepositoryUrl] = useState<string>()
+type Props = PanelEvents & {
+  repositoryUrl?: string
+  setRepositoryUrl: (arg0: string) => void;
+}
+
+const C: React.FC<Props> = ({ repositoryUrl, setRepositoryUrl }) => {
 
   return (
     <Panel
       icon='new-file'
       titleCenter={true}
       title={"Add GitHub Repository"}
-      actions={[{ variant: 'blue', onClick: (() => { onActionClick && onActionClick(repositoryUrl) }), children: 'Next' }]}
     >
       <div className='mb-2'>
         <label htmlFor="repository-url" className="block text-sm text-gray-700">

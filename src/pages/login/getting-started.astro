@@ -1,13 +1,20 @@
 ---
-import V2Layout from "@/layouts/LandingLayout.astro";
+import Layout from "@/layouts/PanelViewLayout.astro";
 import { ItemName } from "@/components/utilitified_decorations/LandingNavbar.astro";
-
-import HorizontalPanelsSection from "@/layouts/sections/HorizontalPanelsSection.astro";
-import MaintainerIcon from "@/components/icon/MaintainerIcon";
-import ContributorIcon from "@/components/icon/ContributorIcon";
-import InfluencerIcon from "@/components/icon/InfluencerIcon";
-import type { RoleCardProps } from "@/components/RoleCard";
+import Panel from "@/components/utilitified_decorations/PagePanel";
+import { getIcon } from "@/components/icon";
+import type { RoleCardProps } from "@/components/profile/RolePanel";
 import { BgType } from "@/types/eventTypes";
+import RowGrid from "@/components/grid/RowGrid";
+import RolePanel from "@/components/profile/RolePanel";
+import InfoPanel2 from "@/components/InfoPanel2.astro";
+import Link from "@/components/Link";
+import ReactComponentImporter from "@/components/ReactComponentImporter";
+
+const bg = {
+  overlay: "rectangles",
+  sectionBgType: BgType.purpleToTealViaBlue,
+};
 
 const roles: RoleCardProps[] = [
   {
@@ -18,11 +25,12 @@ const roles: RoleCardProps[] = [
     buttonText: "Add Project",
     buttonVariant: "primary" as const,
     href: "/data/project/post",
-    helpLinkLabel: "What are the benefits of adding your project?",
+    helpLinkLabel:
+      "Learn more about maintainer's features such as no-burnout management and socializing...",
     helpLinkHref: "/",
     iconBgColor: "bg-red-50",
     iconColor: "text-blue-600",
-    icon: await MaintainerIcon({}),
+    icon: "maintainer",
     avatar: "https://dummyimage.com/120x120/f0f0f0/666666?text=Maintainer",
   },
   {
@@ -37,7 +45,7 @@ const roles: RoleCardProps[] = [
     helpLinkHref: "/meta/contributor",
     iconBgColor: "bg-blue-50",
     iconColor: "text-blue-600",
-    icon: await ContributorIcon({}),
+    icon: "contributor",
     avatar: "https://dummyimage.com/120x120/f0f0f0/666666?text=Contributor",
   },
   {
@@ -52,26 +60,48 @@ const roles: RoleCardProps[] = [
     helpLinkHref: "/meta/influencer",
     iconBgColor: "bg-blue-50",
     iconColor: "text-blue-600",
-    icon: await InfluencerIcon({}),
+    icon: "influencer",
     avatar: "https://dummyimage.com/120x120/f0f0f0/666666?text=Influencer",
   },
 ];
 ---
 
-<V2Layout hideLinks={Object.values(ItemName)} subtitle="Choose your role">
-  <HorizontalPanelsSection
-    title="Getting Started"
-    titleClassName="md:text-2xl font-normal -mt-6"
-    cols={roles.length}
-    panels={roles}
-    bg={{
-      overlay: "rectangles",
-      sectionBgType: BgType.purpleToTealViaBlue,
-    }}
-    className="h-[90vh]"
+<Layout hideLinks={Object.values(ItemName)} subtitle="Choose your role">
+  <Panel
+    slot="center"
+    title="Choose Role"
+    titleCenter={true}
+    className="bg-cyan-50 border-cyan-100"
   >
-    <p slot="top" class="text-gray-200 text-center mb-4 -mt-4">
-      What role fits you the best?
-    </p>
-  </HorizontalPanelsSection>
-</V2Layout>
+    <div class="text-center space-y-6 mt-14">
+      <p class="text-center mb-4 -mt-4">What role fits you the best?</p>
+      <RowGrid cols={3}>
+        {roles.map((role) => <RolePanel {...role} />)}
+      </RowGrid>
+    </div>
+  </Panel>
+  <InfoPanel2 slot="right" title="Links" icon="info">
+    <ul>
+      {
+        roles
+          .filter(
+            (role) =>
+              role.helpLinkLabel !== undefined &&
+              role.helpLinkHref !== undefined,
+          )
+          .map((role) => (
+            <li class="flex items-start">
+              <div class="w-4 h-4 mt-1.5 -ml-2 mr-1">
+                <ReactComponentImporter
+                  element={getIcon(role.icon || "info")}
+                />
+              </div>
+              <Link className="pt-0" href={role.helpLinkHref!}>
+                {role.helpLinkLabel}
+              </Link>
+            </li>
+          ))
+      }
+    </ul>
+  </InfoPanel2>
+</Layout>

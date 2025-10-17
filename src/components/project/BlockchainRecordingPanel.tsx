@@ -49,12 +49,6 @@ const ConnectionCard: React.FC<PanelEvents> = ({ onActionClick }) => {
       </svg>
       Registering the Blockchain Record</div>
     }
-
-      actions={[{
-        variant: 'blue',
-        children: 'Complete',
-        onClick: (() => { onActionClick && onActionClick({}) }),
-      }]}
     >
       <p className="text-gray-600 max-w-md mx-auto">
         Creating an immutable record of your SBOM data on the blockchain

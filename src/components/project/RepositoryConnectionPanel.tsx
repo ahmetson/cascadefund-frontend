@@ -9,7 +9,7 @@ import { PanelEvents } from '@/types/eventTypes'
  * @param param0 
  * @returns 
  */
-const ConnectionCard: React.FC<PanelEvents> = ({ onActionClick }) => {
+const ConnectionCard: React.FC<PanelEvents> = () => {
   const steps = [
     {
       id: 1,
@@ -55,12 +55,6 @@ const ConnectionCard: React.FC<PanelEvents> = ({ onActionClick }) => {
       </svg>
       Connecting to Repo Host</div>
     }
-
-      actions={[{
-        variant: 'blue',
-        children: 'Next',
-        onClick: (() => { onActionClick && onActionClick({}) })
-      }]}
     >
       <p className="text-gray-600 mb-4">
         We're establishing a connection to GitHub and retrieving information about your repository. This process may take a few moments.
