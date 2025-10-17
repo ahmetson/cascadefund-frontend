@@ -1,5 +1,5 @@
 import type { InfoPanelProps } from "@/components/InfoPanel";
-import type { RoleCardProps } from "@/components/RoleCard";
+import type { RoleCardProps } from "@/components/profile/RolePanel";
 
 export type Coordinate = {
   x?: string
@@ -37,22 +37,22 @@ export const GridStyle: { [key: string]: Positioning } = {
       bottom: 'pb-4',
     },
     gap: {
-      x: 'p-space-x-4',
-      y: 'p-space-y-4',
-      left: 'p-space-l-4',
-      right: 'p-space-r-4',
-      top: 'p-space-t-4',
-      bottom: 'p-space-b-4',
+      x: 'space-x-4',
+      y: 'space-y-4',
+      left: 'space-l-4',
+      right: 'space-r-4',
+      top: 'space-t-4',
+      bottom: 'space-b-4',
     },
   },
   panel: {
     gap: {
-      x: 'p-space-x-4',
-      y: 'p-space-y-4',
-      left: 'p-space-l-4',
-      right: 'p-space-r-4',
-      top: 'p-space-t-4',
-      bottom: 'p-space-b-4',
+      x: 'space-x-4',
+      y: 'space-y-4',
+      left: 'space-l-4',
+      right: 'space-r-4',
+      top: 'space-t-4',
+      bottom: 'space-b-4',
     },
     margin: {
       x: 'mx-4',
@@ -73,12 +73,12 @@ export const GridStyle: { [key: string]: Positioning } = {
       bottom: 'pb-1',
     },
     gap: {
-      x: 'p-space-x-6',
-      y: 'p-space-y-6',
-      left: 'p-space-l-6',
-      right: 'p-space-r-6',
-      top: 'p-space-t-6',
-      bottom: 'p-space-b-6',
+      x: 'space-x-6',
+      y: 'space-y-6',
+      left: 'space-l-6',
+      right: 'space-r-6',
+      top: 'space-t-6',
+      bottom: 'space-b-6',
     }
   }
 }
