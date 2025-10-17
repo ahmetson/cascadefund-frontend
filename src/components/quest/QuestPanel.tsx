@@ -58,11 +58,11 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
   }, [tasks])
 
   const scrollToItem = (id: string) => {
-    if (id === tasks[tasks.length - 1].id) {
-      itemRefs[id].scrollIntoView(false);
-    } else {
-      itemRefs[id].scrollIntoView({ block: 'center', behaviour: 'smooth', inline: 'nearest' });
-    }
+    // if (id === tasks[tasks.length - 1].id) {
+    itemRefs[id].scrollIntoView(false);
+    // } else {
+    // itemRefs[id].scrollIntoView({ block: 'center', behaviour: 'smooth', inline: 'nearest' });
+    // }
   };
 
   const selectFirstTask = () => {
@@ -95,7 +95,7 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
       setTasks(tasks.filter(task => task !== undefined));
 
       setSelectedTaskId(nextTaskId);
-    }, 250)
+    }, 1500)
   }
 
   const getNextTaskId = (): string | undefined => {
