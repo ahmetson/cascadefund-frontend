@@ -1,1 +1,0 @@
-import{j as a}from"./jsx-runtime.D_zvdyIk.js";const m=({key:e,children:r,className:s="",padding:t="md",bg:n="white"})=>{const o=()=>{switch(t){case"none":return"";case"sm":return"p-3";case"md":return"p-4";case"lg":return"p-6";default:return"p-4"}};return a.jsx("div",{className:`bg-${n} rounded-lg border border-gray-200 shadow-sm ${o()} ${s}`,children:r},e)};export{m as C};

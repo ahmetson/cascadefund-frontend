@@ -1,1 +1,0 @@
-import{j as a}from"./jsx-runtime.D_zvdyIk.js";const l=({ref:t,asNewTab:e=!1,className:s,href:o,children:r})=>a.jsx("a",{ref:t,target:e?"_blank":"_self",href:o,className:`hyperlink text-blue-500 hover:text-teal-900 py-2 transition-colors ${s}`,children:r});export{l as C};
