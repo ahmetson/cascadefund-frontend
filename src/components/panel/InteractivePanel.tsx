@@ -50,7 +50,7 @@ const InteractivePanel: React.FC<InteractivePanelProps> = ({
                 {...baseProps}
                 className={cn(
                     'relative',
-                    'transition-all duration-300 cursor-pointer',
+                    'transition-all duration-300',
                     'hover:shadow-lg hover:scale-[1.02]',
                     className
                 )}
