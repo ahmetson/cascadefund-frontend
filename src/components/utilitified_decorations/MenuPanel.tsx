@@ -94,7 +94,7 @@ const Panel: React.FC<Props> = ({ hoverable, activeMenuItem, title = 'Main Menu'
   const titleC = <div className='text-sm font-medium text-gray-500'>{title}</div>
 
   return <PagePanel hoverable={hoverable || true} title={titleC} className="bg-white rounded-lg shadow-sm p-4">
-    {!onlyCustomChildren && (isOnlyInfluencerMenu(activeMenuItem) ? <NotificationBanner dropdown={true} title='Maintainer Menu Not Available' type="error" >
+    {!onlyCustomChildren && (isOnlyInfluencerMenu(activeMenuItem) ? <NotificationBanner dropdown={true} title='Maintainer Menu Not Available' type="error" icon="warning">
       <ul className="text-xs space-y-1 ml-6">
         <li>The project management is available for the maintainers</li>
         <li>It will be available if you are appointed as the maintainer</li>

@@ -15,7 +15,7 @@ const IssueContent: React.FC = () => {
 
   return (
     <Card title="OAuth Integration with Third-party Services" actions={[]} rightHeader={<Badge variant='gray'>Don't affect rating</Badge>}>
-      <NotificationBanner type="warning" title='Not on Roadmap'>
+      <NotificationBanner type="warning" title='Not on Roadmap' icon="warning">
         <p className="text-sm text-yellow-700 mt-1">
           This issue is on the "Funded Issues" list.<br />
           How to move out? Go to the working directory, and drag and drop the issue to another list.

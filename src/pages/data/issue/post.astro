@@ -39,7 +39,11 @@ const backHref = isForOriginal
 
 <V2Layout>
   <BackButton slot="left" href={backHref} />
-  <NotificationBanner slot="center" type="warning" title="Adding a new issue"
+  <NotificationBanner
+    slot="center"
+    type="warning"
+    title="Adding a new issue"
+    icon="warning"
     >{
       isForOriginal
         ? `Create an issue for '${forkProject}' that describes your fork`

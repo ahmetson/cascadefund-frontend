@@ -23,12 +23,6 @@ import ReactComponentImporter from "../ReactComponentImporter";
         <ReactComponentImporter element={getIcon("fork")} />
         <span class="text-sm">1</span>
       </div>
-
-      <div class="flex items-center space-x-2">
-        <ReactComponentImporter element={getIcon("heart")} />
-        <span class="text-sm">23</span>
-        <Button variant="primary" size="sm">Follow</Button>
-      </div>
     </div>
   </Horizontally>
 
@@ -43,7 +37,7 @@ import ReactComponentImporter from "../ReactComponentImporter";
   <NotificationBanner
     type="warning"
     title={"Not registered on CascadeFund"}
-    icon={(<ReactComponentImporter element={getIcon("warning")} />)}
+    icon="warning"
     className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4"
   >
     <p class="text-sm text-gray-600 mb-2">

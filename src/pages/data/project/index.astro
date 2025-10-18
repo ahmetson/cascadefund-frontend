@@ -9,13 +9,16 @@ import IssuesSection from "@/components/project/IssueListPanel";
 import CallToInteract from "@/components/project/CallToInteractPanel";
 import ProjectPeople from "@/components/project/ProjectPeoplePanel";
 import HighlightedInteraction from "@/components/project/HighlightedInteractionPanel";
+import MenuPanel from "@/components/utilitified_decorations/MenuPanel";
 ---
 
 <V2Layout active={ItemName.ProjectName} subtitle="Data Section: Project">
+  <MenuPanel slot="left" activeMenuItem="project" />
   <NotificationBanner
     type="success"
     title="Quest System Updated!"
     slot="center"
+    icon="success"
   >
     <span class="text-sm text-gray-700"
       >A quick task was added on CascadeFund page. You are automatically
@@ -26,6 +29,7 @@ import HighlightedInteraction from "@/components/project/HighlightedInteractionP
     type="success"
     title="Quest System Updated!"
     slot="center"
+    icon="success"
   >
     <span class="text-sm text-gray-700"
       >You are now following the project. Whenever it appears on the
