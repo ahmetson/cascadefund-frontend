@@ -3,11 +3,11 @@ import Panel, { type Props as PanelProps } from '@/components/utilitified_decora
 import LinkBtn from '@/components/LinkBtn'
 import Button from '@/components/Button';
 import { type ActionProps } from '@/types/eventTypes';
-import { getIcon } from '../icon';
-import { HoverEffect } from '../ui/hover-effect';
+import { getIcon, IconType } from '../icon';
+import { ReactNode } from '../ui/panel-effect';
 
 export type Props = PanelProps & {
-  icon?: string;
+  icon?: IconType;
   key?: number | string;
   title: any;
   subtitle?: any;
@@ -79,7 +79,7 @@ const C: React.FC<Props> = (props) => {
   </Panel>;
 
   const nextPageLike = props.dropdown ? dropDownedPagelike : pageLike;
-  const hoverPage = <HoverEffect id={`${props.key}`}>{nextPageLike}</HoverEffect>
+  const hoverPage = <ReactNode id={`${props.key}`}>{nextPageLike}</ReactNode>
 
   return (props.hoverable ? hoverPage : nextPageLike)
 }

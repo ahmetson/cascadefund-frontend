@@ -1,5 +1,5 @@
 import React from 'react'
-import PagePanel from './PagePanel'
+import PagePanel from '@/components/panel/PageLikePanel'
 import NotificationBanner from '@/components/NotificationBanner'
 import MenuItem from './MenuItem';
 

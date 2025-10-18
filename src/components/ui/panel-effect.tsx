@@ -2,8 +2,9 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
 
 import { useState } from "react";
+import { HoverBorderGradient } from "../ui/hover-border-gradient";
 
-export const HoverEffect = ({
+export const ReactNode = ({
   className,
   children,
   id,
@@ -39,7 +40,11 @@ export const HoverEffect = ({
         )}
       </AnimatePresence>
       <div className="overflow-hidden bg-blue-400 border-2 rounded-sm group-hover:bg-gray-500  border-transparent group-hover:border-gray-400 relative">
-        {children}
+        <HoverBorderGradient
+          containerClassName="rounded-xs"
+          as="div">
+          {children}
+        </HoverBorderGradient>
       </div>
     </div>
   );

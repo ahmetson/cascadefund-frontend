@@ -8,7 +8,7 @@ import {
   TabsList,
   TabsTrigger,
 } from '@/components/animate-ui/primitives/animate/tabs';
-import { HoverEffect } from '../ui/hover-effect';
+import { ReactNode } from '../ui/panel-effect';
 
 export type TabProps = {
   label: string | React.ReactNode,
@@ -28,7 +28,7 @@ const C: React.FC<Props> = ({ activeTab: initialTab, tabs, id }) => {
   const baseClassName = "flex-1 rounded-md hover:bg-accent/50 rounded-b-none hover:border-b-2 hover:border-blue-500 hover:shadow-md"
 
   return (
-    <HoverEffect id={id!}>
+    <ReactNode id={id!}>
       <Tabs
         onValueChange={setTab}
         value={activeTab as any} className="bg-rounded-lg rounded-lg relative border-radius-lg bg-white mb-6 pt-2 pb-0">
@@ -56,7 +56,7 @@ const C: React.FC<Props> = ({ activeTab: initialTab, tabs, id }) => {
           )}
         </TabsContents>
       </Tabs>
-    </HoverEffect>
+    </ReactNode>
   )
 }
 

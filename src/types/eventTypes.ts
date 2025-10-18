@@ -96,6 +96,8 @@ export interface PanelEvents {
   onElementClick?: (arg0?: boolean) => void;
   onActionClick?: (arg0?: any) => void;
   onClick?: (arg0: boolean) => void;  // if the panel itself clicked
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 export interface ActionProps { variant?: string, href?: string, replaceWithChildren?: boolean, children: any, onClick?: () => void, className?: string }

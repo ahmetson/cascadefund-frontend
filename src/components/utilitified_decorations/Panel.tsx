@@ -29,7 +29,7 @@ const Component: React.FC<Props> = ({ key, children, className = '', padding = '
   }
 
   return (
-    <div key={key} className={` bg-${bg} rounded-lg border border-gray-200 shadow-sm ${getPaddingStyles()} ${className}`}>
+    <div key={key} className={` bg-${bg} rounded-xs border-1 border-gray-200 shadow-md ${getPaddingStyles()} ${className}`}>
       {bgImgUrl && <figure className='w-full h-full z-0 absolute'>
         <img
           src={bgImgUrl}
