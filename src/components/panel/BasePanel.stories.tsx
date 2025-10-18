@@ -21,7 +21,7 @@ export const Default: Story = {
 
 export const WithDifferentPadding: Story = {
   args: {
-    children: <div className="text-center">
+    children: <div >
       <h3 className="text-lg font-semibold mb-2">Large Padding</h3>
       <p className="text-gray-600">This panel uses large padding (p-6).</p>
     </div>,
@@ -31,7 +31,7 @@ export const WithDifferentPadding: Story = {
 
 export const WithBackgroundImage: Story = {
   args: {
-    children: <div className="text-center text-white">
+    children: <div className="">
       <h3 className="text-lg font-semibold mb-2 bg-gray-500">Panel with Background</h3>
       <p className="text-white/80">This panel has a background image with frosted glass effect.</p>
     </div>,
@@ -42,7 +42,7 @@ export const WithBackgroundImage: Story = {
 
 export const NoPadding: Story = {
   args: {
-    children: <div className="p-4 bg-gray-100 rounded">
+    children: <div className="">
       <h3 className="text-lg font-semibold mb-2">No Padding</h3>
       <p className="text-gray-600">This panel has no padding, so content goes to the edges.</p>
     </div>,

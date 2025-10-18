@@ -39,15 +39,15 @@ const BasePanel: React.FC<BasePanelProps> = ({
 
     const getBackgroundStyles = () => {
         if (bgImgUrl) {
-            return 'backdrop-blur-md bg-white/30 border-white/20'
+            return 'backdrop-blur-sm bg-white/50 border-white/20'
         }
-        return `bg-${bg}`
+        return bg || ''
     }
 
     return (
-        <Card
+        <div
             className={cn(
-                'relative overflow-hidden',
+                'rounded-xs border-1 border-gray-200 shadow-md relative overflow-hidden',
                 getBackgroundStyles(),
                 getPaddingStyles(),
                 className
@@ -61,7 +61,7 @@ const BasePanel: React.FC<BasePanelProps> = ({
                         alt={bgImgLabel || 'Background'}
                         referrerPolicy="no-referrer"
                         className={cn(
-                            'w-full h-full object-cover blur-md scale-110',
+                            'w-full h-full object-cover blur-sm scale-110',
                             bgImgClassName
                         )}
                     />
@@ -72,7 +72,7 @@ const BasePanel: React.FC<BasePanelProps> = ({
             <div className="relative z-10">
                 {children}
             </div>
-        </Card>
+        </div>
     )
 }
 
