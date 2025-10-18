@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from './PagePanel'
+import PagePanel from './PagePanel'
 import NotificationBanner from '@/components/NotificationBanner'
 import MenuItem from './MenuItem';
 
@@ -9,6 +9,7 @@ type MenuType = 'influencer' | 'maintainer' | 'custom'
 type ContentType = 'main' | 'collaboration' | 'custom'
 
 interface Props {
+  hoverable?: boolean
   title?: string
   activeMenuItem: MenuName
   onlyCustomChildren?: boolean
@@ -89,10 +90,10 @@ const influencerCollabItems = (activeMenuItem: MenuName): React.ReactNode[] => {
   ]
 }
 
-const Panel: React.FC<Props> = ({ activeMenuItem, title = 'Main Menu', onlyCustomChildren = false, children }) => {
+const Panel: React.FC<Props> = ({ hoverable, activeMenuItem, title = 'Main Menu', onlyCustomChildren = false, children }) => {
   const titleC = <div className='text-sm font-medium text-gray-500'>{title}</div>
 
-  return <Card title={titleC} className="bg-white rounded-lg shadow-sm p-4">
+  return <PagePanel hoverable={hoverable || true} title={titleC} className="bg-white rounded-lg shadow-sm p-4">
     {!onlyCustomChildren && (isOnlyInfluencerMenu(activeMenuItem) ? <NotificationBanner dropdown={true} title='Maintainer Menu Not Available' type="error" >
       <ul className="text-xs space-y-1 ml-6">
         <li>The project management is available for the maintainers</li>
@@ -109,7 +110,7 @@ const Panel: React.FC<Props> = ({ activeMenuItem, title = 'Main Menu', onlyCusto
           </div>
         </>)}
     </div>
-  </Card>
+  </PagePanel>
 }
 
 const InfluencerHistoryIcon = () => (

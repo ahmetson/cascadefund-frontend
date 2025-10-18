@@ -32,7 +32,7 @@ const C: React.FC = () => {
   ]
 
   return (
-    <Tabs activeTab='issues' tabs={tabs} />
+    <Tabs id="work" activeTab='issues' tabs={tabs} />
   )
 }
 

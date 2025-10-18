@@ -136,7 +136,7 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
 
   return (
     tasks.length > 0 ?
-      <Panel className={`${GridStyle.panel.margin!.bottom}`} title={
+      <Panel hoverable={true} className={``} title={
         <div>{title}<Badge variant='red'>{tasks.length}</Badge>
           <p className="text-sm text-gray-500 font-normal text-center">
             Complete the management tasks.

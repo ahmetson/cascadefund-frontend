@@ -23,7 +23,7 @@ const Panel: React.FC = () => {
 
   return (
     <Component>
-      <Tabs tabs={tabs} activeTab={activeTabeKey} />
+      <Tabs id="profile-metrics" tabs={tabs} activeTab={activeTabeKey} />
     </Component>
   )
 }

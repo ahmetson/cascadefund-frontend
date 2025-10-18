@@ -60,7 +60,7 @@ export const GridStyle: { [key: string]: Positioning } = {
       left: 'ml-4',
       right: 'mr-4',
       top: 'mt-4',
-      bottom: 'mb-4',
+      bottom: 'mb-6',
     }
   },
   content: {

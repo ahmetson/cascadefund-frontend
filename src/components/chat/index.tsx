@@ -37,7 +37,7 @@ const Panel: React.FC = () => {
           {
             chatOpen ? <ChatPanel onBackClick={setChatOpen} /> :
               (topicOpen ? <TopicPanel onBackClick={setTopicOpen} onActionClick={(actionFlag) => { setChatOpen(actionFlag); setTopicOpen(!actionFlag) }} /> :
-            /* default */ <Tabs activeTab='conversation' tabs={tabs} />)
+            /* default */ <Tabs id="chats" activeTab='conversation' tabs={tabs} />)
           }
         </motion.div>
       </AnimatePresence>

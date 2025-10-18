@@ -4,6 +4,7 @@ import LinkBtn from '@/components/LinkBtn'
 import Button from '@/components/Button';
 import { type ActionProps } from '@/types/eventTypes';
 import { getIcon } from '../icon';
+import { HoverEffect } from '../ui/hover-effect';
 
 export type Props = PanelProps & {
   icon?: string;
@@ -17,6 +18,7 @@ export type Props = PanelProps & {
   bg?: string;
   className?: string;
   dropdown?: boolean;
+  hoverable?: boolean;
 }
 
 const C: React.FC<Props> = (props) => {
@@ -42,7 +44,7 @@ const C: React.FC<Props> = (props) => {
       <div className="space-y-3 text-gray-500 text-sm">
         {props.children}
       </div>
-      <div className='flex justify-center mt-4'>
+      <div className='flex justify-center'>
         {props.actions && props.actions.map((action) => (
           action.href ?
             <LinkBtn variant={action.variant} href={action.href} className={"w-full mt-4" + action.className || ""} >{action.children}</LinkBtn>
@@ -75,7 +77,11 @@ const C: React.FC<Props> = (props) => {
       </div>
     </div>
   </Panel>;
-  return (props.dropdown ? dropDownedPagelike : pageLike)
+
+  const nextPageLike = props.dropdown ? dropDownedPagelike : pageLike;
+  const hoverPage = <HoverEffect id={`${props.key}`}>{nextPageLike}</HoverEffect>
+
+  return (props.hoverable ? hoverPage : nextPageLike)
 }
 
 export default C

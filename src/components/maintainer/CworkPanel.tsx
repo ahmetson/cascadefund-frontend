@@ -25,7 +25,7 @@ const DependenciesSection: React.FC = () => {
   ]
 
   return (
-    <Tabs activeTab='dependencies' tabs={tabs} />
+    <Tabs id="cwork" activeTab='dependencies' tabs={tabs} />
   )
 }
 
