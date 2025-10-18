@@ -6,8 +6,6 @@ import { ItemName } from "@/components/utilitified_decorations/LandingNavbar.ast
 import { BgType, type SectionProps } from "@/types/eventTypes";
 import Section from "@/layouts/sections/BaseSection.astro";
 import HorizontalPanels from "@/layouts/sections/HorizontalPanelsSection.astro";
-import DevIcon from "@/components/icon/DevIcon";
-import PersonIcon from "@/components/icon/PersonIcon";
 import HorizontalSection from "@/layouts/sections/HorizontalPanelsSection.astro";
 import Component from "@/components/utilitified_decorations/Panel";
 import { getIcon } from "@/components/icon";
@@ -252,7 +250,7 @@ const projectStats = [
         href: "/data/projects?role=influencer",
       },
     ]}
-    icon={await DevIcon({})}
+    icon={getIcon("dev")}
     title="Start using CascadeFund"
     bg={{ sectionBgType: BgType.normalSection, overlay: "rectangles" }}
   >
@@ -261,7 +259,7 @@ const projectStats = [
       <div
         class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
       >
-        <PersonIcon />
+        {getIcon("person")}
       </div>
       <div>
         <h3 class="font-semibold mb-1">

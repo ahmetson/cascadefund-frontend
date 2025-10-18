@@ -8,14 +8,6 @@ import HorizontalPanels from "@/layouts/sections/HorizontalPanelsSection.astro";
 import HeroSection from "@/layouts/sections/HeroSection.astro";
 import Section from "@/layouts/sections/BaseSection.astro";
 import SectionScrollButton from "@/components/ScrollingToSectionButton";
-import FireIcon from "@/components/icon/FireIcon";
-import TenPmTenMinIcon from "@/components/icon/TenPmTenMinIcon";
-import RecognitionIcon from "@/components/icon/RecognitionIcon";
-import BetterFeaturesIcon from "@/components/icon/BetterFeaturesIcon";
-import EarlyVisibilityIcon from "@/components/icon/EarlyVisibilityIcon";
-import InfluencePlatformIcon from "@/components/icon/InfluencePlatformIcon";
-import FirstAccessToCascadeFundIcon from "@/components/icon/FirstAccessToCascadeFundIcon";
-import PioneerRecognitionIcon from "@/components/icon/PioneerRecognitionIcon";
 import { BgType } from "@/types/eventTypes";
 import type { SectionProps } from "@/types/eventTypes";
 import FAQItem from "@/components/FAQElement";
@@ -52,14 +44,14 @@ const whyMaintainersStruggleSection = {
       iconBgColor: "text-green-600",
     },
     {
-      icon: await FireIcon({}),
+      icon: getIcon("fire"),
       title: "Burnout",
       description:
         "The pressure to keep projects running while balancing other responsibilities leads to exhaustion and decreased motivation.",
       iconBgColor: "text-orange-600",
     },
     {
-      icon: await TenPmTenMinIcon({}),
+      icon: getIcon("ten-pm-ten-min"),
       title: "Scalable priorities",
       description:
         "Balancing feature requests against maintenance and bug fixing, leading to challenging prioritization and frustration with users.",
@@ -85,7 +77,7 @@ const howItWorksSection = {
   title: "How it works?",
   panels: [
     {
-      icon: await BetterFeaturesIcon({}),
+      icon: getIcon("better-features"),
       title: "Users donate → Unlock better features",
       description:
         "When users support projects financially, they gain the ability to access premium features and priority support.",
@@ -99,7 +91,7 @@ const howItWorksSection = {
       iconBgColor: "bg-purple-100 text-purple-600",
     },
     {
-      icon: await RecognitionIcon({}),
+      icon: getIcon("recognition"),
       title: "Maintainers gain funding and recognition",
       description:
         "Direct lines, great rating for all maintainers, and sustainable funding for projects. Get helped to other devs as well.",
@@ -114,22 +106,22 @@ const beAFoundingMaintainerSection = {
   className: "px-10",
   panels: [
     {
-      icon: await EarlyVisibilityIcon({}),
+      icon: getIcon("early-visibility"),
       title: "Early visibility in the ecosystem",
       color: "text-blue-600",
     },
     {
-      icon: await InfluencePlatformIcon({}),
+      icon: getIcon("influence-platform"),
       title: "Influence platform development",
       color: "text-blue-600",
     },
     {
-      icon: await FirstAccessToCascadeFundIcon({}),
+      icon: getIcon("first-access"),
       title: "Easy management of the project in the quest based way",
       color: "text-blue-600",
     },
     {
-      icon: await PioneerRecognitionIcon({}),
+      icon: getIcon("pioneer-recognition"),
       title: "Recognition as a pioneer",
       color: "text-blue-600",
     },

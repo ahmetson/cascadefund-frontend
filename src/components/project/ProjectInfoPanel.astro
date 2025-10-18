@@ -4,9 +4,6 @@ import Badge from "@/components/Badge";
 import Component from "@/components/utilitified_decorations/Panel";
 import NotificationBanner from "@/components/NotificationBanner";
 import Horizontally from "@/components/grid/RowGrid";
-import WarningIcon from "../icon/WarningIcon";
-import DescriptionIcon from "../icon/DescriptionIcon";
-import AdvantageIcon from "../icon/AdvantageIcon";
 import { getIcon } from "../icon";
 import ReactComponentImporter from "../ReactComponentImporter";
 ---
@@ -46,7 +43,7 @@ import ReactComponentImporter from "../ReactComponentImporter";
   <NotificationBanner
     type="warning"
     title={"Not registered on CascadeFund"}
-    icon={await WarningIcon({})}
+    icon={(<ReactComponentImporter element={getIcon("warning")} />)}
     className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4"
   >
     <p class="text-sm text-gray-600 mb-2">
@@ -65,7 +62,7 @@ import ReactComponentImporter from "../ReactComponentImporter";
 
     <div class="flex items-center space-x-4 text-sm">
       <div class="flex items-center">
-        <DescriptionIcon />
+        <ReactComponentImporter element={getIcon("description")} />
         <span
           >Enterprise Task Management System, and other small description of the
           project</span
@@ -75,7 +72,7 @@ import ReactComponentImporter from "../ReactComponentImporter";
 
     <div class="flex items-center space-x-4 text-sm mt-2">
       <div class="flex items-center">
-        <AdvantageIcon />
+        <ReactComponentImporter element={getIcon("advantage")} />
         <span>What are the advantages compared to other projects?</span>
       </div>
     </div>

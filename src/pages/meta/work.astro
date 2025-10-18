@@ -8,7 +8,7 @@ import HeroSection from "@/layouts/sections/HeroSection.astro";
 import HorizontalPanels from "@/layouts/sections/HorizontalPanelsSection.astro";
 import ThreeColumnGrid from "@/components/grid/ThreeColumnGrid.astro";
 import RowGrid from "@/components/grid/RowGrid";
-import UserIcon from "@/components/icon/UserIcon";
+import { getIcon } from "@/components/icon";
 import { BgType } from "@/types/eventTypes";
 import { type RoleCardProps as RolePanelProps } from "@/components/profile/RolePanel";
 import type { NumeratedInfoProps } from "@/components/utilitified_decorations/NumeratedInfoPanel";
@@ -16,7 +16,6 @@ import Section from "@/layouts/sections/BaseSection.astro";
 import NumeratedInfo from "@/components/utilitified_decorations/NumeratedInfoPanel";
 import TwoColumnGrid from "@/components/grid/TwoColumnGrid.astro";
 import Panel from "@/components/utilitified_decorations/PagePanel";
-import PlayIcon from "@/components/icon/PlayIcon";
 
 const heroSection = {
   title: "How CascadeFund Works",
@@ -205,17 +204,17 @@ const scenarios: Scenario[] = [
         <div
           class="w-16 h-16 bg-orange-400 rounded-full flex items-center justify-center"
         >
-          <UserIcon />
+          {getIcon("user")}
         </div>
         <div
           class="w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center"
         >
-          <UserIcon />
+          {getIcon("user")}
         </div>
         <div
           class="w-16 h-16 bg-teal-400 rounded-full flex items-center justify-center"
         >
-          <UserIcon />
+          {getIcon("user")}
         </div>
       </div>
     </div>
@@ -390,7 +389,7 @@ const scenarios: Scenario[] = [
           <button
             class="w-20 h-20 bg-red-500 bg-opacity-70 rounded-full flex items-center justify-center hover:bg-opacity-80 transition-all block"
           >
-            <PlayIcon />
+            {getIcon("play")}
           </button>
         </div>
 

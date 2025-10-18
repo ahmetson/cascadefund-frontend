@@ -10,11 +10,7 @@ import Button from "@/components/Button";
 import SectionScrollButton from "@/components/ScrollingToSectionButton";
 import HorizontalPanels from "@/layouts/sections/HorizontalPanelsSection.astro";
 import { BgType } from "@/types/eventTypes";
-import NavigationIcon from "@/components/icon/NavigationIcon";
-import ChatIcon from "@/components/icon/ChatIcon";
-import PersonIcon from "@/components/icon/PersonIcon";
 import Section from "@/layouts/sections/BaseSection.astro";
-import DevIcon from "@/components/icon/DevIcon";
 import Badge from "@/components/Badge";
 import HorizontalSection from "@/layouts/sections/HorizontalPanelsSection.astro";
 import Component from "@/components/utilitified_decorations/Panel";
@@ -64,18 +60,18 @@ const contributorChalllengesSection = {
 
 const howItWorks = [
   {
-    icon: await NavigationIcon({}),
+    icon: getIcon("navigation"),
     title: "Discovery designed for contributors",
     description:
       "Find projects and maintainers you want to help. We work on the most suited platform for contributors.",
   },
   {
-    icon: await ChatIcon({}),
+    icon: getIcon("chat"),
     title: "Smooth onboarding",
     description: "Each contributor receives a human intro to a project.",
   },
   {
-    icon: await PersonIcon({}),
+    icon: getIcon("person"),
     title: "Get mentorship and guidance",
     description: "Ask maintainer about how the code work.",
   },
@@ -198,7 +194,7 @@ const projectStats = [
         href: "/data/projects",
       },
     ]}
-    icon={await DevIcon({})}
+    icon={getIcon("dev")}
     title="The Contributor platform is still in development."
     bg={{ sectionBgType: BgType.normalSection, overlay: "rectangles" }}
   >
@@ -224,7 +220,7 @@ const projectStats = [
       <div
         class="w-8 h-8 bg-green-400 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
       >
-        <PersonIcon />
+        {getIcon("person")}
       </div>
       <div>
         <h3 class="font-semibold mb-2">Sign up for our newsletter</h3>
