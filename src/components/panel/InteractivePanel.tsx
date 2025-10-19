@@ -40,7 +40,7 @@ const InteractivePanel: React.FC<InteractivePanelProps> = ({
 
     const panelContent = (
         <BorderBeam
-            className="relative"
+            className=""
             size={48}
             duration={2}
             colorFrom="#60a5fa"
@@ -49,7 +49,6 @@ const InteractivePanel: React.FC<InteractivePanelProps> = ({
             <BasePanel
                 {...baseProps}
                 className={cn(
-                    'relative',
                     'transition-all duration-300',
                     'hover:shadow-lg hover:scale-[1.02]',
                     className

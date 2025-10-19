@@ -26,7 +26,7 @@ const BasePanel: React.FC<BasePanelProps> = ({
     children,
     className = '',
     padding = 'p-4',
-    bg = 'white',
+    bg = 'bg-white',
     border = {
         size: 'border-1',
         color: 'border-gray-300',
@@ -69,6 +69,7 @@ const BasePanel: React.FC<BasePanelProps> = ({
             <div className="relative z-10">
                 {children}
             </div>
+
         </div>
     )
 }
