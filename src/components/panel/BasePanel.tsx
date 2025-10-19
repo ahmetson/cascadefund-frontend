@@ -47,7 +47,7 @@ const BasePanel: React.FC<BasePanelProps> = ({
     return (
         <div
             className={cn(
-                'rounded-xs border-1 border-gray-200 shadow-md relative overflow-hidden',
+                'rounded-xs border-1 border-gray-300 shadow-md relative overflow-hidden',
                 getBackgroundStyles(),
                 getPaddingStyles(),
                 className
