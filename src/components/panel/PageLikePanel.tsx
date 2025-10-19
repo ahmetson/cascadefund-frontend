@@ -6,7 +6,7 @@ import { getIcon, IconType } from '@/components/icon'
 import { cn } from '@/lib/utils'
 import type { ActionProps } from '@/types/eventTypes'
 
-export interface PageLikePanelProps extends Omit<InteractivePanelProps, 'children'> {
+export interface PageLikePanelProps extends Omit<InteractivePanelProps, 'children' | 'expandableTitle'> {
     icon?: IconType
     title: React.ReactNode
     subtitle?: React.ReactNode
@@ -15,6 +15,7 @@ export interface PageLikePanelProps extends Omit<InteractivePanelProps, 'childre
     actions?: ActionProps[]
     children: React.ReactNode
     contentHeight?: string
+    expandable?: boolean
 }
 
 const PageLikePanel: React.FC<PageLikePanelProps> = ({
@@ -26,7 +27,6 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
     actions,
     children,
     contentHeight,
-    hoverable = true,
     expandable = false,
     className = '',
     ...interactiveProps
@@ -104,8 +104,7 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
     return (
         <InteractivePanel
             {...interactiveProps}
-            hoverable={hoverable}
-            expandable={expandable}
+            expandableTitle={expandable ? title : undefined}
             className={cn('space-y-4', className)}
         >
             {renderHeader()}

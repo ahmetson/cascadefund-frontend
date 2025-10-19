@@ -16,7 +16,7 @@ export interface InteractivePanelProps extends BasePanelProps, PanelEvents {
 const InteractivePanel: React.FC<InteractivePanelProps> = ({
     children,
     expandableTitle,
-    defaultExpanded = true,
+    defaultExpanded = false,
     expandableAnchor = 'center',
     onHover,
     onClick,
