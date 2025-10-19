@@ -22,6 +22,7 @@ pnpm-debug.log*
 
 .idea/
 .cursor/
+debug.log
 src/stories/
 *storybook.log
 storybook-static
