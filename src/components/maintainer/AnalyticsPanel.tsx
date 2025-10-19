@@ -1,11 +1,11 @@
 import React from 'react'
 import MetricCard from '@/components/StatInfoPanel2'
 import RowGrid from '@/components/grid/RowGrid'
-import Component from '@/components/utilitified_decorations/Panel'
+import BasePanel from '@/components/panel/BasePanel'
 
 const MainContent: React.FC = () => {
   return (
-    <Component >
+    <BasePanel >
       <RowGrid cols={3} >
         <MetricCard
           icon="👆"
@@ -38,7 +38,7 @@ const MainContent: React.FC = () => {
           color="bg-blue-500"
         />
       </RowGrid>
-    </Component>
+    </BasePanel>
   )
 }
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Panel from '@/components/utilitified_decorations/Panel'
+import BasePanel from '@/components/panel/BasePanel'
 import { AnimatePresence, motion } from 'motion/react'
 import ViewableProfileInfo from './ViewableProfileInfo'
 import UpdateableProfileInfo from './UpdateableProfileInfo'
@@ -8,7 +8,7 @@ const C: React.FC = () => {
   const [updateable, setUpdateable] = useState(false);
 
   return (
-    <Panel className='bg-gradient-to-r from-yellow-50 to-green-50 mb-8'>
+    <BasePanel className='bg-gradient-to-r from-yellow-50 to-green-50 mb-8'>
       <AnimatePresence mode="wait">
         <motion.div
           key={updateable ? "updateable" : "view"}
@@ -23,7 +23,7 @@ const C: React.FC = () => {
           }
         </motion.div>
       </AnimatePresence>
-    </Panel>
+    </BasePanel>
   )
 }
 

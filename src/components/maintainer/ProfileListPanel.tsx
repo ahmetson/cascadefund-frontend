@@ -1,7 +1,7 @@
 import React from 'react'
 import FilterBar from '@/components/maintainer/ProfileFilterBar'
 import UserCard from '@/components/profile/ProfileLinkPanel'
-import Component from '@/components/utilitified_decorations/Panel'
+import BasePanel from '@/components/panel/BasePanel'
 
 const MainContent: React.FC = () => {
   const filters = [
@@ -12,7 +12,7 @@ const MainContent: React.FC = () => {
   ]
 
   return (
-    <Component className="max-w-4xl">
+    <BasePanel className="max-w-4xl">
       <div className="mt-6">
         <FilterBar
           filters={filters}
@@ -42,7 +42,7 @@ const MainContent: React.FC = () => {
           isFollowing={false}
         />
       </div>
-    </Component>
+    </BasePanel>
   )
 }
 

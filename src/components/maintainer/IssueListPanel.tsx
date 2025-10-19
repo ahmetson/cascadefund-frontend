@@ -1,7 +1,7 @@
 import React from 'react'
 import { memo } from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
-import Panel from '@/components/utilitified_decorations/Panel'
+import BasePanel from '@/components/panel/BasePanel'
 import { getIcon } from '../icon'
 import Link from '../Link'
 import AvatarList from '../AvatarList'
@@ -93,7 +93,7 @@ const IssueCard: React.FC<IssueCardProps> = memo(({
 
 const IssuesSection: React.FC = () => {
   return (
-    <Panel className="bg-white rounded-lg shadow-sm border border-gray-200"
+    <BasePanel className="bg-white rounded-lg shadow-sm border border-gray-200"
     >
       <p className='text-xs mb-2 -mt-2.5'>To clean the board, drag and drop the issues onto the tabs or onto roadmap.</p>
       <div className="flex items-center justify-between mb-4">
@@ -193,7 +193,7 @@ const IssuesSection: React.FC = () => {
       <div className='flex justify-center mt-4'>
         <LinkBtn variant={'gray'} href={'/data/issue/post'}>Add Issue</LinkBtn>
       </div>
-    </Panel>
+    </BasePanel>
   )
 }
 

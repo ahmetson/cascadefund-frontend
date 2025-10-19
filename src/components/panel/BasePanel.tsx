@@ -5,8 +5,8 @@ import { PanelEvents } from '@/types/eventTypes'
 export type Padding = 'p-0' | 'p-2' | 'p-4' | 'p-8' | string
 export type Bg = string | {
     src: string
-    label: string
-    className: string
+    label?: string
+    className?: string
 }
 export type Border = {
     size: 'border-0' | 'border-1' | 'border-2' | 'border-4' | string

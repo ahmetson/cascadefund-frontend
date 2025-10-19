@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import LoadingSpinner from '@/components/LoadingSpinner'
-import Component from '@/components/utilitified_decorations/Panel'
+import BasePanel from '@/components/panel/BasePanel'
 import type { SectionProps } from '@/types/eventTypes';
 import Link from '@/components/Link';
 
@@ -17,7 +17,7 @@ const AuthSuccessCard: React.FC<SectionProps & { gotoLink?: string, gotoLabel?: 
   }, []);
 
   return (
-    <Component className="w-full max-w-md mx-auto">
+    <BasePanel className="w-full max-w-md mx-auto">
       <div className="text-center">
         <div className="mb-6">
           <LoadingSpinner />
@@ -39,7 +39,7 @@ const AuthSuccessCard: React.FC<SectionProps & { gotoLink?: string, gotoLabel?: 
           }
         </p>
       </div>
-    </Component>
+    </BasePanel>
   )
 }
 

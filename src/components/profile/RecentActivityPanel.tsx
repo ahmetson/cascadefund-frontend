@@ -1,10 +1,10 @@
 import React from 'react'
-import Component from '@/components/utilitified_decorations/Panel'
+import BasePanel from '@/components/panel/BasePanel'
 import Badge from '@/components/Badge'
 
 const Sidebar: React.FC = () => {
   return (
-    <Component>
+    <BasePanel>
       <h3 className="font-semibold mb-4">Recent Activity</h3>
       <div className="space-y-3">
         <div className="flex items-start space-x-2">
@@ -40,7 +40,7 @@ const Sidebar: React.FC = () => {
           </div>
         </div>
       </div>
-    </Component>
+    </BasePanel>
   )
 }
 

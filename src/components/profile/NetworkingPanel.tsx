@@ -1,9 +1,9 @@
 import React from 'react'
-import Component from '@/components/utilitified_decorations/Panel'
+import BasePanel from '@/components/panel/BasePanel'
 
 const Sidebar: React.FC = () => {
   return (
-    <Component className="bg-green-50">
+    <BasePanel className="bg-green-50">
       <div className="flex items-center justify-between p-3 bg-white rounded-lg">
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 rounded-full overflow-hidden">
@@ -39,7 +39,7 @@ const Sidebar: React.FC = () => {
         </div>
         <span className="text-green-600 font-medium">+$88</span>
       </div>
-    </Component>
+    </BasePanel>
   )
 }
 

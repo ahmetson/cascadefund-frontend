@@ -1,5 +1,5 @@
 import React from 'react'
-import Component from '@/components/utilitified_decorations/Panel'
+import BasePanel from '@/components/panel/BasePanel'
 
 export type NumeratedInfoProps = {
   number: number
@@ -68,7 +68,7 @@ const StoryStep: React.FC<NumeratedInfoProps> = ({ number, title, description, i
   }
 
   return (
-    <Component className="flex items-start space-x-4 p-4">
+    <BasePanel className="flex items-start space-x-4 p-4">
       <div className="flex-shrink-0">
         <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
           <span className="text-blue-600 font-bold text-sm">{number}</span>
@@ -88,7 +88,7 @@ const StoryStep: React.FC<NumeratedInfoProps> = ({ number, title, description, i
           {description}
         </p>
       </div>
-    </Component>
+    </BasePanel>
   )
 }
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Panel from '@/components/utilitified_decorations/Panel'
+import BasePanel from '@/components/panel/BasePanel'
 import Button from '@/components/Button'
 import DepInfo from './DepInfoPanel'
 
@@ -46,7 +46,7 @@ const C: React.FC = () => {
   ]
 
   return (
-    <Panel className="bg-task-yellow">
+    <BasePanel className="bg-task-yellow">
       <p className='text-sm text-gray-600 -mt-3 mb-1'>
         Browse projects, then create issue about your needed feature, suggestion.
         Your issues might affect the rating of the package.
@@ -94,7 +94,7 @@ const C: React.FC = () => {
           <DepInfo key={index} {...dep} />
         ))}
       </div>
-    </Panel>
+    </BasePanel>
   )
 }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import Component from '@/components/utilitified_decorations/Panel'
+import BasePanel from '@/components/panel/BasePanel'
 
 interface ContributorRowProps {
   type: string
@@ -29,7 +29,7 @@ const ContributorRow: React.FC<ContributorRowProps> = ({
 
 const ContributorAnalytics: React.FC = () => {
   return (
-    <Component>
+    <BasePanel>
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
@@ -73,7 +73,7 @@ const ContributorAnalytics: React.FC = () => {
           </tbody>
         </table>
       </div>
-    </Component>
+    </BasePanel>
   )
 }
 

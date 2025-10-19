@@ -7,7 +7,7 @@ import { BgType, type SectionProps } from "@/types/eventTypes";
 import Section from "@/layouts/sections/BaseSection.astro";
 import HorizontalPanels from "@/layouts/sections/HorizontalPanelsSection.astro";
 import HorizontalSection from "@/layouts/sections/HorizontalPanelsSection.astro";
-import Component from "@/components/utilitified_decorations/Panel";
+import BasePanel from "@/components/panel/BasePanel";
 import { getIcon } from "@/components/icon";
 
 const heroSection = {
@@ -283,7 +283,7 @@ const projectStats = [
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {
           projectStats.map((stat, index) => (
-            <Component key={index} className="text-center">
+            <BasePanel key={index} className="text-center">
               <div class="mb-4 round-lg border-round-lg bg-green-50">
                 <div class="text-3xl font-bold text-cascade-blue mb-1">
                   {stat.number}
@@ -296,7 +296,7 @@ const projectStats = [
               <p class="text-sm text-gray-600 leading-relaxed">
                 {stat.description}
               </p>
-            </Component>
+            </BasePanel>
           ))
         }
       </div>

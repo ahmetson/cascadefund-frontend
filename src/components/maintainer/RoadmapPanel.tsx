@@ -1,5 +1,5 @@
 import React from 'react'
-import Panel from '@/components/utilitified_decorations/Panel'
+import BasePanel from '@/components/panel/BasePanel'
 import PageLikePanel from '@/components/panel/PageLikePanel'
 import Tabs, { TabProps } from '../utilitified_decorations/Tabs'
 import Badge from '../Badge'
@@ -131,7 +131,7 @@ interface RoadmapProps {
 
 const RoadmapPanel: React.FC<RoadmapProps> = ({ actions, versions }) => {
   return (
-    <Panel className="space-y-6 p-0! border-none!">
+    <BasePanel className="space-y-6 p-0! border-none!">
       <div>
         {versions.map((version) =>
           version.status === 'completed' ? <VersionPanel {...version} /> :
@@ -150,7 +150,7 @@ const RoadmapPanel: React.FC<RoadmapProps> = ({ actions, versions }) => {
             <Button variant={action.variant} onClick={action.onClick!} className={action.className || ""} >{action.children}</Button>
         ))}
       </div>
-    </Panel>
+    </BasePanel>
   )
 }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import Component from '@/components/utilitified_decorations/Panel'
+import BasePanel from '@/components/panel/BasePanel'
 
 interface Issue {
   id: string
@@ -34,7 +34,7 @@ const IssueCard: React.FC<IssueCardProps> = ({ issue, isSelected, onSelect }) =>
   }
 
   return (
-    <Component
+    <BasePanel
       className={`border rounded-lg p-4 cursor-pointer transition-colors ${isSelected
         ? 'border-blue-500 bg-blue-50'
         : 'border-gray-200 hover:border-gray-300'
@@ -67,7 +67,7 @@ const IssueCard: React.FC<IssueCardProps> = ({ issue, isSelected, onSelect }) =>
           </p>
         </div>
       </div>
-    </Component>
+    </BasePanel>
   )
 }
 

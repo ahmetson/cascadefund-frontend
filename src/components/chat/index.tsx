@@ -4,7 +4,7 @@ import ConversationPanel from './ConversationPanel';
 import NotesPanel from './NotesPanel';
 import ChatPanel from './ChatPanel';
 import { AnimatePresence, motion } from 'motion/react';
-import Component from '@/components/utilitified_decorations/Panel';
+import BasePanel from '@/components/panel/BasePanel';
 import TopicPanel from './TopicPanel';
 
 const Panel: React.FC = () => {
@@ -25,7 +25,7 @@ const Panel: React.FC = () => {
   ]
 
   return (
-    <Component>
+    <BasePanel>
       <AnimatePresence mode="wait">
         <motion.div
           key={chatOpen ? "chat" : (topicOpen ? "topic" : tabs[0].key)}
@@ -41,7 +41,7 @@ const Panel: React.FC = () => {
           }
         </motion.div>
       </AnimatePresence>
-    </Component>
+    </BasePanel>
   )
 }
 

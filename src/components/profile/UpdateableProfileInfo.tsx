@@ -1,5 +1,5 @@
 import React from 'react'
-import Component from '@/components/utilitified_decorations/Panel'
+import BasePanel from '@/components/panel/BasePanel'
 import LinkBtn from '@/components/LinkBtn'
 import Link from '@/components/Link'
 import type { PanelEvents } from '@/types/eventTypes'
