@@ -1,45 +1,42 @@
 import React from 'react'
-import { Card } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import { PanelEvents } from '@/types/eventTypes'
+
+export type Padding = 'p-0' | 'p-2' | 'p-4' | 'p-8' | string
+export type Bg = string | {
+    src: string
+    label: string
+    className: string
+}
+export type Border = {
+    size: 'border-0' | 'border-1' | 'border-2' | 'border-4' | string
+    color: string
+    className: string
+}
 
 export type BasePanelProps = PanelEvents & {
     children: React.ReactNode
     className?: string
-    padding?: 'none' | 'sm' | 'md' | 'lg'
-    bg?: string
-    bgImgUrl?: string
-    bgImgLabel?: string
-    bgImgClassName?: string
+    padding?: Padding
+    bg?: Bg
+    border?: Border
 }
 
 const BasePanel: React.FC<BasePanelProps> = ({
     children,
     className = '',
-    padding = 'md',
+    padding = 'p-4',
     bg = 'white',
-    bgImgUrl,
-    bgImgLabel,
-    bgImgClassName
+    border = {
+        size: 'border-1',
+        color: 'border-gray-300',
+        className: ''
+    },
 }) => {
-    const getPaddingStyles = () => {
-        switch (padding) {
-            case 'none':
-                return 'p-0'
-            case 'sm':
-                return 'p-3'
-            case 'md':
-                return 'p-4'
-            case 'lg':
-                return 'p-6'
-            default:
-                return 'p-4'
-        }
-    }
 
     const getBackgroundStyles = () => {
-        if (bgImgUrl) {
-            return 'backdrop-blur-sm bg-white/50 border-white/20'
+        if (typeof bg === 'object' && bg.src) {
+            return 'backdrop-blur-sm'
         }
         return bg || ''
     }
@@ -47,22 +44,22 @@ const BasePanel: React.FC<BasePanelProps> = ({
     return (
         <div
             className={cn(
-                'rounded-xs border-1 border-gray-300 shadow-md relative overflow-hidden',
+                'rounded-xs shadow-md relative overflow-hidden',
+                `${border.size} ${border.color} ${border.className}`,
                 getBackgroundStyles(),
-                getPaddingStyles(),
+                padding,
                 className
             )}
         >
             {/* Background Image with Frosted Glass Effect */}
-            {bgImgUrl && (
+            {typeof bg === 'object' && bg.src && (
                 <div className="absolute inset-0 -z-10 overflow-hidden">
                     <img
-                        src={bgImgUrl}
-                        alt={bgImgLabel || 'Background'}
+                        src={bg.src}
+                        alt={bg.label || 'Background'}
                         referrerPolicy="no-referrer"
                         className={cn(
-                            'w-full h-full object-cover blur-sm scale-110',
-                            bgImgClassName
+                            `w-full h-full object-cover blur-xs scale-110 ${bg.className || ''}`,
                         )}
                     />
                 </div>

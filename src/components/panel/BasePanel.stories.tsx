@@ -25,7 +25,7 @@ export const WithDifferentPadding: Story = {
       <h3 className="text-lg font-semibold mb-2">Large Padding</h3>
       <p className="text-gray-600">This panel uses large padding (p-6).</p>
     </div>,
-    padding: 'lg'
+    padding: 'p-8'
   }
 };
 
@@ -35,17 +35,10 @@ export const WithBackgroundImage: Story = {
       <h3 className="text-lg font-semibold mb-2 bg-gray-500">Panel with Background</h3>
       <p className="text-white/80">This panel has a background image with frosted glass effect.</p>
     </div>,
-    bgImgUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
-    bgImgLabel: 'Mountain landscape'
-  }
-};
-
-export const NoPadding: Story = {
-  args: {
-    children: <div className="">
-      <h3 className="text-lg font-semibold mb-2">No Padding</h3>
-      <p className="text-gray-600">This panel has no padding, so content goes to the edges.</p>
-    </div>,
-    padding: 'none'
+    bg: {
+      src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
+      label: 'Mountain landscape',
+      className: ''
+    }
   }
 };

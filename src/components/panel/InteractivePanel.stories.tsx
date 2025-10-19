@@ -110,8 +110,11 @@ export const WithBackgroundImage: Story = {
                 </div>
             </div>
         ),
-        bgImgUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
-        bgImgLabel: 'Mountain landscape',
+        bg: {
+            src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
+            label: 'Mountain landscape',
+            className: ''
+        },
         expandable: true,
         defaultExpanded: true,
     },
