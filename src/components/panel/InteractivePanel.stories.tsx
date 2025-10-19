@@ -8,7 +8,7 @@ const meta = {
         layout: 'centered',
     },
     argTypes: {
-        expandable: {
+        expandableTitle: {
             control: { type: 'boolean' },
             description: 'Whether the panel can be expanded/collapsed',
         },
@@ -59,7 +59,7 @@ export const Expandable: Story = {
                 </div>
             </div>
         ),
-        expandable: true,
+        expandableTitle: 'Expandable Panel',
         defaultExpanded: true,
     },
 };
@@ -77,7 +77,7 @@ export const Collapsed: Story = {
                 </div>
             </div>
         ),
-        expandable: true,
+        expandableTitle: 'Collapsed Panel',
         defaultExpanded: false,
     },
 };
@@ -93,7 +93,6 @@ export const NonHoverable: Story = {
                 </div>
             </div>
         ),
-        expandable: false,
     },
 };
 
@@ -115,7 +114,7 @@ export const WithBackgroundImage: Story = {
             label: 'Mountain landscape',
             className: ''
         },
-        expandable: true,
+        expandableTitle: 'Panel with Background',
         defaultExpanded: true,
     },
 };
@@ -162,7 +161,7 @@ export const CustomBackground: Story = {
             </div>
         ),
         bg: 'bg-gradient-to-br from-purple-500 to-pink-500',
-        expandable: true,
+        expandableTitle: 'Custom Background',
     },
 };
 
@@ -197,7 +196,7 @@ export const ComplexContent: Story = {
                 </div>
             </div>
         ),
-        expandable: true,
+        expandableTitle: 'Complex Panel',
         defaultExpanded: true,
         padding: 'lg',
     },
@@ -219,7 +218,7 @@ export const WithBorderBeam: Story = {
                 </div>
             </div>
         ),
-        expandable: true,
+        expandableTitle: 'Border Beam Effect',
         defaultExpanded: true,
         padding: 'lg',
     },

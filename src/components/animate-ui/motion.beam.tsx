@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { twMerge } from "tailwind-merge";
-import styles from "@/styles/motion.css";
 
 const Beam = ({ className }: any) => {
     const meteorRef = useRef<any>(null);
