@@ -1,5 +1,5 @@
 ---
-import WorkflowCard from "@/components/InfoPanel";
+import InfoPanel from "@/components/panel/InfoPanel";
 import Horizontally from "@/components/grid/RowGrid";
 import type { SectionProps } from "@/types/eventTypes";
 import TitledInfoPanel from "@/components/utilitified_decorations/TitledInfoPanel";
@@ -45,7 +45,7 @@ if (!cols) {
                 iconBgColor={step.iconBgColor || "blue"}
               />
             ) : (
-              <WorkflowCard key={prefix! + index} {...step} />
+              <InfoPanel key={prefix! + index} {...step} />
             ),
           )
       }
@@ -53,7 +53,7 @@ if (!cols) {
 
     {
       bottomPanel === undefined ? null : (
-        <WorkflowCard key={"bottom-panel"} {...bottomPanel} />
+        <InfoPanel key={"bottom-panel"} {...bottomPanel} />
       )
     }
   </Horizontally>

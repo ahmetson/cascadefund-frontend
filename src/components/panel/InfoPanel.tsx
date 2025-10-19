@@ -11,7 +11,7 @@ export interface InfoPanelProps extends Omit<BasePanelProps, 'children'> {
     icon?: IconType | IconProps  // Accepts both 'info' and { iconType: 'info', width: 'w-6' }
     title: React.ReactNode
     actions?: ActionProps[]
-    children: React.ReactNode
+    children?: React.ReactNode
     expandable?: boolean
     defaultExpanded?: boolean
 }
@@ -26,11 +26,18 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
     className = '',
     ...baseProps
 }) => {
+    const panelID = 'infopanel-1'
+    const hasContent = children || (actions && actions.length > 0)
+    const titleBottomMargin = hasContent ? 'mb-4' : undefined;
+    const contentTopMargin = 'mt-4';
+
     const renderHeader = () => {
+        const iconProps = typeof icon === 'string' ? { iconType: icon, width: 'w-4', height: 'h-4', fill: 'gray-300', className: 'text-gray-100 ' } : icon
+
         return (
-            <div className="mb-4 ">
+            <div className={`${titleBottomMargin}`}>
                 <h2 className="font-georgia font-semibold flex items-center gap-2">
-                    {icon && getIcon({ iconType: icon, width: 'w-4', height: 'h-4', fill: 'gray-300', className: 'text-gray-100 ' })}
+                    {iconProps && getIcon(iconProps)}
                     <span>{title}</span>
                 </h2>
             </div>
@@ -75,25 +82,24 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
         )
     }
 
-    const panelID = 'infopanel-1'
 
-    if (expandable) {
+    if (hasContent && expandable) {
         return (
             <BasePanel
                 {...baseProps}
-                border={{ size: 'border-1', color: 'border-gray-100!' }}
+                border={{ size: 'border-1', color: 'border-gray-300!' }}
                 bg="bg-transparent"
                 className={cn('shadow-none text-gray-500 ', className)}
             >
                 <Accordion defaultValue={defaultExpanded ? panelID : undefined} type='single' collapsible={true}>
                     <AccordionItem value={panelID}>
-                        <AccordionTrigger className='flex items-center justify-between h-auto no-underline! p-0 mb-4'>
+                        <AccordionTrigger className={`flex items-center justify-between h-auto no-underline! p-0`}>
                             <div className="font-georgia font-semibold text-base flex items-center gap-2">
                                 {icon && getIcon(icon)}
                                 <span>{title}</span>
                             </div>
                         </AccordionTrigger>
-                        <AccordionContent className='AccordionContent '>
+                        <AccordionContent className={`AccordionContent ${contentTopMargin}`}>
                             {renderContent()}
                             {renderActions()}
                         </AccordionContent>
@@ -106,13 +112,13 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
     return (
         <BasePanel
             {...baseProps}
-            border={{ size: 'border-1' }}
+            border={{ size: 'border-1', color: 'border-gray-300!' }}
             bg="bg-transparent"
             className={cn('shadow-none text-gray-500', className)}
         >
             {renderHeader()}
-            {renderContent()}
-            {renderActions()}
+            {children && renderContent()}
+            {actions && renderActions()}
         </BasePanel>
     )
 }

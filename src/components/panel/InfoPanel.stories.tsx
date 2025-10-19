@@ -25,13 +25,17 @@ const meta = {
             control: { type: 'text' },
             description: 'Main title of the panel',
         },
+        children: {
+            control: { type: 'text' },
+            description: 'Content to display in the panel (optional)',
+        },
         expandable: {
             control: { type: 'boolean' },
-            description: 'Whether the panel can be expanded/collapsed',
+            description: 'Whether the panel can be expanded/collapsed (only works when children or actions are provided)',
         },
         defaultExpanded: {
             control: { type: 'boolean' },
-            description: 'Whether the panel starts expanded (only when expandable=true)',
+            description: 'Whether the panel starts expanded (only when expandable=true and content exists)',
         },
         padding: {
             control: { type: 'text' },
@@ -310,5 +314,34 @@ export const ComplexContent: Story = {
                 </div>
             </div>
         ),
+    },
+};
+
+export const TitleOnly: Story = {
+    args: {
+        icon: 'info',
+        title: 'Information',
+    },
+};
+
+export const TitleOnlyWithIcon: Story = {
+    args: {
+        icon: 'warning',
+        title: 'Warning',
+    },
+};
+
+export const TitleOnlyWithCustomIcon: Story = {
+    args: {
+        icon: { iconType: 'fire', width: 'w-6', height: 'h-6', className: 'text-red-500' },
+        title: 'Fire Alert',
+    },
+};
+
+export const TitleOnlyExpandableDisabled: Story = {
+    args: {
+        icon: 'settings',
+        title: 'Settings',
+        expandable: true, // This should be ignored since there's no content
     },
 };
