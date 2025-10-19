@@ -1,4 +1,4 @@
-import PagelikeCard from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import React from 'react'
 
 interface IssueCardProps {

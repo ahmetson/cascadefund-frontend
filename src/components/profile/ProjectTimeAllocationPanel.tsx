@@ -1,11 +1,11 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import Badge from '@/components/Badge'
 import Button from '@/components/Button'
 
 const Sidebar: React.FC = () => {
   return (
-    <Card title="Project Time Allocation" bg='green-50' rightHeader={[<Button variant="ghost" size="sm">
+    <PageLikePanel title="Project Time Allocation" bg='green-50' rightHeader={[<Button variant="ghost" size="sm">
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
       </svg>
@@ -57,7 +57,7 @@ const Sidebar: React.FC = () => {
           <Badge variant="purple">Influencer</Badge>
         </div>
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

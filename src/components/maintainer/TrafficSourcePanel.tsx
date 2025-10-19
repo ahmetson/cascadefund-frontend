@@ -1,9 +1,9 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 const TrafficSources: React.FC = () => {
   return (
-    <Card title='Traffic Sources' className="bg-white p-6 rounded-lg border border-gray-200">
+    <PageLikePanel title='Traffic Sources' className="bg-white p-6 rounded-lg border border-gray-200">
       <p className="text-sm text-gray-600 mb-6">
         Where clicks came from
       </p>
@@ -37,7 +37,7 @@ const TrafficSources: React.FC = () => {
           <span className="text-sm text-gray-700">Other (10%)</span>
         </div>
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

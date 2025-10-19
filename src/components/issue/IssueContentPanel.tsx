@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import Badge from '@/components/Badge'
 import NotificationBanner from '@/components/NotificationBanner'
 
@@ -14,7 +14,7 @@ const IssueContent: React.FC = () => {
   // </NotificationBanner>
 
   return (
-    <Card title="OAuth Integration with Third-party Services" actions={[]} rightHeader={<Badge variant='gray'>Don't affect rating</Badge>}>
+    <PageLikePanel title="OAuth Integration with Third-party Services" actions={[]} rightHeader={<Badge variant='gray'>Don't affect rating</Badge>}>
       <NotificationBanner type="warning" title='Not on Roadmap' icon="warning">
         <p className="text-sm text-yellow-700 mt-1">
           This issue is on the "Funded Issues" list.<br />
@@ -44,7 +44,7 @@ const IssueContent: React.FC = () => {
           <li>Ensure GDPR compliance for all data transfers</li>
         </ul>
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

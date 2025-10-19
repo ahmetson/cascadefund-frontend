@@ -1,9 +1,9 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 const Sidebar: React.FC = () => {
   return (
-    <Card title="Related Issues" actions={[]}>
+    <PageLikePanel title="Related Issues" actions={[]}>
       <div className="space-y-3">
         <div>
           <a href="#" className="text-sm text-cascade-blue hover:underline">"Blog Site"</a>
@@ -23,7 +23,7 @@ const Sidebar: React.FC = () => {
           <p className="text-xs text-gray-600">Feature • Authentication Module</p>
         </div>
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

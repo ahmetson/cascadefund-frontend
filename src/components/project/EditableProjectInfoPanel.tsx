@@ -1,12 +1,12 @@
 import React from 'react'
 import FormField from '@/components/LabeledInput'
 import TextArea from '@/components/TextArea'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import { PanelEvents } from '@/types/eventTypes'
 
 const ProjectForm: React.FC<PanelEvents> = () => {
   return (
-    <Card title="Update Project Information" >
+    <PageLikePanel title="Update Project Information" >
       <FormField
         label="Project Title"
         value="blockchain-verification-tool"
@@ -36,7 +36,7 @@ const ProjectForm: React.FC<PanelEvents> = () => {
       />
 
 
-    </Card>
+    </PageLikePanel>
   )
 }
 

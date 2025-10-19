@@ -2,14 +2,14 @@
 import V2Layout from "@/layouts/PanelViewLayout.astro";
 import { ItemName } from "@/components/utilitified_decorations/LandingNavbar.astro";
 
-import Panel from "@/components/utilitified_decorations/PagePanel";
+import PageLikePanel from "@/components/panel/PageLikePanel";
 import LinkBtn from "@/components/LinkBtn";
 import Link from "@/components/Link";
 import InfoPanel2 from "@/components/InfoPanel2.astro";
 ---
 
 <V2Layout hideLinks={Object.values(ItemName)}>
-  <Panel
+  <PageLikePanel
     slot="center"
     title="Login"
     titleCenter={true}
@@ -30,7 +30,7 @@ import InfoPanel2 from "@/components/InfoPanel2.astro";
         </Link>
       </p>
     </div>
-  </Panel>
+  </PageLikePanel>
   <InfoPanel2
     slot="right"
     title="Don't want GitHub?"

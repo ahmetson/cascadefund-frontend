@@ -1,10 +1,10 @@
 import React from 'react'
 import Button from '@/components/Button'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 const SuperpowersCard: React.FC = () => {
   return (
-    <Card title={
+    <PageLikePanel title={
       <>Your Superpowers <span className="text-yellow-500">▲</span></>
     } className="bg-white rounded-lg shadow-sm p-6">
       <p className="text-sm text-gray-600 mb-6">
@@ -42,7 +42,7 @@ const SuperpowersCard: React.FC = () => {
       <p className="text-xs text-gray-500 mt-6 leading-relaxed">
         We'll do it. No questions asked (well, maybe one to confirm it's really you).
       </p>
-    </Card>
+    </PageLikePanel>
   )
 }
 

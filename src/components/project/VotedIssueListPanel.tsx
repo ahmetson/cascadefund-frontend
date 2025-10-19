@@ -1,6 +1,6 @@
 import React from 'react'
 import AllocationItem from './VotedIssueElement'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 interface Allocation {
   name: string
@@ -20,7 +20,7 @@ const VotesCard: React.FC = () => {
   const totalVotes = allocations.reduce((sum, item) => sum + item.votes, 0)
 
   return (
-    <Card title={
+    <PageLikePanel title={
       <div className="w-full h-8 flex items-center">
         <svg className="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -35,7 +35,7 @@ const VotesCard: React.FC = () => {
       <p className="text-gray-600 mb-2">Thank you for participating in the project development.</p>
       <p className="text-gray-600">Your votes have been successfully recorded.</p>
 
-      <Card title={"Allocation"} >
+      <PageLikePanel title={"Allocation"} >
         {allocations.map((allocation, index) => (
           <AllocationItem
             key={index}
@@ -61,8 +61,8 @@ const VotesCard: React.FC = () => {
           </div>
           <p className="text-xs text-gray-500 text-right mt-1">+0.0 Bonus by your rating</p>
         </div>
-      </Card>
-    </Card>
+      </PageLikePanel>
+    </PageLikePanel>
   )
 }
 

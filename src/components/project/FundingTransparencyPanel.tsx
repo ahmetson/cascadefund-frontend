@@ -1,15 +1,15 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import ProgressBar from '@/components/ProgressBar'
 
 const FundingTransparency: React.FC = () => {
   return (
-    <Card className="p-6" title='Funding Transparency'>
+    <PageLikePanel className="p-6" title='Funding Transparency'>
       <div className="mb-4">
         <p className="text-sm text-gray-600">Progress: $1,200 raised by 120 influencers</p>
       </div>
 
-      <Card className="space-y-4" bg='green-50' title="How funds were spend in the last week">
+      <PageLikePanel className="space-y-4" bg='green-50' title="How funds were spend in the last week">
         <div>
           <div className="flex justify-between text-sm mb-1">
             <span>Maintainer time</span>
@@ -33,8 +33,8 @@ const FundingTransparency: React.FC = () => {
           </div>
           <ProgressBar percentage={20} color="purple" />
         </div>
-      </Card>
-    </Card>
+      </PageLikePanel>
+    </PageLikePanel>
   )
 }
 

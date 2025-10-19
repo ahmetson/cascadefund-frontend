@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 interface Influencer {
   name: string
@@ -15,7 +15,7 @@ const TopInfluencers: React.FC = () => {
   ]
 
   return (
-    <Card className="p-6" title='Top Influencers'>
+    <PageLikePanel className="p-6" title='Top Influencers'>
       {influencers.map((influencer, index) => (
         <div key={index} className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -39,7 +39,7 @@ const TopInfluencers: React.FC = () => {
         </blockquote>
         <cite className="text-xs text-gray-500 mt-2 block text-right">— Backer testimonial</cite>
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

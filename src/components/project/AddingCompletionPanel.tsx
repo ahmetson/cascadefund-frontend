@@ -1,6 +1,6 @@
 import React from 'react'
 import ProgressStep from '@/components/ProgressStep'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 const ConnectionCard: React.FC = () => {
   const steps = [
@@ -14,7 +14,7 @@ const ConnectionCard: React.FC = () => {
   ]
 
   return (
-    <Card title={
+    <PageLikePanel title={
       <div className="flex justify-center">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -36,7 +36,7 @@ const ConnectionCard: React.FC = () => {
           progress={step.progress}
         />
       ))}
-    </Card>
+    </PageLikePanel>
   )
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import Avatar from '@/components/Avatar'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 const Sidebar: React.FC = () => {
   const people = [
@@ -12,7 +12,7 @@ const Sidebar: React.FC = () => {
   ]
 
   return (
-    <Card title="People">
+    <PageLikePanel title="People">
       {people.map((person, index) => (
         <div key={index} className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -22,14 +22,14 @@ const Sidebar: React.FC = () => {
             </div>
           </div>
           <span className={`text-xs px-2 py-1 rounded-full ${person.role === 'Maintainer' ? 'bg-green-100 text-green-800' :
-              person.role === 'Influencer' ? 'bg-blue-100 text-blue-800' :
-                'bg-gray-100 text-gray-800'
+            person.role === 'Influencer' ? 'bg-blue-100 text-blue-800' :
+              'bg-gray-100 text-gray-800'
             }`}>
             {person.role}
           </span>
         </div>
       ))}
-    </Card>
+    </PageLikePanel>
   )
 }
 

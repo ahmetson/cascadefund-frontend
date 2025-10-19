@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Panel from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import Input from '@/components/Input'
 import { getIcon } from '../icon'
 import { PanelEvents } from '@/types/eventTypes'
@@ -12,7 +12,7 @@ type Props = PanelEvents & {
 const C: React.FC<Props> = ({ repositoryUrl, setRepositoryUrl }) => {
 
   return (
-    <Panel
+    <PageLikePanel
       icon='new-file'
       titleCenter={true}
       title={"Add GitHub Repository"}
@@ -34,7 +34,7 @@ const C: React.FC<Props> = ({ repositoryUrl, setRepositoryUrl }) => {
         </div>
       </div>
 
-    </Panel>
+    </PageLikePanel>
   )
 }
 

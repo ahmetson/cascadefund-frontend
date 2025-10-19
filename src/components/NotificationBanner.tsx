@@ -1,5 +1,5 @@
 import React from 'react'
-import Card, { type Props } from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel, { type PageLikePanelProps } from '@/components/panel/PageLikePanel'
 import { getIcon, type IconType } from '@/components/icon'
 
 type NotificationBannerProps = {
@@ -8,9 +8,9 @@ type NotificationBannerProps = {
   children?: any
   icon?: IconType
   className?: string
-} & Omit<Props, "children" | "title">
+} & Omit<PageLikePanelProps, "children" | "title">
 
-const NotificationBanner: React.FC<NotificationBannerProps> = ({ className, icon, type, title, children, dropdown }) => {
+const NotificationBanner: React.FC<NotificationBannerProps> = ({ className, icon, type, title, children, expandable }) => {
   const getStyles = () => {
     switch (type) {
       case 'warning':
@@ -47,9 +47,9 @@ const NotificationBanner: React.FC<NotificationBannerProps> = ({ className, icon
   }
 
   return (
-    <Card dropdown={dropdown} className={`p-4 border-2 border-dashed flex items-start rounded-lg rounded-r-0 shadow-md ${getStyles()} ${className}`} title={<>{title}{getIconComponent()}</>}>
+    <PageLikePanel expandable={expandable} className={`p-4 border-2 border-dashed flex items-start rounded-lg rounded-r-0 shadow-md ${getStyles()} ${className}`} title={<>{title}{getIconComponent()}</>}>
       {children}
-    </Card>
+    </PageLikePanel>
   )
 }
 

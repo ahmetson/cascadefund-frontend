@@ -1,5 +1,5 @@
 import React from 'react'
-import Card, { type Props } from './PagePanel'
+import PageLikePanel, { type PageLikePanelProps } from '@/components/panel/PageLikePanel'
 
 interface SidebarItem {
   title?: string
@@ -8,7 +8,7 @@ interface SidebarItem {
   number?: string
 }
 
-type SidebarSectionProps = Omit<Props, "children"> & {
+type SidebarSectionProps = Omit<PageLikePanelProps, "children"> & {
   title: string
   items: SidebarItem[]
   showNumbers?: boolean
@@ -16,7 +16,7 @@ type SidebarSectionProps = Omit<Props, "children"> & {
 
 const SidebarSection: React.FC<SidebarSectionProps> = ({ title, items, showNumbers = false, bg }) => {
   return (
-    <Card title={title} bg={bg}>
+    <PageLikePanel title={title} bg={bg}>
       {items.map((item, index) => (
         <div key={index} className="text-sm">
           {showNumbers ? (
@@ -32,7 +32,7 @@ const SidebarSection: React.FC<SidebarSectionProps> = ({ title, items, showNumbe
           )}
         </div>
       ))}
-    </Card>
+    </PageLikePanel>
   )
 }
 

@@ -11,7 +11,7 @@ import { BgType, type SectionProps } from "@/types/eventTypes";
 import LeftImageRightPanelsSection from "@/layouts/sections/LeftImageRightPanelsSection.astro";
 import ThreeColumnGrid from "@/components/grid/ThreeColumnGrid.astro";
 import Section from "@/layouts/sections/BaseSection.astro";
-import Panel from "@/components/utilitified_decorations/PagePanel";
+import PageLikePanel from "@/components/panel/PageLikePanel";
 
 const teamGlanceProps: SectionProps = {
   title: "First, Meet the Team at a Glance",
@@ -128,7 +128,7 @@ const teamMembers: TeamPanelProps[] = [
     </p>
   </LeftImageRightPanelsSection>
   <ThreeColumnGrid>
-    <Panel
+    <PageLikePanel
       slot="center"
       title="What we believe"
       className="text-cascade-purple text-center"
@@ -142,7 +142,7 @@ const teamMembers: TeamPanelProps[] = [
         <li>"Transparency and honesty are the foundation.",</li>
         <li>"CascadeFund was built because we needed it ourselves."</li>
       </ul>
-    </Panel>
+    </PageLikePanel>
   </ThreeColumnGrid>
   <Section
     title="Ready to Join the CascadeFund Ecosystem?"

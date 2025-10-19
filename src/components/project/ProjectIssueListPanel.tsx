@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import SearchBar from '@/components/SearchBar'
 import IssueCard from './SelectableIssuePanel'
-import Panel from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import { PanelEvents } from '@/types/eventTypes'
 import Link from '../Link'
 import LinkBtn from '../LinkBtn'
@@ -67,7 +67,7 @@ const IssueSelector: React.FC<IssueSelectorProps> = ({ className, onActionClick,
   )
 
   return (
-    <Panel
+    <PageLikePanel
       className={className}
       title={"Issues"}
       rightHeader={<LinkBtn href={'/data/issue/post?projectId=1&notYetCreated=true&forkProject=git:ahmetson%2Fblockchain-verifier'}>
@@ -111,7 +111,7 @@ const IssueSelector: React.FC<IssueSelectorProps> = ({ className, onActionClick,
       <p className="text-center text-sm text-red-500 mt-2">
         Select Issues first or create a new one
       </p>
-    </Panel>
+    </PageLikePanel>
   )
 }
 

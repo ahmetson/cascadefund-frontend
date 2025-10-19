@@ -1,13 +1,13 @@
 ---
-import Card from "@/components/utilitified_decorations/PagePanel";
+import PageLikePanel from "@/components/panel/PageLikePanel";
 import Horizontally from "@/components/grid/RowGrid";
 import ReactComponentImporter from "../ReactComponentImporter";
 import { getIcon } from "../icon";
 ---
 
-<Card title="Issue Prioritization" actions={[]}>
+<PageLikePanel title="Issue Prioritization" actions={[]}>
   <Horizontally>
-    <Card title="Prioritization Details" actions={[]} bg={"green-100"}>
+    <PageLikePanel title="Prioritization Details" actions={[]} bg={"green-100"}>
       <div class="flex justify-between items-center">
         <span class="text-sm text-gray-600">Not a rating issue</span>
         <span class="text-sm text-gray-600">Rating</span>
@@ -29,9 +29,9 @@ import { getIcon } from "../icon";
         </svg>
         <span class="text-sm text-gray-600">1</span>
       </div>
-    </Card>
+    </PageLikePanel>
 
-    <Card title="Prioritization Details" actions={[]} bg={"green-100"}>
+    <PageLikePanel title="Prioritization Details" actions={[]} bg={"green-100"}>
       <div class="flex items-center space-x-2">
         <svg
           class="w-5 h-5 text-cascade-teal"
@@ -50,10 +50,10 @@ import { getIcon } from "../icon";
         Want to have more points?<br />
         They fund using <span class="text-cascade-blue">Donation</span>
       </div>
-    </Card>
+    </PageLikePanel>
   </Horizontally>
 
-  <Card
+  <PageLikePanel
     title="Turn Into Rating Issue"
     actions={[{ children: "Save", href: "/issue" }]}
     bg="green-100"
@@ -90,5 +90,5 @@ import { getIcon } from "../icon";
       </div>
       <span class="text-gray-600">1nd / 20 issues</span>
     </div>
-  </Card>
-</Card>
+  </PageLikePanel>
+</PageLikePanel>

@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 interface ShareToolCardProps {
   icon: string
@@ -43,7 +43,7 @@ const ShareToolCard: React.FC<ShareToolCardProps> = ({
 
 const ShareTools: React.FC = () => {
   return (
-    <Card title="Share Tools" className="w-80 bg-gray-50 p-4 border-l border-gray-200">
+    <PageLikePanel title="Share Tools" className="w-80 bg-gray-50 p-4 border-l border-gray-200">
       <ShareToolCard
         icon="🎯"
         title="Goal: Onboard Users & Contributors"
@@ -79,7 +79,7 @@ const ShareTools: React.FC = () => {
         link="https://cascadefund.org/donate/reflect"
         buttonText="📋"
       />
-    </Card>
+    </PageLikePanel>
   )
 }
 

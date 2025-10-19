@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/PanelViewLayout.astro";
 import { ItemName } from "@/components/utilitified_decorations/LandingNavbar.astro";
-import Panel from "@/components/utilitified_decorations/PagePanel";
+import PageLikePanel from "@/components/panel/PageLikePanel";
 import { getIcon } from "@/components/icon";
 import type { RoleCardProps } from "@/components/profile/RolePanel";
 import { BgType } from "@/types/eventTypes";
@@ -67,7 +67,7 @@ const roles: RoleCardProps[] = [
 ---
 
 <Layout hideLinks={Object.values(ItemName)} subtitle="Choose your role">
-  <Panel
+  <PageLikePanel
     slot="center"
     title="Choose Role"
     titleCenter={true}
@@ -79,7 +79,7 @@ const roles: RoleCardProps[] = [
         {roles.map((role) => <RolePanel {...role} />)}
       </RowGrid>
     </div>
-  </Panel>
+  </PageLikePanel>
   <InfoPanel2 slot="right" title="Links" icon="info">
     <ul>
       {

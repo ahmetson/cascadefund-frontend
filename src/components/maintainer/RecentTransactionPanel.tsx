@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import TransactionItem from './TransactionItem'
 
 const TransactionsCard: React.FC = () => {
@@ -31,11 +31,11 @@ const TransactionsCard: React.FC = () => {
   ]
 
   return (
-    <Card title="Recent Transactions (todo add pagination)">
+    <PageLikePanel title="Recent Transactions (todo add pagination)">
       {transactions.map((transaction, index) => (
         <TransactionItem key={index} {...transaction} />
       ))}
-    </Card>
+    </PageLikePanel>
   )
 }
 

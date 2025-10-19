@@ -5,7 +5,7 @@ import V2Layout from "@/layouts/LandingLayout.astro";
 import HeroSection from '@/layouts/sections/HeroSection.astro'
 import QuestTable from '@/components/QuestTable'
 import RowGrid from "@/components/grid/RowGrid";
-import Panel from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import { getIcon } from "@/components/icon";
 import ReactComponentImporter from "@/components/ReactComponentImporter";
 import TaskPanel from "@/components/TaskPanel";
@@ -31,7 +31,7 @@ const quests = [{
   >
   <RowGrid cols={3}>
     {quests.map((quest) => 
-      <Panel title={quest.title} className="bg-white bg-opacity-10 text-gray-900 rounded-lg p-6 shadow-sm border border-gray-200 relative"
+      <PageLikePanel title={quest.title} className="bg-white bg-opacity-10 text-gray-900 rounded-lg p-6 shadow-sm border border-gray-200 relative"
         actions={[
           {variant: quest.buttonVariant, children: quest.buttonText}
         ]}
@@ -40,7 +40,7 @@ const quests = [{
           <ReactComponentImporter element={getIcon(quest.title)}) />
         </div>
         <p class="text-gray-600 text-sm mb-6">{quest.description}</p>
-      </Panel>
+      </PageLikePanel>
     )}
     <TaskPanel
           title="Tasks in CascadeFund"

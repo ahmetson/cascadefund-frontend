@@ -10,8 +10,8 @@ export type Bg = string | {
 }
 export type Border = {
     size: 'border-0' | 'border-1' | 'border-2' | 'border-4' | string
-    color: string
-    className: string
+    color?: string
+    className?: string
 }
 
 export type BasePanelProps = PanelEvents & {

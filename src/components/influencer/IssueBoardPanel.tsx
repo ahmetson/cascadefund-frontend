@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import LinkBtn from '@/components/LinkBtn'
 import Badge from '@/components/Badge'
 import IssueCard from '@/components/issue/IssueLinkPanel2'
@@ -65,7 +65,7 @@ const IssuesSection: React.FC = () => {
   ]
 
   return (
-    <Card title={<>Issues <Badge variant="gray">4</Badge></>} rightHeader={<LinkBtn variant="blue" href="/data/issue/post" >Add Issue</LinkBtn>}>
+    <PageLikePanel title={<>Issues <Badge variant="gray">4</Badge></>} rightHeader={<LinkBtn variant="blue" href="/data/issue/post" >Add Issue</LinkBtn>}>
       <div className="p-6">
         <div className="mb-6">
           <div className="flex items-center space-x-2 mb-4">
@@ -109,7 +109,7 @@ const IssuesSection: React.FC = () => {
           ))}
         </div>
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

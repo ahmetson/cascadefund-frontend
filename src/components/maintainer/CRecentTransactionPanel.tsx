@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import Button from '@/components/Button'
 import TransactionRow from './CTransactionRow'
 
@@ -97,7 +97,7 @@ const transactions: Transaction[] = [
 
 const TransactionHistory: React.FC = () => {
   return (
-    <Card title="Transaction History">
+    <PageLikePanel title="Transaction History">
       <table className="w-full">
         <thead>
           <tr className="border-b border-gray-200">
@@ -128,7 +128,7 @@ const TransactionHistory: React.FC = () => {
           </Button>
         </div>
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

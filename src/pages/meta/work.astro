@@ -15,7 +15,7 @@ import type { NumeratedInfoProps } from "@/components/utilitified_decorations/Nu
 import Section from "@/layouts/sections/BaseSection.astro";
 import NumeratedInfo from "@/components/utilitified_decorations/NumeratedInfoPanel";
 import TwoColumnGrid from "@/components/grid/TwoColumnGrid.astro";
-import Panel from "@/components/utilitified_decorations/PagePanel";
+import PageLikePanel from "@/components/panel/PageLikePanel";
 
 const heroSection = {
   title: "How CascadeFund Works",
@@ -249,7 +249,7 @@ const scenarios: Scenario[] = [
 
   <Section bg={{ sectionBgType: BgType.infoSection, overlay: "rectangles" }}>
     <ThreeColumnGrid centerPercents={"1/3"} centerClassName="flex">
-      <Panel
+      <PageLikePanel
         slot="left"
         title={scenarios[0].title}
         key={scenarios[0].id}
@@ -277,8 +277,8 @@ const scenarios: Scenario[] = [
             ))
           }
         </div>
-      </Panel>
-      <Panel
+      </PageLikePanel>
+      <PageLikePanel
         slot="right"
         title={scenarios[1].title}
         key={scenarios[1].id}
@@ -306,7 +306,7 @@ const scenarios: Scenario[] = [
             ))
           }
         </div>
-      </Panel>
+      </PageLikePanel>
       <h1 class="text-center text-xl m-auto" slot="center">
         When Maintainer Can't Do It All
       </h1>
@@ -318,26 +318,26 @@ const scenarios: Scenario[] = [
   >
     <TwoColumnGrid firstPercents={50}>
       <div class="space-y-2" slot="two-column-left">
-        <Panel title="Voting Power" className="p-6">
+        <PageLikePanel title="Voting Power" className="p-6">
           <p class="text-gray-600">
             The more impact a contributor makes, the more voting power they earn
             to influence project decisions.
           </p>
-        </Panel>
+        </PageLikePanel>
 
-        <Panel title="Quest Completion" className="p-6">
+        <PageLikePanel title="Quest Completion" className="p-6">
           <p class="text-gray-600">
             Users earn reputation and voting power by completing quests and
             contributing meaningfully to projects.
           </p>
-        </Panel>
+        </PageLikePanel>
 
-        <Panel title="Transparency" className="p-6">
+        <PageLikePanel title="Transparency" className="p-6">
           <p class="text-gray-600">
             All ratings and contributions are visible to the community to ensure
             fairness and accountability.
           </p>
-        </Panel>
+        </PageLikePanel>
       </div>
       <div class="flex justify-center h-full" slot="two-column-right">
         <div class="relative m-auto">

@@ -1,10 +1,10 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import Slider from '@/components/Slider'
 
 const WorkStyleSection: React.FC = () => {
   return (
-    <Card title="Availability & Work Style" actions={[]} bg='green-50'>
+    <PageLikePanel title="Availability & Work Style" actions={[]} bg='green-50'>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
           <h4 className="font-medium mb-4">Availability Status</h4>
@@ -49,7 +49,7 @@ const WorkStyleSection: React.FC = () => {
       <p className="text-xs text-gray-500 mt-6">
         Estimated by CascadeFund based on communication analysis
       </p>
-    </Card>
+    </PageLikePanel>
   )
 }
 

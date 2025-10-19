@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 interface ActivityListProps {
   activities: string[]
@@ -7,7 +7,7 @@ interface ActivityListProps {
 
 const ActivityList: React.FC<ActivityListProps> = ({ activities }) => {
   return (
-    <Card title="Recent Activity on Repository">
+    <PageLikePanel title="Recent Activity on Repository">
       {activities.map((activity, index) => (
         <div key={index} className="flex items-center text-sm text-gray-600">
           {index === 2 && (
@@ -16,7 +16,7 @@ const ActivityList: React.FC<ActivityListProps> = ({ activities }) => {
           <span className={index !== 2 ? 'ml-4' : ''}>{activity}</span>
         </div>
       ))}
-    </Card>
+    </PageLikePanel>
   )
 }
 

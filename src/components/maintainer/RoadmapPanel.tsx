@@ -1,6 +1,6 @@
 import React from 'react'
 import Panel from '@/components/utilitified_decorations/Panel'
-import PagePanel from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import Tabs, { TabProps } from '../utilitified_decorations/Tabs'
 import Badge from '../Badge'
 import { ActionProps } from '@/types/eventTypes'
@@ -59,7 +59,7 @@ const VersionPanel: React.FC<VersionProps> = ({
   }
 
   return (
-    <PagePanel title={version} rightHeader={
+    <PageLikePanel title={version} rightHeader={
       status !== 'completed' &&
       <Button className={`py-1 px-2 text-sm rounded-sm ${getStatusButton(status)}`} variant='gray'>
         {getStatusText(status)}
@@ -120,7 +120,7 @@ const VersionPanel: React.FC<VersionProps> = ({
           <span className='flex space-x-1'>{getIcon('project')} {status}</span>}
       </div>
 
-    </PagePanel>
+    </PageLikePanel>
   )
 }
 

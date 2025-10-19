@@ -1,9 +1,9 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 const ConversionFunnel: React.FC = () => {
   return (
-    <Card title="Conversion Funnel">
+    <PageLikePanel title="Conversion Funnel">
       <div className="flex justify-center mb-6">
         <div className="w-full max-w-xs">
           <svg viewBox="0 0 300 200" className="w-full h-full">
@@ -31,7 +31,7 @@ const ConversionFunnel: React.FC = () => {
           <div className="text-lg font-semibold text-gray-800">45</div>
         </div>
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

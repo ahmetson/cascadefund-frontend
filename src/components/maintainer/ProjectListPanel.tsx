@@ -2,7 +2,7 @@ import React from 'react'
 import FilterTabs from '@/components/project/ProjectFilterTabs'
 import ProjectCard, { type ProjectInfoProps } from '@/components/project/ProjectInfoPanel2'
 import Pagination from '@/components/Pagination'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 interface Props {
   projects: ProjectInfoProps[]
@@ -11,7 +11,7 @@ interface Props {
 const ProjectsSection: React.FC<Props> = ({ projects }) => {
 
   return (
-    <Card title={<h1 className="text-2xl font-semibold text-gray-900">Projects
+    <PageLikePanel title={<h1 className="text-2xl font-semibold text-gray-900">Projects
       <span className="bg-gray-200 text-gray-600 text-sm px-2 py-1 rounded">1</span>
     </h1>}>
       <div className="flex items-center justify-between">
@@ -41,7 +41,7 @@ const ProjectsSection: React.FC<Props> = ({ projects }) => {
       </div>
 
       <Pagination />
-    </Card>
+    </PageLikePanel>
   )
 }
 

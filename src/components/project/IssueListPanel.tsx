@@ -1,13 +1,13 @@
 import React from 'react'
 import Button from '@/components/Button'
 import Badge from '@/components/Badge'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import IssueCard from '@/components/issue/IssueLinkPanel3'
 import Link from '@/components/Link'
 
 const IssuesSection: React.FC = () => {
   return (
-    <Card title="Issues" rightHeader={<div className="flex items-center space-x-2">
+    <PageLikePanel title="Issues" rightHeader={<div className="flex items-center space-x-2">
       <span className="text-sm text-gray-600">Last version / Total releases</span>
       <span className="text-sm font-medium">v1.0 / 23 tags</span>
       <Badge variant="success">avg: 5 day for release</Badge>
@@ -96,7 +96,7 @@ const IssuesSection: React.FC = () => {
           />
         </div>
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

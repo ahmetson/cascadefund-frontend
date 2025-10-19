@@ -1,6 +1,6 @@
 import React from 'react'
 import { memo } from 'react'
-import PagePanel from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import Panel from '@/components/utilitified_decorations/Panel'
 import { getIcon } from '../icon'
 import Link from '../Link'
@@ -61,7 +61,7 @@ const IssueCard: React.FC<IssueCardProps> = memo(({
       className={`cursor-move! opacity-${opacity}`}
       href={`/data/issue?id=${id}&questId=1`}
     >
-      <PagePanel title={title}
+      <PageLikePanel title={title}
         rightHeader={type === 'funded' &&
           <div className="flex items-center space-x-1 text-blue-600 py-0! px-1! flex">
             {getIcon('energy')}
@@ -86,7 +86,7 @@ const IssueCard: React.FC<IssueCardProps> = memo(({
             {priority}
           </span>
         </div>
-      </PagePanel>
+      </PageLikePanel>
     </Link>
   )
 })

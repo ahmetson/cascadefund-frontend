@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 interface StatCardProps {
   label: string
@@ -48,10 +48,10 @@ const StatCard: React.FC<StatCardProps> = ({ label, value, icon, color }) => {
   }
 
   return (
-    <Card className="bg-gray-300" title={getIcon()}>
+    <PageLikePanel className="bg-gray-300" title={getIcon()}>
       <span className="text-sm text-gray-600">{label}</span>
       <div className="text-2xl font-bold text-gray-900">{value}</div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ProjectRating from '@/components/rating/ProjectRating'
-import Panel from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import Badge from '@/components/Badge'
 import TaskItem from './TaskItem'
 import { bgClassNames, GridStyle } from '@/types/eventTypes'
@@ -136,7 +136,7 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
 
   return (
     tasks.length > 0 ?
-      <Panel hoverable={true} className={``} title={
+      <PageLikePanel onHover={(hovered) => { }} className={``} title={
         <div>{title}<Badge variant='red'>{tasks.length}</Badge>
           <p className="text-sm text-gray-500 font-normal text-center">
             Complete the management tasks.
@@ -200,13 +200,13 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
             </Tooltip>
           }
         </div>
-      </Panel> : hide ? null : <Panel className={`${GridStyle.panel.margin!.bottom}`} title={
+      </PageLikePanel> : hide ? null : <PageLikePanel className={`${GridStyle.panel.margin!.bottom}`} title={
         <div>Tasks are completed<Badge variant='info'>{tasks.length}</Badge>
         </div>} rightHeader={<ProjectRating />}>
         <div className={`p-4 space-y-3 lg:max-h-[30vh] overflow-y-auto`}>
           Come back in a few days later. No tasks to do.
         </div>
-      </Panel>
+      </PageLikePanel>
   )
 }
 

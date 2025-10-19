@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import IssueLink from '@/components/issue/IssueLinkPanel'
 
 const HighlightedIssues: React.FC = () => {
@@ -31,7 +31,7 @@ const HighlightedIssues: React.FC = () => {
   ]
 
   return (
-    <Card className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4" title='Highlighted Issues'>
+    <PageLikePanel className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4" title='Highlighted Issues'>
       {issues.map((issue, index) => (
         <IssueLink
           key={index}
@@ -41,7 +41,7 @@ const HighlightedIssues: React.FC = () => {
           vp={issue.vp}
         />
       ))}
-    </Card>
+    </PageLikePanel>
   )
 }
 

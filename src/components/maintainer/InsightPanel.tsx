@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 interface InsightCardProps {
   icon: string
@@ -32,7 +32,7 @@ const InsightCard: React.FC<InsightCardProps> = ({
 
 const ShareTools: React.FC = () => {
   return (
-    <Card className="mt-6" title="User Behavior Insights">
+    <PageLikePanel className="mt-6" title="User Behavior Insights">
       <InsightCard
         icon="📖"
         title="README Impact"
@@ -53,7 +53,7 @@ const ShareTools: React.FC = () => {
         description="Top comments: requests for better docs, more tutorials"
         recommendation="Recommendation: Prioritize documentation improvements"
       />
-    </Card>
+    </PageLikePanel>
   )
 }
 

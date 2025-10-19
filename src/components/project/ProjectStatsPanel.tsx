@@ -1,10 +1,10 @@
 import React from 'react'
 import StatsCard from '@/components/TitledStatInfoPanel'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 const ProjectStats: React.FC = () => {
   return (
-    <Card title="Project Stats">
+    <PageLikePanel title="Project Stats">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
         <StatsCard
           title="Balance / Cascade Balance"
@@ -45,7 +45,7 @@ const ProjectStats: React.FC = () => {
           </div>
         </div>
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

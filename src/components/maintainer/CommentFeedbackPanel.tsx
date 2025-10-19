@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 interface KeywordTagProps {
   text: string
@@ -31,7 +31,7 @@ const SuggestionItem: React.FC<SuggestionItemProps> = ({ number, text }) => {
 
 const CommentFeedback: React.FC = () => {
   return (
-    <Card title="Comment & Feedback Summary">
+    <PageLikePanel title="Comment & Feedback Summary">
 
       <div className="mb-6">
         <div className="flex items-center space-x-2 mb-3">
@@ -55,7 +55,7 @@ const CommentFeedback: React.FC = () => {
         <SuggestionItem number={2} text="Roadmap clarity." />
         <SuggestionItem number={3} text="Video tutorials for contributors." />
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

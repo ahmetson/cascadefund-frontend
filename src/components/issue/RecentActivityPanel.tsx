@@ -1,9 +1,9 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 const Sidebar: React.FC = () => {
   return (
-    <Card title="Recent Activity" actions={[]}>
+    <PageLikePanel title="Recent Activity" actions={[]}>
       <div className="space-y-3">
         <div className="flex items-start space-x-2">
           <svg className="w-4 h-4 text-gray-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -35,7 +35,7 @@ const Sidebar: React.FC = () => {
           </div>
         </div>
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

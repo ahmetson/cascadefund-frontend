@@ -1,5 +1,5 @@
 import React from 'react'
-import Panel from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import LinkBtn from '@/components/LinkBtn'
 import Link from '@/components/Link'
 
@@ -31,7 +31,7 @@ const C: React.FC<RoleCardProps> = ({
   href,
 }) => {
   return (
-    <Panel titleCenter={true} icon={icon} title={title} bgImgUrl={avatar} bgImgLabel={`${title} avatar`} key={id} className={`${iconBgColor} card image-full text-gray-100 w-36 h-60 shadow-sm p-0!`}>
+    <PageLikePanel titleCenter={true} icon={icon} title={title} bg={{ src: avatar, label: `${title} avatar` }} key={id} className={`${iconBgColor} card image-full text-gray-100 w-36 h-60 shadow-sm p-0!`}>
       <p className='h-20 flex items-center text-gray-200 mt-8'>{description}</p>
       <div className="card-actions justify-center">
         {buttonVariant === 'primary' ?
@@ -39,7 +39,7 @@ const C: React.FC<RoleCardProps> = ({
           (<Link href={href || '#'} className={buttonVariant}>{buttonText}</Link>)
         }
       </div>
-    </Panel>
+    </PageLikePanel>
   )
 }
 

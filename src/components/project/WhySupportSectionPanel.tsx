@@ -1,10 +1,10 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import Button from '@/components/Button'
 
 const WhySupportSection: React.FC = () => {
   return (
-    <Card className="p-6" title='Why Support This Project?'>
+    <PageLikePanel className="p-6" title='Why Support This Project?'>
       <p className="text-gray-600 mb-6">
         Supporting isn't just about giving — it's about shaping the future of open-source.
       </p>
@@ -87,7 +87,7 @@ const WhySupportSection: React.FC = () => {
           Learn More About CascadeFund
         </Button>
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

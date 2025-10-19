@@ -1,10 +1,10 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import Button from '@/components/Button'
 
 const BalanceCard: React.FC = () => {
   return (
-    <Card title="Balance" rightHeader={<><span className="text-sm text-gray-500">Updated 2 min ago</span>
+    <PageLikePanel title="Balance" rightHeader={<><span className="text-sm text-gray-500">Updated 2 min ago</span>
       <Button variant="secondary" size="sm">Refresh Data</Button></>}>
 
       <div className="mb-6">
@@ -47,7 +47,7 @@ const BalanceCard: React.FC = () => {
           </div>
         </div>
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

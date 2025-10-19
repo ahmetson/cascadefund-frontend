@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import LinkBtn from '@/components/LinkBtn'
 
 const VotingPowerSection: React.FC = () => {
@@ -12,7 +12,7 @@ const VotingPowerSection: React.FC = () => {
   ]
 
   return (
-    <Card className="space-y-6" title='Your Voting Power'>
+    <PageLikePanel className="space-y-6" title='Your Voting Power'>
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
           <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
@@ -71,7 +71,7 @@ const VotingPowerSection: React.FC = () => {
       <p className="text-xs text-gray-500 mt-2 text-center">
         It will create tasks for maintainers to work on the issues. You will be notified on this page.
       </p>
-    </Card>
+    </PageLikePanel>
   )
 }
 

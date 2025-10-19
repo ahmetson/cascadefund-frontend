@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 interface ActionButtonProps {
   text: string
@@ -21,7 +21,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({ text, variant }) => {
 
 const CallToAction: React.FC = () => {
   return (
-    <Card title="🚀 What to do next">
+    <PageLikePanel title="🚀 What to do next">
       <div className="text-center mb-6">
         <p className="text-sm text-gray-600 mb-6">
           Use these insights to optimize your outreach strategy and grow your project community.
@@ -38,7 +38,7 @@ const CallToAction: React.FC = () => {
       <p className="text-xs text-gray-500 mt-4 text-center">
         Guests to help marketing will be prepared in the upcoming versions. If you want to help, become the CascadeFund influencer for the best.
       </p>
-    </Card>
+    </PageLikePanel>
   )
 }
 

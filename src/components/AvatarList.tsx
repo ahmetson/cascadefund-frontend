@@ -1,7 +1,7 @@
 import React from 'react'
-import { type Props } from '@/components/utilitified_decorations/PagePanel'
+import { type PageLikePanelProps } from '@/components/panel/PageLikePanel'
 
-export type AvatarListProps = Omit<Props, "children" | "title"> & {
+export type AvatarListProps = Omit<PageLikePanelProps, "children" | "title"> & {
 }
 
 const ContributorAvatars: React.FC<AvatarListProps> = () => {

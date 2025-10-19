@@ -1,11 +1,12 @@
 ---
-import Panel from "@/components/utilitified_decorations/PagePanel";
+import PageLikePanel from "@/components/panel/PageLikePanel";
 import type { ActionProps } from "@/types/eventTypes";
+import { IconType } from "./icon";
 
 interface Props {
   title: string;
   actions?: ActionProps[] | undefined;
-  icon?: string;
+  icon?: IconType;
 }
 
 const { title, actions, icon } = Astro.props;
@@ -17,11 +18,11 @@ if (actions !== undefined) {
 }
 ---
 
-<Panel
+<PageLikePanel
   icon={icon}
   title={title}
   className="bg-cyan-50 border-cyan-100"
   actions={actions}
 >
   <slot />
-</Panel>
+</PageLikePanel>

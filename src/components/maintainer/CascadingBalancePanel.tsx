@@ -1,10 +1,10 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import Button from '@/components/Button'
 
 const CascadingBalance: React.FC = () => {
   return (
-    <Card className="mb-6" title="Cascading Balance" rightHeader={<>
+    <PageLikePanel className="mb-6" title="Cascading Balance" rightHeader={<>
       <p className="text-sm text-gray-600">Updated 2 min ago</p>
       <Button variant="secondary" size="sm">
         Refresh Data
@@ -49,7 +49,7 @@ const CascadingBalance: React.FC = () => {
           Withdraw
         </Button>
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

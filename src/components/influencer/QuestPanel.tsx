@@ -1,11 +1,11 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import Badge from '@/components/Badge'
 import ProgressBar from '@/components/CustomProgressBar'
 
 const TasksSection: React.FC = () => {
   return (
-    <Card title={<div className="flex items-center space-x-2">
+    <PageLikePanel title={<div className="flex items-center space-x-2">
       <h2 className="text-lg font-semibold text-gray-900">My Tasks</h2>
       <Badge variant="purple">1</Badge>
     </div>} rightHeader={<ProgressBar progress={65} total={650} label="Points left to reach next star:" />}
@@ -25,7 +25,7 @@ const TasksSection: React.FC = () => {
           <span className="text-sm text-gray-500">10:00 AM</span>
         </div>
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

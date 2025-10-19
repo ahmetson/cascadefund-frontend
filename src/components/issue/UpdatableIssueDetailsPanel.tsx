@@ -1,11 +1,11 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 import Button from '@/components/Button'
 import Tag from '@/components/Tag'
 
 const Panel: React.FC = () => {
   return (
-    <Card title="Updateable Issue Details" actions={[{
+    <PageLikePanel title="Updateable Issue Details" actions={[{
       variant: "blue",
       href: "/data/issue",
       children: "Save"
@@ -58,7 +58,7 @@ const Panel: React.FC = () => {
           </select>
         </div>
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 

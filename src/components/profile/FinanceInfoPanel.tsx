@@ -1,9 +1,9 @@
 import React from 'react'
-import Card from '@/components/utilitified_decorations/PagePanel'
+import PageLikePanel from '@/components/panel/PageLikePanel'
 
 const FinancialStatus: React.FC = () => {
   return (
-    <Card title="Financial Status" >
+    <PageLikePanel title="Financial Status" >
       <div className="space-y-4">
         <div className="flex justify-between items-center">
           <div>
@@ -78,7 +78,7 @@ const FinancialStatus: React.FC = () => {
           </div>
         </div>
       </div>
-    </Card>
+    </PageLikePanel>
   )
 }
 
