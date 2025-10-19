@@ -9,7 +9,7 @@ const meta = {
     },
     argTypes: {
         expandableTitle: {
-            control: { type: 'boolean' },
+            control: { type: 'text' },
             description: 'Whether the panel can be expanded/collapsed',
         },
         defaultExpanded: {

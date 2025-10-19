@@ -41,6 +41,8 @@ const InteractivePanel: React.FC<InteractivePanelProps> = ({
         onClick?.(true)
     }
 
+    const panelID = '1'
+
     const panelContent = (
         <BorderBeam>
             <BasePanel
@@ -56,8 +58,8 @@ const InteractivePanel: React.FC<InteractivePanelProps> = ({
             >
                 {/* Header with expand/collapse indicator */}
                 {expandableTitle ? (
-                    <Accordion type='single' collapsible={true}>
-                        <AccordionItem value='1'>
+                    <Accordion defaultValue={defaultExpanded ? panelID : undefined} type='single' collapsible={true}>
+                        <AccordionItem value={panelID} >
                             <AccordionTrigger onClick={handleClick} className='flex items-center justify-between h-4 no-underline!'>{expandableTitle}</AccordionTrigger>
                             <AccordionContent className='AccordionContent' expandableAnchor={expandableAnchor}>
                                 {children}
