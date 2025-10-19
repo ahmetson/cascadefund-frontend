@@ -44,6 +44,7 @@ type IconProps = {
   width?: string,
   height?: string
   fill?: string
+  className?: string
 }
 
 export type { IconType }
@@ -52,8 +53,7 @@ export const getIcon = (props: IconProps | IconType): React.ReactNode => {
   const width = typeof props === 'object' && props.width ? props.width : 'w-4'
   const height = typeof props === 'object' && props.height ? props.height : 'h-4'
   const fill = typeof props === 'object' && props.fill ? props.fill : 'none'
-
-  const className = `${width} ${height}`
+  const className = `${width} ${height} ${typeof props === 'object' && props.className ? props.className : ''}`
 
   switch (iconType) {
     case 'github':

@@ -7,7 +7,7 @@ import type { RoleCardProps } from "@/components/profile/RolePanel";
 import { BgType } from "@/types/eventTypes";
 import RowGrid from "@/components/grid/RowGrid";
 import RolePanel from "@/components/profile/RolePanel";
-import InfoPanel2 from "@/components/InfoPanel2.astro";
+import InfoPanel from "@/components/panel/InfoPanel";
 import Link from "@/components/Link";
 import ReactComponentImporter from "@/components/ReactComponentImporter";
 
@@ -80,7 +80,7 @@ const roles: RoleCardProps[] = [
       </RowGrid>
     </div>
   </PageLikePanel>
-  <InfoPanel2 slot="right" title="Links" icon="info">
+  <InfoPanel slot="right" title="Links" icon="info">
     <ul>
       {
         roles
@@ -103,5 +103,5 @@ const roles: RoleCardProps[] = [
           ))
       }
     </ul>
-  </InfoPanel2>
+  </InfoPanel>
 </Layout>

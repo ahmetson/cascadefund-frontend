@@ -4,7 +4,7 @@ import { ItemName } from "@/components/utilitified_decorations/WorkNavbar.astro"
 
 import ProjectPostFlow from "@/components/project/ProjectPostFlow";
 import NotificationBanner from "@/components/NotificationBanner";
-import InfoPanel2 from "@/components/InfoPanel2.astro";
+import InfoPanel from "@/components/panel/InfoPanel";
 import Link from "@/components/Link";
 import { getIcon } from "@/components/icon";
 
@@ -49,7 +49,7 @@ const createdIssueId =
                 slot="center"
                 client:load
         />
-        <InfoPanel2
+        <InfoPanel
                 slot="right"
                 title="Different Git Hosting Server?"
                 icon="info"
@@ -69,8 +69,8 @@ const createdIssueId =
                                 >"Multiple Git Hostings" issue</Link
                         > and get rating.
                 </p>
-        </InfoPanel2>
-        <InfoPanel2 slot="right" title="Uses blockchain" icon="question">
+        </InfoPanel>
+        <InfoPanel slot="right" title="Uses blockchain" icon="question">
                 <p>
                         The 20% of all donations to your project will be
                         distributed to the Libraries, packages in your projects
@@ -82,5 +82,5 @@ const createdIssueId =
                         >technology. Hyperpayment implemented on the blockchain,
                         which ensures ripple effect of the money.
                 </p>
-        </InfoPanel2>
+        </InfoPanel>
 </V2Layout>

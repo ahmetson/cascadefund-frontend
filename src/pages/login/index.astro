@@ -5,7 +5,7 @@ import { ItemName } from "@/components/utilitified_decorations/LandingNavbar.ast
 import PageLikePanel from "@/components/panel/PageLikePanel";
 import LinkBtn from "@/components/LinkBtn";
 import Link from "@/components/Link";
-import InfoPanel2 from "@/components/InfoPanel2.astro";
+import InfoPanel from "@/components/panel/InfoPanel";
 ---
 
 <V2Layout hideLinks={Object.values(ItemName)}>
@@ -31,7 +31,7 @@ import InfoPanel2 from "@/components/InfoPanel2.astro";
       </p>
     </div>
   </PageLikePanel>
-  <InfoPanel2
+  <InfoPanel
     slot="right"
     title="Don't want GitHub?"
     icon="info"
@@ -51,5 +51,5 @@ import InfoPanel2 from "@/components/InfoPanel2.astro";
         >"multi-auth" issue</Link
       > and get rating.
     </p>
-  </InfoPanel2>
+  </InfoPanel>
 </V2Layout>
