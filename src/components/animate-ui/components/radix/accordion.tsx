@@ -59,15 +59,22 @@ function AccordionTrigger({
   );
 }
 
-type AccordionContentProps = AccordionContentPrimitiveProps;
+type AccordionContentProps = AccordionContentPrimitiveProps & {
+  expandableAnchor?: 'center' | 'top' | 'bottom' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+};
 
 function AccordionContent({
   className,
   children,
+  expandableAnchor = 'center',
   ...props
 }: AccordionContentProps) {
   return (
-    <AccordionContentPrimitive {...props}>
+    <AccordionContentPrimitive
+      {...props}
+      data-anchor={expandableAnchor}
+      className="AccordionContent"
+    >
       <div className={cn('text-sm pt-0 pb-4', className)}>{children}</div>
     </AccordionContentPrimitive>
   );

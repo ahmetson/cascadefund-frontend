@@ -9,6 +9,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '..
 export interface InteractivePanelProps extends BasePanelProps, PanelEvents {
     expandableTitle?: string | React.ReactNode
     defaultExpanded?: boolean // if set and expandableTitle is provided, the panel will be expanded by default
+    expandableAnchor?: 'center' | 'top' | 'bottom' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
     onHover?: (hovered: boolean) => void
 }
 
@@ -16,6 +17,7 @@ const InteractivePanel: React.FC<InteractivePanelProps> = ({
     children,
     expandableTitle,
     defaultExpanded = true,
+    expandableAnchor = 'center',
     onHover,
     onClick,
     onBackClick,
@@ -56,8 +58,8 @@ const InteractivePanel: React.FC<InteractivePanelProps> = ({
                 {expandableTitle ? (
                     <Accordion type='single' collapsible={true}>
                         <AccordionItem value='1'>
-                            <AccordionTrigger onClick={handleClick} className='flex items-center justify-between h-4'>{expandableTitle}</AccordionTrigger>
-                            <AccordionContent className='AccordionContent'>
+                            <AccordionTrigger onClick={handleClick} className='flex items-center justify-between h-4 no-underline!'>{expandableTitle}</AccordionTrigger>
+                            <AccordionContent className='AccordionContent' expandableAnchor={expandableAnchor}>
                                 {children}
                             </AccordionContent>
                         </AccordionItem>

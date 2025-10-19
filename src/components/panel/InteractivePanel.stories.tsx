@@ -17,8 +17,7 @@ const meta = {
             description: 'Whether the panel starts expanded',
         },
         padding: {
-            control: { type: 'select' },
-            options: ['none', 'sm', 'md', 'lg'],
+            control: { type: 'text' },
             description: 'Padding size for the panel',
         },
         bg: {
@@ -46,78 +45,6 @@ export const Default: Story = {
     },
 };
 
-export const Expandable: Story = {
-    args: {
-        children: (
-            <div>
-                <h3 className="text-lg font-semibold mb-2">Expandable Panel</h3>
-                <p className="text-gray-600 mb-4">This panel can be expanded and collapsed.</p>
-                <div className="space-y-2">
-                    <p className="text-sm text-gray-500">• Feature 1: Smooth animations</p>
-                    <p className="text-sm text-gray-500">• Feature 2: Hover effects</p>
-                    <p className="text-sm text-gray-500">• Feature 3: Click to expand/collapse</p>
-                </div>
-            </div>
-        ),
-        expandableTitle: 'Expandable Panel',
-        defaultExpanded: true,
-    },
-};
-
-export const Collapsed: Story = {
-    args: {
-        children: (
-            <div>
-                <h3 className="text-lg font-semibold mb-2">Collapsed Panel</h3>
-                <p className="text-gray-600 mb-4">This panel starts collapsed.</p>
-                <div className="space-y-2">
-                    <p className="text-sm text-gray-500">• Hidden content</p>
-                    <p className="text-sm text-gray-500">• Click to expand</p>
-                    <p className="text-sm text-gray-500">• Smooth transitions</p>
-                </div>
-            </div>
-        ),
-        expandableTitle: 'Collapsed Panel',
-        defaultExpanded: false,
-    },
-};
-
-export const NonHoverable: Story = {
-    args: {
-        children: (
-            <div>
-                <h3 className="text-lg font-semibold mb-2">Non-Hoverable Panel</h3>
-                <p className="text-gray-600">This panel doesn't have hover effects or gradient borders.</p>
-                <div className="mt-3 p-3 bg-gray-100 rounded">
-                    <p className="text-sm">Static content without interactive effects</p>
-                </div>
-            </div>
-        ),
-    },
-};
-
-export const WithBackgroundImage: Story = {
-    args: {
-        children: (
-            <div className="text-white">
-                <h3 className="text-lg font-semibold mb-2">Panel with Background</h3>
-                <p className="text-white/80 mb-4">This panel has a background image with frosted glass effect.</p>
-                <div className="space-y-2">
-                    <p className="text-sm text-white/70">• Beautiful background</p>
-                    <p className="text-sm text-white/70">• Frosted glass effect</p>
-                    <p className="text-sm text-white/70">• Interactive hover effects</p>
-                </div>
-            </div>
-        ),
-        bg: {
-            src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
-            label: 'Mountain landscape',
-            className: ''
-        },
-        expandableTitle: 'Panel with Background',
-        defaultExpanded: true,
-    },
-};
 
 export const DifferentPadding: Story = {
     args: {
@@ -130,14 +57,14 @@ export const DifferentPadding: Story = {
                 </div>
             </div>
         ),
-        padding: 'lg',
+        padding: 'p-8',
     },
 };
 
 export const NoPadding: Story = {
     args: {
         children: (
-            <div className="p-4 bg-gray-100 rounded">
+            <div className="bg-gray-100 rounded">
                 <h3 className="text-lg font-semibold mb-2">No Padding</h3>
                 <p className="text-gray-600">This panel has no padding, so content goes to the edges.</p>
                 <div className="mt-3 p-2 bg-white rounded shadow-sm">
@@ -202,24 +129,179 @@ export const ComplexContent: Story = {
     },
 };
 
-export const WithBorderBeam: Story = {
+
+
+export const ExpandFromCenter: Story = {
     args: {
         children: (
             <div>
-                <h3 className="text-lg font-semibold mb-2">Border Beam Effect</h3>
-                <p className="text-gray-600 mb-4">This panel features animated border beams that follow the container outline.</p>
+                <h3 className="text-lg font-semibold mb-2">Center Anchor</h3>
+                <p className="text-gray-600 mb-4">Content expands equally from the center (default behavior).</p>
                 <div className="space-y-2">
-                    <p className="text-sm text-gray-500">• Beams randomly initiate around the border</p>
-                    <p className="text-sm text-gray-500">• Animation stops on hover</p>
-                    <p className="text-sm text-gray-500">• Resumes after mouse leave</p>
-                </div>
-                <div className="mt-4 p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded border border-blue-200">
-                    <p className="text-sm text-blue-700 font-medium">Hover to see the beam effect pause!</p>
+                    <p className="text-sm text-gray-500">• Expands up and down from center</p>
+                    <p className="text-sm text-gray-500">• Title stays in place</p>
+                    <p className="text-sm text-gray-500">• Smooth center-out animation</p>
                 </div>
             </div>
         ),
-        expandableTitle: 'Border Beam Effect',
-        defaultExpanded: true,
-        padding: 'lg',
+        expandableTitle: 'Center Anchor',
+        expandableAnchor: 'center',
+        defaultExpanded: false,
     },
 };
+
+export const ExpandedByDefault: Story = {
+    args: {
+        children: (
+            <div>
+                <h3 className="text-lg font-semibold mb-2">Expandable Panel</h3>
+                <p className="text-gray-600 mb-4">This panel can be expanded and collapsed.</p>
+                <div className="space-y-2">
+                    <p className="text-sm text-gray-500">• Feature 1: Smooth animations</p>
+                    <p className="text-sm text-gray-500">• Feature 2: Hover effects</p>
+                    <p className="text-sm text-gray-500">• Feature 3: Click to expand/collapse</p>
+                </div>
+            </div>
+        ),
+        expandableTitle: 'Expandable Panel',
+        defaultExpanded: true,
+    },
+};
+
+export const ExpandibleWithBackgroundImage: Story = {
+    args: {
+        children: (
+            <div className="text-white">
+                <h3 className="text-lg font-semibold mb-2">Panel with Background</h3>
+                <p className="text-white/80 mb-4">This panel has a background image with frosted glass effect.</p>
+                <div className="space-y-2">
+                    <p className="text-sm text-white/70">• Beautiful background</p>
+                    <p className="text-sm text-white/70">• Frosted glass effect</p>
+                    <p className="text-sm text-white/70">• Interactive hover effects</p>
+                </div>
+            </div>
+        ),
+        bg: {
+            src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
+            label: 'Mountain landscape',
+            className: ''
+        },
+        expandableTitle: 'Panel with Background',
+        defaultExpanded: true,
+    },
+};
+
+export const ExpandFromTop: Story = {
+    args: {
+        children: (
+            <div>
+                <h3 className="text-lg font-semibold mb-2">Top Anchor</h3>
+                <p className="text-gray-600 mb-4">Content expands downward from the top edge.</p>
+                <div className="space-y-2">
+                    <p className="text-sm text-gray-500">• Expands only downward</p>
+                    <p className="text-sm text-gray-500">• Title position remains fixed</p>
+                    <p className="text-sm text-gray-500">• Top edge stays in place</p>
+                </div>
+            </div>
+        ),
+        expandableTitle: 'Top Anchor',
+        expandableAnchor: 'top',
+        defaultExpanded: false,
+    },
+};
+
+export const ExpandFromBottom: Story = {
+    args: {
+        children: (
+            <div>
+                <h3 className="text-lg font-semibold mb-2">Bottom Anchor</h3>
+                <p className="text-gray-600 mb-4">Content expands upward from the bottom edge.</p>
+                <div className="space-y-2">
+                    <p className="text-sm text-gray-500">• Expands only upward</p>
+                    <p className="text-sm text-gray-500">• Title moves up as content expands</p>
+                    <p className="text-sm text-gray-500">• Bottom edge stays in place</p>
+                </div>
+            </div>
+        ),
+        expandableTitle: 'Bottom Anchor',
+        expandableAnchor: 'bottom',
+        defaultExpanded: false,
+    },
+};
+
+export const ExpandFromTopLeft: Story = {
+    args: {
+        children: (
+            <div>
+                <h3 className="text-lg font-semibold mb-2">Top-Left Anchor</h3>
+                <p className="text-gray-600 mb-4">Content expands from the top-left corner.</p>
+                <div className="space-y-2">
+                    <p className="text-sm text-gray-500">• Top-left corner stays fixed</p>
+                    <p className="text-sm text-gray-500">• Expands right and down</p>
+                    <p className="text-sm text-gray-500">• Corner point remains unchanged</p>
+                </div>
+            </div>
+        ),
+        expandableTitle: 'Top-Left Anchor',
+        expandableAnchor: 'top-left',
+        defaultExpanded: false,
+    },
+};
+
+export const ExpandFromTopRight: Story = {
+    args: {
+        children: (
+            <div>
+                <h3 className="text-lg font-semibold mb-2">Top-Right Anchor</h3>
+                <p className="text-gray-600 mb-4">Content expands from the top-right corner.</p>
+                <div className="space-y-2">
+                    <p className="text-sm text-gray-500">• Top-right corner stays fixed</p>
+                    <p className="text-sm text-gray-500">• Expands left and down</p>
+                    <p className="text-sm text-gray-500">• Corner point remains unchanged</p>
+                </div>
+            </div>
+        ),
+        expandableTitle: 'Top-Right Anchor',
+        expandableAnchor: 'top-right',
+        defaultExpanded: false,
+    },
+};
+
+export const ExpandFromBottomLeft: Story = {
+    args: {
+        children: (
+            <div>
+                <h3 className="text-lg font-semibold mb-2">Bottom-Left Anchor</h3>
+                <p className="text-gray-600 mb-4">Content expands from the bottom-left corner.</p>
+                <div className="space-y-2">
+                    <p className="text-sm text-gray-500">• Bottom-left corner stays fixed</p>
+                    <p className="text-sm text-gray-500">• Expands right and up</p>
+                    <p className="text-sm text-gray-500">• Corner point remains unchanged</p>
+                </div>
+            </div>
+        ),
+        expandableTitle: 'Bottom-Left Anchor',
+        expandableAnchor: 'bottom-left',
+        defaultExpanded: false,
+    },
+};
+
+export const ExpandFromBottomRight: Story = {
+    args: {
+        children: (
+            <div>
+                <h3 className="text-lg font-semibold mb-2">Bottom-Right Anchor</h3>
+                <p className="text-gray-600 mb-4">Content expands from the bottom-right corner.</p>
+                <div className="space-y-2">
+                    <p className="text-sm text-gray-500">• Bottom-right corner stays fixed</p>
+                    <p className="text-sm text-gray-500">• Expands left and up</p>
+                    <p className="text-sm text-gray-500">• Corner point remains unchanged</p>
+                </div>
+            </div>
+        ),
+        expandableTitle: 'Bottom-Right Anchor',
+        expandableAnchor: 'bottom-right',
+        defaultExpanded: false,
+    },
+};
+
