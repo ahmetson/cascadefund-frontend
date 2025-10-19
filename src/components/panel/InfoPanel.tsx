@@ -32,7 +32,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
     const contentTopMargin = 'mt-4';
 
     const renderHeader = () => {
-        const iconProps = typeof icon === 'string' ? { iconType: icon, width: 'w-4', height: 'h-4', fill: 'gray-300', className: 'text-gray-100 ' } : icon
+        const iconProps = typeof icon === 'string' ? { iconType: icon, width: 'w-5', height: 'h-5', fill: 'gray-300', className: 'mt-0.5' } : icon
 
         return (
             <div className={`${titleBottomMargin}`}>
