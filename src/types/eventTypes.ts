@@ -1,6 +1,3 @@
-import type { InfoPanelProps } from "@/components/InfoPanel";
-import type { RoleCardProps } from "@/components/profile/RolePanel";
-
 export type Coordinate = {
   x?: string
   y?: string
@@ -131,8 +128,8 @@ export interface SectionProps {
   prefix?: string // If panels are listed how to group according to this session
   actions?: ActionProps[]
   children?: any
-  panels?: (InfoPanelProps | RoleCardProps)[]
-  bottomPanel?: InfoPanelProps
+  panels?: (any)[]
+  bottomPanel?: any
 }
 
 export const bgClassNames: { [key in BgType]: string } = {

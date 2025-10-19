@@ -2,7 +2,6 @@
 import InfoPanel from "@/components/panel/InfoPanel";
 import Horizontally from "@/components/grid/RowGrid";
 import type { SectionProps } from "@/types/eventTypes";
-import TitledInfoPanel from "@/components/utilitified_decorations/TitledInfoPanel";
 import type { RoleCardProps } from "@/components/profile/RolePanel";
 import C from "@/components/profile/RolePanel";
 import Section from "./BaseSection.astro";
@@ -39,10 +38,12 @@ if (!cols) {
             (step as RoleCardProps).roleCard ? (
               <C {...(step as RoleCardProps)} />
             ) : step.description === undefined ? (
-              <TitledInfoPanel
+              <InfoPanel
                 title={step.title}
-                icon={step.icon}
-                iconBgColor={step.iconBgColor || "blue"}
+                icon={{
+                  iconType: step.icon,
+                  fill: step.iconBgColor || "blue-500",
+                }}
               />
             ) : (
               <InfoPanel key={prefix! + index} {...step} />
