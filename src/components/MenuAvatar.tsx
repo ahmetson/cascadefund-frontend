@@ -1,6 +1,6 @@
 import React from 'react'
 import Badge from '@/components/custom-ui/Badge'
-import Link from '@/components/Link'
+import Link from '@/components/custom-ui/Link'
 
 interface Props {
   active?: boolean

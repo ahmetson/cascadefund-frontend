@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import LoadingSpinner from '@/components/LoadingSpinner'
 import BasePanel from '@/components/panel/BasePanel'
 import type { SectionProps } from '@/types/eventTypes';
-import Link from '@/components/Link';
+import Link from '@/components/custom-ui/Link';
 
 const AuthSuccessCard: React.FC<SectionProps & { gotoLink?: string, gotoLabel?: string }> = ({ gotoLink, gotoLabel, title, children }) => {
   const [showButton, setShowButton] = useState(false);

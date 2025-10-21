@@ -1,6 +1,6 @@
 import React from 'react'
 import { getIcon, IconName } from './icons'
-import Link from '../Link'
+import Link from '../custom-ui/Link'
 import Badge, { BadgeProps } from '../custom-ui/Badge'
 
 interface MenuItemProps {

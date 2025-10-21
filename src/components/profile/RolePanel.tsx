@@ -1,7 +1,7 @@
 import React from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
 import LinkBtn from '@/components/LinkBtn'
-import Link from '@/components/Link'
+import Link from '@/components/custom-ui/Link'
 
 export interface RoleCardProps {
   id: string

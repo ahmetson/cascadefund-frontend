@@ -3,7 +3,7 @@ import SearchBar from '@/components/SearchBar'
 import IssueCard from './SelectableIssuePanel'
 import PageLikePanel from '@/components/panel/PageLikePanel'
 import { PanelEvents } from '@/types/eventTypes'
-import Link from '../Link'
+import Link from '../custom-ui/Link'
 import LinkBtn from '../LinkBtn'
 
 interface Issue {

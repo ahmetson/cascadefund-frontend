@@ -1,7 +1,7 @@
 import React from 'react'
 import BasePanel from '@/components/panel/BasePanel'
 import LinkBtn from '@/components/LinkBtn'
-import Link from '@/components/Link'
+import Link from '@/components/custom-ui/Link'
 import type { PanelEvents } from '@/types/eventTypes'
 import Button from '@/components/custom-ui/Button'
 

@@ -1,3 +1,4 @@
+import { hexToRgba } from '@/scripts';
 import React, { CSSProperties, PropsWithChildren, useEffect, useId, useLayoutEffect, useRef } from 'react';
 
 type ElectricBorderProps = PropsWithChildren<{
@@ -8,22 +9,6 @@ type ElectricBorderProps = PropsWithChildren<{
   className?: string;
   style?: CSSProperties;
 }>;
-
-function hexToRgba(hex: string, alpha = 1): string {
-  if (!hex) return `rgba(0,0,0,${alpha})`;
-  let h = hex.replace('#', '');
-  if (h.length === 3) {
-    h = h
-      .split('')
-      .map(c => c + c)
-      .join('');
-  }
-  const int = parseInt(h, 16);
-  const r = (int >> 16) & 255;
-  const g = (int >> 8) & 255;
-  const b = int & 255;
-  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-}
 
 const ElectricBorder: React.FC<ElectricBorderProps> = ({
   children,
@@ -84,7 +69,7 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
         if (typeof a.beginElement === 'function') {
           try {
             a.beginElement();
-          } catch {}
+          } catch { }
         }
       });
     });
