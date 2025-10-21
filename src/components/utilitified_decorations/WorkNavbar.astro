@@ -1,6 +1,6 @@
 ---
 import Badge from "@/components/custom-ui/Badge";
-import C from "./NavigatingItem";
+import MenuItem from "../panel/MenuItem";
 
 export enum ItemName {
   ProjectList = "ProjectList",
@@ -25,27 +25,50 @@ const isItemShown = (item: ItemName): boolean => {
 };
 ---
 
-<nav class={`w-full ${className || ""}`} tabindex={tabIndex}>
+<nav
+  class={` ${className || ""} z-999! ${vertical ? "shadow-lg w-40" : "w-full"}`}
+  tabindex={tabIndex}
+>
   <slot />
-  <div class={vertical ? "text-sm" : "breadcrumbs text-sm"}>
-    <ul class={vertical ? "flex flex-col" : "w-full justify-center"}>
+  <div class={vertical ? "text-sm " : "breadcrumbs text-sm"}>
+    <ul class={vertical ? "flex flex-col " : "w-full justify-center"}>
       {
         isItemShown(ItemName.ProjectList) && (
-          <li>
-            <C href="/data/projects" active={active === ItemName.ProjectList}>
+          <li class="">
+            <MenuItem
+              icon={"project-info"}
+              label="Projects"
+              href="/data/projects"
+              active={active === ItemName.ProjectList}
+              badges={[
+                {
+                  children: "2",
+                  variant: "blue",
+                  active: active === ItemName.ProjectList,
+                },
+                {
+                  children: "2",
+                  variant: "red",
+                  active: active === ItemName.ProjectList,
+                },
+              ]}
+            >
               Projects
-              <Badge variant="blue">2</Badge>
-              <Badge variant="red">2</Badge>
-            </C>
+            </MenuItem>
           </li>
         )
       }
       {
         isItemShown(ItemName.ProjectName) && (
           <li>
-            <C href="/data/project" active={active === ItemName.ProjectName}>
+            <MenuItem
+              icon={"project-info"}
+              label="Reflect"
+              href="/data/project"
+              active={active === ItemName.ProjectName}
+            >
               Reflect
-            </C>
+            </MenuItem>
           </li>
         )
       }
