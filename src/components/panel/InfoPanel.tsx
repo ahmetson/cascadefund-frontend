@@ -33,7 +33,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
     const contentTopMargin = 'mt-4';
 
     const renderHeader = () => {
-        const iconProps = typeof icon === 'string' ? { iconType: icon, width: 'w-5', height: 'h-5', fill: 'gray-300', className: 'mt-0.5' } : icon
+        const iconProps = typeof icon === 'string' || icon === undefined ? { iconType: icon || 'info', width: 'w-5', height: 'h-5', fill: 'currentColor', className: 'mt-0.5 text-gray-300' } : icon
 
         return (
             <div key={key} className={`${titleBottomMargin}`}>
@@ -47,7 +47,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
 
     const renderContent = () => {
         return (
-            <div className="font-noto-sans text-gray-600">
+            <div className="font-noto-sans text-gray-100">
                 {children}
             </div>
         )
@@ -81,6 +81,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
             </div>
         )
     }
+    const transparentBg = "bg-white/20 backdrop-blur-xs border-none text-gray-100";
 
 
     if (hasContent && expandable) {
@@ -89,7 +90,11 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
                 {...baseProps}
                 border={{ size: 'border-1', color: 'border-gray-300!' }}
                 bg="bg-transparent"
-                className={cn('shadow-none text-gray-500 ', className)}
+                className={cn(
+                    'shadow-none text-gray-500 ',
+                    transparentBg,
+                    className
+                )}
             >
                 <Accordion defaultValue={defaultExpanded ? panelID : undefined} type='single' collapsible={true}>
                     <AccordionItem value={panelID}>
@@ -114,7 +119,11 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
             {...baseProps}
             border={{ size: 'border-1', color: 'border-gray-300!' }}
             bg="bg-transparent"
-            className={cn('shadow-none text-gray-500', className)}
+            className={cn(
+                'shadow-none text-gray-200',
+                transparentBg,
+                className)
+            }
         >
             {renderHeader()}
             {children && renderContent()}

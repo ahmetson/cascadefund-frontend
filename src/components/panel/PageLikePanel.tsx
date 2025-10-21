@@ -38,7 +38,7 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
         if (titleCenter) {
             return (
                 <div className="mb-4 text-center">
-                    <h2 className="text-xl font-semibold flex items-center justify-center gap-2">
+                    <h2 className="font-georgia text-xl font-semibold flex items-center justify-center gap-2">
                         {icon && getIcon(icon)}
                         <span>{title}</span>
                     </h2>
@@ -48,7 +48,7 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
 
         return (
             <div className="mb-4">
-                <h2 className="text-xl font-semibold flex items-center justify-between">
+                <h2 className="font-georgia text-xl font-semibold flex items-center justify-between">
                     <div className="flex items-center gap-2">
                         {icon && getIcon(icon)}
                         <span>{title}</span>
@@ -66,7 +66,7 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
 
         return (
             <div
-                className="space-y-3 text-sm text-gray-600"
+                className="font-noto-sans space-y-3 text-sm text-gray-600"
                 style={contentStyle}
             >
                 {children}
