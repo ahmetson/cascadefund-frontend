@@ -40,7 +40,7 @@ const maintainerMainItems = (activeMenuItem: MenuName, focusMenuItem?: MenuName)
           children: "2+",
           variant: "info",
           active: false,
-          disableAnimation: true
+          static: true
         }
       ]}
       href={"/data/project"}
@@ -78,7 +78,7 @@ const maintainerCollabItems = (activeMenuItem: MenuName, disableAnimation: boole
           children: "3",
           variant: "success",
           active: activeMenuItem === 'work',
-          disableAnimation: disableAnimation
+          static: disableAnimation
         }
       ]}
       href="/maintainer/work"
@@ -93,7 +93,7 @@ const maintainerCollabItems = (activeMenuItem: MenuName, disableAnimation: boole
           children: "2",
           variant: "danger",
           active: activeMenuItem === 'cwork',
-          disableAnimation: disableAnimation
+          static: disableAnimation
         }
       ]}
       href="/maintainer/cwork"

@@ -4,8 +4,8 @@ import { ItemName } from "@/components/utilitified_decorations/WorkNavbar.astro"
 
 import ProfileInfo from "@/components/profile/ProfileInfoPanel";
 import BackButton from "@/components/utilitified_decorations/BackButton";
-import RecentActivity from "@/components/profile/RecentActivityPanel";
-import Discovery from "@/components/profile/DiscoveryPanel";
+// import RecentActivity from "@/components/profile/panel/RecentActivityPanel";
+// import Discovery from "@/components/profile/panel/DiscoveryPanel";
 import FinanceInfo from "@/components/profile/FinanceInfoPanel";
 import ProfileMetric from "@/components/profile/ProfileMetricPanel";
 ---
@@ -16,6 +16,6 @@ import ProfileMetric from "@/components/profile/ProfileMetricPanel";
   <FinanceInfo />
   <ProfileMetric slot="center" client:load />
 
-  <RecentActivity slot="right" />
+  <!-- <RecentActivity slot="right" /> -->
   <!-- <Discovery slot="right" client:load /> -->
 </V2Layout>

@@ -162,12 +162,12 @@ export const AnimatedBadges: Story = {
 export const StaticBadges: Story = {
     render: () => (
         <div className="flex flex-wrap gap-4">
-            <Badge variant="blue" disableAnimation>New Feature</Badge>
-            <Badge variant="green" disableAnimation>Completed</Badge>
-            <Badge variant="red" disableAnimation>Error</Badge>
-            <Badge variant="yellow" disableAnimation>Pending</Badge>
-            <Badge variant="purple" disableAnimation>Premium</Badge>
-            <Badge variant="orange" disableAnimation>Beta</Badge>
+            <Badge variant="blue" static>New Feature</Badge>
+            <Badge variant="green" static>Completed</Badge>
+            <Badge variant="red" static>Error</Badge>
+            <Badge variant="yellow" static>Pending</Badge>
+            <Badge variant="purple" static>Premium</Badge>
+            <Badge variant="orange" static>Beta</Badge>
         </div>
     ),
     parameters: {

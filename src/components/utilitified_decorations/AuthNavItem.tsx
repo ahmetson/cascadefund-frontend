@@ -1,6 +1,5 @@
 import React from 'react'
 import MenuAvatar from '@/components/MenuAvatar'
-import Link from '@/components/custom-ui/Link'
 
 interface Props {
   className?: string

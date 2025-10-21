@@ -38,6 +38,27 @@ type IconType =
   | 'better-features'
   | 'new-project'
   | 'success'
+  | 'arrow'
+  | 'behance'
+  | 'discord'
+  | 'facebook'
+  | 'instagram'
+  | 'google'
+  | 'linkedin'
+  | 'pinterest'
+  | 'vkontakte'
+  | 'stackoverflow'
+  | 'telegram'
+  | 'youtube'
+  | 'tiktok'
+  | 'snapchat'
+  | 'slack'
+  | 'messenger'
+  | 'dribbble'
+  | 'reddit'
+  | 'x'
+  | 'whatsapp'
+  | 'twitch'
 
 type IconProps = {
   iconType: IconType
@@ -84,7 +105,7 @@ export const getIcon = (props: IconProps | IconType): React.ReactNode => {
       )
     case 'info':
       return (
-        <svg className={className} viewBox="0 0 20 20" fill={fill} xmlns="http://www.w3.org/2000/svg">
+        <svg className={className} fill={fill} stroke="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" fill="#6B7280" />
         </svg>
       )
@@ -112,7 +133,7 @@ export const getIcon = (props: IconProps | IconType): React.ReactNode => {
       </svg>
     )
     case 'heart': return (
-      <svg className={`${className} text-red-700`} fill={fill} stroke="currentColor" viewBox="0 0 24 24">
+      <svg className={`text-red-700 ${className}`} fill={fill} stroke="currentColor" viewBox="0 0 24 24">
         <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
       </svg>
     )
@@ -262,6 +283,22 @@ export const getIcon = (props: IconProps | IconType): React.ReactNode => {
     case 'success': return (
       <svg className={`${className} text-green-600`} fill={fill} stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    )
+    case 'arrow': return (
+      <svg className={className} width="20" height="10" viewBox="0 0 20 10" fill="none">
+        <path
+          d="M9.66437 2.60207L4.80758 6.97318C4.07308 7.63423 3.11989 8 2.13172 8H0V10H20V8H18.5349C17.5468 8 16.5936 7.63423 15.8591 6.97318L11.0023 2.60207C10.622 2.2598 10.0447 2.25979 9.66437 2.60207Z"
+          className="fill-[canvas]"
+        />
+        <path
+          d="M8.99542 1.85876C9.75604 1.17425 10.9106 1.17422 11.6713 1.85878L16.5281 6.22989C17.0789 6.72568 17.7938 7.00001 18.5349 7.00001L15.89 7L11.0023 2.60207C10.622 2.2598 10.0447 2.2598 9.66436 2.60207L4.77734 7L2.13171 7.00001C2.87284 7.00001 3.58774 6.72568 4.13861 6.22989L8.99542 1.85876Z"
+          className="fill-gray-200 dark:fill-none"
+        />
+        <path
+          d="M10.3333 3.34539L5.47654 7.71648C4.55842 8.54279 3.36693 9 2.13172 9H0V8H2.13172C3.11989 8 4.07308 7.63423 4.80758 6.97318L9.66437 2.60207C10.0447 2.25979 10.622 2.2598 11.0023 2.60207L15.8591 6.97318C16.5936 7.63423 17.5468 8 18.5349 8H20V9H18.5349C17.2998 9 16.1083 8.54278 15.1901 7.71648L10.3333 3.34539Z"
+          className="dark:fill-gray-300"
+        />
       </svg>
     )
     default:
