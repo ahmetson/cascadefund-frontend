@@ -1,26 +1,22 @@
 import React from 'react'
 import Badge from '@/components/custom-ui/Badge'
 import Link from '@/components/custom-ui/Link'
+import Tooltip from './utilitified_decorations/Tooltip'
 
-interface Props {
-  active?: boolean
-}
-
-const MenuAvatar: React.FC<Props> = ({ active = false }) => {
+const MenuAvatar: React.FC = () => {
   return (
-    <div className="flex items-center space-x-2">
-      <div className="w-5 h-5 rounded-full bg-orange-400 flex items-center justify-center">
-        <span className="text-white text-xs font-medium">A</span>
-      </div>
-      <div className='text-center h-5 flex flex-col -mt-2.5'>
-        <Badge variant="yellow">220 rating</Badge>
-        {!active ? (
-          <Link href="/data/profile" className="hover:bg-gray-200 text-sm m-0! p-1! -mt-2.5!">
-            Ahmetson
-          </Link>
-        ) : (<strong className='text-gray-900 text-sm underline'>Ahmetson</strong>)}
-      </div>
-    </div>
+    <Tooltip
+      content={
+        <div className="text-sm">
+          View <code className='code'>Ahmetson</code> profile
+        </div>
+      }
+    >
+      <Link href="/data/profile" className="hover:bg-teal-300 bg-blue-200 rounded-full h-8 w-8 flex items-center p-1!">
+        <img src="https://api.backdropbuild.com/storage/v1/object/public/avatars/9nFM8HasgS.jpeg" alt="Avatar" className="w-7 h-full rounded-full" />
+      </Link>
+    </Tooltip>
+
   )
 }
 

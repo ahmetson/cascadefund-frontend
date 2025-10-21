@@ -133,7 +133,7 @@ const Panel: React.FC<Props> = ({ activeMenuItem, focusMenuItem, title = 'Main M
   const titleC = <div className='text-sm font-medium text-gray-500'>{title}</div>
   const disableAnimation = isBadgedItemAnimated(onlyCustomChildren, children, activeMenuItem);
 
-  return <PageLikePanel title={titleC} >
+  return <PageLikePanel interactive={false} title={titleC} >
     {onlyCustomChildren && !children ? noChildren : children}
     {!onlyCustomChildren && (!isOnlyInfluencerMenu(activeMenuItem) ? maintainerMainItems(activeMenuItem, focusMenuItem) : influencerMainItems(activeMenuItem, focusMenuItem))}
     {!onlyCustomChildren &&

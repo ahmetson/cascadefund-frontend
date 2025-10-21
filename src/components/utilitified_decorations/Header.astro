@@ -53,7 +53,7 @@ const { subtitle, active, hideLinks } = Astro.props;
       </WorkNavbar>
     </div>
     <div class="navbar-end flex h-6">
-      <AuthNavItem className="py-1! px-2!" />
+      <AuthNavItem className="py-2! px-2!" client:load />
     </div>
   </div>
 </header>
