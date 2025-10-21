@@ -36,7 +36,6 @@ export const Default: Story = {
     args: {
         title: 'Main Menu',
         activeMenuItem: 'balance',
-        hoverable: true,
     },
 };
 
@@ -44,7 +43,6 @@ export const MaintainerMainMenu: Story = {
     args: {
         title: 'Maintainer Dashboard',
         activeMenuItem: 'balance',
-        hoverable: true,
     },
 };
 
@@ -52,7 +50,6 @@ export const MaintainerWithActiveProject: Story = {
     args: {
         title: 'Project Management',
         activeMenuItem: 'project',
-        hoverable: true,
     },
 };
 
@@ -60,7 +57,6 @@ export const MaintainerWithActiveMarketing: Story = {
     args: {
         title: 'Marketing Tools',
         activeMenuItem: 'marketing',
-        hoverable: true,
     },
 };
 
@@ -68,7 +64,6 @@ export const MaintainerWithActiveWork: Story = {
     args: {
         title: 'Work Management',
         activeMenuItem: 'work',
-        hoverable: true,
     },
 };
 
@@ -76,7 +71,6 @@ export const InfluencerHistoryMenu: Story = {
     args: {
         title: 'Influencer Dashboard',
         activeMenuItem: 'ihistory',
-        hoverable: true,
     },
 };
 
@@ -84,7 +78,6 @@ export const InfluencerWorkMenu: Story = {
     args: {
         title: 'Influencer Work',
         activeMenuItem: 'iwork',
-        hoverable: true,
     },
 };
 
@@ -92,7 +85,6 @@ export const CascadingBalanceMenu: Story = {
     args: {
         title: 'Cascading Balance',
         activeMenuItem: 'cbalance',
-        hoverable: true,
     },
 };
 
@@ -100,7 +92,6 @@ export const CascadingWorkMenu: Story = {
     args: {
         title: 'Cascading Work',
         activeMenuItem: 'cwork',
-        hoverable: true,
     },
 };
 
@@ -109,7 +100,6 @@ export const WithCustomChildren: Story = {
         title: 'Custom Menu',
         activeMenuItem: 'balance',
         onlyCustomChildren: true,
-        hoverable: true,
         children: (
             <div className="space-y-1">
                 <div className="flex items-center justify-between px-3 py-2 rounded-md bg-blue-50 text-blue-700">
@@ -147,19 +137,10 @@ export const WithCustomChildren: Story = {
     },
 };
 
-export const NonHoverable: Story = {
-    args: {
-        title: 'Static Menu',
-        activeMenuItem: 'balance',
-        hoverable: false,
-    },
-};
-
 export const WithLongTitle: Story = {
     args: {
         title: 'Very Long Menu Title That Might Wrap',
         activeMenuItem: 'marketing',
-        hoverable: true,
     },
 };
 
@@ -167,7 +148,6 @@ export const AllMenuItems: Story = {
     args: {
         title: 'Complete Menu System',
         activeMenuItem: 'balance',
-        hoverable: true,
         children: (
             <div className="space-y-1">
                 <h3 className="text-sm font-medium text-gray-500 mb-3">Additional Menu Items</h3>
@@ -207,7 +187,6 @@ export const ErrorState: Story = {
     args: {
         title: 'Error State Menu',
         activeMenuItem: 'ihistory',
-        hoverable: true,
     },
 };
 
@@ -216,15 +195,5 @@ export const EmptyState: Story = {
         title: 'Empty Menu',
         activeMenuItem: 'balance',
         onlyCustomChildren: true,
-        hoverable: true,
-        children: (
-            <div className="text-center py-8 text-gray-500">
-                <svg viewBox="0 0 24 24" className="w-12 h-12 mx-auto mb-4 text-gray-300" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.58L19 8l-9 9z" />
-                </svg>
-                <p className="text-sm">No menu items available</p>
-                <p className="text-xs text-gray-400 mt-1">Add some items to get started</p>
-            </div>
-        ),
     },
 };
