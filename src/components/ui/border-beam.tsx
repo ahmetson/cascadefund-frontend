@@ -112,9 +112,12 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
     }, 100);
   };
 
+
+  const normalStyle = {
+    boxShadow: `0 0 20px ${colorFrom}80, inset 0 0 5px ${colorTo}40`,
+  }
+
   const hoveredStyle = {
-    border: `2px solid ${colorFrom}`,
-    borderRadius: '2px',
     boxShadow: `0 0 20px ${colorFrom}80, inset 0 0 5px ${colorTo}40`,
     animation: 'pulse 2s ease-in-out infinite',
   }
@@ -250,7 +253,7 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
       className={cn(
         'relative overflow-hidden bg-transparent',
         className)}
-      style={isHovered ? hoveredStyle : undefined}
+      style={isHovered ? hoveredStyle : normalStyle}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

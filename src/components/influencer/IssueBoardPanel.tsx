@@ -1,7 +1,7 @@
 import React from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
 import LinkBtn from '@/components/LinkBtn'
-import Badge from '@/components/Badge'
+import Badge from '@/components/custom-ui/Badge'
 import IssueCard from '@/components/issue/IssueLinkPanel2'
 
 const IssuesSection: React.FC = () => {

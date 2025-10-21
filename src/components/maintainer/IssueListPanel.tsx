@@ -5,7 +5,7 @@ import BasePanel from '@/components/panel/BasePanel'
 import { getIcon } from '../icon'
 import Link from '../Link'
 import AvatarList from '../AvatarList'
-import Badge from '../Badge'
+import Badge from '../custom-ui/Badge'
 import LinkBtn from '../LinkBtn'
 import { DndProvider, useDrag } from 'react-dnd'
 import { HTML5Backend } from "react-dnd-html5-backend";

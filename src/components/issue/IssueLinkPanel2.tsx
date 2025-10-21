@@ -1,5 +1,5 @@
 import React from 'react'
-import Badge from '@/components/Badge'
+import Badge from '@/components/custom-ui/Badge'
 import Button from '@/components/Button'
 
 interface Issue {
@@ -59,8 +59,8 @@ const IssueCard: React.FC<IssueCardProps> = ({ issue }) => {
 
       <div className="flex items-center space-x-2 mb-3">
         <div className="w-6 h-6 rounded-full overflow-hidden">
-          <img 
-            src="https://dummyimage.com/24x24/4FC3F7/ffffff?text=B" 
+          <img
+            src="https://dummyimage.com/24x24/4FC3F7/ffffff?text=B"
             alt="Author avatar"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"

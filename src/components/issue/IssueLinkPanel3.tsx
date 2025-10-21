@@ -1,5 +1,5 @@
 import React from 'react'
-import Badge from '@/components/Badge'
+import Badge from '@/components/custom-ui/Badge'
 
 interface IssueCardProps {
   title: string
@@ -27,13 +27,13 @@ const IssueCard: React.FC<IssueCardProps> = ({
     wish: 'success',
     feature: 'info'
   } as const
-  
+
   const priorityIcons = {
     low: '▼',
     medium: '■',
     high: '▲'
   }
-  
+
   return (
     <a className="bg-white border border-blue-200 hover:blue-400 hover:bg-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow" href="/issue">
       <div className="flex items-start justify-between mb-3">
@@ -45,11 +45,11 @@ const IssueCard: React.FC<IssueCardProps> = ({
           {type === 'bug' ? 'Bug' : type === 'wish' ? 'Wish' : 'Feature'}
         </Badge>
       </div>
-      
+
       <h3 className="font-medium text-gray-900 mb-2">{title}</h3>
       {author && <div className="text-sm text-gray-600 mb-2">{author}</div>}
       <p className="text-sm text-gray-600 mb-4">{description}</p>
-      
+
       <div className="flex items-center justify-between text-xs text-gray-500">
         <div className="flex items-center space-x-4">
           <span>{date}</span>

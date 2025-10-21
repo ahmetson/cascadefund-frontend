@@ -1,6 +1,6 @@
 import React from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
-import Badge from '@/components/Badge'
+import Badge from '@/components/custom-ui/Badge'
 import NotificationBanner from '@/components/NotificationBanner'
 
 const IssueContent: React.FC = () => {

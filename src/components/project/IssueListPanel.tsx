@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '@/components/Button'
-import Badge from '@/components/Badge'
+import Badge from '@/components/custom-ui/Badge'
 import PageLikePanel from '@/components/panel/PageLikePanel'
 import IssueCard from '@/components/issue/IssueLinkPanel3'
 import Link from '@/components/Link'

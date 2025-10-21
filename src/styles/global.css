@@ -56,6 +56,44 @@ body {
   50% { transform: translateY(-20px); }
 }
 
+/* Badge animation keyframes */
+@keyframes glow-pulse {
+  0%, 100% { 
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+  50% { 
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+@keyframes shine-gradient {
+  0%, 100% { 
+    background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  }
+  50% { 
+    background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+  }
+}
+
+.animate-pulse-glow {
+  animation: glow-pulse var(--animation-duration, 25s) ease-in-out infinite;
+  animation-delay: var(--animation-delay, 0s);
+  position: relative;
+}
+
+.animate-pulse-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  animation: shine-gradient var(--animation-duration, 25s) ease-in-out infinite;
+  animation-delay: var(--animation-delay, 0s);
+}
+
 .header {
   position: absolute;
   top: 0;
@@ -98,5 +136,5 @@ body {
 }
 
 .hyperlink:hover {
-  transform: scale(1.04);
+  transform: scale(1.02);
 }

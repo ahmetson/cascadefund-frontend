@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
-import Badge from '@/components/Badge'
+import Badge from '@/components/custom-ui/Badge'
 import { Input } from '@/components/ui/input'
 import type { ActionProps } from '@/types/eventTypes'
 

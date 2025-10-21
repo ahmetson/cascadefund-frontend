@@ -1,6 +1,6 @@
 import React from 'react'
 import BasePanel from '@/components/panel/BasePanel'
-import Badge from '@/components/Badge'
+import Badge from '@/components/custom-ui/Badge'
 
 const Sidebar: React.FC = () => {
   return (

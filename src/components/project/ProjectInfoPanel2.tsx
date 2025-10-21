@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '@/components/Button'
-import Badge from '@/components/Badge'
+import Badge from '@/components/custom-ui/Badge'
 import StatCard from '@/components/StatInfoPanel2'
 import CollaborationChart from '@/components/CollaborationChart'
 
@@ -76,7 +76,7 @@ const ProjectCard: React.FC<ProjectInfoProps> = ({
               <Badge variant="info">You are influencer</Badge>
             )}
           </div>
-          
+
           <div className="flex items-center space-x-4 text-sm text-gray-600 mb-2">
             <span>Fork of <span className="text-blue-600 underline">{originalProject}</span></span>
             <span className="flex items-center">
@@ -86,12 +86,12 @@ const ProjectCard: React.FC<ProjectInfoProps> = ({
               <span className="text-blue-600 underline">{issue}</span>
             </span>
           </div>
-          
+
           <p className="text-gray-700 mb-4">{description}</p>
-          
+
           <div className="text-sm text-blue-600 underline mb-4">{license}</div>
         </div>
-        
+
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
             <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -99,27 +99,27 @@ const ProjectCard: React.FC<ProjectInfoProps> = ({
             </svg>
             <span className="font-medium">{rating}</span>
           </div>
-          
+
           <div className="flex items-center space-x-2">
             <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
             </svg>
             <span>{forks}</span>
           </div>
-          
+
           <div className="flex items-center space-x-2">
             <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
             </svg>
             <span>{likes}</span>
           </div>
-          
+
           <Button variant={isFollowing ? "secondary" : "primary"} size="sm">
             {isFollowing ? "Following" : "Follow"}
           </Button>
         </div>
       </div>
-      
+
       <div className="grid grid-cols-4 gap-4 mb-6">
         <StatCard
           title="Balance / Cascade Balance"
@@ -127,27 +127,27 @@ const ProjectCard: React.FC<ProjectInfoProps> = ({
           subtitle={cascadeBalance}
           footer={`${totalAmount} / ${duration}`}
         />
-        
+
         <StatCard
           title="Last Activity / Total Commits"
           value={lastActivity}
           subtitle={totalCommits}
           footer={commitsPerDay}
         />
-        
+
         <StatCard
           title="Issues"
           value={`${openIssues} open`}
           subtitle={`${closedIssues} closed`}
           footer={`avg. ${avgResponseTime}`}
         />
-        
+
         <div className="bg-gray-50 rounded-lg p-4">
           <h4 className="text-sm font-medium text-gray-700 mb-3">Collaboration</h4>
           <CollaborationChart collaborators={collaborators} />
         </div>
       </div>
-      
+
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
@@ -159,7 +159,7 @@ const ProjectCard: React.FC<ProjectInfoProps> = ({
             <span className="text-xs text-yellow-500">{maintainer.rating}</span>
           </div>
         </div>
-        
+
         <div className="flex items-center space-x-4">
           <div className="flex space-x-2">
             <Button variant="danger" size="sm">
@@ -169,7 +169,7 @@ const ProjectCard: React.FC<ProjectInfoProps> = ({
               Work
               <span className="ml-1 bg-white text-red-600 text-xs px-1 rounded">3</span>
             </Button>
-            
+
             <Button variant="info" size="sm">
               <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -177,7 +177,7 @@ const ProjectCard: React.FC<ProjectInfoProps> = ({
               Cascade Work
               <span className="ml-1 bg-white text-blue-600 text-xs px-1 rounded">6</span>
             </Button>
-            
+
             <Button variant="secondary" size="sm">
               <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -185,7 +185,7 @@ const ProjectCard: React.FC<ProjectInfoProps> = ({
               Influence
             </Button>
           </div>
-          
+
           <div className="flex items-center space-x-2">
             <span className="text-sm text-gray-600">Influencers</span>
             <div className="flex -space-x-2">

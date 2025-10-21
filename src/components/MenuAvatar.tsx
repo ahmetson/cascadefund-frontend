@@ -1,5 +1,5 @@
 import React from 'react'
-import Badge from '@/components/Badge'
+import Badge from '@/components/custom-ui/Badge'
 import Link from '@/components/Link'
 
 interface Props {

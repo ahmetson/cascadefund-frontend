@@ -2,7 +2,7 @@ import React from 'react'
 import Tabs, { TabProps } from '../utilitified_decorations/Tabs'
 import IssueListPanel from './IssueListPanel'
 import IssueListPanel2 from './IssueListPanel2'
-import Badge from '../Badge'
+import Badge from '../custom-ui/Badge'
 import DropTarget from '../DropTarget'
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";

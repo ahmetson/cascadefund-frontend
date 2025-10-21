@@ -49,7 +49,7 @@ const InteractivePanel: React.FC<InteractivePanelProps> = ({
                 {...baseProps}
                 className={cn(
                     'transition-all duration-300',
-                    'hover:shadow-lg hover:scale-[1.02]',
+                    'hover:shadow-lg hyperlink',
                     className
                 )}
                 onClick={handleClick}
