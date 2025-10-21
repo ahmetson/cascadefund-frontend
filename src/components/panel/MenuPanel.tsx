@@ -4,9 +4,6 @@ import MenuItem from './MenuItem';
 
 type MenuName = 'ihistory' | 'iwork' | 'balance' | 'cbalance' | 'project' | 'marketing' | 'work' | 'cwork';
 
-type MenuType = 'influencer' | 'maintainer' | 'custom'
-type ContentType = 'main' | 'collaboration' | 'custom'
-
 interface Props {
   hoverable?: boolean
   title?: string
@@ -36,7 +33,14 @@ const maintainerMainItems = (activeMenuItem: MenuName): React.ReactNode[] => {
     <MenuItem
       icon="project-info"
       label="Project Info"
-      badge="2+"
+      badges={[
+        {
+          children: "2+",
+          variant: "info",
+          active: false,
+          disableAnimation: true
+        }
+      ]}
       url={"/data/project"}
       isActive={activeMenuItem === 'project'}
     />,
@@ -58,21 +62,32 @@ const maintainerCollabItems = (activeMenuItem: MenuName): React.ReactNode[] => {
     <MenuItem
       icon="marketing"
       label="Marketing"
-      badge={1}
       url="/maintainer/marketing"
       isActive={activeMenuItem === 'marketing'}
     />,
     <MenuItem
       icon="work"
       label="Work"
-      badge={3}
+      badges={[
+        {
+          children: "3",
+          variant: "success",
+          active: true
+        }
+      ]}
       url="/maintainer/work"
       isActive={activeMenuItem === 'work'}
     />,
     <MenuItem
       icon="cascading-work"
       label="Cascading work"
-      badge="?"
+      badges={[
+        {
+          children: "2",
+          variant: "danger",
+          active: true
+        }
+      ]}
       url="/maintainer/cwork"
       isActive={activeMenuItem === 'cwork'}
     />
