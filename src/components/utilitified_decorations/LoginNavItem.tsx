@@ -1,6 +1,6 @@
 import React from 'react'
 import MenuAvatar from '@/components/MenuAvatar'
-import LinkBtn from '@/components/LinkBtn'
+import Link from '@/components/custom-ui/Link'
 
 export const ActiveLoginNavItem = "loginItem"
 
@@ -14,7 +14,7 @@ const C: React.FC<Props> = ({ className, active }) => {
     return <MenuAvatar active={active} />
   }
 
-  return <LinkBtn className={className || ''} href="/login" variant="purple" >Log In</LinkBtn>
+  return <Link className={`${className || ''} inline-flex items-center bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded transition-colors`} href="/login" >Log In</Link>
 }
 
 export default C

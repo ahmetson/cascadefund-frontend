@@ -6,7 +6,6 @@ import { getIcon } from '../icon'
 import Link from '../custom-ui/Link'
 import AvatarList from '../AvatarList'
 import Badge from '../custom-ui/Badge'
-import LinkBtn from '../LinkBtn'
 import { DndProvider, useDrag } from 'react-dnd'
 import { HTML5Backend } from "react-dnd-html5-backend";
 
@@ -191,7 +190,7 @@ const IssuesSection: React.FC = () => {
       </div>
 
       <div className='flex justify-center mt-4'>
-        <LinkBtn variant={'gray'} href={'/data/issue/post'}>Add Issue</LinkBtn>
+        <Link className="inline-flex items-center bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded transition-colors" href={'/data/issue/post'}>Add Issue</Link>
       </div>
     </BasePanel>
   )

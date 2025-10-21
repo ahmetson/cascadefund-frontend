@@ -1,6 +1,5 @@
 import React from 'react'
 import BasePanel from '@/components/panel/BasePanel'
-import LinkBtn from '@/components/LinkBtn'
 import Link from '@/components/custom-ui/Link'
 import type { PanelEvents } from '@/types/eventTypes'
 import Button from '@/components/custom-ui/Button'
@@ -73,7 +72,7 @@ const ProfileCard: React.FC<PanelEvents> = ({ onActionClick }) => {
         </div>
       </div>
       <div className="mt-4 pt-4 border-t">
-        <LinkBtn variant="orange" label="Log out" href="/" />
+        <Link className="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded transition-colors" href="/" >Log out</Link>
         <Link className="ml-4 text-sm text-blue-600 cursor-pointer" href='/data/projects'>
           View All Projects
         </Link>

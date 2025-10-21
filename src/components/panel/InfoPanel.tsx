@@ -1,7 +1,7 @@
 import React from 'react'
 import BasePanel, { BasePanelProps } from './BasePanel'
 import Button from '@/components/custom-ui/Button'
-import LinkBtn from '@/components/LinkBtn'
+import Link from '@/components/custom-ui/Link'
 import { getIcon, IconType, IconProps } from '@/components/icon'
 import { cn } from '@/lib/utils'
 import type { ActionProps } from '@/types/eventTypes'
@@ -59,14 +59,13 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
             <div className="flex justify-center gap-3 mt-6">
                 {actions.map((action, index) => (
                     action.href ? (
-                        <LinkBtn
+                        <Link
                             key={index}
-                            variant={action.variant}
                             href={action.href}
-                            className={cn("flex-1", action.className)}
+                            className={cn("flex-1 inline-flex items-center font-bold py-2 px-4 rounded transition-colors", action.className)}
                         >
                             {action.children}
-                        </LinkBtn>
+                        </Link>
                     ) : (
                         <Button
                             key={index}

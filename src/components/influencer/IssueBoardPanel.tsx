@@ -1,6 +1,6 @@
 import React from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
-import LinkBtn from '@/components/LinkBtn'
+import Link from '@/components/custom-ui/Link'
 import Badge from '@/components/custom-ui/Badge'
 import IssueCard from '@/components/issue/IssueLinkPanel2'
 
@@ -65,7 +65,7 @@ const IssuesSection: React.FC = () => {
   ]
 
   return (
-    <PageLikePanel title={<>Issues <Badge variant="gray">4</Badge></>} rightHeader={<LinkBtn variant="blue" href="/data/issue/post" >Add Issue</LinkBtn>}>
+    <PageLikePanel title={<>Issues <Badge variant="gray">4</Badge></>} rightHeader={<Link href="/data/issue/post" className="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors" >Add Issue</Link>}>
       <div className="p-6">
         <div className="mb-6">
           <div className="flex items-center space-x-2 mb-4">

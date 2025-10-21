@@ -1,6 +1,6 @@
 import React from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
-import LinkBtn from '@/components/LinkBtn'
+import Link from '@/components/custom-ui/Link'
 
 const VotingPowerSection: React.FC = () => {
   const allocations = [
@@ -19,11 +19,10 @@ const VotingPowerSection: React.FC = () => {
             <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span className="text-2xl font-bold text-blue-600">100</span>
-          <LinkBtn
-            variant="gray"
-            className="w-sm h-sm"
+          <Link
+            className="w-sm h-sm inline-flex items-center bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded transition-colors"
             href="/influencer/project"
-          >Add</LinkBtn>
+          >Add</Link>
         </div>
       </div>
 
@@ -62,11 +61,10 @@ const VotingPowerSection: React.FC = () => {
         </div>
       </div>
 
-      <LinkBtn
-        variant="blue"
-        className="w-full mt-4"
+      <Link
+        className="w-full mt-4 inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors"
         href="/influencer/confirmed"
-      >Confirm Votes</LinkBtn>
+      >Confirm Votes</Link>
 
       <p className="text-xs text-gray-500 mt-2 text-center">
         It will create tasks for maintainers to work on the issues. You will be notified on this page.

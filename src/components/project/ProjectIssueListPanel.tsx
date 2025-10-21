@@ -4,7 +4,6 @@ import IssueCard from './SelectableIssuePanel'
 import PageLikePanel from '@/components/panel/PageLikePanel'
 import { PanelEvents } from '@/types/eventTypes'
 import Link from '../custom-ui/Link'
-import LinkBtn from '../LinkBtn'
 
 interface Issue {
   id: string
@@ -70,9 +69,9 @@ const IssueSelector: React.FC<IssueSelectorProps> = ({ className, onActionClick,
     <PageLikePanel
       className={className}
       title={"Issues"}
-      rightHeader={<LinkBtn href={'/data/issue/post?projectId=1&notYetCreated=true&forkProject=git:ahmetson%2Fblockchain-verifier'}>
+      rightHeader={<Link href={'/data/issue/post?projectId=1&notYetCreated=true&forkProject=git:ahmetson%2Fblockchain-verifier'} className="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors">
         Create New Issue
-      </LinkBtn>}
+      </Link>}
       actions={[{
         variant: 'blue',
         onClick: (() => { onActionClick && onActionClick({}) }),

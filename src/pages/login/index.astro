@@ -3,7 +3,6 @@ import V2Layout from "@/layouts/PanelViewLayout.astro";
 import { ItemName } from "@/components/utilitified_decorations/LandingNavbar.astro";
 
 import PageLikePanel from "@/components/panel/PageLikePanel";
-import LinkBtn from "@/components/LinkBtn";
 import Link from "@/components/custom-ui/Link";
 import InfoPanel from "@/components/panel/InfoPanel";
 ---
@@ -16,8 +15,10 @@ import InfoPanel from "@/components/panel/InfoPanel";
     className="bg-cyan-50 border-cyan-100"
   >
     <div class="text-center space-y-6 mt-14">
-      <LinkBtn href="/login/callback" variant="blue"
-        >Sign in with GitHub</LinkBtn
+      <Link
+        href="/login/callback"
+        className="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors"
+        >Sign in with GitHub</Link
       >
       <p class="text-sm text-gray-500 mt-4 -mb-4">
         By signing in, you agree to our{" "}

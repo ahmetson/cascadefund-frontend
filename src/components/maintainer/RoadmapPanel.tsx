@@ -4,7 +4,7 @@ import PageLikePanel from '@/components/panel/PageLikePanel'
 import Tabs, { TabProps } from '../utilitified_decorations/Tabs'
 import Badge from '../custom-ui/Badge'
 import { ActionProps } from '@/types/eventTypes'
-import LinkBtn from '../LinkBtn'
+import Link from '../custom-ui/Link'
 import Button from '../custom-ui/Button'
 import DropTarget from '../DropTarget'
 import { DndProvider } from 'react-dnd'
@@ -145,7 +145,7 @@ const RoadmapPanel: React.FC<RoadmapProps> = ({ actions, versions }) => {
       <div className='flex justify-center mt-4'>
         {actions && actions.map((action) => (
           action.href ?
-            <LinkBtn variant={action.variant} href={action.href} className={action.className || ""} >{action.children}</LinkBtn>
+            <Link href={action.href} className={`inline-flex items-center font-bold py-2 px-4 rounded transition-colors ${action.className || ""}`} >{action.children}</Link>
             :
             <Button variant={action.variant} onClick={action.onClick!} className={action.className || ""} >{action.children}</Button>
         ))}

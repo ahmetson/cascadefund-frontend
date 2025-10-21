@@ -1,6 +1,5 @@
 import React from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
-import LinkBtn from '@/components/LinkBtn'
 import Link from '@/components/custom-ui/Link'
 
 export interface RoleCardProps {
@@ -35,7 +34,7 @@ const C: React.FC<RoleCardProps> = ({
       <p className='h-20 flex items-center text-gray-200 mt-8'>{description}</p>
       <div className="card-actions justify-center">
         {buttonVariant === 'primary' ?
-          (<LinkBtn href={href || '#'} variant='red' >{buttonText}</LinkBtn>) :
+          (<Link href={href || '#'} className="inline-flex items-center bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition-colors" >{buttonText}</Link>) :
           (<Link href={href || '#'} className={buttonVariant}>{buttonText}</Link>)
         }
       </div>
