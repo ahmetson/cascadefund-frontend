@@ -1,7 +1,7 @@
 import React from 'react'
 import BasePanel from '@/components/panel/BasePanel'
 import PageLikePanel from '@/components/panel/PageLikePanel'
-import Tabs, { TabProps } from '../utilitified_decorations/Tabs'
+import Tabs, { TabProps } from '../Tabs'
 import Badge from '../custom-ui/Badge'
 import { ActionProps } from '@/types/eventTypes'
 import Link from '../custom-ui/Link'

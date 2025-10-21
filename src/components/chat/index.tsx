@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Tabs, { type TabProps } from '@/components/utilitified_decorations/Tabs'
+import Tabs, { type TabProps } from '@/components/Tabs'
 import ConversationPanel from './ConversationPanel';
 import NotesPanel from './NotesPanel';
 import ChatPanel from './ChatPanel';

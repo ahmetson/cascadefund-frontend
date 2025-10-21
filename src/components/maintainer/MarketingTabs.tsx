@@ -1,6 +1,6 @@
 import React from 'react'
-import type { TabProps } from '@/components/utilitified_decorations/Tabs';
-import Tabs from '@/components/utilitified_decorations/Tabs';
+import type { TabProps } from '@/components/Tabs';
+import Tabs from '@/components/Tabs';
 import AnalyticsPanel from './AnalyticsPanel';
 import TrafficSources from './TrafficSourcePanel';
 import ConversionFunnel from './ConversionInfoPanel';

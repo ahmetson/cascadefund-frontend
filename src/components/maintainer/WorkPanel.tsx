@@ -1,5 +1,5 @@
 import React from 'react'
-import Tabs, { TabProps } from '../utilitified_decorations/Tabs'
+import Tabs, { TabProps } from '../Tabs'
 import IssueListPanel from './IssueListPanel'
 import IssueListPanel2 from './IssueListPanel2'
 import Badge from '../custom-ui/Badge'

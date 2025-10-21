@@ -1,7 +1,7 @@
 import React from 'react'
 import DepList from './DepListPanel'
-import type { TabProps } from '@/components/utilitified_decorations/Tabs';
-import Tabs from '@/components/utilitified_decorations/Tabs';
+import type { TabProps } from '@/components/Tabs';
+import Tabs from '@/components/Tabs';
 import IssueList from '@/components/maintainer/IssueListPanel2'
 import ProfileList from '@/components/maintainer/ProfileListPanel'
 

@@ -8,14 +8,9 @@ import RecentActivity from "@/components/profile/RecentActivityPanel";
 import Discovery from "@/components/profile/DiscoveryPanel";
 import FinanceInfo from "@/components/profile/FinanceInfoPanel";
 import ProfileMetric from "@/components/profile/ProfileMetricPanel";
-import { ActiveLoginNavItem } from "@/components/utilitified_decorations/AuthNavItem";
 ---
 
-<V2Layout
-  active={ActiveLoginNavItem}
-  hideLinks={[ItemName.ProjectName]}
-  subtitle="Data Section: Profile"
->
+<V2Layout hideLinks={[ItemName.ProjectName]} subtitle="Data Section: Profile">
   <BackButton href="/maintainer/work" slot="left" />
   <ProfileInfo slot="center" client:load />
   <FinanceInfo />
