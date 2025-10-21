@@ -1,6 +1,6 @@
 import React from 'react'
 import Badge from '@/components/custom-ui/Badge'
-import Button from '@/components/Button'
+import Button from '@/components/custom-ui/Button'
 
 interface Issue {
   id: number

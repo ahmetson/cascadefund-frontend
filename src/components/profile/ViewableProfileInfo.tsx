@@ -1,6 +1,6 @@
 import React from 'react'
 import BasePanel from '@/components/panel/BasePanel'
-import Button from '@/components/Button'
+import Button from '@/components/custom-ui/Button'
 import type { PanelEvents } from '@/types/eventTypes'
 
 const ProfileSection: React.FC<PanelEvents> = ({ onActionClick }) => {

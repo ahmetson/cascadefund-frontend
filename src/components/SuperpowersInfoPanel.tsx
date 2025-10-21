@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '@/components/Button'
+import Button from '@/components/custom-ui/Button'
 import PageLikePanel from '@/components/panel/PageLikePanel'
 
 const SuperpowersCard: React.FC = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import BasePanel from '@/components/panel/BasePanel'
-import Button from '@/components/Button'
+import Button from '@/components/custom-ui/Button'
 import DepInfo from './DepInfoPanel'
 
 const C: React.FC = () => {

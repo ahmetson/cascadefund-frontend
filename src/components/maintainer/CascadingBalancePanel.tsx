@@ -1,6 +1,6 @@
 import React from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
-import Button from '@/components/Button'
+import Button from '@/components/custom-ui/Button'
 
 const CascadingBalance: React.FC = () => {
   return (

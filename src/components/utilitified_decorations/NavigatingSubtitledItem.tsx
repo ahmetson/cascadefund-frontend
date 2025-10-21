@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '@/components/Button'
+import Button from '@/components/custom-ui/Button'
 import Link from '@/components/Link'
 
 interface Props {
@@ -9,12 +9,12 @@ interface Props {
   href?: string;
 }
 
-const NavLabelElement: React.FC<Props> = ({children, subtitle, active, href = "#"}) => {
+const NavLabelElement: React.FC<Props> = ({ children, subtitle, active, href = "#" }) => {
   return (
     <div className="text-sm text-gray-600">
       {subtitle}:<br />
-      {!active ? 
-        (<Link href={href}>{children}</Link>) : 
+      {!active ?
+        (<Link href={href}>{children}</Link>) :
         (<Button variant="secondary" size="sm">
           {children}
         </Button>)

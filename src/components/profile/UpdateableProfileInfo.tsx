@@ -3,7 +3,7 @@ import BasePanel from '@/components/panel/BasePanel'
 import LinkBtn from '@/components/LinkBtn'
 import Link from '@/components/Link'
 import type { PanelEvents } from '@/types/eventTypes'
-import Button from '@/components/Button'
+import Button from '@/components/custom-ui/Button'
 
 const ProfileCard: React.FC<PanelEvents> = ({ onActionClick }) => {
   return (

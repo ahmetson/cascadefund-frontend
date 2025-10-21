@@ -1,6 +1,6 @@
 import React from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
-import Button from '@/components/Button'
+import Button from '@/components/custom-ui/Button'
 import Tag from '@/components/Tag'
 
 const Panel: React.FC = () => {

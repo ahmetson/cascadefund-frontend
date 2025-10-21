@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '@/components/Button'
+import Button from '@/components/custom-ui/Button'
 import Badge from '@/components/custom-ui/Badge'
 
 interface HighlightedInteraction {

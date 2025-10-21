@@ -1,6 +1,6 @@
 import React from 'react'
-import BorderBeam from './ui/border-beam'
-import ElectricBorder from './ElectricBorder'
+import BorderBeam from '../ui/border-beam'
+import ElectricBorder from '../ElectricBorder'
 import { cn } from '@/lib/utils'
 
 type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'success' | 'default'

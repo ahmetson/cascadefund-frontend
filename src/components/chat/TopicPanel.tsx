@@ -1,22 +1,22 @@
 import React, { useState } from 'react'
 import { ConversationHeader } from '@chatscope/chat-ui-kit-react'
-import Button from '../Button';
+import Button from '../custom-ui/Button';
 
 export interface Props {
   onBackClick?: (arg0: boolean) => void;
   onActionClick?: (arg0: boolean) => void;
 }
 
-const ChatCard: React.FC<Props> = ({onBackClick, onActionClick}) => {
+const ChatCard: React.FC<Props> = ({ onBackClick, onActionClick }) => {
   const [topic, setTopic] = useState('')
   const [autoGenerate, setAutoGenerate] = useState(true)
 
   return (
     <div style={{
-          height: '300px'
-        }}>
+      height: '300px'
+    }}>
       <ConversationHeader>
-        <ConversationHeader.Back onClick={() => {onBackClick && onBackClick(false)}} />
+        <ConversationHeader.Back onClick={() => { onBackClick && onBackClick(false) }} />
         <ConversationHeader.Content
           info="Enter the topic to discussAbout"
           userName="New Discussion"
@@ -33,7 +33,7 @@ const ChatCard: React.FC<Props> = ({onBackClick, onActionClick}) => {
             className="w-full p-3 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
-        
+
         <div className="flex items-center space-x-2">
           <input
             type="checkbox"
@@ -46,12 +46,12 @@ const ChatCard: React.FC<Props> = ({onBackClick, onActionClick}) => {
             Generate the Topic by the message and issue automatically
           </label>
         </div>
-        
+
         <div className='flex justify-center flex-column mt-4'>
           <Button onClick={() => onActionClick && onActionClick(true)} className='bg-blue-300 w-60 mr-2'>Open Chat</Button><br />
         </div>
         <p className="text-xs text-gray-500 text-center -mt-4">
-            (Todo) its a tooltip when button disabled: Either check the auto topic name, or type topic name
+          (Todo) its a tooltip when button disabled: Either check the auto topic name, or type topic name
         </p>
       </div>
     </div>

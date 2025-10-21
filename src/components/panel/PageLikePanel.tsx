@@ -1,6 +1,6 @@
 import React from 'react'
 import InteractivePanel, { InteractivePanelProps } from './InteractivePanel'
-import Button from '@/components/Button'
+import Button from '@/components/custom-ui/Button'
 import LinkBtn from '@/components/LinkBtn'
 import { getIcon, IconType } from '@/components/icon'
 import { cn } from '@/lib/utils'

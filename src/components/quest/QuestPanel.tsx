@@ -5,7 +5,7 @@ import Badge from '@/components/custom-ui/Badge'
 import TaskItem from './TaskItem'
 import { bgClassNames, GridStyle } from '@/types/eventTypes'
 import Tooltip from '../utilitified_decorations/Tooltip'
-import Button from '../Button'
+import Button from '../custom-ui/Button'
 import { useHotkeys } from 'react-hotkeys-hook';
 
 
