@@ -6,7 +6,7 @@ interface Props {
   className?: string
 }
 
-const C: React.FC<Props> = ({ className }) => {
+const AuthNavItem: React.FC<Props> = ({ className }) => {
   if (Math.random() < 0.5) {
     return <MenuAvatar />
   }
@@ -14,4 +14,4 @@ const C: React.FC<Props> = ({ className }) => {
   return <Link className={`${className || ''} inline-flex items-center rounded transition-colors`} href="/login" >Log In</Link>
 }
 
-export default C
+export default AuthNavItem
