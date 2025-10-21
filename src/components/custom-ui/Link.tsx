@@ -19,7 +19,7 @@ const Component: React.FC<Props> = ({ ref, asNewTab = false, className, href, ch
         chaos={0.5}
         thickness={2}
         style={{ borderRadius: 2 }}
-        className="py-2 px-2"
+        className="py-2 px-2 w-full"
       >
         {children}
       </ElectricBorder> : children}

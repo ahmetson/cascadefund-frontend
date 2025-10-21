@@ -8,20 +8,23 @@ interface MenuItemProps {
   label: string
   href: string
   badges?: BadgeProps[]
-  isActive?: boolean
+  active?: boolean
+  focus?: boolean
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({ icon, label, badges, href: url, isActive = false }) => {
+const MenuItem: React.FC<MenuItemProps> = ({ icon, label, badges, href: url, active: active = false, focus = false }) => {
   return (
-    <Link href={url} className={`flex items-center justify-between px-3 py-2 rounded-md cursor-pointer ${isActive ? 'bg-blue-50 text-blue-700 hover:bg-blue-100' : 'text-gray-700 hover:bg-gray-300 hover:text-blue-900!'
+    <Link focus={focus} active={active} href={url} className={`flex items-center justify-between px-3 py-2 rounded-md cursor-pointer ${active ? 'bg-blue-50 text-blue-700 hover:bg-blue-100' : 'text-gray-700 hover:bg-gray-300 hover:text-blue-900!'
       }`}>
-      <div className="flex items-center space-x-3">
-        {getIcon(icon)}
-        <span className="text-sm font-medium">{label}</span>
+      <div className="flex items-center justify-between w-full">
+        <div className="flex items-center space-x-3">
+          {getIcon(icon)}
+          <span className="text-sm font-medium">{label}</span>
+        </div>
+        {badges && badges.map((badge) => (
+          <Badge {...badge}>{badge.children}</Badge>
+        ))}
       </div>
-      {badges && badges.map((badge) => (
-        <Badge {...badge}>{badge.children}</Badge>
-      ))}
     </Link>
   )
 }

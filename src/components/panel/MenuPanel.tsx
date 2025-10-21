@@ -7,6 +7,7 @@ type MenuName = 'ihistory' | 'iwork' | 'balance' | 'cbalance' | 'project' | 'mar
 interface Props {
   title?: string
   activeMenuItem: MenuName
+  focusMenuItem?: MenuName
   onlyCustomChildren?: boolean
   children?: any
 }
@@ -15,19 +16,21 @@ const isOnlyInfluencerMenu = (activeMenuItem: MenuName): boolean => {
   return activeMenuItem === 'ihistory' || activeMenuItem === 'iwork';
 }
 
-const maintainerMainItems = (activeMenuItem: MenuName): React.ReactNode[] => {
+const maintainerMainItems = (activeMenuItem: MenuName, focusMenuItem?: MenuName): React.ReactNode[] => {
   return [
     <MenuItem
       icon="balance"
       label="Balance"
       href={"/maintainer/balance"}
-      isActive={activeMenuItem === 'balance'}
+      active={activeMenuItem === 'balance'}
+      focus={focusMenuItem === 'balance'}
     />,
     <MenuItem
       icon="cascading-balance"
       label="Cascading balance"
       href={"/maintainer/cbalance"}
-      isActive={activeMenuItem === 'cbalance'}
+      active={activeMenuItem === 'cbalance'}
+      focus={focusMenuItem === 'cbalance'}
     />,
     <MenuItem
       icon="project-info"
@@ -41,28 +44,31 @@ const maintainerMainItems = (activeMenuItem: MenuName): React.ReactNode[] => {
         }
       ]}
       href={"/data/project"}
-      isActive={activeMenuItem === 'project'}
+      active={activeMenuItem === 'project'}
+      focus={focusMenuItem === 'project'}
     />,
   ]
 }
-const influencerMainItems = (activeMenuItem: MenuName): React.ReactNode[] => {
+const influencerMainItems = (activeMenuItem: MenuName, focusMenuItem?: MenuName): React.ReactNode[] => {
   return [
     <MenuItem
       icon="influencer-history"
       label="Transaction History"
       href="/influencer/history"
-      isActive={activeMenuItem === 'ihistory'}
+      active={activeMenuItem === 'ihistory'}
+      focus={focusMenuItem === 'ihistory'}
     />
   ]
 }
 
-const maintainerCollabItems = (activeMenuItem: MenuName, disableAnimation: boolean = false): React.ReactNode[] => {
+const maintainerCollabItems = (activeMenuItem: MenuName, disableAnimation: boolean = false, focusMenuItem?: MenuName): React.ReactNode[] => {
   return [
     <MenuItem
       icon="marketing"
       label="Marketing"
       href="/maintainer/marketing"
-      isActive={activeMenuItem === 'marketing'}
+      active={activeMenuItem === 'marketing'}
+      focus={focusMenuItem === 'marketing'}
     />,
     <MenuItem
       icon="work"
@@ -76,7 +82,8 @@ const maintainerCollabItems = (activeMenuItem: MenuName, disableAnimation: boole
         }
       ]}
       href="/maintainer/work"
-      isActive={activeMenuItem === 'work'}
+      active={activeMenuItem === 'work'}
+      focus={focusMenuItem === 'work'}
     />,
     <MenuItem
       icon="cascading-work"
@@ -90,17 +97,19 @@ const maintainerCollabItems = (activeMenuItem: MenuName, disableAnimation: boole
         }
       ]}
       href="/maintainer/cwork"
-      isActive={activeMenuItem === 'cwork'}
+      active={activeMenuItem === 'cwork'}
+      focus={focusMenuItem === 'cwork'}
     />
   ]
 }
-const influencerCollabItems = (activeMenuItem: MenuName): React.ReactNode[] => {
+const influencerCollabItems = (activeMenuItem: MenuName, focusMenuItem?: MenuName): React.ReactNode[] => {
   return [
     <MenuItem
       icon="influencer-work"
       label="Influencer Work"
       href="/influencer/work"
-      isActive={activeMenuItem === 'iwork'}
+      focus={focusMenuItem === 'iwork'}
+      active={activeMenuItem === 'iwork'}
     />
   ]
 }
@@ -120,18 +129,18 @@ const noChildren = <div className="text-center py-8 text-gray-500">
   <p className="text-xs text-gray-400 mt-1">Add some items to get started</p>
 </div>
 
-const Panel: React.FC<Props> = ({ activeMenuItem, title = 'Main Menu', onlyCustomChildren = false, children }) => {
+const Panel: React.FC<Props> = ({ activeMenuItem, focusMenuItem, title = 'Main Menu', onlyCustomChildren = false, children }) => {
   const titleC = <div className='text-sm font-medium text-gray-500'>{title}</div>
   const disableAnimation = isBadgedItemAnimated(onlyCustomChildren, children, activeMenuItem);
 
   return <PageLikePanel title={titleC} >
     {onlyCustomChildren && !children ? noChildren : children}
-    {!onlyCustomChildren && (!isOnlyInfluencerMenu(activeMenuItem) ? maintainerMainItems(activeMenuItem) : influencerMainItems(activeMenuItem))}
+    {!onlyCustomChildren && (!isOnlyInfluencerMenu(activeMenuItem) ? maintainerMainItems(activeMenuItem, focusMenuItem) : influencerMainItems(activeMenuItem, focusMenuItem))}
     {!onlyCustomChildren &&
       (<>
         <h3 className="text-sm font-medium text-gray-500 mb-3 mt-3">Collaboration Menu</h3>
         <div className="space-y-1">
-          {!isOnlyInfluencerMenu(activeMenuItem) ? maintainerCollabItems(activeMenuItem, disableAnimation) : influencerCollabItems(activeMenuItem)}
+          {!isOnlyInfluencerMenu(activeMenuItem) ? maintainerCollabItems(activeMenuItem, disableAnimation, focusMenuItem) : influencerCollabItems(activeMenuItem, focusMenuItem)}
         </div>
       </>)}
   </PageLikePanel>
