@@ -5,6 +5,7 @@ import Link from '@/components/custom-ui/Link'
 import { getIcon, IconType } from '@/components/icon'
 import { cn } from '@/lib/utils'
 import type { ActionProps } from '@/types/eventTypes'
+import BasePanel from './BasePanel'
 
 export interface PageLikePanelProps extends Omit<InteractivePanelProps, 'children' | 'expandableTitle'> {
     icon?: IconType
@@ -16,6 +17,7 @@ export interface PageLikePanelProps extends Omit<InteractivePanelProps, 'childre
     children: React.ReactNode
     contentHeight?: string
     expandable?: boolean
+    interactive?: boolean
 }
 
 const PageLikePanel: React.FC<PageLikePanelProps> = ({
@@ -29,6 +31,7 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
     contentHeight,
     expandable = false,
     className = '',
+    interactive = true,
     ...interactiveProps
 }) => {
     const renderHeader = () => {
@@ -101,7 +104,7 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
     }
 
     return (
-        <InteractivePanel
+        interactive ? <InteractivePanel
             {...interactiveProps}
             expandableTitle={expandable ? title : undefined}
             className={cn('space-y-4', className)}
@@ -117,7 +120,22 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
             {renderContent()}
 
             {renderActions()}
-        </InteractivePanel>
+        </InteractivePanel> : <BasePanel
+            {...interactiveProps}
+            className={cn('space-y-4', className)}
+        >
+            {renderHeader()}
+
+            {subtitle && (
+                <p className="text-sm text-gray-500 -mt-2 mb-4">
+                    {subtitle}
+                </p>
+            )}
+
+            {renderContent()}
+
+            {renderActions()}
+        </BasePanel>
     )
 }
 

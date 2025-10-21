@@ -1,6 +1,6 @@
 import React from 'react'
-import type { TabProps } from '@/components/utilitified_decorations/Tabs'
-import Tabs from '@/components/utilitified_decorations/Tabs'
+import type { TabProps } from '@/components/Tabs'
+import Tabs from '@/components/Tabs'
 import BasePanel from '@/components/panel/BasePanel'
 import NetworkingPanel from './NetworkingPanel'
 

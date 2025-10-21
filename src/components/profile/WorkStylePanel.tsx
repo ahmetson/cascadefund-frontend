@@ -4,7 +4,7 @@ import Slider from '@/components/Slider'
 
 const WorkStyleSection: React.FC = () => {
   return (
-    <PageLikePanel title="Availability & Work Style" actions={[]} bg='green-50'>
+    <PageLikePanel interactive={false} title="Availability & Work Style" actions={[]} bg='green-50'>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
           <h4 className="font-medium mb-4">Availability Status</h4>

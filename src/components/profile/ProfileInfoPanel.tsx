@@ -8,7 +8,7 @@ const C: React.FC = () => {
   const [updateable, setUpdateable] = useState(false);
 
   return (
-    <BasePanel className='bg-gradient-to-r from-yellow-50 to-green-50 mb-8'>
+    <BasePanel className='mb-8'>
       <AnimatePresence mode="wait">
         <motion.div
           key={updateable ? "updateable" : "view"}

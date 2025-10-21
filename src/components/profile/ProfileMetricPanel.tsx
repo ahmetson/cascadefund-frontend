@@ -1,8 +1,8 @@
 import React from 'react'
-import type { TabProps } from '@/components/utilitified_decorations/Tabs'
+import type { TabProps } from '@/components/Tabs'
 import WorkStylePanel from './WorkStylePanel'
 import ProjectTimeAllocation from './ProjectTimeAllocationPanel'
-import Tabs from '@/components/utilitified_decorations/Tabs'
+import Tabs from '@/components/Tabs'
 import BasePanel from '@/components/panel/BasePanel'
 
 const Panel: React.FC = () => {
@@ -22,9 +22,7 @@ const Panel: React.FC = () => {
   ]
 
   return (
-    <BasePanel>
-      <Tabs id="profile-metrics" tabs={tabs} activeTab={activeTabeKey} />
-    </BasePanel>
+    <Tabs id="profile-metrics" tabs={tabs} activeTab={activeTabeKey} />
   )
 }
 
