@@ -4,10 +4,9 @@ import Link from "@/components/custom-ui/Link";
 interface Props {
   className?: string;
   imgClassName?: string;
-  titleClassName?: string;
 }
 
-const { className, imgClassName, titleClassName } = Astro.props;
+const { className, imgClassName } = Astro.props;
 ---
 
 <Link
@@ -30,15 +29,6 @@ const { className, imgClassName, titleClassName } = Astro.props;
       alt="CascadeFund Logo"
       class="w-full h-full"
     />
-  </div>
-  <div class="flex-col hidden md:flex">
-    <h1 class={`text-xl mt-0 ${titleClassName}`}>CascadeFund</h1>
-    <div
-      class="flex flex-start text-sm text-gray-500 w-full -mt-1"
-      id="logoSubtitle"
-    >
-      <div class="hidden lg:flex"><slot /></div>
-    </div>
   </div>
 </Link>
 <style>
