@@ -17,6 +17,7 @@ export interface InfoPanelProps extends Omit<BasePanelProps, 'children'> {
 }
 
 const InfoPanel: React.FC<InfoPanelProps> = ({
+    key,
     icon,
     title,
     actions,
@@ -35,7 +36,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
         const iconProps = typeof icon === 'string' ? { iconType: icon, width: 'w-5', height: 'h-5', fill: 'gray-300', className: 'mt-0.5' } : icon
 
         return (
-            <div className={`${titleBottomMargin}`}>
+            <div key={key} className={`${titleBottomMargin}`}>
                 <h2 className="font-georgia font-semibold flex items-center gap-2">
                     {iconProps && getIcon(iconProps)}
                     <span>{title}</span>

@@ -15,6 +15,7 @@ export type Border = {
 }
 
 export type BasePanelProps = PanelEvents & {
+    key?: string
     children: React.ReactNode
     className?: string
     padding?: Padding
@@ -23,6 +24,7 @@ export type BasePanelProps = PanelEvents & {
 }
 
 const BasePanel: React.FC<BasePanelProps> = ({
+    key,
     children,
     className = '',
     padding = 'p-4',
@@ -43,6 +45,7 @@ const BasePanel: React.FC<BasePanelProps> = ({
 
     return (
         <div
+            key={key}
             className={cn(
                 'rounded-xs shadow-md relative overflow-hidden',
                 `${border.size} ${border.color} ${border.className}`,

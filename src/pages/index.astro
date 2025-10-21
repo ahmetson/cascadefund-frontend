@@ -2,7 +2,6 @@
 export const prerender = true;
 import V2Layout from "@/layouts/LandingLayout.astro";
 import { ItemName } from "@/components/utilitified_decorations/LandingNavbar.astro";
-
 import LeftImageRightPanels from "@/layouts/sections/LeftImageRightPanelsSection.astro";
 import HorizontalPanels from "@/layouts/sections/HorizontalPanelsSection.astro";
 import HeroSection from "@/layouts/sections/HeroSection.astro";
@@ -12,6 +11,8 @@ import { BgType } from "@/types/eventTypes";
 import type { SectionProps } from "@/types/eventTypes";
 import FAQItem from "@/components/FAQElement";
 import { getIcon } from "@/components/icon";
+import { Accordion } from "../components/animate-ui/components/radix/accordion";
+import FAQ from "@/components/FAQ";
 
 const heroSection = {
   title:
@@ -145,21 +146,25 @@ const faqSection: SectionProps = {
 
 const faqs = [
   {
+    key: "is-it-free-to-join",
     question: "Is it free to join?",
     answer:
       "Yes, joining the platform is completely free for all open source maintainers. We believe in removing barriers to entry and helping maintainers get started without any upfront costs.",
   },
   {
+    key: "how-is-this-different-from-github-sponsors",
     question: "How is this different from GitHub Sponsors?",
     answer:
       "While GitHub Sponsors focuses on direct sponsorship, our platform creates a comprehensive ecosystem with project discovery, collaborative features, quest-based funding, and community-driven prioritization that helps maintainers build sustainable businesses.",
   },
   {
+    key: "is-my-project-too-small",
     question: "Is my project too small?",
     answer:
       "Not at all! Projects of all sizes are welcome. Whether you're just starting out or managing a large-scale project, our platform provides tools and opportunities to help you grow and connect with the right supporters and collaborators.",
   },
   {
+    key: "do-i-need-a-big-community-already",
     question: "Do I need a big community already?",
     answer:
       "No, you don't need an existing large community. Our platform helps you build and grow your community organically by connecting you with users who value your work and want to support your project's development.",
@@ -195,11 +200,7 @@ const ctaSection: SectionProps = {
     without burnout.
   </Section>
   <Section title={faqSection.title} bg={faqSection.bg}>
-    {
-      faqs.map((faq, index) => (
-        <FAQItem key={index} question={faq.question} answer={faq.answer} />
-      ))
-    }
+    <FAQ faqs={faqs} client:load />
   </Section>
   <Section
     title={ctaSection.title}
@@ -207,7 +208,7 @@ const ctaSection: SectionProps = {
     actions={[
       {
         href: "/login",
-        variant: "blue",
+        variant: "primary",
         children: "Sign In as a Maintainer",
       },
     ]}

@@ -3,7 +3,7 @@ import BorderBeam from '../ui/border-beam'
 import ElectricBorder from '../ElectricBorder'
 import { cn } from '@/lib/utils'
 
-type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'success' | 'default'
+export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'success' | 'default'
 
 interface ButtonProps {
   children: React.ReactNode

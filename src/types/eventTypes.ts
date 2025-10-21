@@ -1,3 +1,5 @@
+import { ButtonVariant } from "@/components/custom-ui/Button"
+
 export type Coordinate = {
   x?: string
   y?: string
@@ -97,7 +99,7 @@ export interface PanelEvents {
   onMouseLeave?: () => void;
 }
 
-export interface ActionProps { variant?: string, href?: string, replaceWithChildren?: boolean, children: any, onClick?: () => void, className?: string }
+export interface ActionProps { variant?: ButtonVariant, href?: string, replaceWithChildren?: boolean, children: any, onClick?: () => void, className?: string }
 
 export enum BgType {
   heroSection = "hero",

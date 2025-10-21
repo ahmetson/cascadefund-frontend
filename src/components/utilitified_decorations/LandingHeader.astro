@@ -1,7 +1,7 @@
 ---
 import Row from "@/components/grid/ThreeColumnGrid.astro";
 import CascadeFundLogo from "./Logo.astro";
-import LoginNavItem from "./AuthNavItem";
+import AuthNavItem from "./AuthNavItem";
 import { GridStyle } from "@/types/eventTypes";
 import LandingNavbar, {
   type ItemName as LandingItemName,
@@ -59,7 +59,7 @@ const { subtitle, active, hideLinks } = Astro.props;
       </LandingNavbar>
     </div>
     <div class="navbar-end">
-      <LoginNavItem />
+      <AuthNavItem />
     </div>
   </div>
 </header>

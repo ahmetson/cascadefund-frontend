@@ -1,7 +1,8 @@
 ---
-import Button from "@/components/custom-ui/Button";
+import Button, { ButtonVariant } from "@/components/custom-ui/Button";
 import { type SectionProps, bgClassNames, BgType } from "@/types/eventTypes";
 import DynamicReactImporter from "@/components/ReactComponentImporter";
+import Link from "@/components/custom-ui/Link";
 
 type Props = SectionProps;
 
@@ -72,8 +73,23 @@ const sectionClassName =
           {actions.map((action) =>
             action.replaceWithChildren ? (
               <DynamicReactImporter element={action.children} />
+            ) : action.href ? (
+              <Link href={action.href} className={action.className}>
+                <Button
+                  variant={action.variant as ButtonVariant}
+                  size="lg"
+                  className={action.className}
+                >
+                  {action.children}
+                </Button>
+              </Link>
             ) : (
-              <Button variant={action.variant} size="lg">
+              <Button
+                size="lg"
+                variant={action.variant as ButtonVariant}
+                className={`${action.className}`}
+                onClick={action.onClick}
+              >
                 {action.children}
               </Button>
             ),

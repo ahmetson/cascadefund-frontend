@@ -21,34 +21,28 @@ const contributorChalllengesSection = {
   cols: 2,
   panels: [
     {
-      icon: "🚀",
-      title: "Hard to start",
-      description: "Huge issue lists, unclear onboarding.",
+      title: "🚀 Hard to start",
+      children: "Huge issue lists, unclear onboarding.",
     },
     {
-      icon: "😰",
-      title: "Intimidating",
-      description: "Fear of making mistakes, harsh feedback.",
+      title: "😰 Intimidating",
+      children: "Fear of making mistakes, harsh feedback.",
     },
     {
-      icon: "👤",
-      title: "Low recognition",
-      description: "Efforts often go unnoticed, especially non-code work.",
+      title: "👤 Low recognition",
+      children: "Efforts often go unnoticed, especially non-code work.",
     },
     {
-      icon: "🤝",
-      title: "No mentorship",
-      description: "Hard to understand large codebases alone.",
+      title: "🤝 No mentorship",
+      children: "Hard to understand large codebases alone.",
     },
     {
-      icon: "💀",
-      title: "Dead issues",
-      description: "PRs get ignored, contributors get demotivated.",
+      title: "💀 Dead issues",
+      children: "PRs get ignored, contributors get demotivated.",
     },
     {
-      icon: "☠️",
-      title: "Toxicity",
-      description: "Not all communities are welcoming.",
+      title: "☠️ Toxicity",
+      children: "Not all communities are welcoming.",
     },
   ],
   title: "Contributor's Challenges",
@@ -62,30 +56,30 @@ const howItWorks = [
   {
     icon: getIcon("navigation"),
     title: "Discovery designed for contributors",
-    description:
+    children:
       "Find projects and maintainers you want to help. We work on the most suited platform for contributors.",
   },
   {
     icon: getIcon("chat"),
     title: "Smooth onboarding",
-    description: "Each contributor receives a human intro to a project.",
+    children: "Each contributor receives a human intro to a project.",
   },
   {
     icon: getIcon("person"),
     title: "Get mentorship and guidance",
-    description: "Ask maintainer about how the code work.",
+    children: "Ask maintainer about how the code work.",
   },
   {
     icon: getIcon("project"),
     title: "Fork that is discoverable",
-    description:
+    children:
       "and link it to the issue, to make your own project discoverable.",
   },
 ];
 const howItWorksBottomPanel = {
   icon: getIcon("star"),
   title: "Reward",
-  description:
+  children:
     "Get rewarded, potentially to become a maintainer, or start your own project with your contributors.",
 };
 
@@ -94,21 +88,21 @@ const projectStats = [
     number: "12",
     label: "signups",
     period: "In a week",
-    description:
+    children:
       "In the last week, we had 12 signups and there are 12 people signed up for newsletters.",
   },
   {
     number: "3",
     label: "projects",
     period: "In a week",
-    description:
+    children:
       "There are three projects added on CascadeFund. Find out more and vote for the next one.",
   },
   {
     number: "28,465",
     label: "votes",
     period: "Voted for release",
-    description:
+    children:
       "In the last week, we had 12 signups and we are working on it asap. To track its progress visit the issue page.",
   },
 ];
@@ -139,9 +133,10 @@ const projectStats = [
       join open source projects, level up through quests, and get mentorship and
       recognition.
     </p>
-    <PagelikePanel
+    <PageLikePanel
+      titleCenter={true}
       title="The Contributor feature is still in development."
-      className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-8 border-none text-white"
+      className="bg-white/10 backdrop-blur-sm border-none text-white"
     >
       <div class="flex items-start space-x-3">
         <p class="text-blue-100">
@@ -166,10 +161,10 @@ const projectStats = [
           ready. Nothing else. No spam.
         </p>
       </div>
-    </PagelikePanel>
+    </PageLikePanel>
   </HeroSection>
   <LeftImageRightPanels {...contributorChalllengesSection}>
-    <p class="text-xl text-gray-600">
+    <p class="text-xl text-gray-600 mb-2">
       Open source is powerful, but being a contributor isn't always easy.
     </p>
   </LeftImageRightPanels>
@@ -247,7 +242,7 @@ const projectStats = [
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {
           projectStats.map((stat, index) => (
-            <BasePanel key={index} className="text-center">
+            <BasePanel key={index.toString()} className="text-center">
               <div class="mb-4 round-lg border-round-lg bg-green-50">
                 <div class="text-3xl font-bold text-cascade-blue mb-1">
                   {stat.number}
@@ -258,7 +253,7 @@ const projectStats = [
                 </div>
               </div>
               <p class="text-sm text-gray-600 leading-relaxed">
-                {stat.description}
+                {stat.children}
               </p>
             </BasePanel>
           ))

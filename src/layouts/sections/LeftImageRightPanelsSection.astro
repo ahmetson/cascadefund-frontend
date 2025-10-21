@@ -1,7 +1,5 @@
 ---
-import StruggleCard, {
-  type InfoPanelProps,
-} from "@/components/panel/InfoPanel";
+import InfoPanel, { type InfoPanelProps } from "@/components/panel/InfoPanel";
 import HorizontalRow from "@/components/grid/RowGrid";
 import Section from "./BaseSection.astro";
 import type { SectionBgProps } from "@/types/eventTypes";
@@ -35,21 +33,22 @@ if (cols === undefined) {
         referrerpolicy="no-referrer"
       />
     </div>
-
-    <HorizontalRow cols={cols} className="order-1 md:order-2 space-y-6">
+    <div class="order-1 md:order-2">
       <slot />
-      {
-        panels &&
-          panels.map((struggle, index) => (
-            <StruggleCard
-              key={prefix + index}
-              icon={struggle.icon}
-              title={struggle.title}
-              description={struggle.description}
-              iconBgColor={struggle.iconBgColor}
-            />
-          ))
-      }
-    </HorizontalRow>
+      <HorizontalRow cols={cols} className="order-1 md:order-2 space-y-6">
+        {
+          panels &&
+            panels.map((panel, index) => (
+              <InfoPanel
+                key={prefix + index}
+                icon={panel.icon}
+                title={panel.title}
+              >
+                {panel.children}
+              </InfoPanel>
+            ))
+        }
+      </HorizontalRow>
+    </div>
   </div>
 </Section>

@@ -1,6 +1,6 @@
 ---
 import CascadeFundLogo from "./Logo.astro";
-import LoginNavItem from "./AuthNavItem";
+import AuthNavItem from "./AuthNavItem";
 import WorkNavbar, { type ItemName } from "./WorkNavbar.astro";
 
 interface Props {
@@ -53,7 +53,7 @@ const { subtitle, active, hideLinks } = Astro.props;
       </WorkNavbar>
     </div>
     <div class="navbar-end flex h-6">
-      <LoginNavItem className="py-1! px-2!" />
+      <AuthNavItem className="py-1! px-2!" />
     </div>
   </div>
 </header>
