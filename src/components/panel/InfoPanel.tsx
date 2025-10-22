@@ -35,7 +35,8 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
     const contentTopMargin = 'mt-4';
     const titleColor = darkMode ? 'text-gray-300' : 'text-gray-900';
     const textColor = darkMode ? 'text-gray-400' : 'text-gray-950';
-    const borderColor = darkMode ? 'border-gray-200' : 'border-gray-300';
+    const borderColor = darkMode ? 'border-gray-200/50' : 'border-gray-300/50';
+    const blurredBorder = 'border-blur-sm';
 
     const renderHeader = () => {
         const iconProps = typeof icon === 'string' || icon === undefined ? { iconType: icon || 'info', width: 'w-5', height: 'h-5', fill: 'currentColor', className: 'mt-0.5 text-gray-300' } : icon
@@ -93,10 +94,10 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
         return (
             <BasePanel
                 {...baseProps}
-                border={{ size: BorderSize.border1, color: borderColor }}
+                border={{ size: BorderSize.border1, color: `${borderColor} ${blurredBorder}`, className: 'filter' }}
                 bg="bg-transparent"
                 className={cn(
-                    'shadow-none text-gray-500 ',
+                    'shadow-none',
                     transparentBg,
                     className
                 )}
@@ -105,7 +106,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
                     <AccordionItem value={panelID}>
                         <AccordionTrigger className={`flex items-center justify-between h-auto no-underline! p-0`}>
                             <div className="font-georgia font-semibold text-base flex items-center gap-2">
-                                {icon && getIcon(icon)}
+                                {icon && getIcon({ iconType: (icon as IconProps).iconType || icon, fill: 'currentColor', className: textColor })}
                                 <span>{title}</span>
                             </div>
                         </AccordionTrigger>
@@ -122,7 +123,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
     return (
         <BasePanel
             {...baseProps}
-            border={{ size: BorderSize.border1, color: borderColor }}
+            border={{ size: BorderSize.border2, color: `${borderColor} ${blurredBorder}` }}
             bg="bg-transparent"
             className={cn(
                 `shadow-none ${textColor}`,

@@ -1,5 +1,19 @@
 import { ButtonVariant } from "@/components/custom-ui/Button"
 
+export enum BlurSize {
+  blur0 = 'blur-0',
+  blurXs = 'blur-xs',
+  blurSm = 'blur-sm',
+  blurMd = 'blur-md',
+  blurLg = 'blur-lg',
+  blurXl = 'blur-xl',
+  blur2xl = 'blur-2xl',
+  blur3xl = 'blur-3xl',
+  blur4xl = 'blur-4xl',
+  blur5xl = 'blur-5xl',
+  blurNone = 'blur-none',
+}
+
 export enum RoundedSize {
   roundedXs = 'rounded-xs',
   roundedNone = 'rounded-none',
