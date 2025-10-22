@@ -30,7 +30,7 @@ const Followings: React.FC<FollowingsProps> = ({ following, followers, selfProfi
     <Tooltip
       content={
         <div className="text-sm">
-          {selfProfile ? 'How many people follow you?' : isFollowing ? 'Unsubscribe' : 'Like & Subscribe'}
+          {selfProfile ? `How many people follows you? Also, do you follow yourself? I recommend.` : isFollowing ? 'Unsubscribe' : 'Like & Subscribe'}
         </div>
       }
     >
@@ -44,7 +44,7 @@ const Followings: React.FC<FollowingsProps> = ({ following, followers, selfProfi
           <Spinner className='w-5 h-5' key={'ellipsis'} variant={'ellipsis'} /> :
           (<>{getIcon({
             iconType: 'heart',
-            fill: (following ? 'currentColor' : 'none'),
+            fill: (isFollowing ? 'currentColor' : 'none'),
             className: 'text-white w-5 h-5 mt-0.5'
           })}
           </>)}
