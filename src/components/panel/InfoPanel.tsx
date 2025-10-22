@@ -4,7 +4,7 @@ import Button from '@/components/custom-ui/Button'
 import Link from '@/components/custom-ui/Link'
 import { getIcon, IconType, IconProps } from '@/components/icon'
 import { cn } from '@/lib/utils'
-import type { ActionProps } from '@/types/eventTypes'
+import { BorderSize, type ActionProps } from '@/types/eventTypes'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../animate-ui/components/radix/accordion'
 
 export interface InfoPanelProps extends Omit<BasePanelProps, 'children'> {
@@ -14,9 +14,11 @@ export interface InfoPanelProps extends Omit<BasePanelProps, 'children'> {
     children?: React.ReactNode
     expandable?: boolean
     defaultExpanded?: boolean
+    darkMode?: boolean
 }
 
 const InfoPanel: React.FC<InfoPanelProps> = ({
+    darkMode = false,
     key,
     icon,
     title,
@@ -31,13 +33,16 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
     const hasContent = children || (actions && actions.length > 0)
     const titleBottomMargin = hasContent ? 'mb-4' : undefined;
     const contentTopMargin = 'mt-4';
+    const titleColor = darkMode ? 'text-gray-300' : 'text-gray-900';
+    const textColor = darkMode ? 'text-gray-400' : 'text-gray-950';
+    const borderColor = darkMode ? 'border-gray-200' : 'border-gray-300';
 
     const renderHeader = () => {
         const iconProps = typeof icon === 'string' || icon === undefined ? { iconType: icon || 'info', width: 'w-5', height: 'h-5', fill: 'currentColor', className: 'mt-0.5 text-gray-300' } : icon
 
         return (
             <div key={key} className={`${titleBottomMargin}`}>
-                <h2 className="font-georgia font-semibold flex items-center gap-2">
+                <h2 className={`font-georgia font-semibold flex items-center gap-2 ${titleColor}`}>
                     {iconProps && getIcon(iconProps)}
                     <span>{title}</span>
                 </h2>
@@ -47,7 +52,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
 
     const renderContent = () => {
         return (
-            <div className="font-noto-sans text-gray-100">
+            <div className={`font-noto-sans ${textColor}`}>
                 {children}
             </div>
         )
@@ -81,14 +86,14 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
             </div>
         )
     }
-    const transparentBg = "bg-white/20 backdrop-blur-xs border-none text-gray-100";
+    const transparentBg = `${darkMode ? 'bg-gray-900/20' : 'bg-blue-500/10'} backdrop-blur-xs border-none ${textColor}`;
 
 
     if (hasContent && expandable) {
         return (
             <BasePanel
                 {...baseProps}
-                border={{ size: 'border-1', color: 'border-gray-300!' }}
+                border={{ size: BorderSize.border1, color: borderColor }}
                 bg="bg-transparent"
                 className={cn(
                     'shadow-none text-gray-500 ',
@@ -117,10 +122,10 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
     return (
         <BasePanel
             {...baseProps}
-            border={{ size: 'border-1', color: 'border-gray-300!' }}
+            border={{ size: BorderSize.border1, color: borderColor }}
             bg="bg-transparent"
             className={cn(
-                'shadow-none text-gray-200',
+                `shadow-none ${textColor}`,
                 transparentBg,
                 className)
             }

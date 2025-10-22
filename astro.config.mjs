@@ -19,6 +19,8 @@ export default defineConfig({
         devSourcemap: true,
         transformer: "postcss"
       }
+    },
+    ssr: {
     }
   }
 });

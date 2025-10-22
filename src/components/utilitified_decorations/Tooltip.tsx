@@ -17,7 +17,7 @@ const Component: React.FC<Props> = ({ children, content }) => {
         <TooltipTrigger className={``}>
           {children}
         </TooltipTrigger>
-        <TooltipContent className="bg-teal-900 text-blue-100 border-color-teal-900">
+        <TooltipContent autoFocus className="bg-teal-900 text-blue-100 border-color-teal-900">
           {content}
         </TooltipContent>
       </Tooltip>

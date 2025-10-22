@@ -1,4 +1,5 @@
 ---
+export const prerender = false;
 import V2Layout from "@/layouts/PanelViewLayout.astro";
 import { ItemName } from "@/components/utilitified_decorations/WorkNavbar.astro";
 
@@ -12,7 +13,7 @@ import ProfileMetric from "@/components/profile/ProfileMetricPanel";
 
 <V2Layout hideLinks={[ItemName.ProjectName]} subtitle="Data Section: Profile">
   <BackButton href="/maintainer/work" slot="left" />
-  <ProfileInfo slot="center" client:load />
+  <ProfileInfo slot="center" client:only />
   <FinanceInfo />
   <ProfileMetric slot="center" client:load />
 

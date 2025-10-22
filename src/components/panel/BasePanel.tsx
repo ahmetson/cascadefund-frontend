@@ -1,6 +1,6 @@
 import React from 'react'
 import { cn } from '@/lib/utils'
-import { PanelEvents } from '@/types/eventTypes'
+import { BorderSize, PanelEvents, RoundedSize, ShadowSize } from '@/types/eventTypes'
 
 export type Padding = 'p-0' | 'p-2' | 'p-4' | 'p-8' | string
 export type Bg = string | {
@@ -9,7 +9,7 @@ export type Bg = string | {
     className?: string
 }
 export type Border = {
-    size: 'border-0' | 'border-1' | 'border-2' | 'border-4' | string
+    size: BorderSize
     color?: string
     className?: string
 }
@@ -21,6 +21,8 @@ export type BasePanelProps = PanelEvents & {
     padding?: Padding
     bg?: Bg
     border?: Border
+    shadowSize?: ShadowSize
+    roundedSize?: RoundedSize
 }
 
 const BasePanel: React.FC<BasePanelProps> = ({
@@ -28,12 +30,14 @@ const BasePanel: React.FC<BasePanelProps> = ({
     children,
     className = '',
     padding = 'p-4',
-    bg = 'bg-white',
+    bg = 'bg-white dark:bg-gray-900',
     border = {
         size: 'border-1',
-        color: 'border-gray-300',
+        color: 'border-gray-300 dark:border-gray-700',
         className: ''
     },
+    shadowSize = ShadowSize.shadowMd,
+    roundedSize = RoundedSize.roundedXs
 }) => {
 
     const getBackgroundStyles = () => {
@@ -47,7 +51,7 @@ const BasePanel: React.FC<BasePanelProps> = ({
         <div
             key={key}
             className={cn(
-                'rounded-xs shadow-md relative overflow-hidden',
+                `${roundedSize} ${shadowSize} relative overflow-hidden`,
                 `${border.size} ${border.color} ${border.className}`,
                 getBackgroundStyles(),
                 padding,

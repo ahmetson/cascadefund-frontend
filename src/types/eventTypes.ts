@@ -1,5 +1,46 @@
 import { ButtonVariant } from "@/components/custom-ui/Button"
 
+export enum RoundedSize {
+  roundedXs = 'rounded-xs',
+  roundedNone = 'rounded-none',
+  roundedSm = 'rounded-sm',
+  roundedMd = 'rounded-md',
+  roundedLg = 'rounded-lg',
+  roundedXl = 'rounded-xl',
+  rounded2xl = 'rounded-2xl',
+  rounded3xl = 'rounded-3xl',
+  roundedFull = 'rounded-full',
+}
+export enum BorderRadiusSize {
+  borderRadiusXs = 'border-radius-xs',
+  borderRadiusNone = 'border-radius-none',
+  borderRadiusSm = 'border-radius-sm',
+  borderRadiusMd = 'border-radius-md',
+  borderRadiusLg = 'border-radius-lg',
+  borderRadiusXl = 'border-radius-xl',
+  borderRadius2xl = 'border-radius-2xl',
+  borderRadius3xl = 'border-radius-3xl',
+}
+export enum ShadowSize {
+  shadowSm = 'shadow-sm',
+  shadowXs = 'shadow-xs',
+  shadowMd = 'shadow-md',
+  shadowLg = 'shadow-lg',
+  shadowXl = 'shadow-xl',
+  shadow2xl = 'shadow-2xl',
+  shadow3xl = 'shadow-3xl',
+  shadow4xl = 'shadow-4xl',
+  shadow5xl = 'shadow-5xl',
+  shadowNone = 'shadow-none'
+}
+export enum BorderSize {
+  border0 = 'border-0',
+  border1 = 'border-1',
+  border2 = 'border-2',
+  border4 = 'border-4',
+  borderNone = 'border-none'
+}
+
 export type Coordinate = {
   x?: string
   y?: string
