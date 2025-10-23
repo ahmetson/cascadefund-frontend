@@ -7,6 +7,7 @@ import { bgClassNames, GridStyle } from '@/types/eventTypes'
 import Tooltip from '../utilitified_decorations/Tooltip'
 import Button from '../custom-ui/Button'
 import { useHotkeys } from 'react-hotkeys-hook';
+import Kbd from '../custom-ui/Kbd'
 
 
 interface Props {
@@ -157,11 +158,13 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
           >
             <Button
               onClick={selectedTaskId ? deselectTask : selectFirstTask}
-              variant={selectedTaskId ? 'secondary-outline' : 'outline'}
+              variant={selectedTaskId ? 'default' : 'secondary'}
+              outline={true}
               className='flex flex-start space-x-1 m-0 p-1!'>
-              <kbd className="kbd border border-gray-300 rounded-sm border-solid px-1 w-12 block">
+
+              <Kbd >
                 {selectedTaskId ? 'Esc' : 'Enter'}
-              </kbd>
+              </Kbd>
               <div>{label}</div>
             </Button>
           </Tooltip>
@@ -177,7 +180,7 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
               }
             >
               <Button onClick={playTask} variant={'primary'} className='flex flex-start space-x-1 m-0 p-1!'>
-                <kbd className="kbd border border-gray-300 rounded-sm border-solid px-1 text-gray-600 w-12 block">Enter</kbd>
+                <Kbd>Enter</Kbd>
                 <div>Play</div>
               </Button>
             </Tooltip>
@@ -193,8 +196,8 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
                 </div>
               }
             >
-              <Button onClick={selectNextTask} variant={'secondary-outline'} className='flex flex-start space-x-1 m-0 p-1!'>
-                <kbd className="kbd border border-gray-300 rounded-sm border-solid px-1 w-12 block">◀︎    ▶︎</kbd>
+              <Button onClick={selectNextTask} outline={true} variant={'secondary'} className='flex flex-start space-x-1 m-0 p-1!'>
+                <Kbd>◀︎    ▶︎</Kbd>
                 <div>Change Task</div>
               </Button>
             </Tooltip>

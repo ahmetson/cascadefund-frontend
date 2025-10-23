@@ -24,6 +24,7 @@
     "@react-spring/web": "^10.0.3",
     "@tailwindcss/postcss": "^4.1.11",
     "@tailwindcss/vite": "^4.1.11",
+    "@tiptap/core": "^3.7.2",
     "@tiptap/extension-document": "^3.7.2",
     "@tiptap/extension-text-style": "^3.7.2",
     "@tiptap/extensions": "^3.7.2",

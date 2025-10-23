@@ -15,11 +15,6 @@ interface ProfileRatingTooltipProps {
 }
 
 const Component: React.FC<ProfileRatingTooltipProps> = ({ ratings, topRating }) => {
-  // Helper function to capitalize first letter
-  const capitalizeFirstLetter = (str: string): string => {
-    return str.charAt(0).toUpperCase() + str.slice(1)
-  }
-
   // Get star color for max level display
   const getMaxLevelColor = (maxLvl: number): string => {
     if (maxLvl <= 1) return '#FFD700' // Yellow for max level

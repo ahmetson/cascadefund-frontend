@@ -9,12 +9,13 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '..
 
 export interface InfoPanelProps extends Omit<BasePanelProps, 'children'> {
     icon?: IconType | IconProps  // Accepts both 'info' and { iconType: 'info', width: 'w-6' }
-    title: React.ReactNode
+    title?: React.ReactNode
     actions?: ActionProps[]
     children?: React.ReactNode
     expandable?: boolean
     defaultExpanded?: boolean
     darkMode?: boolean
+    titleClassName?: string
 }
 
 const InfoPanel: React.FC<InfoPanelProps> = ({
@@ -27,6 +28,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
     expandable = false,
     defaultExpanded = false,
     className = '',
+    titleClassName = '',
     ...baseProps
 }) => {
     const panelID = 'infopanel-1'
@@ -39,11 +41,12 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
     const blurredBorder = 'border-blur-sm';
 
     const renderHeader = () => {
+        if (!title) return null;
         const iconProps = typeof icon === 'string' || icon === undefined ? { iconType: icon || 'info', width: 'w-5', height: 'h-5', fill: 'currentColor', className: 'mt-0.5 text-gray-300' } : icon
 
         return (
             <div key={key} className={`${titleBottomMargin}`}>
-                <h2 className={`font-georgia font-semibold flex items-center gap-2 ${titleColor}`}>
+                <h2 className={`font-georgia font-semibold flex items-center gap-2 ${titleColor} ${titleClassName}`}>
                     {iconProps && getIcon(iconProps)}
                     <span>{title}</span>
                 </h2>

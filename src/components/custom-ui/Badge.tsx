@@ -40,7 +40,7 @@ const Badge: React.FC<BadgeProps> = ({ children, variant = 'gray', active = fals
             </span>)
       }
       <span
-        className={`${baseClasses} ${variantClasses[variant]} relative ${disableAnimation ? 'shadow-none!' : ''}`}
+        className={`${baseClasses} ${variantClasses[variant]} relative flex items-center ${disableAnimation ? 'shadow-none!' : ''}`}
       >
         {children}</span>
     </span >

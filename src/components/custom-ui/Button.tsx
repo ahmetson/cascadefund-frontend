@@ -9,7 +9,7 @@ interface ButtonProps {
   children: React.ReactNode
   variant?: ButtonVariant
   size?: 'sm' | 'md' | 'lg'
-  onClick?: () => void
+  onClick?: (event?: React.MouseEvent<HTMLButtonElement>) => void
   disabled?: boolean
   className?: string
   outline?: boolean

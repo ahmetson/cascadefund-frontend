@@ -8,11 +8,12 @@ import {
 interface Props {
   content: string | React.ReactNode;
   children: any
+  openDelay?: number;
 }
 
-const Component: React.FC<Props> = ({ children, content }) => {
+const Component: React.FC<Props> = ({ children, content, openDelay = 50 }) => {
   return (
-    <TooltipProvider openDelay={50}>
+    <TooltipProvider openDelay={openDelay}>
       <Tooltip>
         <TooltipTrigger className={``}>
           {children}

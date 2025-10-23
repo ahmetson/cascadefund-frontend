@@ -13,3 +13,9 @@ export function hexToRgba(hex: string, alpha = 1): string {
     const b = int & 255;
     return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
+
+// Helper function to capitalize first letter
+export const capitalizeFirstLetter = (str: string): string => {
+    if (!str) return '';
+    return str.charAt(0).toUpperCase() + str.slice(1)
+}
