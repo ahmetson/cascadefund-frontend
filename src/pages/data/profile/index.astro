@@ -3,17 +3,45 @@ export const prerender = false;
 import V2Layout from "@/layouts/PanelViewLayout.astro";
 import { ItemName } from "@/components/utilitified_decorations/WorkNavbar.astro";
 
-import ProfileInfo from "@/components/profile/ProfileInfoPanel";
+import ProfilePanel from "@/components/profile/ProfilePanel";
 import BackButton from "@/components/utilitified_decorations/BackButton";
 // import RecentActivity from "@/components/profile/panel/RecentActivityPanel";
 // import Discovery from "@/components/profile/panel/DiscoveryPanel";
 import FinanceInfo from "@/components/profile/FinanceInfoPanel";
 import ProfileMetric from "@/components/profile/ProfileMetricPanel";
+import { ProfileProps } from "@/components/profile/types";
+
+// High-rated profile
+export const highRatedProfile: ProfileProps = {
+  selfProfile: false,
+  name: "Alex Johnson",
+  description:
+    "Top contributor and maintainer with extensive experience in blockchain development, smart contracts, and decentralized applications. Leading multiple high-impact projects.",
+  subtitle: "Blockchain Expert & Open Source Maintainer",
+  socialLinks: [
+    { type: "github", url: "https://github.com/alexjohnson" },
+    { type: "linkedin", url: "https://linkedin.com/in/alexjohnson" },
+  ],
+  avatar: "/api/placeholder/64/64",
+  ratings: {
+    influencer: { ratingType: "influencer", lvl: 10, maxLvl: 10, top: 2 },
+    maintainer: { ratingType: "maintainer", lvl: 10, maxLvl: 10, top: 1 },
+    contributor: { ratingType: "contributor", lvl: 9, maxLvl: 10, top: 5 },
+    persona: { ratingType: "persona", lvl: 8, maxLvl: 10, top: 12 },
+  },
+  topRating: "maintainer",
+  followers: 15420,
+  following: true,
+  myAccount: false,
+  totalVotingPower: 2500,
+  bonusPoints: 500,
+  projectAmount: 45,
+};
 ---
 
 <V2Layout hideLinks={[ItemName.ProjectName]} subtitle="Data Section: Profile">
   <BackButton href="/maintainer/work" slot="left" />
-  <ProfileInfo slot="center" client:only />
+  <ProfilePanel {...highRatedProfile} slot="center" client:only />
   <FinanceInfo />
   <ProfileMetric slot="center" client:load />
 

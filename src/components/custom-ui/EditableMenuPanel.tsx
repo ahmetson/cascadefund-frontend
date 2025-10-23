@@ -1,5 +1,5 @@
 import { Editor, useEditorState } from '@tiptap/react'
-import Button from '../custom-ui/Button'
+import Button from './Button'
 import InfoPanel from '../panel/InfoPanel'
 
 function MenuBar({ editor, className = '' }: { editor: Editor, className?: string }) {

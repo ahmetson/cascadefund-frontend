@@ -2,9 +2,7 @@
 export const prerender = true;
 
 import V2Layout from "@/layouts/LandingLayout.astro";
-import TeamPanel, {
-  type Props as TeamPanelProps,
-} from "@/components/profile/ProfileInfoPanel2";
+import ProfilePanel from "@/components/profile/ProfilePanel";
 import HeroSection from "@/layouts/sections/HeroSection.astro";
 import HorizontalPanelsSection from "@/layouts/sections/HorizontalPanelsSection.astro";
 import { BgType, type SectionProps } from "@/types/eventTypes";
@@ -12,6 +10,7 @@ import LeftImageRightPanelsSection from "@/layouts/sections/LeftImageRightPanels
 import ThreeColumnGrid from "@/components/grid/ThreeColumnGrid.astro";
 import Section from "@/layouts/sections/BaseSection.astro";
 import PageLikePanel from "@/components/panel/PageLikePanel";
+import { ProfileProps } from "@/components/profile/types";
 
 const teamGlanceProps: SectionProps = {
   title: "First, Meet the Team at a Glance",
@@ -21,28 +20,56 @@ const teamGlanceProps: SectionProps = {
   },
 };
 
-const teamMembers: TeamPanelProps[] = [
+const teamMembers: ProfileProps[] = [
   {
     name: "Medet Ahmetson",
     description:
       "Startup kid who flipped into open source. Turned blockchain games into libraries for devs.",
-    image: "https://dummyimage.com/80x80/4A90E2/ffffff?text=MA",
+    avatar: "https://dummyimage.com/80x80/4A90E2/ffffff?text=MA",
     socialLinks: [
       { type: "telegram", url: "#" },
       { type: "github", url: "#" },
       { type: "linkedin", url: "#" },
     ],
+    selfProfile: false,
+    ratings: {
+      influencer: { ratingType: "influencer", lvl: 10, maxLvl: 10, top: 2 },
+      maintainer: { ratingType: "maintainer", lvl: 10, maxLvl: 10, top: 1 },
+      contributor: { ratingType: "contributor", lvl: 9, maxLvl: 10, top: 5 },
+      persona: { ratingType: "persona", lvl: 8, maxLvl: 10, top: 12 },
+    },
+    topRating: "influencer",
+    followers: 0,
+    following: false,
+    myAccount: false,
+    totalVotingPower: 0,
+    bonusPoints: 0,
+    projectAmount: 0,
   },
   {
     name: "Sergey Pak",
     description:
       "Built CRMs before Medet was even born. Still shipping useful code decades later.",
-    image: "https://dummyimage.com/80x80/6B46C1/ffffff?text=SP",
+    avatar: "https://dummyimage.com/80x80/6B46C1/ffffff?text=SP",
     socialLinks: [
       { type: "telegram", url: "#" },
       { type: "github", url: "#" },
       { type: "linkedin", url: "#" },
     ],
+    selfProfile: false,
+    ratings: {
+      influencer: { ratingType: "influencer", lvl: 10, maxLvl: 10, top: 2 },
+      maintainer: { ratingType: "maintainer", lvl: 10, maxLvl: 10, top: 1 },
+      contributor: { ratingType: "contributor", lvl: 9, maxLvl: 10, top: 5 },
+      persona: { ratingType: "persona", lvl: 8, maxLvl: 10, top: 12 },
+    },
+    topRating: "influencer",
+    followers: 0,
+    following: false,
+    myAccount: false,
+    totalVotingPower: 0,
+    bonusPoints: 0,
+    projectAmount: 0,
   },
 ];
 ---
@@ -59,7 +86,11 @@ const teamMembers: TeamPanelProps[] = [
     bg={teamGlanceProps.bg}
     cols={2}
   >
-    {teamMembers.map((member) => <TeamPanel {...member} slot="grid" />)}
+    {
+      teamMembers.map((member) => (
+        <ProfilePanel {...member} slot="grid" client:only />
+      ))
+    }
   </HorizontalPanelsSection>
   <LeftImageRightPanelsSection
     title="Medet Ahmetson"
