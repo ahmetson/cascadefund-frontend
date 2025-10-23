@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import ViewableProfileInfo, { ProfileProps } from './ViewableProfileInfo'
+import ViewableProfileInfo, { ProfileProps } from './ProfilePanel'
 import { RatingType } from '../rating/ProfileRating'
 
 const meta: Meta<typeof ViewableProfileInfo> = {

@@ -1,6 +1,5 @@
 import React from 'react'
 import ProfileRating, { ProfileRatingProps, RatingType } from './ProfileRating'
-import Tooltip from '../utilitified_decorations/Tooltip'
 import { Popover } from '@base-ui-components/react/popover'
 import { getIcon } from '../icon'
 

@@ -43,7 +43,7 @@ const AddKbrd = ({ id, onActivate, onCancel }: { id: string, onActivate: EditorE
 const Editable: React.FC<EditableProps> = ({ id, content, editable = true, limit = 28, onFocus, onBlur, onActivate, onCancel }) => {
     const editor = useEditor({
         editable: editable,
-        autofocus: true,
+        autofocus: false,
         // onUpdate(props) {
         //     onContentChange(id, editor, true, props.editor.getHTML())
         // },

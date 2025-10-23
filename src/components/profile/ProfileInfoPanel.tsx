@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import BasePanel from '@/components/panel/BasePanel'
 import { AnimatePresence, motion } from 'motion/react'
-import ViewableProfileInfo, { ProfileProps } from './ViewableProfileInfo'
+import ViewableProfileInfo, { ProfileProps } from './ProfilePanel'
 import UpdateableProfileInfo from './UpdateableProfileInfo'
 import { AllPersonaRatings } from '../rating/ProfileRatingPanel'
 

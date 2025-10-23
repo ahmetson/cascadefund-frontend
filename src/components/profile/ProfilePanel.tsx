@@ -7,19 +7,56 @@ import VotingPower from '../social-network/VotingPower'
 import MenuAvatar from '../MenuAvatar'
 import Link from '../custom-ui/Link'
 import { FaGithub, FaLinkedin, FaTelegram } from 'react-icons/fa'; // Import the LinkedIn icon from Font Awesome
-import Badge from '../custom-ui/Badge'
 import { getIcon } from '../icon'
 import Tooltip from '../utilitified_decorations/Tooltip'
 import { BasePanel } from '../panel'
-import { ProfileProps } from './types'
+import { ProfileProps, ProfileSocialLink } from './types'
 import Editable from './Editable'
 import { Editor } from '@tiptap/react'
-import Kbd from '../custom-ui/Kbd'
 import EditableMenuPanel from './EditableMenuPanel'
 import YourProfileBadge from './badge/YourProfileBadge'
 import EditableBadge from './badge/EditableBadge'
+import { Popover } from '@base-ui-components/react/popover'
 
-const ProfileSection: React.FC<ProfileProps & PanelEvents> = ({ onActionClick, ...props }) => {
+const getSocialProfile = (selfProfile: boolean, social: ProfileSocialLink, setSocialUrl: (socialType: string, url: string) => void) => {
+  const content = social.type === 'linkedin' ?
+    <FaLinkedin color="gray" className="w-6 h-6 text-blue-500! hover:text-teal-800!" /> :
+    social.type === 'github' ?
+      <FaGithub color="gray" className="w-6 h-6 text-blue-500! hover:text-teal-800!" /> :
+      <FaTelegram color="gray" className="w-6 h-6 text-blue-500! hover:text-teal-800!" />
+
+  const trigger = (
+    <Link key={social.type} asNewTab={true} href={social.url} className="flex items-center space-x-2">
+      {content}
+    </Link>)
+  if (!selfProfile) {
+    return trigger;
+  }
+
+  return <Popover.Root>
+    <Popover.Trigger
+      className="hyperlink flex items-center justify-center shadow-none"
+    >
+      {content}
+    </Popover.Trigger>
+    <Popover.Portal>
+      <Popover.Positioner sideOffset={8} side='bottom' className={'z-700!'}>
+        <Popover.Popup className={"w-96 origin-[var(--transform-origin)] rounded-xs bg-[canvas] px-6 py-4 text-gray-900 shadow-sm shadow-gray-900 transition-[transform,scale,opacity] data-[ending-style]:scale-90 data-[ending-style]:opacity-0 data-[starting-style]:scale-90 data-[starting-style]:opacity-0 "}
+        >
+          <Popover.Arrow className="data-[side=bottom]:top-[-8px] data-[side=left]:right-[-13px] data-[side=left]:rotate-90 data-[side=right]:left-[-13px] data-[side=right]:-rotate-90 data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180">
+            {getIcon('arrow')}
+          </Popover.Arrow>
+          <Popover.Title className="text-gray-500 font-medium text-md flex items-center flex-row p-1">{content} URL</Popover.Title>
+          <Popover.Description className="text-gray-600 w-40">
+            <input id={`${social.type}-url`} className='w-80 flex' autoFocus={true} type='url' placeholder='Enter new URL' defaultValue={social.url} onBlur={(e) => setSocialUrl(social.type, e.target.value)} />
+          </Popover.Description>
+        </Popover.Popup>
+      </Popover.Positioner>
+    </Popover.Portal>
+  </Popover.Root>
+}
+
+const ProfilePanel: React.FC<ProfileProps & PanelEvents> = ({ onActionClick, ...props }) => {
   const [value, setValue] = useState<Record<string, any>>({
     'description': props.description,
     'name': props.name,
@@ -41,6 +78,22 @@ const ProfileSection: React.FC<ProfileProps & PanelEvents> = ({ onActionClick, .
       }, 2000);
     }
   }, [saving]);
+
+  const setSocialUrl = (socialType: string, url: string) => {
+    let changed = false;
+    value['socialLinks'] = value['socialLinks'].map(
+      (social: ProfileSocialLink) => {
+        if (social.type === socialType) {
+          changed = true;
+          return { ...social, url };
+        }
+        return social;
+      });
+    if (changed) {
+      setValue(value);
+      setSaving(true);
+    }
+  }
 
   const eventProps = {
     onActivate: () => {
@@ -141,7 +194,7 @@ const ProfileSection: React.FC<ProfileProps & PanelEvents> = ({ onActionClick, .
             </div>
           </Tooltip>
 
-          <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center justify-between mb-2 border-t-1 border-gray-400">
             <Tooltip
               openDelay={1000}
               content={
@@ -152,16 +205,7 @@ const ProfileSection: React.FC<ProfileProps & PanelEvents> = ({ onActionClick, .
               }
             >
               <div className='flex space-x-4'>
-                {props.socialLinks.map((social) => (
-                  <Link key={social.type} asNewTab={true} href={social.url} className="flex items-center space-x-2">
-                    {social.type === 'linkedin' ?
-                      <FaLinkedin color="gray" className="w-6 h-6 text-blue-500! hover:text-teal-800!" /> :
-                      social.type === 'github' ?
-                        <FaGithub color="gray" className="w-6 h-6 text-blue-500! hover:text-teal-800!" /> :
-                        <FaTelegram color="gray" className="w-6 h-6 text-blue-500! hover:text-teal-800!" />
-                    }
-                  </Link>
-                ))}
+                {value['socialLinks'].map((social: ProfileSocialLink) => getSocialProfile(props.selfProfile, social, setSocialUrl))}
               </div>
             </Tooltip>
 
@@ -170,14 +214,14 @@ const ProfileSection: React.FC<ProfileProps & PanelEvents> = ({ onActionClick, .
               <Tooltip
                 content={
                   <div className="text-sm">
-                    {value['name']} is involved in {props.projectAmount} projects.
+                    '{value['name']}' involved in {props.projectAmount} projects.
                   </div>
                 }
               >
                 <Link className="flex items-center justify-center h-10 text-blue-500 mt-1" href={"/data/projects?userName=" + props.id || 'any'} >
                   {getIcon({ iconType: 'project', fill: 'currentColor', className: 'w-8 h-8' })}
                   <span className="text-lg -mt-2 -ml-1">
-                    {props.projectAmount}
+                    {props.projectAmount} Projects
                   </span>
                 </Link>
               </Tooltip>
@@ -189,4 +233,4 @@ const ProfileSection: React.FC<ProfileProps & PanelEvents> = ({ onActionClick, .
   )
 }
 
-export default ProfileSection
+export default ProfilePanel
