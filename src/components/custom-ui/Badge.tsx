@@ -8,7 +8,7 @@ export interface BadgeProps {
 }
 
 const Badge: React.FC<BadgeProps> = ({ children, variant = 'gray', active = false, static: disableAnimation = false }) => {
-  const baseClasses = 'inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium '
+  const baseClasses = 'inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium'
 
   const variantClasses = {
     gray: active ? 'bg-gray-600 text-white shadow-lg' : 'bg-gray-200 text-gray-800 shadow-sm',
@@ -36,7 +36,6 @@ const Badge: React.FC<BadgeProps> = ({ children, variant = 'gray', active = fals
         disableAnimation ? null :
           (
             <span className={`${animationClasses}  inset-0 ${baseClasses} ${variantClasses[variant]} absolute`}>
-
             </span>)
       }
       <span

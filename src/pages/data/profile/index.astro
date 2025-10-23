@@ -3,13 +3,13 @@ export const prerender = false;
 import V2Layout from "@/layouts/PanelViewLayout.astro";
 import { ItemName } from "@/components/utilitified_decorations/WorkNavbar.astro";
 
-import ProfilePanel from "@/components/profile/ProfilePanel";
+import ProfilePanel from "@/components/profile/panel/ProfilePanel";
 import BackButton from "@/components/utilitified_decorations/BackButton";
 // import RecentActivity from "@/components/profile/panel/RecentActivityPanel";
 // import Discovery from "@/components/profile/panel/DiscoveryPanel";
-import FinanceInfo from "@/components/profile/FinanceInfoPanel";
-import ProfileMetric from "@/components/profile/ProfileMetricPanel";
-import { ProfileProps } from "@/components/profile/types";
+import FinanceInfo from "@/components/profile/panel/FinanceInfoPanel";
+import ProfileMetric from "@/components/profile/panel/ProfileMetricPanel";
+import { FinanceInfoProps, ProfileProps } from "@/components/profile/types";
 
 // High-rated profile
 export const highRatedProfile: ProfileProps = {
@@ -37,12 +37,19 @@ export const highRatedProfile: ProfileProps = {
   bonusPoints: 500,
   projectAmount: 45,
 };
+
+export const highBalance = {
+  balance: 15000,
+  cascadingBalance: 25000,
+  totalDonated: 35000,
+  totalReceived: 28000,
+} satisfies FinanceInfoProps;
 ---
 
 <V2Layout hideLinks={[ItemName.ProjectName]} subtitle="Data Section: Profile">
   <BackButton href="/maintainer/work" slot="left" />
   <ProfilePanel {...highRatedProfile} slot="center" client:only />
-  <FinanceInfo />
+  {highRatedProfile.selfProfile && <FinanceInfo {...highBalance} />}
   <ProfileMetric slot="center" client:load />
 
   <!-- <RecentActivity slot="right" /> -->
