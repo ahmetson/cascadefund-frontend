@@ -2,6 +2,8 @@ import React from 'react'
 import BorderBeam from '../ui/border-beam'
 import ElectricBorder from '../ElectricBorder'
 import { cn } from '@/lib/utils'
+import { RippleButton, RippleButtonRipples } from '../animate-ui/components/buttons/ripple'
+import { RoundedSize } from '@/types/eventTypes'
 
 export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'success' | 'default'
 
@@ -107,7 +109,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
 
     <BorderBeam size={12} colorFrom={getAnimationColors().colorFrom} colorTo={getAnimationColors().colorTo}>
-      <button
+      <RippleButton
         onClick={onClick}
         disabled={disabled}
         className={`
@@ -115,7 +117,7 @@ const Button: React.FC<ButtonProps> = ({
           ${getVariantStyles()}
           ${getOutlineStyles()}
           ${focus ? '' : getSizeStyles()}
-          rounded font-medium transition-colors duration-200
+          ${RoundedSize.roundedXs} font-medium transition-colors duration-200
           ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
           ${className}
           `}
@@ -133,7 +135,8 @@ const Button: React.FC<ButtonProps> = ({
         >
           {children}
         </ElectricBorder> : children}
-      </button>
+        <RippleButtonRipples color={getAnimationColors().colorFrom} />
+      </RippleButton>
     </BorderBeam>
   )
 }
