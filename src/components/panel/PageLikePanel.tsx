@@ -13,9 +13,8 @@ export interface PageLikePanelProps extends Omit<InteractivePanelProps, 'childre
     subtitle?: React.ReactNode
     titleCenter?: boolean
     rightHeader?: React.ReactNode
-    actions?: ActionProps[]
+    actions?: ActionProps[] | React.ReactNode
     children: React.ReactNode
-    contentHeight?: string
     expandable?: boolean
     interactive?: boolean
 }
@@ -28,17 +27,18 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
     rightHeader,
     actions,
     children,
-    contentHeight,
     expandable = false,
     className = '',
     interactive = true,
     ...interactiveProps
 }) => {
     const renderHeader = () => {
+        const titleColor = 'text-gray-900';
+
         if (titleCenter) {
             return (
                 <div className="mb-4 text-center">
-                    <h2 className="font-georgia text-xl font-semibold flex items-center justify-center gap-2">
+                    <h2 className={`font-georgia font-semibold flex items-center justify-center gap-2 ${titleColor}`}>
                         {icon && getIcon(icon)}
                         <span>{title}</span>
                     </h2>
@@ -48,11 +48,9 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
 
         return (
             <div className="mb-4">
-                <h2 className="font-georgia text-xl font-semibold flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                        {icon && getIcon(icon)}
-                        <span>{title}</span>
-                    </div>
+                <h2 className={`font-georgia font-semibold flex items-center gap-2 justify-between ${titleColor}`}>
+                    {icon && getIcon(icon)}
+                    <span>{title}</span>
                     {rightHeader}
                 </h2>
             </div>
@@ -60,14 +58,9 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
     }
 
     const renderContent = () => {
-        const contentStyle = contentHeight
-            ? { height: contentHeight, overflowY: 'auto' as const }
-            : {}
-
         return (
             <div
-                className="font-noto-sans space-y-3 text-sm text-gray-600"
-                style={contentStyle}
+                className="font-noto-sans space-y-3 text-sm text-gray-600 overflow-y-auto"
             >
                 {children}
             </div>
@@ -75,7 +68,13 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
     }
 
     const renderActions = () => {
-        if (!actions || actions.length === 0) return null
+        if (!actions || Array.isArray(actions) && actions.length === 0) return null
+        if (!Array.isArray(actions)) {
+            if (!React.isValidElement(actions)) return null
+            return <div className="flex justify-center gap-3 mt-6">
+                {actions}
+            </div>
+        }
 
         return (
             <div className="flex justify-center gap-3 mt-6">
@@ -90,6 +89,7 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
                         </Link>
                     ) : (
                         <Button
+                            disabled={action.disabled}
                             key={index}
                             variant={action.variant}
                             onClick={action.onClick}

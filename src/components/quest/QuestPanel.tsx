@@ -3,11 +3,13 @@ import ProjectRating from '@/components/rating/ProjectRating'
 import PageLikePanel from '@/components/panel/PageLikePanel'
 import Badge from '@/components/custom-ui/Badge'
 import TaskItem from './TaskItem'
-import { bgClassNames, GridStyle } from '@/types/eventTypes'
+import { GridStyle } from '@/types/eventTypes'
 import Tooltip from '../utilitified_decorations/Tooltip'
 import Button from '../custom-ui/Button'
 import { useHotkeys } from 'react-hotkeys-hook';
 import Kbd from '../custom-ui/Kbd'
+import List from '../list/List'
+import useSelectableList from '../list/useSelectableList'
 
 
 interface Props {
@@ -22,10 +24,6 @@ interface TaskProps {
   id?: string
 }
 
-const findTaskById = (tasks: TaskProps[], id: string | undefined) => {
-  return tasks.find(task => task.id === id);
-}
-
 const defaultLabel = "selects a task";
 
 const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
@@ -38,16 +36,13 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
   ].map((task, i) => ({ ...task, id: `${i + 1}` }))
   ); // Add id to each task
 
-  const [selectedTaskId, setSelectedTaskId] = useState<string | undefined>();
+  const { selectedItem: selectedTaskId, setSelectedItem: setSelectedTaskId } = useSelectableList()
   const [label, setLabel] = useState(defaultLabel)
   const [completedTaskId, setCompletedTaskId] = useState<string | undefined>();
   const [hide, setHided] = useState(false);
 
   useEffect(() => {
     setLabel(selectedTaskId === undefined ? defaultLabel : 'Clear')
-    if (selectedTaskId) {
-      scrollToItem(selectedTaskId);
-    }
   }, [selectedTaskId])
 
   useEffect(() => {
@@ -58,36 +53,28 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
     }
   }, [tasks])
 
-  const scrollToItem = (id: string) => {
-    // if (id === tasks[tasks.length - 1].id) {
-    itemRefs[id].scrollIntoView(false);
-    // } else {
-    // itemRefs[id].scrollIntoView({ block: 'center', behaviour: 'smooth', inline: 'nearest' });
-    // }
-  };
-
   const selectFirstTask = () => {
     const firstTaskId = tasks[0].id;
-    setSelectedTaskId(firstTaskId);
+    setSelectedTaskId(firstTaskId!);
   }
-  const deselectTask = () => {
-    setSelectedTaskId(undefined);
+  const deselectTask = (id: string = selectedTaskId.valueOf() as string) => {
+    setSelectedTaskId(id);
   }
 
   const onTaskClick = (id: string) => {
-    if (selectedTaskId === id) {
-      deselectTask();
+    if (selectedTaskId.has(id)) {
+      deselectTask(id);
     } else {
       setSelectedTaskId(id);
     }
   }
 
   const playTask = () => {
-    setCompletedTaskId(selectedTaskId)
+    setCompletedTaskId(selectedTaskId.valueOf() as string)
     setTimeout(() => {
       const nextTaskId = getNextTaskId();
       for (let i = 0; i < tasks.length; i++) {
-        if (tasks[i].id === selectedTaskId) {
+        if (tasks[i].id === selectedTaskId.valueOf() as string) {
           delete itemRefs[tasks[i].id!];
           delete tasks[i];
         }
@@ -95,13 +82,13 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
 
       setTasks(tasks.filter(task => task !== undefined));
 
-      setSelectedTaskId(nextTaskId);
+      setSelectedTaskId(nextTaskId!);
     }, 1500)
   }
 
   const getNextTaskId = (): string | undefined => {
     if (selectedTaskId) {
-      const currentIndex = tasks.findIndex(task => task.id === selectedTaskId);
+      const currentIndex = tasks.findIndex(task => task.id === selectedTaskId.valueOf() as string);
       const nextIndex = (currentIndex + 1) % tasks.length;
       const nextTaskId = tasks[nextIndex].id;
       return nextTaskId;
@@ -109,19 +96,19 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
   }
 
   const selectNextTask = () => {
-    if (selectedTaskId) {
-      const currentIndex = tasks.findIndex(task => task.id === selectedTaskId);
+    if (selectedTaskId.valueOf() as string) {
+      const currentIndex = tasks.findIndex(task => task.id === selectedTaskId.valueOf() as string);
       const nextIndex = (currentIndex + 1) % tasks.length;
       const nextTaskId = tasks[nextIndex].id;
-      setSelectedTaskId(nextTaskId);
+      setSelectedTaskId(nextTaskId!);
     }
   }
   const selectPreviousTask = () => {
     if (selectedTaskId) {
-      const currentIndex = tasks.findIndex(task => task.id === selectedTaskId);
+      const currentIndex = tasks.findIndex(task => task.id === selectedTaskId.valueOf() as string);
       const previousIndex = (currentIndex - 1 + tasks.length) % tasks.length;
       const previousTaskId = tasks[previousIndex].id;
-      setSelectedTaskId(previousTaskId);
+      setSelectedTaskId(previousTaskId!);
     }
   }
 
@@ -130,79 +117,82 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
     else selectFirstTask();
   });
   useHotkeys('left', selectPreviousTask);
-  useHotkeys('esc', deselectTask); // Select/Deselect the first task
+  useHotkeys('esc', () => deselectTask(selectedTaskId.valueOf() as string)); // Select/Deselect the first task
   useHotkeys('right', selectNextTask);
 
   const itemRefs: { [key: string]: any } = {};
 
+  const actions = (
+    <div className='mt-2 h-6 flex space-x-4 justify-between'>
+      <Tooltip
+        content={
+          <div className="text-sm">
+            {selectedTaskId ? 'Press Esc to deselect the task.' : 'Press Enter to select the first task.'}
+          </div>
+        }
+      >
+        <Button
+          onClick={selectedTaskId ? () => deselectTask(selectedTaskId.valueOf() as string) : selectFirstTask}
+          variant={selectedTaskId ? 'default' : 'secondary'}
+          outline={true}
+          className='flex flex-center items-center space-x-1 m-0 p-1!'>
+          <Kbd className='mt-0.5'>
+            {selectedTaskId ? 'Esc' : 'Enter'}
+          </Kbd>
+          <div>{label}</div>
+        </Button>
+      </Tooltip>
+
+      {selectedTaskId &&
+        <Tooltip
+          content={
+            <div className="text-sm">
+              Press Enter to start the quest system.
+              Guides and notifications, and Auto UI will guide you through the process.
+              Minimum effort.
+            </div>
+          }
+        >
+          <Button onClick={playTask} variant={'primary'} className='flex flex-center items-center space-x-1 m-0 p-1!'>
+            <Kbd className='mt-0.5'>Enter</Kbd>
+            <div>Complete</div>
+          </Button>
+        </Tooltip>
+      }
+
+      {selectedTaskId &&
+        <Tooltip
+          content={
+            <div className="text-sm">
+              Press on ◀︎   ▶︎ arrow buttons to select previous or next task.
+              <br />
+              Pressing on the button will select the next task.
+            </div>
+          }
+        >
+          <Button onClick={selectNextTask} outline={true} variant={'secondary'} className='flex flex-center items-center space-x-1 m-0 p-1!'>
+            <Kbd className='mt-0.5'>◀︎    ▶︎</Kbd>
+            <div>Change Task</div>
+          </Button>
+        </Tooltip>
+      }
+    </div>
+  )
+
   return (
     tasks.length > 0 ?
-      <PageLikePanel onHover={(hovered) => { }} className={``} title={
+      <PageLikePanel actions={actions} onHover={(hovered) => { }} className={``} title={
         <div>{title}<Badge variant='red'>{tasks.length}</Badge>
           <p className="text-sm text-gray-500 font-normal text-center">
             Complete the management tasks.
           </p>
         </div>} rightHeader={<ProjectRating />}>
-        <div className={`p-4 space-y-3 lg:max-h-[30vh] overflow-y-auto ${bgClassNames.listContent}`}>
+        <List contentHeight="h-48" className='${bgClassNames.listContent}`'>
           {tasks.map((task) =>
-            <TaskItem {...task} ref={(el: any) => (itemRefs[task.id!] = el)} onTaskClick={onTaskClick} completedTaskId={completedTaskId} selectedTaskId={selectedTaskId} />,
+            <TaskItem {...task} ref={(el: any) => (itemRefs[task.id!] = el)} onClick={onTaskClick} completedId={completedTaskId} selectedId={selectedTaskId.valueOf() as string} />,
           )}
-        </div>
-        <div className='h-6 flex justify-between'>
-          <Tooltip
-            content={
-              <div className="text-sm">
-                {selectedTaskId ? 'Press Esc to deselect the task.' : 'Press Enter to select the first task.'}
-              </div>
-            }
-          >
-            <Button
-              onClick={selectedTaskId ? deselectTask : selectFirstTask}
-              variant={selectedTaskId ? 'default' : 'secondary'}
-              outline={true}
-              className='flex flex-start space-x-1 m-0 p-1!'>
+        </List>
 
-              <Kbd >
-                {selectedTaskId ? 'Esc' : 'Enter'}
-              </Kbd>
-              <div>{label}</div>
-            </Button>
-          </Tooltip>
-
-          {selectedTaskId &&
-            <Tooltip
-              content={
-                <div className="text-sm">
-                  Press Enter to start the quest system.
-                  Guides and notifications, and Auto UI will guide you through the process.
-                  Minimum effort.
-                </div>
-              }
-            >
-              <Button onClick={playTask} variant={'primary'} className='flex flex-start space-x-1 m-0 p-1!'>
-                <Kbd>Enter</Kbd>
-                <div>Play</div>
-              </Button>
-            </Tooltip>
-          }
-
-          {selectedTaskId &&
-            <Tooltip
-              content={
-                <div className="text-sm">
-                  Press on ◀︎   ▶︎ arrow buttons to select previous or next task.
-                  <br />
-                  Pressing on the button will select the next task.
-                </div>
-              }
-            >
-              <Button onClick={selectNextTask} outline={true} variant={'secondary'} className='flex flex-start space-x-1 m-0 p-1!'>
-                <Kbd>◀︎    ▶︎</Kbd>
-                <div>Change Task</div>
-              </Button>
-            </Tooltip>
-          }
-        </div>
       </PageLikePanel> : hide ? null : <PageLikePanel className={`${GridStyle.panel.margin!.bottom}`} title={
         <div>Tasks are completed<Badge variant='info'>{tasks.length}</Badge>
         </div>} rightHeader={<ProjectRating />}>

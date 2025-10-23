@@ -1,4 +1,5 @@
 import { ButtonVariant } from "@/components/custom-ui/Button"
+import { IconProps, IconType } from "@/components/icon"
 
 export enum BlurSize {
   blur0 = 'blur-0',
@@ -154,7 +155,16 @@ export interface PanelEvents {
   onMouseLeave?: () => void;
 }
 
-export interface ActionProps { variant?: ButtonVariant, href?: string, replaceWithChildren?: boolean, children: any, onClick?: () => void, className?: string }
+export interface ActionProps {
+  variant?: ButtonVariant,
+  href?: string,
+  replaceWithChildren?: boolean,
+  children: any,
+  onClick?: () => void,
+  className?: string,
+  icon?: IconType | IconProps
+  disabled?: boolean
+}
 
 export enum BgType {
   heroSection = "hero",

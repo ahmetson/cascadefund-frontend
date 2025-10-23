@@ -1,19 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import FilterTabs from '@/components/project/ProjectFilterTabs'
 import ProjectCard, { type ProjectInfoProps } from '@/components/project/ProjectInfoPanel2'
 import Pagination from '@/components/Pagination'
 import PageLikePanel from '@/components/panel/PageLikePanel'
+import Badge from '../custom-ui/Badge'
 
 interface Props {
   projects: ProjectInfoProps[]
 }
 
 const ProjectsSection: React.FC<Props> = ({ projects }) => {
+  const [projectsCount, setProjectsCount] = useState(projects.length)
 
   return (
-    <PageLikePanel title={<h1 className="text-2xl font-semibold text-gray-900">Projects
-      <span className="bg-gray-200 text-gray-600 text-sm px-2 py-1 rounded">1</span>
-    </h1>}>
+    <PageLikePanel
+      interactive={false}
+      title={
+        <div className="flex items-center gap-2">
+          <span className="mt-1">Projects</span>
+          <Badge variant="gray" static={true}>{projectsCount}</Badge>
+        </div>}>
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">

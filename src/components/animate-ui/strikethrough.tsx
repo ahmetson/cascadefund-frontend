@@ -25,8 +25,8 @@ interface Props {
 function C({ id, children, checked }: Props) {
   return (
     <div key={id} className="flex items-center space-x-2">
-      <div className="relative inline-block">
-        <Label htmlFor={`checkbox-${id}`}>{children}</Label>
+      <div className="relative inline-block w-full">
+        <Label htmlFor={`checkbox-${id}`} className='w-full'>{children}</Label>
         <motion.svg
           width="340"
           height="32"

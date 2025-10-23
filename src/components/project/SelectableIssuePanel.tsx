@@ -1,13 +1,6 @@
 import React from 'react'
 import BasePanel from '@/components/panel/BasePanel'
-
-interface Issue {
-  id: string
-  number: string
-  title: string
-  description: string
-  type: 'improvement' | 'feature' | 'bug' | 'enhancement' | 'custom'
-}
+import { Issue } from '../issue/types'
 
 interface IssueCardProps {
   issue: Issue

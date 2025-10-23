@@ -37,10 +37,6 @@ const meta = {
             control: { type: 'boolean' },
             description: 'Whether the panel can be expanded/collapsed',
         },
-        contentHeight: {
-            control: { type: 'text' },
-            description: 'Fixed height for content area with scroll',
-        },
         padding: {
             control: { type: 'text' },
             description: 'Padding size for the panel',
@@ -239,31 +235,6 @@ export const WithRightHeader: Story = {
     },
 };
 
-export const WithFixedHeight: Story = {
-    args: {
-        icon: 'chat',
-        title: 'Messages',
-        subtitle: 'Scrollable message history',
-        contentHeight: '200px',
-        children: (
-            <div>
-                {Array.from({ length: 10 }, (_, i) => (
-                    <div key={i} className="mb-3 p-3 bg-gray-50 rounded">
-                        <div className="flex justify-between items-start mb-1">
-                            <span className="font-medium text-sm">User {i + 1}</span>
-                            <span className="text-xs text-gray-500">2:3{i} PM</span>
-                        </div>
-                        <p className="text-sm text-gray-700">
-                            This is message {i + 1} in the scrollable content area.
-                            The content height is fixed and scrollable.
-                        </p>
-                    </div>
-                ))}
-            </div>
-        ),
-    },
-};
-
 export const WithLinkActions: Story = {
     args: {
         icon: 'github',
@@ -271,12 +242,12 @@ export const WithLinkActions: Story = {
         subtitle: 'Manage your GitHub repository',
         actions: [
             {
-                variant: 'blue',
+                variant: 'primary',
                 href: 'https://github.com',
                 children: 'View on GitHub',
             },
             {
-                variant: 'gray',
+                variant: 'secondary',
                 href: '/settings',
                 children: 'Settings',
             },
@@ -316,12 +287,12 @@ export const ComplexContent: Story = {
         ),
         actions: [
             {
-                variant: 'blue',
+                variant: 'primary',
                 children: 'Export Data',
                 onClick: () => console.log('Export clicked'),
             },
             {
-                variant: 'gray',
+                variant: 'secondary',
                 children: 'View Details',
                 onClick: () => console.log('Details clicked'),
             },
@@ -360,6 +331,220 @@ export const ComplexContent: Story = {
                     <div className="flex justify-between text-sm">
                         <span className="text-gray-600">Savings</span>
                         <span className="font-medium text-green-600">$4.25</span>
+                    </div>
+                </div>
+            </div>
+        ),
+    },
+};
+
+export const WithCustomReactNodeActions: Story = {
+    args: {
+        icon: 'chat',
+        title: 'Custom Actions Panel',
+        subtitle: 'Actions passed as React nodes for maximum flexibility',
+        actions: (
+            <div className="flex flex-col gap-2 w-full">
+                <button
+                    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-2 px-4 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-200 flex items-center justify-center gap-2"
+                    onClick={() => console.log('Custom gradient button clicked')}
+                >
+                    <span>✨</span>
+                    Custom Gradient Button
+                </button>
+                <div className="flex gap-2">
+                    <button
+                        className="flex-1 bg-blue-100 text-blue-800 font-medium py-2 px-3 rounded-md hover:bg-blue-200 transition-colors text-sm"
+                        onClick={() => console.log('Info clicked')}
+                    >
+                        ℹ️ Info
+                    </button>
+                    <button
+                        className="flex-1 bg-orange-100 text-orange-800 font-medium py-2 px-3 rounded-md hover:bg-orange-200 transition-colors text-sm"
+                        onClick={() => console.log('Warning clicked')}
+                    >
+                        ⚠️ Warning
+                    </button>
+                </div>
+                <div className="flex items-center justify-center gap-4 text-sm">
+                    <button className="text-gray-600 hover:text-gray-800 underline">
+                        Cancel
+                    </button>
+                    <button className="text-red-600 hover:text-red-800 font-medium">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        ),
+        children: (
+            <div>
+                <p className="text-sm text-gray-600 mb-4">
+                    This panel demonstrates custom actions passed as React nodes.
+                    You can create any custom layout, styling, and behavior for the actions area.
+                </p>
+                <div className="space-y-3">
+                    <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
+                        <p className="text-sm text-purple-800 font-medium">Custom Action Features:</p>
+                        <ul className="text-xs text-purple-700 mt-1 space-y-1">
+                            <li>• Gradient backgrounds</li>
+                            <li>• Custom icons and emojis</li>
+                            <li>• Flexible layouts</li>
+                            <li>• Multiple button styles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        ),
+    },
+};
+
+export const WithCustomHTMLActions: Story = {
+    args: {
+        icon: 'settings',
+        title: 'HTML Actions Panel',
+        subtitle: 'Actions rendered as HTML elements for simple use cases',
+        actions: (
+            <div className="flex flex-col gap-3 w-full">
+                <div className="flex gap-2">
+                    <button
+                        className="flex-1 bg-green-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-green-600 transition-colors"
+                        onClick={() => console.log('Save clicked')}
+                    >
+                        💾 Save Changes
+                    </button>
+                    <button
+                        className="flex-1 bg-gray-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-gray-600 transition-colors"
+                        onClick={() => console.log('Reset clicked')}
+                    >
+                        🔄 Reset
+                    </button>
+                </div>
+                <div className="flex justify-between items-center text-sm">
+                    <span className="text-gray-500">Last saved: 2 minutes ago</span>
+                    <div className="flex gap-2">
+                        <button
+                            className="text-blue-600 hover:text-blue-800 underline"
+                            onClick={() => console.log('Help clicked')}
+                        >
+                            Help
+                        </button>
+                        <button
+                            className="text-red-600 hover:text-red-800 underline"
+                            onClick={() => console.log('Delete clicked')}
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        ),
+        children: (
+            <div>
+                <p className="text-sm text-gray-600 mb-4">
+                    This panel shows how to use HTML elements directly in the actions prop.
+                    Perfect for simple layouts and quick implementations.
+                </p>
+                <div className="space-y-3">
+                    <div className="grid grid-cols-2 gap-3">
+                        <div className="p-3 bg-green-50 rounded border border-green-200">
+                            <p className="text-sm font-medium text-green-800">Settings</p>
+                            <p className="text-xs text-green-600">Configure preferences</p>
+                        </div>
+                        <div className="p-3 bg-blue-50 rounded border border-blue-200">
+                            <p className="text-sm font-medium text-blue-800">Profile</p>
+                            <p className="text-xs text-blue-600">Update your info</p>
+                        </div>
+                    </div>
+                    <div className="p-3 bg-yellow-50 rounded border border-yellow-200">
+                        <p className="text-sm text-yellow-800">
+                            <strong>Note:</strong> HTML actions provide full control over styling and layout.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        ),
+    },
+};
+
+export const WithMixedActionTypes: Story = {
+    args: {
+        icon: 'project',
+        title: 'Mixed Actions Panel',
+        subtitle: 'Combining different action types in one panel',
+        actions: (
+            <div className="space-y-3 w-full">
+                {/* Primary action row */}
+                <div className="flex gap-2">
+                    <button
+                        className="flex-1 bg-indigo-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2"
+                        onClick={() => console.log('Deploy clicked')}
+                    >
+                        🚀 Deploy Project
+                    </button>
+                    <button
+                        className="px-4 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+                        onClick={() => console.log('Settings clicked')}
+                    >
+                        ⚙️
+                    </button>
+                </div>
+
+                {/* Secondary actions */}
+                <div className="flex justify-between items-center">
+                    <div className="flex gap-3">
+                        <button
+                            className="text-sm text-blue-600 hover:text-blue-800 underline"
+                            onClick={() => console.log('Preview clicked')}
+                        >
+                            👁️ Preview
+                        </button>
+                        <button
+                            className="text-sm text-green-600 hover:text-green-800 underline"
+                            onClick={() => console.log('Share clicked')}
+                        >
+                            📤 Share
+                        </button>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <span className="text-xs text-gray-500">Status:</span>
+                        <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
+                            Ready
+                        </span>
+                    </div>
+                </div>
+            </div>
+        ),
+        children: (
+            <div>
+                <p className="text-sm text-gray-600 mb-4">
+                    This panel demonstrates mixing different action types and layouts.
+                    You can combine buttons, links, status indicators, and more.
+                </p>
+                <div className="space-y-3">
+                    <div className="p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg border border-indigo-200">
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
+                                <span className="text-indigo-600 font-bold">P</span>
+                            </div>
+                            <div>
+                                <p className="font-medium text-indigo-900">Project Alpha</p>
+                                <p className="text-sm text-indigo-700">Ready for deployment</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2 text-center">
+                        <div className="p-2 bg-gray-50 rounded text-xs">
+                            <p className="font-medium text-gray-800">Files</p>
+                            <p className="text-gray-600">24</p>
+                        </div>
+                        <div className="p-2 bg-gray-50 rounded text-xs">
+                            <p className="font-medium text-gray-800">Size</p>
+                            <p className="text-gray-600">2.1MB</p>
+                        </div>
+                        <div className="p-2 bg-gray-50 rounded text-xs">
+                            <p className="font-medium text-gray-800">Commits</p>
+                            <p className="text-gray-600">156</p>
+                        </div>
                     </div>
                 </div>
             </div>
