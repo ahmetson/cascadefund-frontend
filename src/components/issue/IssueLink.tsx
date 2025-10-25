@@ -58,7 +58,6 @@ const IssueLinkPanel4: React.FC<Issue & { actions?: ActionProps[] }> = (issue) =
   }
 
   return (
-    // <BasePanel >
     <div className='flex flex-row gap-1 items-start w-full'>
       {/* Issue storage and number */}
       <div className="flex items-center space-x-3 mt-0.5">
@@ -109,23 +108,20 @@ const IssueLinkPanel4: React.FC<Issue & { actions?: ActionProps[] }> = (issue) =
               {issue.actions && <PanelAction className='' actions={issue.actions} />}
               {ratingActions}
             </div>
-            <div className="flex items-center gap-2">
-              {issue.stats && Object.values(issue.stats).map((stat) => (
-                <PanelStat
-                  triggerClassName='text-sm'
-                  iconType={getIssueStatIcon(stat.type)}
-                  hint={stat.hint}
-                  fill={stat.filled}
-                >
-                  {stat.children}
-                </PanelStat>
-              ))
-              }
-            </div>
+            {issue.stats && Object.values(issue.stats).map((stat) => (
+              <PanelStat
+                triggerClassName='text-sm'
+                iconType={getIssueStatIcon(stat.type)}
+                hint={stat.hint}
+                fill={stat.filled}
+              >
+                {stat.children}
+              </PanelStat>
+            ))
+            }
           </PanelFooter>}
       </div>
     </div>
-    // </BasePanel>
   )
 }
 
