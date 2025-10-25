@@ -11,6 +11,7 @@ import SelectableItem from '../list/SelectableItem'
 import { useSelectableList } from '../list/useSelectableList'
 import Badge from '../custom-ui/Badge'
 import Button from '../custom-ui/Button'
+import IssueLinkPanel4 from '../issue/IssueLink'
 
 export type ForkLinkingPanelProps = Omit<PageLikePanelProps, 'title' | 'children'> & {
   project: Omit<ProjectInfo, 'forkId'>
@@ -34,7 +35,11 @@ const ForkLinkingPanel: React.FC<ForkLinkingPanelProps> = ({ className, onAction
       description: 'Transaction verification takes too long on large repositories',
       type: 'improvement',
       storage: 'github',
-      authorId: '',
+      author: {
+        uri: '',
+        name: '',
+        avatar: ''
+      },
       projectId: '',
       categoryId: ''
     },
@@ -45,7 +50,11 @@ const ForkLinkingPanel: React.FC<ForkLinkingPanelProps> = ({ className, onAction
       description: 'Currently only supports Ethereum and Polygon networks',
       type: 'feature',
       storage: 'github',
-      authorId: '',
+      author: {
+        uri: '',
+        name: '',
+        avatar: ''
+      },
       projectId: '',
       categoryId: ''
     },
@@ -56,7 +65,11 @@ const ForkLinkingPanel: React.FC<ForkLinkingPanelProps> = ({ className, onAction
       description: 'Security issue identified in v2.3.1 of the crypto verification module',
       type: 'bug',
       storage: 'github',
-      authorId: '',
+      author: {
+        uri: '',
+        name: '',
+        avatar: ''
+      },
       projectId: '',
       categoryId: ''
     },
@@ -67,7 +80,11 @@ const ForkLinkingPanel: React.FC<ForkLinkingPanelProps> = ({ className, onAction
       description: 'Current implementation fails with memory errors on repositories with 1000+ dependencies',
       type: 'enhancement',
       storage: 'github',
-      authorId: '',
+      author: {
+        uri: '',
+        name: '',
+        avatar: ''
+      },
       projectId: '',
       categoryId: ''
     },
@@ -78,7 +95,11 @@ const ForkLinkingPanel: React.FC<ForkLinkingPanelProps> = ({ className, onAction
       description: 'Describe your own contribution',
       type: 'custom',
       storage: 'cascadefund',
-      authorId: '',
+      author: {
+        uri: '',
+        name: '',
+        avatar: ''
+      },
       projectId: '',
       categoryId: ''
     }
@@ -88,6 +109,21 @@ const ForkLinkingPanel: React.FC<ForkLinkingPanelProps> = ({ className, onAction
     issue.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     issue.description.toLowerCase().includes(searchQuery.toLowerCase())
   )
+
+  const action = <div className="">
+    <p className={`text-center text-sm mt-2 mb-1 border-t-1 border-gray-300 ${selectedItem.amount === 0 ? 'text-rose-500' : 'text-sky-600'}`}>
+      {selectedItem.amount === 0 ?
+        <span>Select the issue. Didn't find the issue you want? <Link href={`/data/issue/post?project=${githubUrlToGit(fork.repository)}&notYetCreated=true&fork=${githubUrlToGit(project.repository)}`}>Create a new issue</Link></span> :
+        <span>Fork is related to {selectedItem.amount} issues</span>}
+    </p>
+    <div className="flex justify-center">
+      <Button
+        variant='primary'
+        disabled={selectedItem.amount === 0}
+        onClick={() => { onActionClick && onActionClick({}) }}
+      >Next</Button>
+    </div>
+  </div>
 
   return (
     <PageLikePanel
@@ -102,32 +138,20 @@ const ForkLinkingPanel: React.FC<ForkLinkingPanelProps> = ({ className, onAction
           Create New Issue
         </Link>
       }
-      actions={<div className="">
-        <p className={`text-center text-sm mt-2 mb-1 border-t-1 border-gray-300 ${selectedItem.amount === 0 ? 'text-rose-500' : 'text-sky-600'}`}>
-          {selectedItem.amount === 0 ?
-            <span>Select the issue. Didn't find the issue you want? <Link href={`/data/issue/post?project=${githubUrlToGit(fork.repository)}&notYetCreated=true&fork=${githubUrlToGit(project.repository)}`}>Create a new issue</Link></span> :
-            <span>Fork is related to {selectedItem.amount} issues</span>}
-        </p>
-        <div className="flex justify-center">
-          <Button
-            variant='primary'
-            disabled={selectedItem.amount === 0}
-            onClick={() => { onActionClick && onActionClick({}) }}
-          >Next</Button>
-        </div>
-      </div>}>
-      <div>
-        <strong className='inline-flex items-center gap-1 h-2'>Your project has been forked from
-          <Link className='ml-1' href={fork.repository} >
-            <div className='inline-flex items-center gap-1'>{getIcon('github')} {fork.name}</div>
-          </Link></strong>
-      </div>
+      actions={action}>
+      <strong className='inline-flex items-center gap-1 h-2 '>Your project has been forked from
+        <Link className='ml-1' href={fork.repository} >
+          <div className='inline-flex items-center gap-1'>{getIcon('github')} {fork.name}</div>
+        </Link>
+      </strong>
       <p className="text-sm text-gray-600 mb-4">
         <span>
           Choose one or many issues that explains why you forked.<br />
           The issues will be attached to the original project to make your fork <b>discoverable</b>.
         </span>
       </p>
+
+      <h3 className='text-md font-medium mb-2'><div className='inline-flex items-center gap-1'>{getIcon('github')} {fork.name} Issues</div>      </h3>
 
       <SearchBar
         value={searchQuery}
@@ -144,35 +168,7 @@ const ForkLinkingPanel: React.FC<ForkLinkingPanelProps> = ({ className, onAction
             onClick={setSelectedItem}
             selectedId={selectedItem.has(issue.uri) ? issue.uri : undefined}
           >
-            <div className="flex items-center justify-between w-full">
-              <div className="flex flex-row gap-1 items-start">
-                <div className="flex items-center space-x-3 mt-0.5">
-                  <Link href={issue.uri} asNewTab={issue.storage !== 'cascadefund'}>
-                    <Badge variant='info' static={true}>
-                      <div className="flex items-center space-x-1">
-                        {getIcon(issue.storage as IconType)}
-                        <span className="text-xs font-medium">{issue.number}</span>
-                      </div>
-                    </Badge>
-                  </Link>
-                </div>
-                <div>
-                  <span className="text-sm font-medium">{issue.title}</span>
-                  <p className="text-sm text-gray-600">{issue.description}</p>
-                </div>
-              </div>
-              <div className="mt-1 text-sm text-gray-600">
-                <span className={`px-2 py-1 text-xs rounded-full ${issue.type === 'bug' ? 'bg-red-100 text-red-800' :
-                  issue.type === 'feature' ? 'bg-blue-100 text-blue-800' :
-                    issue.type === 'improvement' ? 'bg-green-100 text-green-800' :
-                      issue.type === 'enhancement' ? 'bg-purple-100 text-purple-800' :
-                        'bg-gray-100 text-gray-800'
-                  }`}>
-                  {issue.type}
-                </span>
-              </div>
-            </div>
-
+            <IssueLinkPanel4 {...issue} />
           </SelectableItem>
         ))}
       </List>

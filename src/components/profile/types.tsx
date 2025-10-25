@@ -1,19 +1,21 @@
 import { AllPersonaRatings } from '../rating/ProfileRatingPanel'
 import { RatingType } from '../rating/ProfileRating'
 
-export interface ProfileProps {
-  selfProfile: boolean
-  id?: string
+export interface ProfileLink {
+  uri: string
   name: string
+  avatar?: string
+}
+
+export interface ProfileProps extends ProfileLink {
+  selfProfile: boolean
   description: string
   subtitle?: string
-  socialLinks: ProfileSocialLink[]
-  avatar: string
+  socialLinks?: ProfileSocialLink[]
   ratings: AllPersonaRatings
   topRating: RatingType
   followers: number
   following: boolean
-  myAccount: boolean
   totalVotingPower: number
   bonusPoints: number
   projectAmount: number

@@ -17,6 +17,8 @@ import EditableMenuPanel from '../../custom-ui/EditableMenuPanel'
 import YourProfileBadge from '../badge/YourProfileBadge'
 import EditableBadge from '../badge/EditableBadge'
 import { Popover } from '@base-ui-components/react/popover'
+import PanelFooter from '@/components/panel/PanelFooter'
+import PanelStat from '@/components/panel/PanelStat'
 
 const getSocialProfile = (selfProfile: boolean, social: ProfileSocialLink, setSocialUrl: (socialType: string, url: string) => void) => {
   const content = social.type === 'linkedin' ?
@@ -194,7 +196,7 @@ const ProfilePanel: React.FC<ProfileProps & PanelEvents> = ({ onActionClick, ...
             </div>
           </Tooltip>
 
-          <div className="flex items-center justify-between mb-2 border-t-1 border-gray-400">
+          <PanelFooter>
             <Tooltip
               openDelay={1000}
               content={
@@ -211,22 +213,15 @@ const ProfilePanel: React.FC<ProfileProps & PanelEvents> = ({ onActionClick, ...
 
             <div className='flex items-center justify-center space-x-4'>
               <VotingPower totalVotingPower={props.totalVotingPower} onActionClick={() => { }} />
-              <Tooltip
-                content={
-                  <div className="text-sm">
-                    '{value['name']}' involved in {props.projectAmount} projects.
-                  </div>
-                }
+              <PanelStat
+                href={"/data/projects?userName=" + props.id || 'any'}
+                iconType="project" hint={`${value['name']} involved in ${props.projectAmount} projects.`}
+                fill={true}
               >
-                <Link className="flex items-center justify-center h-10 text-blue-500 mt-1" href={"/data/projects?userName=" + props.id || 'any'} >
-                  {getIcon({ iconType: 'project', fill: 'currentColor', className: 'w-8 h-8' })}
-                  <span className="text-lg -mt-2 -ml-1">
-                    {props.projectAmount} Projects
-                  </span>
-                </Link>
-              </Tooltip>
+                {props.projectAmount} Projects
+              </PanelStat>
             </div>
-          </div>
+          </PanelFooter>
         </div>
       </div>
     </BasePanel>

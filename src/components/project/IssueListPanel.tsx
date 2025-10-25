@@ -2,7 +2,7 @@ import React from 'react'
 import Button from '@/components/custom-ui/Button'
 import Badge from '@/components/custom-ui/Badge'
 import PageLikePanel from '@/components/panel/PageLikePanel'
-import IssueCard from '@/components/issue/IssueLinkPanel3'
+import IssueCard from '@/components/issue/IssueLink'
 import Link from '@/components/custom-ui/Link'
 
 const IssuesSection: React.FC = () => {
@@ -42,8 +42,8 @@ const IssuesSection: React.FC = () => {
             <div className="flex flex-wrap gap-1">
               <Button variant="secondary" size="sm">All</Button>
               <Button variant="danger" size="sm">Bug</Button>
-              <Button variant="info" size="sm">Fix</Button>
-              <Button variant="warning" size="sm">Urgent</Button>
+              <Button variant="default" size="sm">Fix</Button>
+              <Button variant="danger" size="sm">Urgent</Button>
               <Button variant="success" size="sm">Wish</Button>
               <Button variant="secondary" size="sm">Suggested</Button>
               <Button variant="primary" size="sm">Released</Button>
@@ -75,25 +75,46 @@ const IssuesSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <IssueCard
             title="Fix responsive layout on tablet devices"
-            author="Serkan Balgaliyev"
+            author={{
+              uri: '/data/profile',
+              name: 'Serkan Balgaliyev',
+              avatar: 'https://github.com/serkanbalgaliyev.png'
+            }}
             description="The dashboard layout breaks on iPad and other tablet devices in landscape orientation. Elements overlap and some controls become inaccessible."
-            date="Oct 5, 2023"
-            followers={3}
-            tags={3}
+            createdTime={1717334400000}
             type="bug"
-            priority="high"
           />
 
           <IssueCard
             title="Data export feature crashes with large datasets"
-            author=""
+            author={{
+              uri: '/data/profile',
+              name: 'Serkan Balgaliyev',
+              avatar: 'https://github.com/serkanbalgaliyev.png'
+            }}
             description="When attempting to export data sets larger than 10,000 records, the application crashes. We need to implement pagination or streaming."
-            date="Oct 3, 2023"
-            followers={5}
-            tags={1}
-            type="wish"
-            priority="medium"
-          />
+            createdTime={1717334400000}
+            stats={{
+              follower: {
+                type: 'follower',
+                hint: 'Followers interested',
+                filled: true,
+                children: '5'
+              },
+              money: {
+                type: 'money',
+                hint: 'Funding received',
+                filled: true,
+                children: '$1,250'
+              },
+              persona: {
+                type: 'persona',
+                hint: 'Interests',
+                filled: false,
+                children: '3'
+              }
+            }}
+            type="wish" uri={''} number={''} projectId={''} categoryId={''} />
         </div>
       </div>
     </PageLikePanel>

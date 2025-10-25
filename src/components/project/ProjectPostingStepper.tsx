@@ -1,8 +1,7 @@
-import React, { useRef, useState } from 'react'
-import { AnimatePresence, motion } from 'motion/react'
+import React, { useState } from 'react'
 import RepositoryForm from './RepositoryForm'
 import RepositoryConnection from "@/components/project/RepositoryConnectionPanel";
-import IssueSelector from './ForkLinkingPanel';
+import ForkLinkingPanel from './ForkLinkingPanel';
 import EditableProjectInfoPanel from './EditableProjectInfoPanel';
 import BlockchainRecordingPanel from './BlockchainRecordingPanel';
 import AddingCompletionPanel from './AddingCompletionPanel';
@@ -50,7 +49,7 @@ const C: React.FC<Props> = ({ projectId, forkProjectId, createdIssueId }) => {
       <RepositoryForm setRepositoryUrl={setRepositoryUrl} repositoryUrl={repositoryUrl} />
       <RepositoryConnection />
       {isFork &&
-        <IssueSelector
+        <ForkLinkingPanel
           className={`${GridStyle.panel.margin!.top}`}
           project={{ id: 'project-1', name: 'Example Project', repository: 'https://github.com/example/project' }}
           fork={{ id: 'fork-1', name: 'Forked Project', repository: 'https://github.com/example/fork' }}

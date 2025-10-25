@@ -1,0 +1,132 @@
+import React from 'react'
+import Link from '../custom-ui/Link'
+import { getIcon, IconType } from '../icon'
+import { getIssueStatIcon, Issue } from './types'
+import Badge from '../custom-ui/Badge'
+import PanelFooter from '../panel/PanelFooter'
+import PanelStat from '../panel/PanelStat'
+import MenuAvatar from '../MenuAvatar'
+import TimeAgo from 'timeago-react';
+import Button from '../custom-ui/Button'
+import { ActionProps } from '@/types/eventTypes'
+import PanelAction from '../panel/PanelAction'
+import VotePopover from './VotePopover'
+
+
+const IssueLinkPanel4: React.FC<Issue & { actions?: ActionProps[] }> = (issue) => {
+  // Check if this is a rating issue (has voting power > 0)
+  const votingPower = issue.stats?.['voting-power']?.children
+  const isRatingIssue = issue.storage === 'cascadefund' && votingPower && Number(votingPower) > 0
+
+  // Handle VP change from VotePopover
+  const handleVPChange = (newVP: number) => {
+    console.log(`VP changed for issue ${issue.id}: ${newVP}`)
+    // Here you would typically update the issue's VP in your state management
+  }
+
+  const nonRatingActions = <>
+    <Button onClick={() => console.log('Liked')} variant="secondary" size="sm" className="h-7 px-2 text-xs">
+      {getIcon({ iconType: 'likes', className: 'w-3 h-3 mr-1' })}
+      Like
+    </Button>
+    <Button variant="secondary" size="sm" className="h-7 px-2 text-xs">
+      {getIcon({ iconType: 'likes', className: 'w-3 h-3 mr-1' })}
+      Dislike
+    </Button>
+    <Button variant="primary" size="sm" className="h-7 px-2 text-xs">
+      {getIcon({ iconType: 'vote-priority', className: 'w-3 h-3 mr-1' })}
+      Turn To Voting Power
+    </Button>
+  </>
+
+  const ratingActions = isRatingIssue && issue.vpAmount && issue.currentVP !== undefined && issue.topVP !== undefined && issue.minVP !== undefined ? (
+    <VotePopover
+      vpAmount={issue.vpAmount}
+      currentVP={issue.currentVP}
+      topVP={issue.topVP}
+      minVP={issue.minVP}
+      issueTitle={issue.title}
+      onApply={handleVPChange}
+    />
+  ) : null
+
+  const defaultActionClassName = ' py-0 px-1 h-6 text-sm'
+  if (Array.isArray(issue.actions) && issue.actions.length > 0) {
+    issue.actions.map((action, i) => {
+      issue.actions![i].className = action.className ? action.className + defaultActionClassName : defaultActionClassName
+    })
+  }
+
+  return (
+    // <BasePanel >
+    <div className='flex flex-row gap-1 items-start w-full'>
+      {/* Issue storage and number */}
+      <div className="flex items-center space-x-3 mt-0.5">
+        <Link href={issue.uri} asNewTab={issue.storage !== 'cascadefund'}>
+          <Badge variant='info' static={true}>
+            <div className="flex items-center space-x-1">
+              {getIcon(issue.storage as IconType)}
+              <span className="text-xs font-medium">{issue.number}</span>
+            </div>
+          </Badge>
+        </Link>
+      </div>
+
+      <div className='w-full'>
+        {/* Issue title and description */}
+        <div className='flex justify-between items-center'>
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium">{issue.title}</span>
+            {/* Voting power badge for cascadefund storage */}
+            {issue.storage === 'cascadefund' && (
+              <Badge variant={isRatingIssue ? 'success' : 'gray'} static={true}>
+                {isRatingIssue ? 'Rating Issue' : 'Non-Rating Issue'}
+              </Badge>
+            )}
+          </div>
+          <Badge variant={issue.type === 'bug' ? 'danger' : issue.type === 'feature' ? 'blue' : issue.type === 'improvement' ? 'success' : issue.type === 'enhancement' ? 'warning' : 'info'} static={true}>
+            {issue.type}
+          </Badge>
+        </div>
+        <p className="text-sm text-gray-600">{issue.description}</p>
+
+        {/* Issue author and created time */}
+        {(issue.author || issue.createdTime) &&
+          <div className="flex justify-end items-center space-x-1 text-gray-500 gap-1 text-xs">
+            {issue.author && <>
+              By <MenuAvatar src={issue.author?.avatar} uri={issue.author?.uri} className='w-7! h-7!' />
+            </>}
+            {issue.createdTime &&
+              <TimeAgo datetime={issue.createdTime} />
+            }
+          </div>
+        }
+
+        {/* Issue status and actions */}
+        {(issue.stats || issue.actions || (issue.storage === 'cascadefund')) &&
+          <PanelFooter className='flex flex-row justify-between items-center mt-2'>
+            <div className="flex items-center gap-2">
+              {issue.actions && <PanelAction className='' actions={issue.actions} />}
+              {ratingActions}
+            </div>
+            <div className="flex items-center gap-2">
+              {issue.stats && Object.values(issue.stats).map((stat) => (
+                <PanelStat
+                  triggerClassName='text-sm'
+                  iconType={getIssueStatIcon(stat.type)}
+                  hint={stat.hint}
+                  fill={stat.filled}
+                >
+                  {stat.children}
+                </PanelStat>
+              ))
+              }
+            </div>
+          </PanelFooter>}
+      </div>
+    </div>
+    // </BasePanel>
+  )
+}
+
+export default IssueLinkPanel4

@@ -2,7 +2,7 @@ import React from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
 import Link from '@/components/custom-ui/Link'
 import Badge from '@/components/custom-ui/Badge'
-import IssueCard from '@/components/issue/IssueLinkPanel2'
+import IssueCard from '@/components/issue/IssueLink'
 
 const IssuesSection: React.FC = () => {
   const issues = [
@@ -17,8 +17,22 @@ const IssuesSection: React.FC = () => {
       downvotes: 2,
       status: "Not rating",
       priority: "Urgent",
-      author: "Brian Barajas",
-      solved: false
+      author: {
+        uri: "/profile/brian-barajas",
+        name: "Brian Barajas",
+        avatar: "/avatars/brian-barajas.jpg"
+      },
+      solved: false,
+      uri: "/issue/1",
+      number: "1",
+      type: "bug" as const,
+      storage: "github" as const,
+      projectId: "project-1",
+      categoryId: "category-1",
+      vpAmount: 100,
+      currentVP: 0,
+      topVP: 0,
+      minVP: 10
     },
     {
       id: 2,
@@ -31,8 +45,22 @@ const IssuesSection: React.FC = () => {
       downvotes: 0,
       status: "Rating Issue",
       priority: "Prioritize",
-      author: "Brian Barajas",
-      solved: false
+      author: {
+        uri: "/profile/brian-barajas",
+        name: "Brian Barajas",
+        avatar: "/avatars/brian-barajas.jpg"
+      },
+      solved: false,
+      uri: "/issue/2",
+      number: "2",
+      type: "improvement" as const,
+      storage: "cascadefund" as const,
+      projectId: "project-1",
+      categoryId: "category-1",
+      vpAmount: 100,
+      currentVP: 15,
+      topVP: 45,
+      minVP: 10
     },
     {
       id: 3,
@@ -45,8 +73,22 @@ const IssuesSection: React.FC = () => {
       downvotes: 2,
       status: "Not enough VP",
       priority: "Urgent",
-      author: "Brian Barajas",
-      solved: false
+      author: {
+        uri: "/profile/brian-barajas",
+        name: "Brian Barajas",
+        avatar: "/avatars/brian-barajas.jpg"
+      },
+      solved: false,
+      uri: "/issue/3",
+      number: "3",
+      type: "feature" as const,
+      storage: "cascadefund" as const,
+      projectId: "project-1",
+      categoryId: "category-1",
+      vpAmount: 100,
+      currentVP: 0,
+      topVP: 0,
+      minVP: 10
     },
     {
       id: 4,
@@ -59,8 +101,22 @@ const IssuesSection: React.FC = () => {
       downvotes: 0,
       status: "Already Solved",
       priority: "Urgent",
-      author: "Brian Barajas",
-      solved: true
+      author: {
+        uri: "/profile/brian-barajas",
+        name: "Brian Barajas",
+        avatar: "/avatars/brian-barajas.jpg"
+      },
+      solved: true,
+      uri: "/issue/4",
+      number: "4",
+      type: "bug" as const,
+      storage: "github" as const,
+      projectId: "project-1",
+      categoryId: "category-1",
+      vpAmount: 100,
+      currentVP: 0,
+      topVP: 0,
+      minVP: 10
     }
   ]
 
@@ -105,7 +161,7 @@ const IssuesSection: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {issues.map((issue) => (
-            <IssueCard key={issue.id} issue={issue} />
+            <IssueCard key={issue.id} {...issue} />
           ))}
         </div>
       </div>

@@ -6,6 +6,7 @@ import { getIcon, IconType } from '@/components/icon'
 import { cn } from '@/lib/utils'
 import type { ActionProps } from '@/types/eventTypes'
 import BasePanel from './BasePanel'
+import PanelAction from './PanelAction'
 
 export interface PageLikePanelProps extends Omit<InteractivePanelProps, 'children' | 'expandableTitle'> {
     icon?: IconType
@@ -67,42 +68,6 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
         )
     }
 
-    const renderActions = () => {
-        if (!actions || Array.isArray(actions) && actions.length === 0) return null
-        if (!Array.isArray(actions)) {
-            if (!React.isValidElement(actions)) return null
-            return <div className="flex justify-center gap-3 mt-6">
-                {actions}
-            </div>
-        }
-
-        return (
-            <div className="flex justify-center gap-3 mt-6">
-                {actions.map((action, index) => (
-                    action.href ? (
-                        <Link
-                            key={index}
-                            href={action.href}
-                            className={cn("flex-1 inline-flex items-center font-bold py-2 px-4 rounded transition-colors", action.className)}
-                        >
-                            {action.children}
-                        </Link>
-                    ) : (
-                        <Button
-                            disabled={action.disabled}
-                            key={index}
-                            variant={action.variant}
-                            onClick={action.onClick}
-                            className={cn("flex-1", action.className)}
-                        >
-                            {action.children}
-                        </Button>
-                    )
-                ))}
-            </div>
-        )
-    }
-
     return (
         interactive ? <InteractivePanel
             {...interactiveProps}
@@ -119,7 +84,7 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
 
             {renderContent()}
 
-            {renderActions()}
+            <PanelAction actions={actions} />
         </InteractivePanel> : <BasePanel
             {...interactiveProps}
             className={cn('space-y-4', className)}
@@ -134,7 +99,7 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
 
             {renderContent()}
 
-            {renderActions()}
+            <PanelAction actions={actions} />
         </BasePanel>
     )
 }

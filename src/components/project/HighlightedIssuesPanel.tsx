@@ -1,32 +1,93 @@
 import React from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
-import IssueLink from '@/components/issue/IssueLinkPanel'
+import IssueLink from '@/components/issue/IssueLink'
+import { Issue } from '../issue/types'
 
 const HighlightedIssues: React.FC = () => {
-  const issues = [
+  const issues: Issue[] = [
     {
       title: 'Add Typescript Support',
       description: 'Add full TypeScript support to improve developer experience and type safety.',
-      supporters: 12,
-      vp: 45
+      stats: {
+        'follower': {
+          type: 'follower',
+          hint: 'Followers interested',
+          children: 8
+        },
+        'voting-power': {
+          type: 'voting-power',
+          hint: 'Voting power',
+          children: 32
+        }
+      },
+      uri: '',
+      number: '',
+      type: 'improvement',
+      projectId: '',
+      categoryId: ''
     },
     {
       title: 'Fix Linux memory leak',
       description: 'Resolve critical memory leak affecting Linux deployments in production.',
-      supporters: 8,
-      vp: 32
+      stats: {
+        'follower': {
+          type: 'follower',
+          hint: 'Followers interested',
+          children: 8
+        },
+        'voting-power': {
+          type: 'voting-power',
+          hint: 'Voting power',
+          children: 32
+        }
+      },
+      uri: '',
+      number: '',
+      type: 'improvement',
+      projectId: '',
+      categoryId: ''
     },
     {
       title: 'Consult me how the code work for internal project',
       description: 'Create comprehensive guides and examples for newcomers to the library.',
-      supporters: 1,
-      vp: 20
+      stats: {
+        'follower': {
+          type: 'follower',
+          hint: 'Followers interested',
+          children: 1
+        },
+        'voting-power': {
+          type: 'voting-power',
+          hint: 'Voting power',
+          children: 20
+        }
+      },
+      uri: '',
+      number: '',
+      type: 'improvement',
+      projectId: '',
+      categoryId: ''
     },
     {
       title: 'Better documentation for beginners',
       description: 'Create comprehensive guides and examples for newcomers to the library.',
-      supporters: 5,
-      vp: 20
+      stats: {
+        'follower': {
+          type: 'follower',
+          hint: 'Followers interested',
+          children: 5
+        },
+        'voting-power': {
+          type: 'voting-power',
+          hint: 'Voting power',
+          children: 20
+        }
+      },
+      uri: '',
+      number: '',
+      type: 'improvement',
+      projectId: '',
+      categoryId: ''
     }
   ]
 
@@ -35,10 +96,7 @@ const HighlightedIssues: React.FC = () => {
       {issues.map((issue, index) => (
         <IssueLink
           key={index}
-          title={issue.title}
-          description={issue.description}
-          supporters={issue.supporters}
-          vp={issue.vp}
+          {...issue}
         />
       ))}
     </PageLikePanel>

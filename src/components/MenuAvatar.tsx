@@ -7,9 +7,10 @@ interface MenuAvatarProps {
   alt?: string
   className?: string
   imgClassName?: string
+  uri?: string
 }
 
-const MenuAvatar: React.FC<MenuAvatarProps> = ({ src, alt, className, imgClassName }) => {
+const MenuAvatar: React.FC<MenuAvatarProps> = ({ src, alt, className, imgClassName, uri = '/data/profile' }) => {
   const defaultSrc = 'https://api.backdropbuild.com/storage/v1/object/public/avatars/9nFM8HasgS.jpeg'
   const defaultAlt = 'Avatar'
 
@@ -21,8 +22,8 @@ const MenuAvatar: React.FC<MenuAvatarProps> = ({ src, alt, className, imgClassNa
         </div>
       }
     >
-      <Link href="/data/profile" className={`hover:bg-teal-300 bg-blue-200 rounded-full h-8 w-8 flex items-center p-1! ${className}`}>
-        <img src={src || defaultSrc} alt={alt || defaultAlt} className={`w-7 h-full rounded-full ${imgClassName}`} />
+      <Link href={uri} className={`hover:bg-teal-300 bg-blue-200 rounded-full h-8 w-8 flex items-center p-1! ${className}`}>
+        <img src={src || defaultSrc} alt={alt || defaultAlt} className={`w-full h-full rounded-full ${imgClassName}`} />
       </Link>
     </Tooltip>
 
