@@ -15,7 +15,7 @@ export interface Issue {
     description: string
     type: IssueType
     storage?: IssueStorage
-    author?: ProfileLink
+    author?: ProfileLink | ProfileLink[]
     projectId: string
     categoryId: string
     stats?: {

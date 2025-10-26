@@ -1,10 +1,80 @@
 import React from 'react'
-import PageLikePanel from '@/components/panel/PageLikePanel'
 import Link from '@/components/custom-ui/Link'
-import Badge from '@/components/custom-ui/Badge'
 import IssueCard from '@/components/issue/IssueLink'
+import FilterableList from '@/components/list/FilterableList'
+import { FilterOption } from '@/components/list/FilterToggle'
 
 const IssuesSection: React.FC = () => {
+  // Filter configuration for FilterableList
+  const filters: FilterOption[] = [
+    {
+      id: 'all',
+      label: 'All',
+      sortIds: [
+        { id: 'priority', label: 'Priority' },
+        { id: 'date', label: 'Date' },
+        { id: 'upvotes', label: 'Upvotes' },
+        { id: 'comments', label: 'Comments' }
+      ]
+    },
+    {
+      id: 'bug',
+      label: 'Bug',
+      sortIds: [
+        { id: 'priority', label: 'Priority' },
+        { id: 'date', label: 'Date' }
+      ]
+    },
+    {
+      id: 'fix',
+      label: 'Fix',
+      sortIds: [
+        { id: 'priority', label: 'Priority' },
+        { id: 'date', label: 'Date' }
+      ]
+    },
+    {
+      id: 'urgent',
+      label: 'Urgent',
+      sortIds: [
+        { id: 'priority', label: 'Priority' },
+        { id: 'date', label: 'Date' }
+      ]
+    },
+    {
+      id: 'wish',
+      label: 'Wish',
+      sortIds: [
+        { id: 'upvotes', label: 'Upvotes' },
+        { id: 'date', label: 'Date' }
+      ]
+    },
+    {
+      id: 'suggested',
+      label: 'Suggested',
+      sortIds: [
+        { id: 'upvotes', label: 'Upvotes' },
+        { id: 'date', label: 'Date' }
+      ]
+    },
+    {
+      id: 'following',
+      label: 'Following',
+      sortIds: [
+        { id: 'date', label: 'Date' },
+        { id: 'upvotes', label: 'Upvotes' }
+      ]
+    },
+    {
+      id: 'my',
+      label: 'My',
+      sortIds: [
+        { id: 'date', label: 'Date' },
+        { id: 'priority', label: 'Priority' }
+      ]
+    }
+  ]
+
   const issues = [
     {
       id: 1,
@@ -121,51 +191,20 @@ const IssuesSection: React.FC = () => {
   ]
 
   return (
-    <PageLikePanel title={<>Issues <Badge variant="gray">4</Badge></>} rightHeader={<Link href="/data/issue/post" className="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors" >Add Issue</Link>}>
-      <div className="p-6">
-        <div className="mb-6">
-          <div className="flex items-center space-x-2 mb-4">
-            <div className="flex-1">
-              <div className="relative">
-                <svg className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
-                </svg>
-                <input
-                  type="text"
-                  placeholder="Search and upvote similar issue"
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex flex-wrap gap-2">
-              <Badge variant="gray" active>All</Badge>
-              <Badge variant="red">Bug</Badge>
-              <Badge variant="blue">Fix</Badge>
-              <Badge variant="orange">Urgent</Badge>
-              <Badge variant="green">Wish</Badge>
-              <Badge variant="gray">Suggested</Badge>
-              <Badge variant="gray">Following</Badge>
-              <Badge variant="purple">My</Badge>
-            </div>
-            <div className="flex items-center space-x-2">
-              <span className="text-sm text-gray-600">Sort by:</span>
-              <select className="border border-gray-300 rounded-md px-3 py-1 text-sm">
-                <option>Priority</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {issues.map((issue) => (
-            <IssueCard key={issue.id} {...issue} />
-          ))}
-        </div>
+    <FilterableList
+      items={issues}
+      itemComponent={IssueCard}
+      filters={filters}
+      searchPlaceholder="Search and upvote similar issue"
+      searchableFields={['title', 'description']}
+      showNumber={true}
+    >
+      <div className="flex justify-center mt-4">
+        <Link href="/data/issue/post" className="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors">
+          Add Issue
+        </Link>
       </div>
-    </PageLikePanel>
+    </FilterableList>
   )
 }
 

@@ -11,6 +11,8 @@ import Button from '../custom-ui/Button'
 import { ActionProps } from '@/types/eventTypes'
 import PanelAction from '../panel/PanelAction'
 import VotePopover from './VotePopover'
+import ProfileRating from '../rating/ProfileRating'
+import AvatarList from '../AvatarList'
 
 
 const IssueLinkPanel4: React.FC<Issue & { actions?: ActionProps[] }> = (issue) => {
@@ -93,7 +95,14 @@ const IssueLinkPanel4: React.FC<Issue & { actions?: ActionProps[] }> = (issue) =
         {(issue.author || issue.createdTime) &&
           <div className="flex justify-end items-center space-x-1 text-gray-500 gap-1 text-xs">
             {issue.author && <>
-              By <MenuAvatar src={issue.author?.avatar} uri={issue.author?.uri} className='w-7! h-7!' />
+              By {Array.isArray(issue.author) ? (
+                <AvatarList contributors={issue.author} showLastRating={true} />
+              ) : (
+                <>
+                  <MenuAvatar src={issue.author?.avatar} uri={issue.author?.uri} className='w-7! h-7!' />
+                  {issue.author.rating && <ProfileRating {...issue.author.rating} />}
+                </>
+              )}
             </>}
             {issue.createdTime &&
               <TimeAgo datetime={issue.createdTime} />

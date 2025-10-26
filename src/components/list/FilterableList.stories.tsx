@@ -635,66 +635,6 @@ export const NoNumberBadge: Story = {
     },
 }
 
-// Story 12: Selectable Issues
-export const SelectableIssues: Story = {
-    render: () => {
-        const [selectedItems, setSelectedItems] = useState<string[]>([])
-        const [currentFilter, setCurrentFilter] = useState<string>('')
-        const [currentSort, setCurrentSort] = useState<string>('')
-
-        const handleSelectedItemsChange = (items: string[], filterId?: string, sortId?: string) => {
-            setSelectedItems(items)
-            setCurrentFilter(filterId || '')
-            setCurrentSort(sortId || '')
-        }
-
-        return (
-            <div className="space-y-4">
-                <FilterableList
-                    items={sampleIssues}
-                    itemComponent={IssueLinkPanel4}
-                    filters={issueFilters}
-                    selectableProp="uri"
-                    onSelectedItemsChange={handleSelectedItemsChange}
-                    title={
-                        <div className='inline-flex items-center gap-1'>
-                            {getIcon('github')} Selectable Issues
-                        </div>
-                    }
-                    searchPlaceholder="Search for issues..."
-                    searchableFields={['title', 'description']}
-                    showNumber={true}
-                />
-
-                <div className="p-4 bg-gray-50 rounded-lg">
-                    <h3 className="font-semibold text-gray-900 mb-2">Selection State</h3>
-                    <div className="text-sm text-gray-600 space-y-1">
-                        <div>Selected Items: <span className="font-medium">{selectedItems.length}</span></div>
-                        <div>Current Filter: <span className="font-medium">{currentFilter || 'None'}</span></div>
-                        <div>Current Sort: <span className="font-medium">{currentSort || 'None'}</span></div>
-                        {selectedItems.length > 0 && (
-                            <div className="mt-2">
-                                <div className="font-medium mb-1">Selected Issue URIs:</div>
-                                <ul className="list-disc list-inside text-xs">
-                                    {selectedItems.map((uri, index) => (
-                                        <li key={index} className="truncate">{uri}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            </div>
-        )
-    },
-    parameters: {
-        docs: {
-            description: {
-                story: 'Selectable Issues example based on ForkLinkingPanel. Shows issues with selection functionality using uri as selectableProp.',
-            },
-        },
-    },
-}
 
 // Story 13: Interactive Example
 export const Interactive: Story = {
