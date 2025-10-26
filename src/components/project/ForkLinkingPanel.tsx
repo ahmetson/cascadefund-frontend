@@ -12,6 +12,7 @@ import { useSelectableList } from '../list/useSelectableList'
 import Badge from '../custom-ui/Badge'
 import Button from '../custom-ui/Button'
 import IssueLinkPanel4 from '../issue/IssueLink'
+import NumberFlow from '@number-flow/react'
 
 export type ForkLinkingPanelProps = Omit<PageLikePanelProps, 'title' | 'children'> & {
   project: Omit<ProjectInfo, 'forkId'>
@@ -151,7 +152,15 @@ const ForkLinkingPanel: React.FC<ForkLinkingPanelProps> = ({ className, onAction
         </span>
       </p>
 
-      <h3 className='text-md font-medium mb-2'><div className='inline-flex items-center gap-1'>{getIcon('github')} {fork.name} Issues</div>      </h3>
+      <h3 className='text-md font-medium mb-2'>
+        <div className='inline-flex items-center gap-1'>
+          {getIcon('github')} {fork.name} Issues <Badge variant="info"><NumberFlow
+            value={filteredIssues.length}
+            locales="en-US"
+            format={{ useGrouping: false }}
+          /></Badge>
+        </div>
+      </h3>
 
       <SearchBar
         value={searchQuery}
