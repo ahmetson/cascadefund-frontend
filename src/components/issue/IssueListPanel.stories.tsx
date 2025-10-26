@@ -1,20 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import IssueListPanel2 from './IssueListPanel2'
-import { Issue, IssueType, IssueStorage, IssueStatType } from '../issue/types'
+import IssueListPanel from './IssueListPanel'
+import { Issue, IssueType, IssueStorage, IssueStatType } from './types'
 import { RatingType } from '../rating/ProfileRating'
 import React from 'react'
 import FilterableList from '@/components/list/FilterableList'
 import IssueLink from '@/components/issue/IssueLink'
 import BasePanel from '@/components/panel/BasePanel'
 
-const meta: Meta<typeof IssueListPanel2> = {
-    title: 'Components/Maintainer/Issue List Panel 2',
-    component: IssueListPanel2,
+const meta: Meta<typeof IssueListPanel> = {
+    title: 'Components/Issue/Issue List Panel',
+    component: IssueListPanel,
     parameters: {
         layout: 'fullscreen',
         docs: {
             description: {
-                component: 'IssueListPanel2 displays a list of issues using FilterableList component with IssueLink. It includes search capabilities and displays issue details with author ratings, follower counts, and message counts.'
+                component: 'IssueListPanel displays a list of issues using FilterableList component with IssueLink. It includes search capabilities and displays issue details with author ratings, follower counts, and message counts.'
             }
         }
     },

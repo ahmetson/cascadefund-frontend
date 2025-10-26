@@ -6,9 +6,7 @@ import IssueLinkPanel4 from '@/components/issue/IssueLink'
 import UserCard from '@/components/profile/panel/ProfileLinkPanel'
 import DependencyCard from '@/components/maintainer/DepInfoPanel'
 import { Issue } from '@/components/issue/types'
-import Badge from '@/components/custom-ui/Badge'
 import { getIcon } from '@/components/icon'
-import NumberFlow from '@number-flow/react'
 
 // Types for stories
 interface ProfileData {
@@ -82,14 +80,6 @@ const meta: Meta<typeof FilterableList> = {
         showNumber: {
             control: 'boolean',
             description: 'Show number badge next to title (default: true)',
-        },
-        selectableProp: {
-            control: 'text',
-            description: 'Property name to use as selectable ID (e.g., "uri" for Issue type)',
-        },
-        onSelectedItemsChange: {
-            action: 'selectedItemsChanged',
-            description: 'Callback when selection changes',
         },
         searchableFields: {
             control: false,

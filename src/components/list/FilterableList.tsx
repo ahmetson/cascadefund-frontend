@@ -5,8 +5,6 @@ import SearchBar from '@/components/SearchBar'
 import List from './List'
 import Badge from '@/components/custom-ui/Badge'
 import NumberFlow from '@number-flow/react'
-import SelectableItem from './SelectableItem'
-import { useSelectableList } from './useSelectableList'
 
 export interface FilterableListProps<T> {
     items: T[]
@@ -20,8 +18,6 @@ export interface FilterableListProps<T> {
     className?: string
     children?: React.ReactNode
     showNumber?: boolean
-    selectableProp?: keyof T
-    onSelectedItemsChange?: (selectedItems: string[], filterId?: string, sortId?: string) => void
 }
 
 /**

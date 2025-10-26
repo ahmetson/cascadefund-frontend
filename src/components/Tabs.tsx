@@ -14,6 +14,7 @@ export type TabProps = {
   href?: string,
   key: string,
   content: React.ReactNode
+  className?: string
 }
 
 interface Props {
@@ -36,7 +37,7 @@ const C: React.FC<Props> = ({ activeTab: initialTab, tabs, id }) => {
             <TabsHighlightItem key={tab.key} value={tab.key} className={baseClassName + (activeTab === tab.key ? ' bg-white shadow-sm shadow-b-none' : 'bg-blue-100 border-b-2 border-blue-300')}>
               <TabsTrigger
                 value={tab.key}
-                className="h-full px-4 py-2 leading-0 w-full text-sm text-blue-500 cursor-pointer "
+                className={"hyperlink h-full leading-0 w-full text-sm text-blue-500 cursor-pointer " + (tab.className || '')}
               >
                 {tab.label}
               </TabsTrigger>

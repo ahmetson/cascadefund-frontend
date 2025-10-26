@@ -5,11 +5,12 @@ import { ItemName } from "@/components/utilitified_decorations/WorkNavbar.astro"
 import NotificationBanner from "@/components/NotificationBanner";
 import ProjectInfo from "@/components/project/ProjectInfoPanel.astro";
 import ProjectStats from "@/components/project/ProjectStatsPanel";
-import IssuesSection from "@/components/project/IssueListPanel";
+import IssuesSection from "@/components/issue/IssueListPanel";
 import CallToInteract from "@/components/project/CallToInteractPanel";
 import ProjectPeople from "@/components/project/ProjectPeoplePanel";
 import HighlightedInteraction from "@/components/project/HighlightedInteractionPanel";
 import MenuPanel from "@/components/panel/MenuPanel";
+import IssueInfoPanel from "@/components/project/IssueStatPanel";
 ---
 
 <V2Layout active={ItemName.ProjectName} subtitle="Data Section: Project">
@@ -39,9 +40,10 @@ import MenuPanel from "@/components/panel/MenuPanel";
 
   <ProjectInfo slot="center" />
   <ProjectStats slot="center" />
-  <IssuesSection slot="center" />
+  <IssuesSection title="All Issues" filerable={true} slot="center" />
 
   <ProjectPeople slot="right" />
   <HighlightedInteraction slot="right" />
   <CallToInteract slot="right" />
+  <IssueInfoPanel slot="right" />
 </V2Layout>

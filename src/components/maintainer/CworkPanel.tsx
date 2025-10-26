@@ -2,7 +2,7 @@ import React from 'react'
 import DepList from './DepListPanel'
 import type { TabProps } from '@/components/Tabs';
 import Tabs from '@/components/Tabs';
-import IssueList from '@/components/maintainer/IssueListPanel2'
+import IssueList from '@/components/issue/IssueListPanel'
 import ProfileList from '@/components/maintainer/ProfileListPanel'
 
 const DependenciesSection: React.FC = () => {

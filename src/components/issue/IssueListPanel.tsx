@@ -3,9 +3,88 @@ import FilterableList from '@/components/list/FilterableList'
 import IssueLink from '@/components/issue/IssueLink'
 import BasePanel from '@/components/panel/BasePanel'
 import { Issue } from '@/components/issue/types'
-import TimeAgo from 'timeago-react'
+import DraggableIssueLink from './DraggableIssueLink'
+import { FilterOption } from '@/components/list/FilterToggle'
 
-const ContentArea: React.FC = () => {
+interface Props {
+  title?: string
+  filerable?: boolean
+  draggable?: boolean
+}
+
+const ContentArea: React.FC<Props> = ({ title = 'Issues', draggable = false, filerable = false }) => {
+  // Create filters based on IssueType
+  const filters: FilterOption[] = [
+    {
+      id: 'all',
+      label: 'All',
+      sortIds: [
+        { id: 'priority', label: 'Priority' },
+        { id: 'date', label: 'Date' },
+        { id: 'title', label: 'Title' }
+      ]
+    },
+    {
+      id: 'bug',
+      label: 'Bug',
+      sortIds: [
+        { id: 'priority', label: 'Priority' },
+        { id: 'date', label: 'Date' },
+        { id: 'title', label: 'Title' }
+      ]
+    },
+    {
+      id: 'feature',
+      label: 'Feature',
+      sortIds: [
+        { id: 'priority', label: 'Priority' },
+        { id: 'date', label: 'Date' },
+        { id: 'title', label: 'Title' }
+      ]
+    },
+    {
+      id: 'improvement',
+      label: 'Improvement',
+      sortIds: [
+        { id: 'priority', label: 'Priority' },
+        { id: 'date', label: 'Date' },
+        { id: 'title', label: 'Title' }
+      ]
+    },
+    {
+      id: 'enhancement',
+      label: 'Enhancement',
+      sortIds: [
+        { id: 'priority', label: 'Priority' },
+        { id: 'date', label: 'Date' },
+        { id: 'title', label: 'Title' }
+      ]
+    },
+    {
+      id: 'wish',
+      label: 'Wish',
+      sortIds: [
+        { id: 'priority', label: 'Priority' },
+        { id: 'date', label: 'Date' },
+        { id: 'title', label: 'Title' }
+      ]
+    },
+    {
+      id: 'custom',
+      label: 'Custom',
+      sortIds: [
+        { id: 'priority', label: 'Priority' },
+        { id: 'date', label: 'Date' },
+        { id: 'title', label: 'Title' }
+      ]
+    }
+  ]
+
+  // Handle filter changes
+  const handleFilterChange = (filterId: string, sortId: string) => {
+    console.log('Filter changed:', { filterId, sortId })
+  }
+
   const issues: Issue[] = [
     {
       id: 1,
@@ -81,12 +160,17 @@ const ContentArea: React.FC = () => {
 
   return (
     <BasePanel className="max-w-6xl mx-auto">
+      {draggable && <p className='absolute top-2 right-2 text-xs mb-2 text-gray-600'>
+        Issues are draggable
+      </p>}
       <FilterableList
         items={issues}
-        itemComponent={IssueLink}
-        title={<h2 className="text-xl font-semibold">Issues</h2>}
+        itemComponent={draggable ? DraggableIssueLink : IssueLink}
+        title={title}
         searchPlaceholder="Search issues..."
         searchableFields={['title', 'description']}
+        filters={filerable ? filters : undefined}
+        onFilterChange={handleFilterChange}
       />
     </BasePanel>
   )
