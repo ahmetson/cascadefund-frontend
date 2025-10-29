@@ -3,73 +3,17 @@ import PageLikePanel from '@/components/panel/PageLikePanel'
 import { FinanceInfoProps } from '../types'
 import NumberFlow, { NumberFlowGroup } from '@number-flow/react'
 import { cn } from '@/lib/utils'
+import InfoPair from '../../InfoPair'
 
 const FinancialStatus: React.FC<FinanceInfoProps> = ({ balance, cascadingBalance, totalDonated, totalReceived }) => {
   return (
     <PageLikePanel interactive={false} title="Finance Info" actions={[]}>
       <div className="space-y-4">
-        <div className="flex justify-between items-center">
-          <div>
-            <p className="text-sm text-gray-500">Balance / Cascading Balance</p>
-            <p className="text-2xl font-bold">
-              <NumberFlowGroup>
-                <div
-                  className="flex items-center gap-4 font-semibold"
-                >
-                  <NumberFlow
-                    value={balance}
-                    locales="en-US"
-                    format={{ style: 'currency', currency: 'USD', maximumFractionDigits: 2, signDisplay: 'always' }}
-                    className="~text-2xl/4xl"
-                  />
-                  <span className="text-lg text-gray-500 -ml-2"> / </span>
-                  <NumberFlow
-                    value={cascadingBalance}
-                    locales="en-US"
-                    format={{ style: 'currency', currency: 'USD', maximumFractionDigits: 2, signDisplay: 'always' }}
-                    className={cn(
-                      'text-lg -ml-2',
-                      'transition-colors duration-300 text-gray-500',
-                      cascadingBalance <= 10 ? 'text-red-500' : 'text-gray-500'
-                    )}
-                  />
-                </div>
-              </NumberFlowGroup>
-            </p>
-          </div>
-          <div>
-            <p className="text-sm text-gray-500">Total Donated / Total Received</p>
-            <p className="text-2xl font-bold text-blue-500">
-              <NumberFlowGroup>
-                <div
-                  className="flex items-center gap-4 font-semibold"
-                >
-                  <NumberFlow
-                    value={totalDonated}
-                    locales="en-US"
-                    format={{ style: 'currency', currency: 'USD', maximumFractionDigits: 2, signDisplay: 'always' }}
-                    className="~text-2xl/4xl"
-                  />
-                  <span className="text-lg text-teal-500 -ml-2"> / </span>
-                  <NumberFlow
-                    value={totalReceived}
-                    locales="en-US"
-                    format={{ style: 'currency', currency: 'USD', maximumFractionDigits: 2, signDisplay: 'always' }}
-                    className={cn(
-                      'text-lg -ml-2',
-                      'transition-colors duration-300 text-teal-500',
-                      cascadingBalance <= 10 ? 'text-red-500' : 'text-teal-500'
-                    )}
-                  />
-                </div>
-              </NumberFlowGroup>
-            </p>
-          </div>
+        <div className="flex justify-start items-center gap-4">
+          <InfoPair title1="Balance" value1={balance} title2="Cascading Balance" value2={cascadingBalance} belowThresholdColor={10} />
+          <InfoPair title1="Total Donated" value1={totalDonated} title2="Total Received" value2={totalReceived} belowThresholdColor={10} />
         </div>
 
-        <div className='border-t pt-4 text-center text-gray-500'>
-          <span>More features about finances will be here</span>
-        </div>
         {/* <div className="border-t pt-4 grid grid-cols-2 gap-4">
           <div>
             <p className="text-sm text-gray-500 mb-2">Monthly Activity</p>

@@ -229,12 +229,12 @@ export const WithLinkActions: Story = {
         actions: [
             {
                 variant: 'blue',
-                href: 'https://github.com',
+                uri: 'https://github.com',
                 children: 'View on GitHub',
             },
             {
                 variant: 'gray',
-                href: '/settings',
+                uri: '/settings',
                 children: 'Settings',
             },
         ],

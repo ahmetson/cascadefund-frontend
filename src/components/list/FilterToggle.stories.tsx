@@ -60,7 +60,6 @@ const basicFilters: FilterOption[] = [
     },
 ]
 
-// Issue filter configuration (replicating IssueFilterBar)
 const issueFilters: FilterOption[] = [
     {
         id: 'all',
@@ -119,7 +118,6 @@ const issueFilters: FilterOption[] = [
     },
 ]
 
-// Project filter configuration (replicating ProjectFilterTabs)
 const projectFilters: FilterOption[] = [
     {
         id: 'all',

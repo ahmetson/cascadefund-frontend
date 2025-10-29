@@ -73,8 +73,8 @@ const sectionClassName =
           {actions.map((action) =>
             action.replaceWithChildren ? (
               <DynamicReactImporter element={action.children} />
-            ) : action.href ? (
-              <Link href={action.href} className={action.className}>
+            ) : action.uri ? (
+              <Link href={action.uri} className={action.className}>
                 <Button
                   variant={action.variant as ButtonVariant}
                   size="lg"

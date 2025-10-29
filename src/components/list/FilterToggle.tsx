@@ -25,7 +25,6 @@ export interface FilterToggleProps {
  * that are displayed in a dropdown when that filter is active.
  *
  * Use Case:
- * - Use when you need to replace IssueFilterBar or ProjectFilterTabs with a more flexible solution
  * - When you want filter buttons with individual sort options for each filter
  * - For creating consistent filter interfaces across different parts of the application
  *

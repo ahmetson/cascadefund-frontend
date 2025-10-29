@@ -8,11 +8,11 @@ import { FilterOption } from '@/components/list/FilterToggle'
 
 interface Props {
   title?: string
-  filerable?: boolean
+  filterable?: boolean
   draggable?: boolean
 }
 
-const ContentArea: React.FC<Props> = ({ title = 'Issues', draggable = false, filerable = false }) => {
+const ContentArea: React.FC<Props> = ({ title = 'Issues', draggable = false, filterable: filerable = false }) => {
   // Create filters based on IssueType
   const filters: FilterOption[] = [
     {

@@ -144,8 +144,8 @@ const RoadmapPanel: React.FC<RoadmapProps> = ({ actions, versions }) => {
       </div>
       <div className='flex justify-center mt-4'>
         {actions && actions.map((action) => (
-          action.href ?
-            <Link href={action.href} className={`inline-flex items-center font-bold py-2 px-4 rounded transition-colors ${action.className || ""}`} >{action.children}</Link>
+          action.uri ?
+            <Link href={action.uri} className={`inline-flex items-center font-bold py-2 px-4 rounded transition-colors ${action.className || ""}`} >{action.children}</Link>
             :
             <Button variant={action.variant} onClick={action.onClick!} className={action.className || ""} >{action.children}</Button>
         ))}

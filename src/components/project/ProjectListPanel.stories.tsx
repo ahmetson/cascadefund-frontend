@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import ProjectListPanel from './ProjectListPanel'
-import type { ProjectInfoProps } from './ProjectInfoPanel2'
+import type { ProjectInfoProps } from './ProjectLink'
 
 const meta: Meta<typeof ProjectListPanel> = {
     title: 'Components/Project/ProjectListPanel',
@@ -9,7 +9,7 @@ const meta: Meta<typeof ProjectListPanel> = {
         layout: 'fullscreen',
         docs: {
             description: {
-                component: 'A comprehensive project list panel that displays projects with search, filtering, and pagination capabilities. Features project cards with detailed information including ratings, statistics, and collaboration data.',
+                component: 'A comprehensive project list panel that displays projects with search and filtering capabilities using FilterableList. Features project cards with detailed information including ratings, statistics, and collaboration data.',
             },
         },
     },
@@ -30,113 +30,227 @@ const mockProjects: ProjectInfoProps[] = [
     {
         title: 'React Dashboard',
         isInfluencer: true,
-        rating: 4.8,
+        rating: {
+            rating: 8,
+            pointsLeft: 200
+        },
         forks: 124,
         likes: 89,
         isFollowing: true,
+        followers: 45,
         originalProject: 'facebook/react',
-        issue: '#1234',
+        originalProjectUrl: 'https://github.com/facebook/react',
+        issue: '#1234 - Dashboard Enhancement',
         description: 'A modern React dashboard with TypeScript, Tailwind CSS, and real-time data visualization capabilities.',
         license: 'MIT License',
-        balance: '$2,450',
-        cascadeBalance: '$1,200',
-        totalAmount: '$3,650',
+        balance: 2450,
+        cascadeBalance: 1200,
+        totalAmount: 3650,
         duration: '6 months',
-        lastActivity: '2 days ago',
-        totalCommits: '1,234',
+        lastActivity: Date.now() - 2 * 24 * 60 * 60 * 1000, // 2 days ago
+        totalCommits: 1234,
         commitsPerDay: '12.5',
         openIssues: 8,
         closedIssues: 156,
         avgResponseTime: '2.3 hours',
-        collaborators: [
-            { name: 'John Doe', percentage: 45, color: '#3B82F6' },
-            { name: 'Jane Smith', percentage: 30, color: '#10B981' },
-            { name: 'Mike Johnson', percentage: 25, color: '#F59E0B' },
-        ],
-        activeYears: 2,
-        maintainer: {
-            name: 'John Doe',
-            rating: '4.9',
+        createdTime: Date.now() - 2 * 365 * 24 * 60 * 60 * 1000, // 2 years ago
+        author: {
+            uri: '/profile/john-doe',
+            children: 'John Doe',
+            icon: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face',
+            rating: {
+                ratingType: 'maintainer',
+                lvl: 9,
+                maxLvl: 10,
+                top: 5
+            }
         },
         influencers: [
-            { avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face' },
-            { avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face' },
-            { avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face' },
+            {
+                uri: '/profile/jane-smith',
+                children: 'Jane Smith',
+                icon: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face',
+                rating: {
+                    ratingType: 'influencer',
+                    lvl: 7,
+                    maxLvl: 10,
+                    top: 12
+                }
+            },
+            {
+                uri: '/profile/mike-johnson',
+                children: 'Mike Johnson',
+                icon: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face',
+                rating: {
+                    ratingType: 'contributor',
+                    lvl: 6,
+                    maxLvl: 10,
+                    top: 25
+                }
+            },
         ],
+        actions: [
+            {
+                variant: 'primary',
+                uri: '/work/react-dashboard',
+                children: 'View Work',
+                icon: 'work'
+            },
+            {
+                variant: 'secondary',
+                uri: '/cascade/react-dashboard',
+                children: 'Cascade Work',
+                icon: 'cascade'
+            }
+        ]
     },
     {
         title: 'Vue.js E-commerce',
         isInfluencer: false,
-        rating: 4.6,
+        rating: {
+            rating: 6,
+            pointsLeft: 400
+        },
         forks: 67,
         likes: 45,
         isFollowing: false,
+        followers: 23,
         originalProject: 'vuejs/vue',
-        issue: '#567',
+        originalProjectUrl: 'https://github.com/vuejs/vue',
+        issue: '#567 - E-commerce Integration',
         description: 'Full-stack e-commerce solution built with Vue.js, Node.js, and MongoDB. Features include user authentication, payment processing, and inventory management.',
         license: 'Apache 2.0',
-        balance: '$1,890',
-        cascadeBalance: '$950',
-        totalAmount: '$2,840',
+        balance: 1890,
+        cascadeBalance: 950,
+        totalAmount: 2840,
         duration: '4 months',
-        lastActivity: '1 week ago',
-        totalCommits: '892',
+        lastActivity: Date.now() - 7 * 24 * 60 * 60 * 1000, // 1 week ago
+        totalCommits: 892,
         commitsPerDay: '8.2',
         openIssues: 12,
         closedIssues: 89,
         avgResponseTime: '4.1 hours',
-        collaborators: [
-            { name: 'Sarah Wilson', percentage: 60, color: '#8B5CF6' },
-            { name: 'Tom Brown', percentage: 25, color: '#EF4444' },
-            { name: 'Lisa Davis', percentage: 15, color: '#06B6D4' },
-        ],
-        activeYears: 1,
-        maintainer: {
-            name: 'Sarah Wilson',
-            rating: '4.7',
+        createdTime: Date.now() - 1 * 365 * 24 * 60 * 60 * 1000, // 1 year ago
+        author: {
+            uri: '/profile/sarah-wilson',
+            children: 'Sarah Wilson',
+            icon: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face',
+            rating: {
+                ratingType: 'maintainer',
+                lvl: 7,
+                maxLvl: 10,
+                top: 18
+            }
         },
         influencers: [
-            { avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face' },
-            { avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=32&h=32&fit=crop&crop=face' },
+            {
+                uri: '/profile/tom-brown',
+                children: 'Tom Brown',
+                icon: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=32&h=32&fit=crop&crop=face',
+                rating: {
+                    ratingType: 'contributor',
+                    lvl: 5,
+                    maxLvl: 10,
+                    top: 35
+                }
+            },
         ],
+        actions: [
+            {
+                variant: 'primary',
+                uri: '/work/vue-ecommerce',
+                children: 'View Work',
+                icon: 'work'
+            }
+        ]
     },
     {
         title: 'Node.js API Gateway',
         isInfluencer: true,
-        rating: 4.9,
+        rating: {
+            rating: 9,
+            pointsLeft: 100
+        },
         forks: 203,
         likes: 156,
         isFollowing: true,
+        followers: 89,
         originalProject: 'expressjs/express',
-        issue: '#890',
+        originalProjectUrl: 'https://github.com/expressjs/express',
+        issue: '#890 - API Gateway Implementation',
         description: 'High-performance API gateway built with Node.js and Express. Includes rate limiting, authentication, load balancing, and comprehensive monitoring.',
         license: 'GPL-3.0',
-        balance: '$3,200',
-        cascadeBalance: '$1,800',
-        totalAmount: '$5,000',
+        balance: 3200,
+        cascadeBalance: 1800,
+        totalAmount: 5000,
         duration: '8 months',
-        lastActivity: '3 days ago',
-        totalCommits: '2,156',
+        lastActivity: Date.now() - 3 * 24 * 60 * 60 * 1000, // 3 days ago
+        totalCommits: 2156,
         commitsPerDay: '15.8',
         openIssues: 5,
         closedIssues: 234,
         avgResponseTime: '1.2 hours',
-        collaborators: [
-            { name: 'Alex Chen', percentage: 50, color: '#F97316' },
-            { name: 'Maria Garcia', percentage: 35, color: '#84CC16' },
-            { name: 'David Lee', percentage: 15, color: '#EC4899' },
-        ],
-        activeYears: 3,
-        maintainer: {
-            name: 'Alex Chen',
-            rating: '4.9',
+        createdTime: Date.now() - 3 * 365 * 24 * 60 * 60 * 1000, // 3 years ago
+        author: {
+            uri: '/profile/alex-chen',
+            children: 'Alex Chen',
+            icon: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face',
+            rating: {
+                ratingType: 'maintainer',
+                lvl: 10,
+                maxLvl: 10,
+                top: 2
+            }
         },
         influencers: [
-            { avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face' },
-            { avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face' },
-            { avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face' },
-            { avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face' },
+            {
+                uri: '/profile/maria-garcia',
+                children: 'Maria Garcia',
+                icon: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face',
+                rating: {
+                    ratingType: 'influencer',
+                    lvl: 8,
+                    maxLvl: 10,
+                    top: 8
+                }
+            },
+            {
+                uri: '/profile/david-lee',
+                children: 'David Lee',
+                icon: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face',
+                rating: {
+                    ratingType: 'contributor',
+                    lvl: 6,
+                    maxLvl: 10,
+                    top: 20
+                }
+            },
+            {
+                uri: '/profile/emma-wilson',
+                children: 'Emma Wilson',
+                icon: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face',
+                rating: {
+                    ratingType: 'contributor',
+                    lvl: 5,
+                    maxLvl: 10,
+                    top: 30
+                }
+            },
         ],
+        actions: [
+            {
+                variant: 'primary',
+                uri: '/work/node-api-gateway',
+                children: 'View Work',
+                icon: 'work'
+            },
+            {
+                variant: 'secondary',
+                uri: '/cascade/node-api-gateway',
+                children: 'Cascade Work',
+                icon: 'cascade'
+            }
+        ]
     },
 ]
 
@@ -148,7 +262,7 @@ export const Default: Story = {
     parameters: {
         docs: {
             description: {
-                story: 'Default project list panel with sample projects. Shows the complete interface including search, filters, and project cards.',
+                story: 'Default project list panel with sample projects. Shows the complete interface including search, filter tabs, and project cards using FilterableList.',
             },
         },
     },
@@ -162,7 +276,7 @@ export const EmptyState: Story = {
     parameters: {
         docs: {
             description: {
-                story: 'Empty state when no projects are available. The panel still shows the search and filter interface.',
+                story: 'Empty state when no projects are available. The panel still shows the search and filter interface using FilterableList.',
             },
         },
     },
@@ -176,7 +290,7 @@ export const SingleProject: Story = {
     parameters: {
         docs: {
             description: {
-                story: 'Project list panel with a single project. Useful for testing the layout with minimal content.',
+                story: 'Project list panel with a single project using FilterableList. Useful for testing the layout with minimal content.',
             },
         },
     },
@@ -190,7 +304,10 @@ export const ManyProjects: Story = {
             ...mockProjects.map((project, index) => ({
                 ...project,
                 title: `${project.title} ${index + 2}`,
-                rating: Math.max(1, project.rating - (index * 0.1)),
+                rating: {
+                    rating: Math.max(1, project.rating.rating - (index * 1)),
+                    pointsLeft: project.rating.pointsLeft + (index * 50)
+                },
                 forks: project.forks + (index * 10),
                 likes: project.likes + (index * 5),
             })),
@@ -199,7 +316,7 @@ export const ManyProjects: Story = {
     parameters: {
         docs: {
             description: {
-                story: 'Project list panel with many projects to test scrolling and performance. Shows how the component handles larger datasets.',
+                story: 'Project list panel with many projects to test scrolling and performance using FilterableList. Shows how the component handles larger datasets.',
             },
         },
     },
@@ -217,7 +334,10 @@ export const MixedStates: Story = {
             },
             {
                 ...mockProjects[2],
-                rating: 2.1, // Low rating
+                rating: {
+                    rating: 2,
+                    pointsLeft: 800
+                }, // Low rating
                 openIssues: 45, // Many open issues
                 avgResponseTime: '2 days', // Slow response
             },
@@ -226,7 +346,7 @@ export const MixedStates: Story = {
     parameters: {
         docs: {
             description: {
-                story: 'Project list with mixed states including influencer projects, different ratings, and various issue counts.',
+                story: 'Project list with mixed states including influencer projects, different ratings, and various issue counts using FilterableList.',
             },
         },
     },
@@ -237,7 +357,10 @@ export const HighRatedProjects: Story = {
     args: {
         projects: mockProjects.map(project => ({
             ...project,
-            rating: 4.8 + Math.random() * 0.2, // 4.8-5.0 rating
+            rating: {
+                rating: 8 + Math.floor(Math.random() * 2), // 8-10 rating
+                pointsLeft: Math.floor(Math.random() * 200) + 50 // 50-250 points left
+            },
             forks: project.forks + Math.floor(Math.random() * 100),
             likes: project.likes + Math.floor(Math.random() * 50),
         })),
@@ -245,7 +368,7 @@ export const HighRatedProjects: Story = {
     parameters: {
         docs: {
             description: {
-                story: 'Project list featuring high-rated projects with excellent metrics. Shows the best-case scenario for project display.',
+                story: 'Project list featuring high-rated projects with excellent metrics using FilterableList. Shows the best-case scenario for project display.',
             },
         },
     },
@@ -263,7 +386,7 @@ export const ProjectsWithIssues: Story = {
     parameters: {
         docs: {
             description: {
-                story: 'Project list showing projects with various issue counts and response times. Useful for testing how the component displays projects that need attention.',
+                story: 'Project list showing projects with various issue counts and response times using FilterableList. Useful for testing how the component displays projects that need attention.',
             },
         },
     },
@@ -277,7 +400,7 @@ export const Playground: Story = {
     parameters: {
         docs: {
             description: {
-                story: 'Interactive playground to test different project configurations. Use the controls below to modify the project data.',
+                story: 'Interactive playground to test different project configurations using FilterableList. Use the controls below to modify the project data.',
             },
         },
     },

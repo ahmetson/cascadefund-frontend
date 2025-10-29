@@ -1,10 +1,8 @@
 import { AllPersonaRatings } from '../rating/ProfileRatingPanel'
 import { RatingType, ProfileRatingProps } from '../rating/ProfileRating'
+import { LinkProps, ComponentProps } from '@/types/eventTypes'
 
-export interface ProfileLink {
-  uri: string
-  name: string
-  avatar?: string
+export interface ProfileLink extends LinkProps, ComponentProps {
   rating?: ProfileRatingProps
 }
 

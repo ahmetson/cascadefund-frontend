@@ -36,7 +36,6 @@ export interface FilterableListProps<T> {
  * When To Use:
  * - When you need a list with optional filtering, sorting, and search functionality
  * - When you want to standardize list implementations across the application
- * - For replacing existing custom filter implementations (IssueFilterBar, ProjectFilterTabs, etc.)
  * - When you need a flexible component that can handle different item types
  *
  * When Not To Use:

@@ -1,10 +1,10 @@
 import React from 'react'
-import { getIcon, IconName } from './icons'
+import { getIcon, type IconType } from '@/components/icon'
 import Link from '../custom-ui/Link'
 import Badge, { BadgeProps } from '../custom-ui/Badge'
 
 interface MenuItemProps {
-  icon: IconName
+  icon: IconType
   label: string
   href: string
   badges?: BadgeProps[]

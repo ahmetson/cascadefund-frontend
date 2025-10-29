@@ -1,13 +1,18 @@
 import React from 'react'
 import Tooltip from '../utilitified_decorations/Tooltip'
 
-const ProjectRating: React.FC = () => {
+export interface ProjectRatingProps {
+  rating: number
+  pointsLeft: number
+}
+
+const ProjectRating: React.FC<ProjectRatingProps> = ({ rating = 1, pointsLeft }) => {
   return (
     <Tooltip
       content={
         <div className="flex items-center justify-between space-x-1 text-sm">
           <span className="text-gray-400">Points left to reach next star:</span>
-          <span className="font-semibold text-gray-300">650</span>
+          <span className="font-semibold text-gray-300">{pointsLeft}</span>
         </div>
       }
     >
@@ -24,7 +29,7 @@ const ProjectRating: React.FC = () => {
             </svg>
           ))}
         </div>
-        <span className="text-sm font-medium text-gray-900">6/10</span>
+        <span className="text-sm font-medium text-gray-900">{rating}/10</span>
       </div>
       <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
         <div className="bg-teal-500 h-2 rounded-full" style={{ width: '30%' }}></div>

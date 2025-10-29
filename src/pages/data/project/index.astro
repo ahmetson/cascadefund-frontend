@@ -3,7 +3,7 @@ import V2Layout from "@/layouts/PanelViewLayout.astro";
 import { ItemName } from "@/components/utilitified_decorations/WorkNavbar.astro";
 
 import NotificationBanner from "@/components/NotificationBanner";
-import ProjectInfo from "@/components/project/ProjectInfoPanel.astro";
+import ProjectInfo from "@/components/project/ProjectLink";
 import ProjectStats from "@/components/project/ProjectStatsPanel";
 import IssuesSection from "@/components/issue/IssueListPanel";
 import CallToInteract from "@/components/project/CallToInteractPanel";
@@ -38,9 +38,22 @@ import IssueInfoPanel from "@/components/project/IssueStatPanel";
     >
   </NotificationBanner>
 
-  <ProjectInfo slot="center" />
+  <ProjectInfo
+    title="Sample Project"
+    isInfluencer={false}
+    filterable
+    rating={5}
+    forks={27}
+    license="MIT"
+    tagLine="A sample project tagline."
+    fundTag="CascadeFund"
+    fundId="CF123"
+    description="This is a sample description for the project panel."
+    color="blue"
+    slot="center"
+  />
   <ProjectStats slot="center" />
-  <IssuesSection title="All Issues" filerable={true} slot="center" />
+  <IssuesSection title="All Issues" filterable={true} slot="center" />
 
   <ProjectPeople slot="right" />
   <HighlightedInteraction slot="right" />

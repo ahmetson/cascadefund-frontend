@@ -63,7 +63,7 @@ const IssueLinkPanel4: React.FC<Issue & { actions?: ActionProps[] }> = (issue) =
     <div className='flex flex-row gap-1 items-start w-full'>
       {/* Issue storage and number */}
       <div className="flex items-center space-x-3 mt-0.5">
-        <Link href={issue.uri} asNewTab={issue.storage !== 'cascadefund'}>
+        <Link uri={issue.uri} asNewTab={issue.storage !== 'cascadefund'}>
           <Badge variant='info' static={true}>
             <div className="flex items-center space-x-1">
               {getIcon(issue.storage as IconType)}
@@ -99,7 +99,7 @@ const IssueLinkPanel4: React.FC<Issue & { actions?: ActionProps[] }> = (issue) =
                 <AvatarList contributors={issue.author} showLastRating={true} />
               ) : (
                 <>
-                  <MenuAvatar src={issue.author?.avatar} uri={issue.author?.uri} className='w-7! h-7!' />
+                  <MenuAvatar src={issue.author?.icon} uri={issue.author?.uri} className='w-7! h-7!' />
                   {issue.author.rating && <ProfileRating {...issue.author.rating} />}
                 </>
               )}

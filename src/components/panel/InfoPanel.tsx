@@ -68,10 +68,10 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
         return (
             <div className="flex justify-center gap-3 mt-6">
                 {actions.map((action, index) => (
-                    action.href ? (
+                    action.uri ? (
                         <Link
                             key={index}
-                            href={action.href}
+                            href={action.uri}
                             className={cn("flex-1 inline-flex items-center font-bold py-2 px-4 rounded transition-colors", action.className)}
                         >
                             {action.children}

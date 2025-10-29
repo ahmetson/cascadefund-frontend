@@ -1,6 +1,14 @@
 import { ButtonVariant } from "@/components/custom-ui/Button"
 import { IconProps, IconType } from "@/components/icon"
 
+export interface ComponentProps {
+  children?: any
+  className?: string
+  id?: string
+  key?: string | number
+  ref?: any
+}
+
 export enum BlurSize {
   blur0 = 'blur-0',
   blurXs = 'blur-xs',
@@ -138,12 +146,7 @@ export const GridStyle: { [key: string]: Positioning } = {
   }
 }
 
-export interface Props {
-  children?: any
-  className?: string
-  id?: string
-  key?: string | number
-}
+
 
 export interface PanelEvents {
   onBackClick?: (arg0?: boolean) => void;
@@ -157,7 +160,7 @@ export interface PanelEvents {
 
 export interface ActionProps {
   variant?: ButtonVariant,
-  href?: string,
+  uri?: string,
   replaceWithChildren?: boolean,
   children: any,
   onClick?: () => void,
@@ -222,4 +225,8 @@ export const bgClassNames: { [key in BgType]: string } = {
     "bg-gradient-to-b from-gray-200 via-transparent to-gray-300 ",
 };
 
-
+export interface LinkProps {
+  uri: string
+  children: string
+  icon?: string
+}
