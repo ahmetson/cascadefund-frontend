@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import MenuPanel from './MenuPanel'
 
 const meta: Meta<typeof MenuPanel> = {
-    title: 'Components/Panel/MenuPanel',
+    title: 'Components/Menu/Menu Panel',
     component: MenuPanel,
     parameters: {
         layout: 'padded',

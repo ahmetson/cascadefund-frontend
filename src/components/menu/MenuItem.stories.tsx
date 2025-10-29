@@ -3,7 +3,7 @@ import MenuItem from './MenuItem'
 import { BadgeProps } from '../custom-ui/Badge'
 
 const meta: Meta<typeof MenuItem> = {
-    title: 'Components/Panel/MenuItem',
+    title: 'Components/Menu/Menu Item',
     component: MenuItem,
     parameters: {
         layout: 'centered',
