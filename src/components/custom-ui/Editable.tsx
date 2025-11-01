@@ -4,14 +4,16 @@ import { TextStyleKit } from '@tiptap/extension-text-style'
 import React from 'react'
 import { Extension } from '@tiptap/core';
 import { CharacterCount } from '@tiptap/extensions'
+import { ComponentProps } from '@/types/eventTypes';
 
 type EditorEvent = (id: string, editor: Editor | null) => void;
 
-interface EditableProps {
+interface EditableProps extends ComponentProps {
     id: string
     content: string | ''
     editable?: boolean
     limit?: number
+    autofocus?: boolean
     onFocus?: EditorEvent
     onBlur?: EditorEvent
     onActivate?: EditorEvent
@@ -40,16 +42,14 @@ const AddKbrd = ({ id, onActivate, onCancel }: { id: string, onActivate: EditorE
     return ext;
 }
 
-const Editable: React.FC<EditableProps> = ({ id, content, editable = true, limit = 28, onFocus, onBlur, onActivate, onCancel }) => {
+const Editable: React.FC<EditableProps> = ({ id, content, editable = true, limit = 28, autofocus = false, onFocus, onBlur, onActivate, onCancel, className }) => {
     const editor = useEditor({
         editable: editable,
-        autofocus: false,
-        // onUpdate(props) {
-        //     onContentChange(id, editor, true, props.editor.getHTML())
-        // },
+        autofocus: autofocus,
         onFocus: (props) => {
             onFocus?.(id, props.editor)
-        }, onBlur(props) {
+        },
+        onBlur(props) {
             onBlur?.(id, props.editor)
         },
         extensions: [
@@ -63,7 +63,9 @@ const Editable: React.FC<EditableProps> = ({ id, content, editable = true, limit
         content: content,
     })
 
-    return (<EditorContent editor={editor} />)
+    return (
+        <EditorContent editor={editor} className={className} />
+    )
 }
 
 export default Editable;
