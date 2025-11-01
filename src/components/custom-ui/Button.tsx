@@ -18,6 +18,21 @@ interface ButtonProps {
   focus?: boolean
 }
 
+export const getAnimationColors = (variant: ButtonVariant): { colorFrom: string, colorTo: string } => {
+  switch (variant) {
+    case 'primary':
+      return { colorFrom: '#f43f5e', colorTo: '#0ea5e9' } // bg-rose-500, hover:bg-sky-600
+    case 'secondary':
+      return { colorFrom: '#9ca3af', colorTo: '#5eead4' } // bg-gray-400, hover:bg-teal-300
+    case 'danger':
+      return { colorFrom: '#f97316', colorTo: '#8b5cf6' } // bg-orange-500, hover:bg-violet-600
+    case 'success':
+      return { colorFrom: '#22c55e', colorTo: '#4f46e5' } // bg-green-500, hover:bg-indigo-600
+    default:
+      return { colorFrom: '#f0fdfa', colorTo: '#d1d5db' } // bg-teal-50, hover:bg-gray-200
+  }
+}
+
 /**
  * @param outline - Whether the button should have an outline, 
  * if variant is secondary, the outline will show less important outline
@@ -34,20 +49,7 @@ const Button: React.FC<ButtonProps> = ({
   outline = false,
   focus = false,
 }) => {
-  const getAnimationColors = (): { colorFrom: string, colorTo: string } => {
-    switch (variant) {
-      case 'primary':
-        return { colorFrom: '#f43f5e', colorTo: '#0ea5e9' } // bg-rose-500, hover:bg-sky-600
-      case 'secondary':
-        return { colorFrom: '#9ca3af', colorTo: '#5eead4' } // bg-gray-400, hover:bg-teal-300
-      case 'danger':
-        return { colorFrom: '#f97316', colorTo: '#8b5cf6' } // bg-orange-500, hover:bg-violet-600
-      case 'success':
-        return { colorFrom: '#22c55e', colorTo: '#4f46e5' } // bg-green-500, hover:bg-indigo-600
-      default:
-        return { colorFrom: '#f0fdfa', colorTo: '#d1d5db' } // bg-teal-50, hover:bg-gray-200
-    }
-  }
+
 
   const getVariantStyles = () => {
     const defaultStyle = 'border border-gray-300 bg-teal-50 hover:bg-gray-200'
@@ -108,7 +110,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
 
-    <BorderBeam size={12} colorFrom={getAnimationColors().colorFrom} colorTo={getAnimationColors().colorTo}>
+    <BorderBeam size={12} colorFrom={getAnimationColors(variant).colorFrom} colorTo={getAnimationColors(variant).colorTo}>
       <RippleButton
         onClick={onClick}
         disabled={disabled}
@@ -122,8 +124,8 @@ const Button: React.FC<ButtonProps> = ({
           ${className}
           `}
       >
-        {focus ? <ElectricBorder
-          color={getAnimationColors().colorFrom}
+        <ElectricBorder
+          color={getAnimationColors(variant).colorFrom}
           speed={1}
           chaos={0.5}
           thickness={2}
@@ -132,10 +134,11 @@ const Button: React.FC<ButtonProps> = ({
             `${getSizeStyles()}`,
             'mr-1'
           )}
+          disabled={!focus}
         >
           {children}
-        </ElectricBorder> : children}
-        <RippleButtonRipples color={getAnimationColors().colorFrom} />
+        </ElectricBorder>
+        <RippleButtonRipples color={getAnimationColors(variant).colorFrom} />
       </RippleButton>
     </BorderBeam>
   )
