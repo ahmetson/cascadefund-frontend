@@ -34,12 +34,12 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
     ...interactiveProps
 }) => {
     const renderHeader = () => {
-        const titleColor = 'text-gray-900';
+        const titleColor = 'text-gray-700';
 
         if (titleCenter) {
             return (
                 <div className="mb-4 text-center">
-                    <h2 className={`font-georgia font-semibold flex items-center justify-center gap-2 ${titleColor}`}>
+                    <h2 className={`font-georgia flex items-center justify-center gap-2 ${titleColor}`}>
                         {icon && getIcon(icon)}
                         <span>{title}</span>
                     </h2>
@@ -49,7 +49,7 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
 
         return (
             <div className="mb-4">
-                <h2 className={`font-georgia font-semibold flex items-center gap-2 justify-between ${titleColor}`}>
+                <h2 className={`font-georgia flex items-center gap-2 justify-between ${titleColor}`}>
                     {icon && getIcon(icon)}
                     <span>{title}</span>
                     {rightHeader}
