@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import NetworkingPanel from './NetworkingPanel'
 
 const meta: Meta<typeof NetworkingPanel> = {
-    title: 'Components/Profile/Panel/NetworkingPanel',
+    title: 'Components/Profile/Panel/NetworkingPanel (Deprecated)',
     component: NetworkingPanel,
     parameters: {
         layout: 'padded',

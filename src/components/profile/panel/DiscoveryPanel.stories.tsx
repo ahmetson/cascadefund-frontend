@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import DiscoveryPanel from './DiscoveryPanel'
 
 const meta: Meta<typeof DiscoveryPanel> = {
-    title: 'Components/Profile/Panel/DiscoveryPanel',
+    title: 'Components/Profile/Panel/DiscoveryPanel (Deprecated)',
     component: DiscoveryPanel,
     parameters: {
         layout: 'padded',

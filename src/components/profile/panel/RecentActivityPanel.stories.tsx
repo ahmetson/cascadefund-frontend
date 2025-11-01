@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import RecentActivityPanel from './RecentActivityPanel'
 
 const meta: Meta<typeof RecentActivityPanel> = {
-    title: 'Components/Profile/Panel/RecentActivityPanel',
+    title: 'Components/Profile/Panel/RecentActivityPanel (Deprecated)',
     component: RecentActivityPanel,
     parameters: {
         layout: 'padded',

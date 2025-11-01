@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import ProfileLinkPanel from './ProfileLinkPanel'
 
 const meta: Meta<typeof ProfileLinkPanel> = {
-    title: 'Components/Profile/Panel/ProfileLinkPanel',
+    title: 'Components/Profile/Panel/ProfileLinkPanel (Deprecated)',
     component: ProfileLinkPanel,
     parameters: {
         layout: 'padded',

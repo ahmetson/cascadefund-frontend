@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import ProjectTimeAllocationPanel from './ProjectTimeAllocationPanel'
 
 const meta: Meta<typeof ProjectTimeAllocationPanel> = {
-    title: 'Components/Profile/Panel/ProjectTimeAllocationPanel',
+    title: 'Components/Profile/Panel/ProjectTimeAllocationPanel (Deprecated)',
     component: ProjectTimeAllocationPanel,
     parameters: {
         layout: 'padded',
