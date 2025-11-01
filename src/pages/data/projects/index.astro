@@ -1,6 +1,6 @@
 ---
 import V2Layout from "@/layouts/PanelViewLayout.astro";
-import { ItemName } from "@/components/utilitified_decorations/WorkNavbar.astro";
+import { MenuName } from "@/components/utilitified_decorations/WorkNavbar.astro";
 
 import ProjectsSection from "@/components/project/ProjectListPanel";
 import BackButton from "@/components/custom-ui/BackButton";
@@ -47,8 +47,8 @@ const projectData = {
 ---
 
 <V2Layout
-  active={ItemName.ProjectList}
-  hideLinks={[ItemName.ProjectName]}
+  active={MenuName.ProjectList}
+  hideLinks={[MenuName.ProjectName]}
   subtitle="Data Section: Project"
 >
   <BackButton href="/maintainer/work" slot="left" />

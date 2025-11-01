@@ -1,23 +1,22 @@
 ---
-import Badge from "@/components/custom-ui/Badge";
 import MenuItem from "../menu/MenuItem";
 
-export enum ItemName {
+export enum MenuName {
   ProjectList = "ProjectList",
   ProjectName = "ProjectName",
 }
 
 interface Props {
   tabIndex?: any;
-  active?: ItemName;
-  hideLinks?: ItemName[];
+  active?: MenuName;
+  hideLinks?: MenuName[];
   className?: string;
   vertical?: boolean;
 }
 
 const { tabIndex, vertical, active, hideLinks, className } = Astro.props;
 
-const isItemShown = (item: ItemName): boolean => {
+const isItemShown = (item: MenuName): boolean => {
   return (
     active !== item &&
     (hideLinks === undefined || hideLinks.findIndex((el) => el === item) == -1)
@@ -33,23 +32,23 @@ const isItemShown = (item: ItemName): boolean => {
   <div class={vertical ? "text-sm " : "breadcrumbs text-sm"}>
     <ul class={vertical ? "flex flex-col " : "w-full justify-center"}>
       {
-        isItemShown(ItemName.ProjectList) && (
+        isItemShown(MenuName.ProjectList) && (
           <li class="">
             <MenuItem
               icon={"project-info"}
               label="Projects"
               href="/data/projects"
-              active={active === ItemName.ProjectList}
+              active={active === MenuName.ProjectList}
               badges={[
                 {
                   children: "2",
                   variant: "blue",
-                  active: active === ItemName.ProjectList,
+                  active: active === MenuName.ProjectList,
                 },
                 {
                   children: "2",
                   variant: "red",
-                  active: active === ItemName.ProjectList,
+                  active: active === MenuName.ProjectList,
                 },
               ]}
             >
@@ -59,13 +58,13 @@ const isItemShown = (item: ItemName): boolean => {
         )
       }
       {
-        isItemShown(ItemName.ProjectName) && (
+        isItemShown(MenuName.ProjectName) && (
           <li>
             <MenuItem
               icon={"project-info"}
               label="Reflect"
               href="/data/project"
-              active={active === ItemName.ProjectName}
+              active={active === MenuName.ProjectName}
             >
               Reflect
             </MenuItem>
