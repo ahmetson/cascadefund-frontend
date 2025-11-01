@@ -1,9 +1,9 @@
 ---
 import V2Layout from "@/layouts/PanelViewLayout.astro";
-import { MenuName } from "@/components/utilitified_decorations/WorkNavbar.astro";
+import { MenuName } from "@/components/navbar/WorkNavbar.astro";
 import Menu from "@/components/menu/MenuPanel";
 
-import TaskSection from "@/components/quest/QuestPanel";
+import QuestPanel from "@/components/quest/QuestPanel";
 import NotificationBanner from "@/components/NotificationBanner";
 import PageLikePanel from "@/components/panel/PageLikePanel";
 import CworkPanel from "@/components/maintainer/CworkPanel";
@@ -20,7 +20,7 @@ import CworkPanel from "@/components/maintainer/CworkPanel";
     Got a bug, need a feature, have a question? Then, help to make the library
     better for you and for the world
   </NotificationBanner>
-  <TaskSection slot="center" title="My Cascading Tasks" client:load />
+  <QuestPanel slot="center" title="My Cascading Tasks" client:load />
 
   <CworkPanel slot="center" client:load />
   <PageLikePanel slot="right" title="Dependencies Info">

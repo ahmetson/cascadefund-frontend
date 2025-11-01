@@ -1,6 +1,7 @@
 import React from 'react'
 import PageLikePanel, { type PageLikePanelProps } from '@/components/panel/PageLikePanel'
 import { getIcon, type IconType } from '@/components/icon'
+import InfoPanel from './panel/InfoPanel'
 
 type NotificationBannerProps = {
   type: 'warning' | 'info' | 'success' | 'error'
@@ -14,15 +15,15 @@ const NotificationBanner: React.FC<NotificationBannerProps> = ({ className, icon
   const getStyles = () => {
     switch (type) {
       case 'warning':
-        return 'bg-yellow-50 border-yellow-300 border-l-yellow-500'
+        return 'bg-yellow-50 border-yellow-100 border-l-yellow-500'
       case 'info':
-        return 'bg-blue-50 border-blue-300 border-l-blue-500'
+        return 'bg-blue-50/1 border-slate-300 border-l-blue-500'
       case 'success':
-        return 'bg-green-50 border-green-300 border-l-green-500'
+        return 'bg-green-50 border-green-100 border-l-green-500'
       case 'error':
-        return 'bg-red-50 border-red-300 border-l-red-500'
+        return 'bg-red-50 border-red-100 border-l-red-500'
       default:
-        return 'bg-gray-50 border-gray-300 border-l-gray-500'
+        return 'bg-gray-50 border-gray-50 border-l-gray-500'
     }
   }
 
@@ -43,13 +44,30 @@ const NotificationBanner: React.FC<NotificationBannerProps> = ({ className, icon
 
   const getIconComponent = () => {
     const iconType = icon || getDefaultIcon()
-    return getIcon({ iconType, width: 'w-5', height: 'h-5' })
+    return { iconType, width: 'w-5', height: 'h-5' }
   }
 
+  const fullClassName = `p-4 
+    border-2
+    border-dashed 
+    flex 
+    items-start 
+    rounded-xs 
+    rounded-r-0 
+    shadow-md
+    text-gray-600
+    dark:text-gray-100
+    ${getStyles()} 
+    ${className}`
+
   return (
-    <PageLikePanel expandable={expandable} className={`p-4 border-2 border-dashed flex items-start rounded-lg rounded-r-0 shadow-md ${getStyles()} ${className}`} title={<>{title}{getIconComponent()}</>}>
+    <InfoPanel title={title}
+      titleClassName='text-gray-400 dark:text-gray-100'
+      icon={getIconComponent()}
+      expandable={expandable}
+      className={fullClassName}>
       {children}
-    </PageLikePanel>
+    </InfoPanel>
   )
 }
 

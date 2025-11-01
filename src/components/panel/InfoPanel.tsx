@@ -35,8 +35,8 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
     const hasContent = children || (actions && actions.length > 0)
     const titleBottomMargin = hasContent ? 'mb-4' : undefined;
     const contentTopMargin = 'mt-4';
-    const titleColor = darkMode ? 'text-gray-300' : 'text-gray-900';
-    const textColor = darkMode ? 'text-gray-400' : 'text-gray-950';
+    const titleColor = darkMode ? 'text-gray-300' : 'text-gray-600';
+    const textColor = darkMode ? 'text-gray-400' : 'text-gray-650';
     const borderColor = darkMode ? 'border-gray-200/50' : 'border-gray-300/50';
     const blurredBorder = 'border-blur-sm';
 
@@ -56,7 +56,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
 
     const renderContent = () => {
         return (
-            <div className={`font-noto-sans ${textColor}`}>
+            <div className={`font-noto-sans ${textColor} `}>
                 {children}
             </div>
         )
@@ -71,7 +71,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
                     action.uri ? (
                         <Link
                             key={index}
-                            href={action.uri}
+                            uri={action.uri}
                             className={cn("flex-1 inline-flex items-center font-bold py-2 px-4 rounded transition-colors", action.className)}
                         >
                             {action.children}
