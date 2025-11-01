@@ -1,5 +1,5 @@
 import React from 'react'
-import ContentItem from './InfoItem'
+import ContentItem from './utilitified_decorations/InfoItem'
 
 interface ContentSectionProps {
   title: string
@@ -31,7 +31,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({
         </h2>
         {icon && <span className="text-xl">{icon}</span>}
       </div>
-      
+
       {subtitle && (
         <p className="text-gray-600 mb-6 italic">
           {subtitle}
