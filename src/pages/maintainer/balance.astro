@@ -4,11 +4,11 @@ import { MenuName } from "@/components/navbar/WorkNavbar.astro";
 
 import MenuPanel from "@/components/menu/MenuPanel";
 import BalanceCard from "@/components/maintainer/BalancePanel";
-import TransactionsCard from "@/components/maintainer/RecentTransactionPanel";
+// import TransactionsCard from "@/components/maintainer/RecentTransactionPanel";
 ---
 
 <V2Layout active={MenuName.ProjectName}>
       <MenuPanel activeMenuItem="balance" slot="left" />
       <BalanceCard slot="center" />
-      <TransactionsCard slot="center" />
+      <!-- <TransactionsCard slot="center" /> -->
 </V2Layout>

@@ -1,14 +1,32 @@
 import React from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
 import Button from '@/components/custom-ui/Button'
+import TimeAgo from 'timeago-react'
+import LabeledInput from '../custom-ui/LabeledInput'
+import Label from '../custom-ui/Label'
+import NumberFlow from '@number-flow/react'
+import Badge from '../custom-ui/Badge'
 
 const CascadingBalance: React.FC = () => {
+  const updatedAt = new Date().getTime()
+
   return (
-    <PageLikePanel className="mb-6" title="Cascading Balance" rightHeader={<>
-      <p className="text-sm text-gray-600">Updated 2 min ago</p>
-      <Button variant="secondary" size="sm">
-        Refresh Data
-      </Button></>}>
+    <PageLikePanel
+      interactive={false}
+      actions={[
+        {
+          variant: 'primary',
+          children: 'Withdraw',
+          onClick: () => { },
+        }
+      ]}
+      className="mb-6"
+      title={<>Cascading Balance
+        <Badge variant="info" static={true}>Updated
+          {<TimeAgo datetime={new Date(updatedAt)} />}
+        </Badge>
+      </>}
+    >
       <p className="text-sm text-gray-600 mb-4">
         Indirectly received funds from other projects. Withdraw, and transfer or use for yourself. Check out{' '}
         <a href="#" className="text-cascade-blue hover:underline">Work page</a>{' '}
@@ -16,38 +34,16 @@ const CascadingBalance: React.FC = () => {
       </p>
 
       <div className="mb-6">
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Withdrawing Wallet Address
-        </label>
-        <div className="flex space-x-2">
-          <input
-            type="text"
-            value="0x8F5a2b0707D9aC64b8F5dFC3A27737B06C1d24A8"
-            className="flex-1 px-3 py-2 border border-gray-300 rounded-md text-sm"
-            readOnly
-          />
-          <Button variant="primary" size="sm">
-            Save
-          </Button>
-        </div>
+        <Label>Assets</Label>
+        <NumberFlow
+          value={3.45928}
+          locales="en-US"
+          format={{ style: 'currency', currency: 'USD', maximumFractionDigits: 2, signDisplay: 'negative' }}
+          className="~text-xl/4xl text-gray-700 px-2 cursor-no-drop"
+        />
       </div>
-
-      <div className="mb-4">
-        <p className="text-sm text-gray-600 mb-2">Learn more about wallet addresses</p>
-        <ul className="text-sm text-gray-600 space-y-1">
-          <li>• A wallet address must be <a href="#" className="text-cascade-blue hover:underline">on Polygon blockchain. Guide</a></li>
-          <li>• Learn how to turn into fiat currency</li>
-        </ul>
-      </div>
-
-      <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-        <div>
-          <span className="text-sm text-gray-600">Balance (USDC)</span>
-          <div className="text-2xl font-bold text-gray-800">3.45928 USDC</div>
-        </div>
-        <Button variant="primary">
-          Withdraw
-        </Button>
+      <div className="mb-6">
+        <LabeledInput id="address" label="Address" value="0x8F5a2b0707D9aC64b8F5dFC3A27737B06C1d24A8" type="text" placeholder='Enter your Ethereum network address' />
       </div>
     </PageLikePanel>
   )
