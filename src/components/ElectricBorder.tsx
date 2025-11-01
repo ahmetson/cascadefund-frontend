@@ -8,6 +8,7 @@ type ElectricBorderProps = PropsWithChildren<{
   thickness?: number;
   className?: string;
   style?: CSSProperties;
+  disabled?: boolean;
 }>;
 
 const ElectricBorder: React.FC<ElectricBorderProps> = ({
@@ -17,8 +18,10 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
   chaos = 1,
   thickness = 2,
   className,
-  style
+  style,
+  disabled = false
 }) => {
+  if (disabled) return children;
   const rawId = useId().replace(/[:]/g, '');
   const filterId = `turbulent-displace-${rawId}`;
   const svgRef = useRef<SVGSVGElement | null>(null);
