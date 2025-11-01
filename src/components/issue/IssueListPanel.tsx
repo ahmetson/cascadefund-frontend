@@ -5,6 +5,7 @@ import BasePanel from '@/components/panel/BasePanel'
 import { Issue } from '@/components/issue/types'
 import DraggableIssueLink from './DraggableIssueLink'
 import { FilterOption } from '@/components/list/FilterToggle'
+import { getIcon } from '../icon'
 
 interface Props {
   title?: string
@@ -160,8 +161,8 @@ const ContentArea: React.FC<Props> = ({ title = 'Issues', draggable = false, fil
 
   return (
     <BasePanel className="max-w-6xl mx-auto">
-      {draggable && <p className='absolute top-2 right-2 text-xs mb-2 text-gray-600'>
-        Issues are draggable
+      {draggable && <p className='text-xs mb-2 text-gray-600 flex items-center flex-row'>
+        {getIcon('info')} Issues are draggable. Your dragging will highlight droppable lists.
       </p>}
       <FilterableList
         items={issues}

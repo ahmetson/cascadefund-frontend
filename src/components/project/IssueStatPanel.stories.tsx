@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import IssuesSection from './IssueStatPanel'
 
 const meta: Meta<typeof IssuesSection> = {
-    title: 'Components/Project/IssueStatPanel',
+    title: 'Components/Project/IssueStatPanel (Deprecated)',
     component: IssuesSection,
     parameters: {
         layout: 'padded',
