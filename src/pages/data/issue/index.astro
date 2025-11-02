@@ -1,9 +1,9 @@
 ---
 import Layout from "@/layouts/PanelViewLayout.astro";
 import BackButton from "@/components/custom-ui/BackButton";
-import IssueContent from "@/components/issue/IssuePanel";
+import IssuePanel from "@/components/issue/IssuePanel";
 import IssueStatsPanel from "@/components/issue/IssueStatsPanel";
-import ChatPanel from "@/components/chat";
+import { ChatTabs } from "@/components/chat";
 import NotificationBanner from "@/components/NotificationBanner";
 import { MenuItemProps } from "@/components/menu/MenuItem";
 
@@ -30,16 +30,19 @@ const additional: MenuItemProps[] = [
 
 <Layout subtitle="Data Section: Issue" additional={additional}>
   <BackButton slot="left" href="/data/project" />
-  <NotificationBanner type="warning" title="Complete a quest..." 
-    className="mb-8"
+  <NotificationBanner 
+    type="info" 
+    title="Complete a quest..." 
+    className="mb-8 text-gray-200"
+    titleClassName="text-gray-200!"
   slot="center">
     Please reply to the "Project Timeline" chat.'
   </NotificationBanner>
 
-  <IssueContent slot="center" />
+  <IssuePanel editable={true} slot="center" client:load />
 
   <IssueStatsPanel slot="right" client:load />
-  <ChatPanel slot="right" client:load />
+  <ChatTabs slot="right" client:load />
 
 </Layout>
 

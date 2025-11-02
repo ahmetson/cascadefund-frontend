@@ -1,13 +1,9 @@
 import React from 'react'
-import Link from "@/components/custom-ui/Link"
+import Link, { LinkComponentProps } from "@/components/custom-ui/Link"
 
-interface Props {
-  href?: string
-}
-
-const BackButton: React.FC<Props> = ({ href = '/issue/post' }) => {
+const BackButton: React.FC<LinkComponentProps> = ({ uri = '/data/issue' }) => {
   return (
-    <Link href={href} className="flex items-center transition-colors hover:text-sky-400!" >← Back</Link>
+    <Link uri={uri} className="flex items-center transition-colors hover:text-sky-400!" >← Back</Link>
   )
 }
 

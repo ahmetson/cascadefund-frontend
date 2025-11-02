@@ -1,17 +1,18 @@
 import React from 'react'
-import PageLikePanel, { type PageLikePanelProps } from '@/components/panel/PageLikePanel'
-import { getIcon, type IconType } from '@/components/icon'
+import { type PageLikePanelProps } from '@/components/panel/PageLikePanel'
+import { type IconType } from '@/components/icon'
 import InfoPanel from './panel/InfoPanel'
 
-type NotificationBannerProps = {
+export type NotificationBannerProps = {
   type: 'warning' | 'info' | 'success' | 'error'
   title: string
   children?: any
   icon?: IconType
   className?: string
+  titleClassName?: string
 } & Omit<PageLikePanelProps, "children" | "title">
 
-const NotificationBanner: React.FC<NotificationBannerProps> = ({ className, icon, type, title, children, expandable }) => {
+const NotificationBanner: React.FC<NotificationBannerProps> = ({ className, titleClassName, icon, type, title, children, expandable }) => {
   const getStyles = () => {
     switch (type) {
       case 'warning':
@@ -55,17 +56,18 @@ const NotificationBanner: React.FC<NotificationBannerProps> = ({ className, icon
     rounded-xs 
     rounded-r-0 
     shadow-md
-    text-gray-600
-    dark:text-gray-100
     ${getStyles()} 
-    ${className}`
+    ${className}
+  `
+  const titleColor = type === 'info' ? 'text-gray-200 dark:text-gray-100' : 'text-gray-400 dark:text-gray-200';
+  const contentColor = type === 'info' ? 'text-gray-200 dark:text-gray-100' : 'text-gray-600 dark:text-gray-200';
 
   return (
     <InfoPanel title={title}
-      titleClassName='text-gray-400 dark:text-gray-100'
+      titleClassName={`${titleColor} ${titleClassName}`}
       icon={getIconComponent()}
       expandable={expandable}
-      className={fullClassName}>
+      className={`${fullClassName} ${contentColor} ${className}`}>
       {children}
     </InfoPanel>
   )

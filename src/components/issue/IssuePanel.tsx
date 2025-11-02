@@ -159,7 +159,7 @@ const IssueContentPanel: React.FC<IssueContentPanelProps> = ({
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2 flex-1">
               <Tooltip
-                openDelay={1000}
+                openDelay={2000}
                 content={
                   <div className="text-sm">
                     {editable ? 'Title is editable for issue owners.' : 'Issue title'}
@@ -206,7 +206,7 @@ const IssueContentPanel: React.FC<IssueContentPanelProps> = ({
           {/* Description */}
           <div className="text-slate-700 text-md mb-4 prose max-w-none">
             <Tooltip
-              openDelay={100}
+              openDelay={2000}
               content={
                 <div className="text-sm">
                   {editable ? 'Description is editable for issue owners.' : 'Issue description'}
@@ -231,7 +231,7 @@ const IssueContentPanel: React.FC<IssueContentPanelProps> = ({
           <div className="mb-4 text-slate-700">
             <h3 className="text-lg ">Technical Requirements:</h3>
             <Tooltip
-              openDelay={100}
+              openDelay={2000}
               content={
                 <div className="text-sm">
                   {editable ? 'Technical requirements are editable for issue owners.' : 'Technical requirements'}

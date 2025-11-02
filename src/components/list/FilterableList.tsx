@@ -18,6 +18,7 @@ export interface FilterableListProps<T> {
     className?: string
     children?: React.ReactNode
     showNumber?: boolean
+    contentHeight?: string
 }
 
 /**
@@ -55,6 +56,7 @@ const FilterableList = <T,>({
     className,
     children,
     showNumber = true,
+    contentHeight,
 }: FilterableListProps<T>) => {
     const [searchQuery, setSearchQuery] = useState('')
     const [currentFilter, setCurrentFilter] = useState<string | undefined>()
@@ -153,7 +155,7 @@ const FilterableList = <T,>({
             )}
 
             {/* List Content */}
-            <List>
+            <List contentHeight={contentHeight}>
                 {filteredItems.map((item, index) => {
                     return <ItemComponent key={index} {...(item as any)} />
                 })}

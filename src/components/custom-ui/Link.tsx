@@ -2,13 +2,13 @@ import React from 'react'
 import { LinkProps, type ComponentProps } from '@/types/eventTypes'
 import ElectricBorder from '../ElectricBorder'
 
-type Props = Omit<LinkProps, 'children'> & ComponentProps & {
+export type LinkComponentProps = Omit<LinkProps, 'children'> & ComponentProps & {
   active?: boolean
   asNewTab?: boolean
   focus?: boolean
 }
 
-const Component: React.FC<Props> = ({ ref, asNewTab = false, className, uri, children, focus = false }) => {
+const Component: React.FC<LinkComponentProps> = ({ ref, asNewTab = false, className, uri, children, focus = false }) => {
   return (
     <a key={uri} ref={ref} target={asNewTab ? '_blank' : '_self'} href={uri} className={`hyperlink text-blue-500 hover:text-teal-900 ${focus ? '' : 'py-2'} transition-colors ${className}`}>
       <ElectricBorder

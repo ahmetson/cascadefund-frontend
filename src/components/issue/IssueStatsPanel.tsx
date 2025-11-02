@@ -22,11 +22,13 @@ const Panel: React.FC = () => {
         </div>
         <div className="flex justify-between items-center">
           <span className="text-gray-600 w-24">Created:</span>
-          <TimeAgo datetime={1730457600000} className='text-gray-700' />
+          <i>N/A</i>
+          {/* <TimeAgo datetime={1730457600000} className='text-gray-700' /> */}
         </div>
         <div className="flex justify-between items-center">
           <span className="text-gray-600 w-24">Updated:</span>
-          <TimeAgo datetime={1730457600000} className='text-gray-700' />
+          <i>N/A</i>
+          {/* <TimeAgo datetime={1730457600000} className='text-gray-700' /> */}
         </div>
         <div className="flex justify-between items-center">
           <span className="text-gray-600 w-24">Contributor:</span>

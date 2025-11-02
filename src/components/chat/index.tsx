@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import Tabs, { type TabProps } from '@/components/Tabs'
+import { type TabProps } from '@/components/Tabs'
 import ConversationPanel from './ConversationPanel';
-import NotesPanel from './NotesPanel';
+// import NotesPanel from './NotesPanel';
 import ChatPanel from './ChatPanel';
 import { AnimatePresence, motion } from 'motion/react';
-import BasePanel from '@/components/panel/BasePanel';
 import TopicPanel from './TopicPanel';
 
-const Panel: React.FC = () => {
+export const ChatTabs: React.FC = () => {
   const [chatOpen, setChatOpen] = useState(false);
   const [topicOpen, setTopicOpen] = useState(false);
 
@@ -17,32 +16,35 @@ const Panel: React.FC = () => {
       key: "conversation",
       content: <ConversationPanel onElementClick={setChatOpen} onNewDiscussionClick={setTopicOpen} />
     },
-    {
-      label: 'Notes',
-      key: "note",
-      content: <NotesPanel />
-    }
+    //   {
+    //     label: 'Notes',
+    //     key: "note",
+    //     content: <NotesPanel />
+    //   }
   ]
 
   return (
-    <BasePanel>
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={chatOpen ? "chat" : (topicOpen ? "topic" : tabs[0].key)}
-          initial={{ y: 10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -10, opacity: 0 }}
-          transition={{ duration: 0.2, when: "beforeChildren", delayChildren: 0.2, }}
-        >
-          {
-            chatOpen ? <ChatPanel onBackClick={setChatOpen} /> :
-              (topicOpen ? <TopicPanel onBackClick={setTopicOpen} onActionClick={(actionFlag) => { setChatOpen(actionFlag); setTopicOpen(!actionFlag) }} /> :
-            /* default */ <Tabs id="chats" activeTab='conversation' tabs={tabs} />)
-          }
-        </motion.div>
-      </AnimatePresence>
-    </BasePanel>
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={chatOpen ? "chat" : (topicOpen ? "topic" : tabs[0].key)}
+        initial={{ y: 10, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: -10, opacity: 0 }}
+        transition={{ duration: 0.2, when: "beforeChildren", delayChildren: 0.2, }}
+      >
+        {
+          chatOpen ? <ChatPanel onBackClick={setChatOpen} /> :
+            (topicOpen ? <TopicPanel onBackClick={setTopicOpen} onActionClick={
+              (actionFlag) => {
+                setChatOpen(actionFlag);
+                setTopicOpen(!actionFlag)
+              }
+            } /> :
+            // /* default */ <Tabs id="chats" activeTab='conversation' tabs={tabs} />
+            /* default */ <ConversationPanel onElementClick={setChatOpen} onNewDiscussionClick={setTopicOpen} />
+            )
+        }
+      </motion.div>
+    </AnimatePresence>
   )
 }
-
-export default Panel

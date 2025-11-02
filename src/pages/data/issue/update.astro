@@ -8,12 +8,14 @@ import NotificationBanner from "@/components/NotificationBanner";
 ---
 
 <V2Layout subtitle="Update Data Section: Issue" additional={[]}>
-    <BackButton href="/data/issue" slot="left" />
+    <BackButton uri="/data/issue" slot="left" />
     <NotificationBanner
         slot="center"
         type="info"
         title="Updating the issue"
         icon="info"
+        className="text-gray-200"
+        titleClassName="text-gray-100"
     >
         You are adding new changes to the issue data.
     </NotificationBanner>
