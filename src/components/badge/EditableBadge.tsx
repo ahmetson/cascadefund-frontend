@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
-import Badge from '../../custom-ui/Badge'
-import Kbd from '../../custom-ui/Kbd'
+import Badge from './Badge'
+import Kbd from '../custom-ui/Kbd'
 
 interface EditableBadgeProps {
   showEditBar: boolean

@@ -10,7 +10,7 @@ type Props = Omit<LinkProps, 'children'> & ComponentProps & {
 
 const Component: React.FC<Props> = ({ ref, asNewTab = false, className, uri, children, focus = false }) => {
   return (
-    <a ref={ref} target={asNewTab ? '_blank' : '_self'} href={uri} className={`hyperlink text-blue-500 hover:text-teal-900 ${focus ? '' : 'py-2'} transition-colors ${className}`}>
+    <a key={uri} ref={ref} target={asNewTab ? '_blank' : '_self'} href={uri} className={`hyperlink text-blue-500 hover:text-teal-900 ${focus ? '' : 'py-2'} transition-colors ${className}`}>
       <ElectricBorder
         color="#0ea5e950"
         speed={1}

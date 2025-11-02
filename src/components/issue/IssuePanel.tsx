@@ -19,8 +19,8 @@ import MenuAvatar from '@/components/MenuAvatar'
 import ProfileRating from '@/components/rating/ProfileRating'
 import AvatarList from '@/components/AvatarList'
 import TimeAgo from 'timeago-react'
-import YourBadge from '../profile/badge/YourBadge'
-import EditableBadge from '../profile/badge/EditableBadge'
+import YourBadge from '../badge/YourBadge'
+import EditableBadge from '../badge/EditableBadge'
 
 interface IssueContentPanelProps extends Issue {
   actions?: ActionProps[]
@@ -177,7 +177,7 @@ const IssueContentPanel: React.FC<IssueContentPanelProps> = ({
                       {...eventProps}
                     />
                   ) : (
-                    value['title'] || 'No title'
+                    <div className='mt-1'>{value['title'] || 'No title'}</div>
                   )}
                   {editable ? <YourBadge saving={saving} label='issue' /> : <Badge variant='gray' static={true}>Not editable</Badge>}
                   {editable && <EditableBadge showEditBar={showEditBar} setShowEditBar={setShowEditBar} />}

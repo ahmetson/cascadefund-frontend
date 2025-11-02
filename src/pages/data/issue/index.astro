@@ -2,10 +2,7 @@
 import Layout from "@/layouts/PanelViewLayout.astro";
 import BackButton from "@/components/custom-ui/BackButton";
 import IssueContent from "@/components/issue/IssuePanel";
-import PriorityPanel from "@/components/issue/IssuePrioritificationPanel.astro";
-import IssueDetails from "@/components/issue/IssueDetailsPanel";
-import RecentActivity from "@/components/issue/RecentActivityPanel";
-import RelatedIssues from "@/components/issue/RelatedIssuesPanel";
+import IssueStatsPanel from "@/components/issue/IssueStatsPanel";
 import ChatPanel from "@/components/chat";
 import NotificationBanner from "@/components/NotificationBanner";
 import { MenuItemProps } from "@/components/menu/MenuItem";
@@ -14,18 +11,18 @@ const additional: MenuItemProps[] = [
   {
     icon: "cascading-work",
     label: "Cascading Work",
-    href: "/maintainer/work",
+    uri: "/maintainer/work",
   },
   {
     icon: "issue",
     label: "Issues List/Roadmap",
-    href: "/data/project",
+    uri: "/data/project",
     active: true,
   },
   {
     icon: "issue",
     label: "Issue",
-    href: "/data/issue",
+    uri: "/data/issue",
     active: true,
   },
 ];
@@ -33,17 +30,17 @@ const additional: MenuItemProps[] = [
 
 <Layout subtitle="Data Section: Issue" additional={additional}>
   <BackButton slot="left" href="/data/project" />
-  <NotificationBanner type="warning" title="Complete a quest..." slot="center">
+  <NotificationBanner type="warning" title="Complete a quest..." 
+    className="mb-8"
+  slot="center">
     Please reply to the "Project Timeline" chat.'
   </NotificationBanner>
 
   <IssueContent slot="center" />
-  <PriorityPanel slot="center" />
 
-  <IssueDetails slot="right" client:load />
+  <IssueStatsPanel slot="right" client:load />
   <ChatPanel slot="right" client:load />
-  <RecentActivity slot="right" />
-  <RelatedIssues slot="right" />
+
 </Layout>
 
 <style is:global>

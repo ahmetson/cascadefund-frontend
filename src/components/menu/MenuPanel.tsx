@@ -21,14 +21,14 @@ const maintainerMainItems = (activeMenuItem: MenuName, focusMenuItem?: MenuName)
     <MenuItem
       icon="balance"
       label="Balance"
-      href={"/maintainer/balance"}
+      uri={"/maintainer/balance"}
       active={activeMenuItem === 'balance'}
       focus={focusMenuItem === 'balance'}
     />,
     <MenuItem
       icon="cascading-balance"
       label="Cascading balance"
-      href={"/maintainer/cbalance"}
+      uri={"/maintainer/cbalance"}
       active={activeMenuItem === 'cbalance'}
       focus={focusMenuItem === 'cbalance'}
     />,
@@ -43,7 +43,7 @@ const maintainerMainItems = (activeMenuItem: MenuName, focusMenuItem?: MenuName)
           static: true
         }
       ]}
-      href={"/data/project"}
+      uri={"/data/project"}
       active={activeMenuItem === 'project'}
       focus={focusMenuItem === 'project'}
     />,
@@ -54,7 +54,7 @@ const influencerMainItems = (activeMenuItem: MenuName, focusMenuItem?: MenuName)
     <MenuItem
       icon="influencer-history"
       label="Transaction History"
-      href="/influencer/history"
+      uri="/influencer/history"
       active={activeMenuItem === 'ihistory'}
       focus={focusMenuItem === 'ihistory'}
     />
@@ -66,7 +66,7 @@ const maintainerCollabItems = (activeMenuItem: MenuName, disableAnimation: boole
     <MenuItem
       icon="marketing"
       label="Marketing"
-      href="/maintainer/marketing"
+      uri="/maintainer/marketing"
       active={activeMenuItem === 'marketing'}
       focus={focusMenuItem === 'marketing'}
     />,
@@ -81,7 +81,7 @@ const maintainerCollabItems = (activeMenuItem: MenuName, disableAnimation: boole
           static: disableAnimation
         }
       ]}
-      href="/maintainer/work"
+      uri="/maintainer/work"
       active={activeMenuItem === 'work'}
       focus={focusMenuItem === 'work'}
     />,
@@ -96,7 +96,7 @@ const maintainerCollabItems = (activeMenuItem: MenuName, disableAnimation: boole
           static: disableAnimation
         }
       ]}
-      href="/maintainer/cwork"
+      uri="/maintainer/cwork"
       active={activeMenuItem === 'cwork'}
       focus={focusMenuItem === 'cwork'}
     />
@@ -107,7 +107,7 @@ const influencerCollabItems = (activeMenuItem: MenuName, focusMenuItem?: MenuNam
     <MenuItem
       icon="influencer-work"
       label="Influencer Work"
-      href="/influencer/work"
+      uri="/influencer/work"
       focus={focusMenuItem === 'iwork'}
       active={activeMenuItem === 'iwork'}
     />

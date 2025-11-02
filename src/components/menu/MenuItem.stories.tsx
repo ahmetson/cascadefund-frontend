@@ -150,32 +150,32 @@ export const AllStates: Story = {
         <div className="space-y-4 w-80">
             <div>
                 <h3 className="text-sm font-medium text-gray-700 mb-2">Default State</h3>
-                <MenuItem icon="work" label="Default Item" href="#" />
+                <MenuItem icon="work" label="Default Item" uri="#" />
             </div>
 
             <div>
                 <h3 className="text-sm font-medium text-gray-700 mb-2">With Focus</h3>
-                <MenuItem icon="work" label="Focused Item" href="#" focus={true} />
+                <MenuItem icon="work" label="Focused Item" uri="#" focus={true} />
             </div>
 
             <div>
                 <h3 className="text-sm font-medium text-gray-700 mb-2">Active State</h3>
-                <MenuItem icon="balance" label="Active Item" href="#" active={true} />
+                <MenuItem icon="balance" label="Active Item" uri="#" active={true} />
             </div>
 
             <div>
                 <h3 className="text-sm font-medium text-gray-700 mb-2">Active with Focus</h3>
-                <MenuItem icon="balance" label="Active Focused Item" href="#" active={true} focus={true} />
+                <MenuItem icon="balance" label="Active Focused Item" uri="#" active={true} focus={true} />
             </div>
 
             <div>
                 <h3 className="text-sm font-medium text-gray-700 mb-2">With Badge</h3>
-                <MenuItem icon="marketing" label="Item with Badge" href="#" badges={[{ variant: 'default', children: 'New' }]} />
+                <MenuItem icon="marketing" label="Item with Badge" uri="#" badges={[{ variant: 'default', children: 'New' }]} />
             </div>
 
             <div>
                 <h3 className="text-sm font-medium text-gray-700 mb-2">Focus with Badge</h3>
-                <MenuItem icon="marketing" label="Focused with Badge" href="#" focus={true} badges={[{ variant: 'destructive', children: 'Hot' }]} />
+                <MenuItem icon="marketing" label="Focused with Badge" uri="#" focus={true} badges={[{ variant: 'destructive', children: 'Hot' }]} />
             </div>
         </div>
     )

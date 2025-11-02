@@ -1,4 +1,4 @@
-type IconType =
+export type IconType =
   | 'github'
   | 'analytics'
   | 'money'
@@ -71,7 +71,7 @@ type IconType =
   | 'work'
   | 'cascading-work'
 
-type IconProps = {
+export type IconProps = {
   iconType: IconType
   width?: string,
   height?: string
@@ -79,7 +79,6 @@ type IconProps = {
   className?: string
 }
 
-export type { IconType, IconProps }
 export const getIcon = (props: IconProps | IconType): React.ReactNode => {
   const iconType = typeof props === 'string' ? props : props.iconType;
   const width = typeof props === 'object' && props.width ? props.width : 'w-4'

@@ -34,19 +34,19 @@ const isItemShown = (item: MenuName): boolean => {
   <div class={vertical ? "text-sm " : "breadcrumbs text-sm"}>
     <ul class={vertical ? "flex flex-col " : "w-full justify-center"}>
       {
-        additional?.map((item) => (
-          <li>
+        additional?.map((item, index) => (
+          <li key={`additional-${index}`}>
             <MenuItem {...item} />
           </li>
         ))
       }
       {
         isItemShown(MenuName.ProjectList) && (
-          <li class="">
+          <li class="" key={`project-list`}>
             <MenuItem
               icon={"project-info"}
               label="Projects"
-              href="/data/projects"
+              uri="/data/projects"
               active={active === MenuName.ProjectList}
               badges={[
                 {
@@ -68,11 +68,11 @@ const isItemShown = (item: MenuName): boolean => {
       }
       {
         isItemShown(MenuName.ProjectName) && (
-          <li>
+          <li key={`project-name`}>
             <MenuItem
               icon={"project-info"}
               label="Reflect"
-              href="/data/project"
+              uri="/data/project"
               active={active === MenuName.ProjectName}
             >
               Reflect

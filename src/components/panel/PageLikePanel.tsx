@@ -1,7 +1,5 @@
 import React from 'react'
 import InteractivePanel, { InteractivePanelProps } from './InteractivePanel'
-import Button from '@/components/custom-ui/Button'
-import Link from '@/components/custom-ui/Link'
 import { getIcon, IconType } from '@/components/icon'
 import { cn } from '@/lib/utils'
 import type { ActionProps } from '@/types/eventTypes'
