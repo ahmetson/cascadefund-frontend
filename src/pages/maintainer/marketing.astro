@@ -1,7 +1,7 @@
 ---
-import V2Layout from "@/layouts/PanelViewLayout.astro";
-import Menu from "@/components/menu/MenuPanel";
-import { MenuName } from "@/components/utilitified_decorations/WorkNavbar.astro";
+import Layout from "@/layouts/PanelViewLayout.astro";
+import MenuPanel from "@/components/menu/MenuPanel";
+import { MenuName } from "@/components/navbar/WorkNavbar.astro";
 import PageLikePanel from "@/components/panel/PageLikePanel";
 
 import ShareTools from "@/components/maintainer/ShareToolsPanel";
@@ -13,14 +13,12 @@ import CallToAction from "@/components/maintainer/MarketingActionsPanel";
 import InsightPanel from "@/components/maintainer/InsightPanel";
 ---
 
-<V2Layout activeLink={MenuName.ProjectName}>
-  <Menu slot="left" activeMenuItem="marketing" />
+<Layout active={MenuName.ProjectName}>
+  <MenuPanel activeMenuItem="marketing" slot="left" />
   <PageLikePanel
     slot="center"
     title="CascadeFund Marketing Tools"
-    actions={[
-      { variant: "green", children: "Help me where to start", href: "#" },
-    ]}
+    actions={[{ variant: "success", children: "Start Tour", uri: "#" }]}
   >
     <p class="text-gray-600">
       This page is all about helping your project grow. Whether you want more
@@ -35,4 +33,4 @@ import InsightPanel from "@/components/maintainer/InsightPanel";
   </RowGrid>
   <ShareTools slot="right" />
   <InsightPanel slot="right" />
-</V2Layout>
+</Layout>
