@@ -22,7 +22,7 @@ const CascadingBalance: React.FC = () => {
       ]}
       className="mb-6"
       title={<>Cascading Balance
-        <Badge variant="info" static={true}>Updated
+        <Badge variant="info" static={true}>
           {<TimeAgo datetime={new Date(updatedAt)} />}
         </Badge>
       </>}
