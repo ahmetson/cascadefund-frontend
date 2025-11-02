@@ -1,7 +1,7 @@
 ---
-import V2Layout from "@/layouts/PanelViewLayout.astro";
+import Layout from "@/layouts/PanelViewLayout.astro";
 import { MenuName } from "@/components/navbar/WorkNavbar.astro";
-import Menu from "@/components/menu/MenuPanel";
+import MenuPanel from "@/components/menu/MenuPanel";
 
 import QuestPanel from "@/components/quest/QuestPanel";
 import NotificationBanner from "@/components/NotificationBanner";
@@ -9,8 +9,8 @@ import CworkPanel from "@/components/maintainer/CworkPanel";
 import InfoPanel from "@/components/panel/InfoPanel";
 ---
 
-<V2Layout active={MenuName.ProjectName}>
-  <Menu slot="left" activeMenuItem="cwork" client:load />
+<Layout active={MenuName.ProjectName}>
+  <MenuPanel slot="left" activeMenuItem="cwork" client:load />
   <NotificationBanner
     slot="center"
     type="warning"
@@ -57,4 +57,4 @@ import InfoPanel from "@/components/panel/InfoPanel";
       </p>
     </div>
   </InfoPanel>
-</V2Layout>
+</Layout>

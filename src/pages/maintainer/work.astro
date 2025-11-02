@@ -1,19 +1,16 @@
 ---
-import V2Layout from "@/layouts/PanelViewLayout.astro";
-import Menu from "@/components/menu/MenuPanel";
-import Link from "@/components/custom-ui/Link";
-
-import { MenuName } from "@/components/utilitified_decorations/WorkNavbar.astro";
+import Layout from "@/layouts/PanelViewLayout.astro";
+import MenuPanel from "@/components/menu/MenuPanel";
+import { MenuName } from "@/components/navbar/WorkNavbar.astro";
 
 import InfoPanel from "@/components/panel/InfoPanel";
-import TasksSection from "@/components/quest/QuestPanel";
-import RoadmapPanel from "@/components/maintainer/RoadmapPanel";
+import RoadmapTabs from "@/components/maintainer/RoadmapTabs";
 import WorkPanel from "@/components/maintainer/WorkPanel";
 ---
 
-<V2Layout active={MenuName.ProjectName}>
-  <Menu activeMenuItem="work" slot="left" />
-  <!-- <TasksSection slot="center" client:load /> -->
+<Layout active={MenuName.ProjectName}>
+  <MenuPanel activeMenuItem="work" slot="left" />
+  <!-- <QuestPanel slot="center" client:load /> -->
   <!-- <InfoPanel
     slot="right"
     title="How to work with the tasks?"
@@ -50,6 +47,6 @@ import WorkPanel from "@/components/maintainer/WorkPanel";
     </div>
   </InfoPanel>
   <WorkPanel slot="center" client:load />
-  <RoadmapPanel slot="right" client:load />
+  <RoadmapTabs slot="right" client:load />
   )
-</V2Layout>
+</Layout>

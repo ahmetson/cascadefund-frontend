@@ -160,10 +160,11 @@ export interface PanelEvents {
 
 export interface ActionProps {
   variant?: ButtonVariant,
-  uri?: string,
   replaceWithChildren?: boolean,
   children: any,
+  uri?: string,
   onClick?: () => void,
+  popoverContent?: React.ReactNode,
   className?: string,
   icon?: IconType | IconProps
   disabled?: boolean

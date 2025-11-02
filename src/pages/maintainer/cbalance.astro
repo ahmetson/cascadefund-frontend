@@ -1,14 +1,14 @@
 ---
-import V2Layout from "@/layouts/PanelViewLayout.astro";
-import Menu from "@/components/menu/MenuPanel";
+import Layout from "@/layouts/PanelViewLayout.astro";
+import MenuPanel from "@/components/menu/MenuPanel";
 import { MenuName } from "@/components/navbar/WorkNavbar.astro";
 
-import CascadingBalance from "@/components/maintainer/CascadingBalancePanel";
-// import TransactionHistory from "@/components/maintainer/RecentTransactionPanel";
+import CascadingBalancePanel from "@/components/maintainer/CascadingBalancePanel";
+// import RecentTransactionPanel from "@/components/maintainer/RecentTransactionPanel";
 ---
 
-<V2Layout active={MenuName.ProjectName}>
-  <Menu activeMenuItem="cbalance" slot="left" />
-  <CascadingBalance slot="center" />
-  <!-- <TransactionHistory slot="center" /> -->
-</V2Layout>
+<Layout active={MenuName.ProjectName}>
+  <MenuPanel activeMenuItem="cbalance" slot="left" />
+  <CascadingBalancePanel slot="center" />
+  <!-- <RecentTransactionPanel slot="center" /> -->
+</Layout>
