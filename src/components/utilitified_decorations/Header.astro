@@ -1,15 +1,17 @@
 ---
 import CascadeFundLogo from "./Logo.astro";
 import AuthNavItem from "./AuthNavItem";
-import WorkNavbar, { type MenuName } from "./WorkNavbar.astro";
+import WorkNavbar, { type MenuName } from "../navbar/WorkNavbar.astro";
+import { MenuItemProps } from "../menu/MenuItem";
 
 interface Props {
   active?: string;
   hideLinks?: string[];
   subtitle?: any; // header left
+  additional?: MenuItemProps[];
 }
 
-const { subtitle, active, hideLinks } = Astro.props;
+const { subtitle, active, hideLinks, additional } = Astro.props;
 ---
 
 <header
@@ -35,6 +37,7 @@ const { subtitle, active, hideLinks } = Astro.props;
         </div>
         <WorkNavbar
           tabIndex="-1"
+          additional={additional}
           className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           active={active ? (active as MenuName) : undefined}
           hideLinks={hideLinks ? (hideLinks as MenuName[]) : undefined}

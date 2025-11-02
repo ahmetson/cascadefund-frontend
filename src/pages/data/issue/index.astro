@@ -1,7 +1,5 @@
 ---
-import V2Layout from "@/layouts/PanelViewLayout.astro";
-import NavigatingSubtitledElement from "@/components/utilitified_decorations/NavigatingSubtitledItem";
-import NavigatingElement from "@/components/utilitified_decorations/NavigatingItem";
+import Layout from "@/layouts/PanelViewLayout.astro";
 import BackButton from "@/components/custom-ui/BackButton";
 import IssueContent from "@/components/issue/IssueContentPanel";
 import PriorityPanel from "@/components/issue/IssuePrioritificationPanel.astro";
@@ -10,22 +8,30 @@ import RecentActivity from "@/components/issue/RecentActivityPanel";
 import RelatedIssues from "@/components/issue/RelatedIssuesPanel";
 import ChatPanel from "@/components/chat";
 import NotificationBanner from "@/components/NotificationBanner";
+import { MenuItemProps } from "@/components/menu/MenuItem";
 
-const additional = [
-  await NavigatingElement({
+const additional: MenuItemProps[] = [
+  {
+    icon: "cascading-work",
+    label: "Cascading Work",
     href: "/maintainer/work",
-    children: "Cascading Work",
-  }),
-  await NavigatingSubtitledElement({
-    subtitle: "Issues List/Roadmap",
+  },
+  {
+    icon: "issue",
+    label: "Issues List/Roadmap",
+    href: "/data/project",
     active: true,
-    children: "Version",
-  }),
-  await NavigatingElement({ active: true, children: "Issue" }),
-].reverse();
+  },
+  {
+    icon: "issue",
+    label: "Issue",
+    href: "/data/issue",
+    active: true,
+  },
+];
 ---
 
-<V2Layout subtitle="Data Section: Issue" additional={additional}>
+<Layout subtitle="Data Section: Issue" additional={additional}>
   <BackButton slot="left" href="/data/project" />
   <NotificationBanner type="warning" title="Complete a quest..." slot="center">
     Please reply to the "Project Timeline" chat.'
@@ -38,7 +44,7 @@ const additional = [
   <ChatPanel slot="right" client:load />
   <RecentActivity slot="right" />
   <RelatedIssues slot="right" />
-</V2Layout>
+</Layout>
 
 <style is:global>
   @import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";

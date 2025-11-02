@@ -3,7 +3,7 @@ import { getIcon, type IconType } from '@/components/icon'
 import Link from '../custom-ui/Link'
 import Badge, { BadgeProps } from '../custom-ui/Badge'
 
-interface MenuItemProps {
+export interface MenuItemProps {
   icon: IconType
   label: string
   href: string

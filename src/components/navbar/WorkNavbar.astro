@@ -1,5 +1,5 @@
 ---
-import MenuItem from "../menu/MenuItem";
+import MenuItem, { MenuItemProps } from "../menu/MenuItem";
 
 export enum MenuName {
   ProjectList = "ProjectList",
@@ -12,9 +12,11 @@ interface Props {
   hideLinks?: MenuName[];
   className?: string;
   vertical?: boolean;
+  additional?: MenuItemProps[];
 }
 
-const { tabIndex, vertical, active, hideLinks, className } = Astro.props;
+const { tabIndex, vertical, active, hideLinks, className, additional } =
+  Astro.props;
 
 const isItemShown = (item: MenuName): boolean => {
   return (
@@ -31,6 +33,13 @@ const isItemShown = (item: MenuName): boolean => {
   <slot />
   <div class={vertical ? "text-sm " : "breadcrumbs text-sm"}>
     <ul class={vertical ? "flex flex-col " : "w-full justify-center"}>
+      {
+        additional?.map((item) => (
+          <li>
+            <MenuItem {...item} />
+          </li>
+        ))
+      }
       {
         isItemShown(MenuName.ProjectList) && (
           <li class="">
