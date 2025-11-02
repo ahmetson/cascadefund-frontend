@@ -1,7 +1,7 @@
 import React from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
 import Button from '@/components/custom-ui/Button'
-import Badge from '@/components/custom-ui/Badge'
+import Badge from '@/components/badge/Badge'
 
 const Panel: React.FC = () => {
   return (

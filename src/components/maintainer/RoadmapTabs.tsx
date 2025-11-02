@@ -1,6 +1,6 @@
 import React from 'react'
 import Tabs, { TabProps } from '../Tabs'
-import Badge from '../custom-ui/Badge'
+import Badge from '../badge/Badge'
 import { ProjectVersionProps } from '../project/ProjectVersionPanel';
 import RoadmapPanel from './RoadmapPanel'
 import { Popover } from '@base-ui-components/react/popover';

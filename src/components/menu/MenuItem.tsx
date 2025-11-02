@@ -1,7 +1,7 @@
 import React from 'react'
 import { getIcon, type IconType } from '@/components/icon'
 import Link from '../custom-ui/Link'
-import Badge, { BadgeProps } from '../custom-ui/Badge'
+import Badge, { BadgeProps } from '../badge/Badge'
 
 export interface MenuItemProps {
   icon: IconType

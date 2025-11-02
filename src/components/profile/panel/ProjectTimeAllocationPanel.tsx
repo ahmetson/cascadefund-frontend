@@ -1,6 +1,6 @@
 import React from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
-import Badge from '@/components/custom-ui/Badge'
+import Badge from '@/components/badge/Badge'
 import Button from '@/components/custom-ui/Button'
 
 const Sidebar: React.FC = () => {

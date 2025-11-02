@@ -1,6 +1,6 @@
 import React from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
-import Badge from '@/components/custom-ui/Badge'
+import Badge from '@/components/badge/Badge'
 import ProgressBar from '@/components/CustomProgressBar'
 
 const TasksSection: React.FC = () => {

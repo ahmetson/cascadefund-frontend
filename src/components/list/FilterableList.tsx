@@ -3,7 +3,7 @@ import { FilterOption } from './FilterToggle'
 import FilterToggle from './FilterToggle'
 import SearchBar from '@/components/SearchBar'
 import List from './List'
-import Badge from '@/components/custom-ui/Badge'
+import Badge from '@/components/badge/Badge'
 import NumberFlow from '@number-flow/react'
 
 export interface FilterableListProps<T> {

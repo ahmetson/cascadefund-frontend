@@ -14,7 +14,7 @@ import { ProfileProps, ProfileSocialLink } from '../types'
 import Editable from '../../custom-ui/Editable'
 import { Editor } from '@tiptap/react'
 import EditableMenuPanel from '../../custom-ui/EditableMenuPanel'
-import YourProfileBadge from '../badge/YourProfileBadge'
+import YourProfileBadge from '../badge/YourBadge'
 import EditableBadge from '../badge/EditableBadge'
 import { Popover } from '@base-ui-components/react/popover'
 import PanelFooter from '@/components/panel/PanelFooter'
@@ -28,7 +28,7 @@ const getSocialProfile = (selfProfile: boolean, social: ProfileSocialLink, setSo
       <FaTelegram color="gray" className="w-6 h-6 text-blue-500! hover:text-teal-800!" />
 
   const trigger = (
-    <Link key={social.type} asNewTab={true} href={social.url} className="flex items-center space-x-2">
+    <Link key={social.type} asNewTab={true} uri={social.url} className="flex items-center space-x-2">
       {content}
     </Link>)
   if (!selfProfile) {
@@ -61,10 +61,10 @@ const getSocialProfile = (selfProfile: boolean, social: ProfileSocialLink, setSo
 const ProfilePanel: React.FC<ProfileProps & PanelEvents> = ({ onActionClick, ...props }) => {
   const [value, setValue] = useState<Record<string, any>>({
     'description': props.description,
-    'name': props.name,
+    'name': props.children || 'Unnamed',
     'subtitle': props.subtitle,
     'socialLinks': props.socialLinks,
-    'avatar': props.avatar,
+    'avatar': props.icon,
     'followers': props.followers,
     'following': props.following,
   });

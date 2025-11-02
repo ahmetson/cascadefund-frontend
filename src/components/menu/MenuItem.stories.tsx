@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import MenuItem from './MenuItem'
-import { BadgeProps } from '../custom-ui/Badge'
+import { BadgeProps } from '../badge/Badge'
 
 const meta: Meta<typeof MenuItem> = {
     title: 'Components/Menu/Menu Item',

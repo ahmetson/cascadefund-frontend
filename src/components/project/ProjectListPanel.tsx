@@ -1,7 +1,7 @@
 import React from 'react'
 import FilterableList from '@/components/list/FilterableList'
 import ProjectCard, { type ProjectInfoProps } from '@/components/project/ProjectLink'
-import Badge from '../custom-ui/Badge'
+import Badge from '../badge/Badge'
 import { FilterOption } from '@/components/list/FilterToggle'
 import BasePanel from '../panel/BasePanel'
 

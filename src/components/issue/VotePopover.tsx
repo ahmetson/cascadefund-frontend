@@ -4,7 +4,7 @@ import * as RadixSlider from '@radix-ui/react-slider'
 import NumberFlow, { NumberFlowGroup, continuous } from '@number-flow/react'
 import { getIcon } from '../icon'
 import Button from '../custom-ui/Button'
-import Badge from '../custom-ui/Badge'
+import Badge from '../badge/Badge'
 import { cn } from '@/lib/utils'
 import { Spinner } from '../ui/shadcn-io/spinner'
 

@@ -5,7 +5,7 @@ import TimeAgo from 'timeago-react'
 import LabeledInput from '../custom-ui/LabeledInput'
 import Label from '../custom-ui/Label'
 import NumberFlow from '@number-flow/react'
-import Badge from '../custom-ui/Badge'
+import Badge from '../badge/Badge'
 
 const CascadingBalance: React.FC = () => {
   const updatedAt = new Date().getTime()

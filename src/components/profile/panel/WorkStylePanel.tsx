@@ -2,7 +2,7 @@ import React from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
 import Slider from '@/components/Slider'
 import { getIcon } from '@/components/icon'
-import Badge from '@/components/custom-ui/Badge'
+import Badge from '@/components/badge/Badge'
 import { WorkStyleProps } from '@/components/profile/types'
 
 const WorkStyleSection: React.FC<WorkStyleProps> = ({

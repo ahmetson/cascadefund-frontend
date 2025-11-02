@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ProjectRating from '@/components/rating/ProjectRating'
 import PageLikePanel from '@/components/panel/PageLikePanel'
-import Badge from '@/components/custom-ui/Badge'
+import Badge from '@/components/badge/Badge'
 import TaskItem from './TaskItem'
 import { GridStyle } from '@/types/eventTypes'
 import Tooltip from '../utilitified_decorations/Tooltip'

@@ -1,5 +1,5 @@
 import React from 'react'
-import Badge from '@/components/custom-ui/Badge'
+import Badge from '@/components/badge/Badge'
 import PageLikePanel from '@/components/panel/InfoPanel'
 import Link from '@/components/custom-ui/Link'
 
