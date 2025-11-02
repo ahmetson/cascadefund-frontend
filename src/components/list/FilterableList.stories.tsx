@@ -106,8 +106,8 @@ const sampleIssues: Issue[] = [
         storage: 'github',
         author: {
             uri: '',
-            name: '',
-            avatar: ''
+            children: '',
+            icon: ''
         },
         projectId: '',
         categoryId: ''
@@ -121,8 +121,8 @@ const sampleIssues: Issue[] = [
         storage: 'github',
         author: {
             uri: '',
-            name: '',
-            avatar: ''
+            children: '',
+            icon: ''
         },
         projectId: '',
         categoryId: ''
@@ -136,8 +136,8 @@ const sampleIssues: Issue[] = [
         storage: 'github',
         author: {
             uri: '',
-            name: '',
-            avatar: ''
+            children: '',
+            icon: ''
         },
         projectId: '',
         categoryId: ''
@@ -151,8 +151,8 @@ const sampleIssues: Issue[] = [
         storage: 'github',
         author: {
             uri: '',
-            name: '',
-            avatar: ''
+            children: '',
+            icon: ''
         },
         projectId: '',
         categoryId: ''
@@ -166,8 +166,8 @@ const sampleIssues: Issue[] = [
         storage: 'cascadefund',
         author: {
             uri: '',
-            name: '',
-            avatar: ''
+            children: '',
+            icon: ''
         },
         projectId: '',
         categoryId: ''
@@ -466,7 +466,7 @@ export const DependencyList: Story = {
     parameters: {
         docs: {
             description: {
-                story: 'Dependency List example based on DepListPanel. Shows dependencies with filtering by platform status and search functionality.',
+                story: 'Dependency List example based on ProjectList. Shows dependencies with filtering by platform status and search functionality.',
             },
         },
     },

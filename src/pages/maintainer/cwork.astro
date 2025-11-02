@@ -5,8 +5,8 @@ import Menu from "@/components/menu/MenuPanel";
 
 import QuestPanel from "@/components/quest/QuestPanel";
 import NotificationBanner from "@/components/NotificationBanner";
-import PageLikePanel from "@/components/panel/PageLikePanel";
 import CworkPanel from "@/components/maintainer/CworkPanel";
+import InfoPanel from "@/components/panel/InfoPanel";
 ---
 
 <V2Layout active={MenuName.ProjectName}>
@@ -23,7 +23,7 @@ import CworkPanel from "@/components/maintainer/CworkPanel";
   <QuestPanel slot="center" title="My Cascading Tasks" client:load />
 
   <CworkPanel slot="center" client:load />
-  <PageLikePanel slot="right" title="Dependencies Info">
+  <InfoPanel slot="right" title="Dependencies Info">
     <div class="space-y-3">
       <div>
         <div class="flex justify-between items-center">
@@ -56,5 +56,5 @@ import CworkPanel from "@/components/maintainer/CworkPanel";
         button above.
       </p>
     </div>
-  </PageLikePanel>
+  </InfoPanel>
 </V2Layout>

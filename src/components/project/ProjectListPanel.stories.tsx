@@ -100,9 +100,10 @@ const mockProjects: ProjectInfoProps[] = [
                 variant: 'secondary',
                 uri: '/cascade/react-dashboard',
                 children: 'Cascade Work',
-                icon: 'cascade'
+                icon: 'work'
             }
-        ]
+        ],
+        collaborators: []
     },
     {
         title: 'Vue.js E-commerce',
@@ -162,7 +163,8 @@ const mockProjects: ProjectInfoProps[] = [
                 children: 'View Work',
                 icon: 'work'
             }
-        ]
+        ],
+        collaborators: []
     },
     {
         title: 'Node.js API Gateway',
@@ -248,9 +250,10 @@ const mockProjects: ProjectInfoProps[] = [
                 variant: 'secondary',
                 uri: '/cascade/node-api-gateway',
                 children: 'Cascade Work',
-                icon: 'cascade'
+                icon: 'work'
             }
-        ]
+        ],
+        collaborators: []
     },
 ]
 

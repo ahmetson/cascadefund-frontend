@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface DependencyCardProps {
+export interface DependencyCardProps {
   name: string
   version: string
   rating: number | null
@@ -38,21 +38,20 @@ const DependencyCard: React.FC<DependencyCardProps> = ({
           </div>
         )}
       </div>
-      
+
       <div className="mb-3">
-        <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
-          status === 'registered' 
-            ? 'bg-green-100 text-green-800' 
+        <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${status === 'registered'
+            ? 'bg-green-100 text-green-800'
             : 'bg-red-100 text-red-800'
-        }`}>
+          }`}>
           {status === 'registered' ? 'registered' : 'Not on platform'}
         </span>
       </div>
-      
+
       <p className="text-sm text-gray-600 mb-3 line-clamp-3">
         {description}
       </p>
-      
+
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <a href={links.website} className="text-gray-400 hover:text-gray-600">
