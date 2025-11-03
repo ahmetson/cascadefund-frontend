@@ -14,7 +14,6 @@ import { FinanceInfoProps, ProfileProps } from "@/components/profile/types";
 // High-rated profile
 export const highRatedProfile: ProfileProps = {
   selfProfile: false,
-  name: "Alex Johnson",
   description:
     "Top contributor and maintainer with extensive experience in blockchain development, smart contracts, and decentralized applications. Leading multiple high-impact projects.",
   subtitle: "Blockchain Expert & Open Source Maintainer",
@@ -22,7 +21,6 @@ export const highRatedProfile: ProfileProps = {
     { type: "github", url: "https://github.com/alexjohnson" },
     { type: "linkedin", url: "https://linkedin.com/in/alexjohnson" },
   ],
-  avatar: "/api/placeholder/64/64",
   ratings: {
     influencer: { ratingType: "influencer", lvl: 10, maxLvl: 10, top: 2 },
     maintainer: { ratingType: "maintainer", lvl: 10, maxLvl: 10, top: 1 },
@@ -32,10 +30,11 @@ export const highRatedProfile: ProfileProps = {
   topRating: "maintainer",
   followers: 15420,
   following: true,
-  myAccount: false,
   totalVotingPower: 2500,
   bonusPoints: 500,
   projectAmount: 45,
+  uri: "",
+  children: "",
 };
 
 export const highBalance = {
@@ -47,7 +46,7 @@ export const highBalance = {
 ---
 
 <V2Layout hideLinks={[MenuName.ProjectName]} subtitle="Data Section: Profile">
-  <BackButton href="/maintainer/work" slot="left" />
+  <BackButton uri="/maintainer/work" slot="left" />
   <ProfilePanel {...highRatedProfile} slot="center" client:only />
   {highRatedProfile.selfProfile && <FinanceInfo {...highBalance} />}
   <ProfileMetric slot="center" client:load />

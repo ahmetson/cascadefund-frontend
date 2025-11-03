@@ -1,5 +1,5 @@
 import React from 'react'
-import FormField from '@/components/LabeledInput'
+import FormField from '@/components/custom-ui/LabeledInput'
 import TextArea from '@/components/TextArea'
 import PageLikePanel from '@/components/panel/PageLikePanel'
 import { PanelEvents } from '@/types/eventTypes'
