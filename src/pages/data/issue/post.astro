@@ -2,10 +2,9 @@
 import Layout from "@/layouts/PanelViewLayout.astro";
 import BackButton from "@/components/custom-ui/BackButton";
 import { MenuItemProps } from "@/components/menu/MenuItem";
-import IssueCard from "@/components/issue/UpdatableIssueContentPanel";
-import VotingSection from "@/components/issue/IssuePrioritificationPanel.astro";
-import ChatPanel from "@/components/chat";
-import IssueDetails from "@/components/issue/UpdatableIssueDetailsPanel";
+import { ChatTabs } from "@/components/chat";
+import IssuePanel from "@/components/issue/IssuePanel";
+import IssueStatsPanel from "@/components/issue/IssueStatsPanel";
 
 import NotificationBanner from "@/components/NotificationBanner";
 
@@ -42,8 +41,8 @@ const backHref = isForOriginal
   : "/data/issue";
 ---
 
-<Layout>
-  <BackButton slot="left" href={backHref} />
+<Layout additional={additional}>
+  <BackButton slot="left" uri={backHref} />
   <NotificationBanner
     slot="center"
     type="warning"
@@ -56,20 +55,26 @@ const backHref = isForOriginal
     }</NotificationBanner
   >
 
-  <IssueCard
+  <IssuePanel
     slot="center"
-    panelTitle="Add a new Issue"
-    actions={[
-      {
-        variant: "primary",
-        children: "Next",
-        uri: "/data/issue",
-      },
-    ]}
+    uri="/data/issue"
+    editable={true}
+    number={"0"}
+    title="Issue Title"
+    description="Issue description."
+    type="improvement"
+    storage="cascadefund"
+    projectId="1"
+    categoryId="1"
+    stats={{}}
+    vpAmount={0}
+    currentVP={0}
+    topVP={0}
+    minVP={0}
+    client:load
   />
-  <VotingSection slot="center" />
-  <IssueDetails slot="right" />
-  <ChatPanel slot="right" client:load />
+  <IssueStatsPanel slot="right" editable={true} client:load />
+  <ChatTabs slot="right" client:load />
 </Layout>
 
 <style is:global>

@@ -10,7 +10,7 @@ export type IssueStatType = 'upvote' | 'downvote' | 'chat' | 'voting-power' | 'f
 export interface Issue {
     id?: number
     uri: string
-    number: string
+    number?: string
     title: string
     description: string
     type: IssueType

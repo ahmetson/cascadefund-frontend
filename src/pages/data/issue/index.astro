@@ -2,10 +2,9 @@
 import Layout from "@/layouts/PanelViewLayout.astro";
 import BackButton from "@/components/custom-ui/BackButton";
 import IssuePanel from "@/components/issue/IssuePanel";
-import IssueStatsPanel from "@/components/issue/IssueStatsPanel";
-import { ChatTabs } from "@/components/chat";
 import NotificationBanner from "@/components/NotificationBanner";
 import { MenuItemProps } from "@/components/menu/MenuItem";
+import IssueStatsPanel from "@/components/issue/IssueStatsPanel";
 
 const additional: MenuItemProps[] = [
   {
@@ -29,23 +28,32 @@ const additional: MenuItemProps[] = [
 ---
 
 <Layout subtitle="Data Section: Issue" additional={additional}>
-  <BackButton slot="left" href="/data/project" />
-  <NotificationBanner 
-    type="info" 
-    title="Complete a quest..." 
+  <BackButton slot="left" uri="/data/project" />
+  <NotificationBanner
+    type="info"
+    title="Complete a quest..."
     className="mb-8 text-gray-200"
     titleClassName="text-gray-200!"
-  slot="center">
+    slot="center"
+  >
     Please reply to the "Project Timeline" chat.'
   </NotificationBanner>
 
-  <IssuePanel editable={true} slot="center" client:load />
-
-  <IssueStatsPanel slot="right" client:load />
-  <ChatTabs slot="right" client:load />
-
+  <IssuePanel
+    slot="center"
+    uri="/data/issue"
+    number={"0"}
+    title="Issue Title"
+    description="Issue description."
+    type="improvement"
+    storage="cascadefund"
+    projectId="1"
+    categoryId="1"
+    stats={{}}
+    vpAmount={0}
+    currentVP={0}
+    topVP={0}
+    minVP={0}
+  />
+  <IssueStatsPanel slot="right" />
 </Layout>
-
-<style is:global>
-  @import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-</style>
