@@ -3,18 +3,72 @@ import V2Layout from "@/layouts/PanelViewLayout.astro";
 import { MenuName } from "@/components/navbar/WorkNavbar.astro";
 
 import NotificationBanner from "@/components/NotificationBanner";
-import ProjectInfo from "@/components/project/ProjectLink";
+import ProjectInfo, {
+  ProjectInfoProps,
+} from "@/components/project/ProjectLink";
 import ProjectStats from "@/components/project/ProjectStatsPanel";
 import IssuesSection from "@/components/issue/IssueListPanel";
-import CallToInteract from "@/components/project/CallToInteractPanel";
-import ProjectPeople from "@/components/project/ProjectPeoplePanel";
-import HighlightedInteraction from "@/components/project/HighlightedInteractionPanel";
-import MenuPanel from "@/components/menu/MenuPanel";
+// import ProjectPeople from "@/components/project/ProjectPeoplePanel";
+// import HighlightedInteraction from "@/components/project/HighlightedInteractionPanel";
 import IssueInfoPanel from "@/components/project/IssueStatPanel";
+import BackButton from "@/components/custom-ui/BackButton";
+
+const projectData: ProjectInfoProps = {
+  uri: "/data/project",
+  title: "Hyperpayment",
+  isInfluencer: true,
+  rating: {
+    rating: 4.8,
+    pointsLeft: 200,
+  },
+  forks: 1,
+  likes: 23,
+  isFollowing: true,
+  originalProject: "Original project",
+  issue: "Issue: Windows support",
+  description:
+    "A protocol and it's implementation to transfer a resource between arbitrary amount parties. Used for example in the CascadeFund to distribute donations",
+  license: "MIT License",
+  balance: 1240,
+  cascadeBalance: 350,
+  totalAmount: 45,
+  duration: "38 days",
+  lastActivity: 1,
+  totalCommits: 2000,
+  commitsPerDay: "8 commits / day",
+  openIssues: 12,
+  closedIssues: 45,
+  avgResponseTime: "1 day for reply",
+  collaborators: [
+    { name: "Core Maintainers", percentage: 65, color: "bg-blue-500" },
+    { name: "Repeat Contributors", percentage: 25, color: "bg-blue-400" },
+    { name: "One-time Contributors", percentage: 10, color: "bg-gray-400" },
+  ],
+  author: {
+    uri: "/profile/alexjohnson",
+    children: "Alex Johnson",
+    rating: {
+      ratingType: "maintainer",
+      lvl: 220,
+      maxLvl: 10,
+      top: 10,
+    },
+  },
+  influencers: [
+    { uri: "/profile/alexjohnson", children: "Alex Johnson" },
+    { uri: "/profile/alexjohnson", children: "Alex Johnson" },
+    { uri: "/profile/alexjohnson", children: "Alex Johnson" },
+    { uri: "/profile/alexjohnson", children: "Alex Johnson" },
+  ],
+  originalProjectUrl: "",
+  followers: 0,
+  createdTime: 0,
+  actions: [],
+};
 ---
 
 <V2Layout active={MenuName.ProjectName} subtitle="Data Section: Project">
-  <MenuPanel slot="left" activeMenuItem="project" />
+  <BackButton slot="left" uri="/data/projects" />
   <NotificationBanner
     type="success"
     title="Quest System Updated!"
@@ -38,25 +92,11 @@ import IssueInfoPanel from "@/components/project/IssueStatPanel";
     >
   </NotificationBanner>
 
-  <ProjectInfo
-    title="Sample Project"
-    isInfluencer={false}
-    filterable
-    rating={5}
-    forks={27}
-    license="MIT"
-    tagLine="A sample project tagline."
-    fundTag="CascadeFund"
-    fundId="CF123"
-    description="This is a sample description for the project panel."
-    color="blue"
-    slot="center"
-  />
-  <ProjectStats slot="center" />
+  <ProjectInfo slot="center" {...projectData} />
+  <ProjectStats slot="right" />
   <IssuesSection title="All Issues" filterable={true} slot="center" />
 
-  <ProjectPeople slot="right" />
-  <HighlightedInteraction slot="right" />
-  <CallToInteract slot="right" />
+  <!-- <HighlightedInteraction slot="right" /> -->
+  <!-- <ProjectPeople slot="right" /> -->
   <IssueInfoPanel slot="right" />
 </V2Layout>
