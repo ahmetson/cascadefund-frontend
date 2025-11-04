@@ -32,7 +32,7 @@ const C: React.FC<Props> = ({ activeTab: initialTab, tabs, id }) => {
       onValueChange={setTab}
       value={activeTab as any} className="relative mb-6 bg-blue-100 text-gray-700 py-1">
       <TabsHighlight className="">
-        <TabsList className="h-10 inline-flex p-1 px-4 pb-0 w-full ">
+        <TabsList className="h-10 inline-flex p-0 w-full ">
           {tabs.map((tab) =>
             <TabsHighlightItem key={tab.key} value={tab.key} className={baseClassName + (activeTab === tab.key ? ' bg-white shadow-sm shadow-b-none' : 'bg-blue-100 border-b-2 border-blue-300')}>
               <TabsTrigger
@@ -46,7 +46,7 @@ const C: React.FC<Props> = ({ activeTab: initialTab, tabs, id }) => {
         </TabsList>
       </TabsHighlight>
       <TabsContents
-        className="bg-white p-3 h-80 mx-4 mb-3 mt-0"
+        className="bg-white p-0 h-80 m-0"
       >
         {tabs.map((tab) =>
           <TabsContent value={tab.key} className="space-y-4">
