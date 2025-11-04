@@ -21,6 +21,7 @@ export default defineConfig({
       }
     },
     ssr: {
+      noExternal: ['timeago-react']
     }
   }
 });

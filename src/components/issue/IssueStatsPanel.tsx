@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+'use client'
+import React, { useState, Suspense, lazy } from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
 import Badge from '@/components/badge/Badge'
-// import TimeAgo from 'timeago-react'
+import TimeAgo from 'timeago-react'
 import Following from '../social-network/Followings'
-import TokenInput from 'react-customize-token-input';
-import '../../styles/react-customize-token-input.css';
+// import '../../styles/react-customize-token-input.css';
+
+// Dynamic import for TokenInput to avoid SSR issues
+const TokenInput = lazy(() => import('react-customize-token-input'));
 
 interface IssueStatsProps {
   editable?: boolean
@@ -13,11 +16,11 @@ interface IssueStatsProps {
   availableLists?: string[]
 }
 
-const IssueStatsPanel: React.FC<IssueStatsProps> = ({ editable = false, tags: _tags = [], list: _list, availableLists: _availableLists = [] }) => {
+const IssueStatsPanel: React.FC<IssueStatsProps> = ({ editable = true, tags: _tags = ['tag1', 'tag2', 'tag3'], list: _list, availableLists: _availableLists = [] }) => {
   const [tags, setTags] = useState<string[]>(_tags)
   const [list, setList] = useState<string | undefined>(_list);
 
-  const tagsClassName = editable ? 'border-1 rounded-xs border-gray-300 hover:border-teal-400 hover:bg-white bg-teal-50' : ''
+  const tagsClassName = !editable ? 'border-1 rounded-xs border-gray-300 hover:border-teal-400 hover:bg-white/10 bg-teal-50/10' : ''
 
   return (
     <PageLikePanel
@@ -48,13 +51,13 @@ const IssueStatsPanel: React.FC<IssueStatsProps> = ({ editable = false, tags: _t
         </div>
         <div className="flex justify-between items-center">
           <span className="text-gray-600 w-24">Created:</span>
-          <i>N/A</i>
-          {/* <TimeAgo datetime={1730457600000} className='text-gray-700' /> */}
+          {/* <i>N/A</i> */}
+          <TimeAgo datetime={1730457600000} className='text-gray-700' />
         </div>
         <div className="flex justify-between items-center">
           <span className="text-gray-600 w-24">Updated:</span>
-          <i>N/A</i>
-          {/* <TimeAgo datetime={1730457600000} className='text-gray-700' /> */}
+          {/* <i>N/A</i> */}
+          <TimeAgo datetime={1730457600000} className='text-gray-700' />
         </div>
         <div className="flex justify-between items-center">
           <span className="text-gray-600 w-24">Contributor:</span>
@@ -73,12 +76,14 @@ const IssueStatsPanel: React.FC<IssueStatsProps> = ({ editable = false, tags: _t
         </div>
         <div className="flex justify-between items-center">
           <span className="text-gray-600 w-24">Tags:</span>
-          <TokenInput
-            readOnly={!editable}
-            tokenValues={tags}
-            className={`flex w-full justify-end ${tagsClassName}`}
-            onTokenValuesChange={(tags_) => setTags(tags_)}
-          />
+          <Suspense fallback={<div className="text-gray-500 text-sm">Loading...</div>}>
+            <TokenInput
+              readOnly={!editable}
+              tokenValues={tags}
+              className={`flex w-full justify-end ${tagsClassName}`}
+              onTokenValuesChange={(tags_) => setTags(tags_ as string[])}
+            />
+          </Suspense>
         </div>
       </div>
     </PageLikePanel>
