@@ -35,7 +35,7 @@ const AuthSuccessCard: React.FC<SectionProps & { gotoLink?: string, gotoLabel?: 
         <p>
           {
             showButton &&
-            <Link href={gotoLink!} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{gotoLabel}</Link>
+            <Link uri={gotoLink!} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{gotoLabel}</Link>
           }
         </p>
       </div>

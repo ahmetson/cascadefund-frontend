@@ -7,11 +7,10 @@ import { MenuItemProps } from "../menu/MenuItem";
 interface Props {
   active?: string;
   hideLinks?: string[];
-  subtitle?: any; // header left
   additional?: MenuItemProps[];
 }
 
-const { subtitle, active, hideLinks, additional } = Astro.props;
+const { active, hideLinks, additional } = Astro.props;
 ---
 
 <header
@@ -42,7 +41,8 @@ const { subtitle, active, hideLinks, additional } = Astro.props;
           active={active ? (active as MenuName) : undefined}
           hideLinks={hideLinks ? (hideLinks as MenuName[]) : undefined}
           vertical={true}
-          ><slot />
+        >
+          <slot />
         </WorkNavbar>
       </div>
       <CascadeFundLogo />
@@ -52,7 +52,8 @@ const { subtitle, active, hideLinks, additional } = Astro.props;
         className="space-x-6"
         active={active ? (active as MenuName) : undefined}
         hideLinks={hideLinks ? (hideLinks as MenuName[]) : undefined}
-        ><slot />
+      >
+        <slot />
       </WorkNavbar>
     </div>
     <div class="navbar-end flex h-6">

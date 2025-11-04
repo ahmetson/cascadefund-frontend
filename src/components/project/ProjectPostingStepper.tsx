@@ -34,17 +34,17 @@ const C: React.FC<Props> = ({ projectId, forkProjectId, createdIssueId }) => {
     <Stepper
       initialStep={1}
       onStepChange={() => {
-        scrollTop();
+        // scrollTop();
       }}
       onFinalStepCompleted={() => {
         window.location.href = '/maintainer/work'; // Or window.location.replace('/new-page');
       }}
       backButtonText="Previous"
       nextButtonText="Next"
-      stepCircleContainerClassName='border-none! shadow-none!'
-      className='justify-start border-none'
+      stepCircleContainerClassName='shadow-none! border-none'
+      className='justify-start w-full rounded-lg'
       stepContainerClassName='px-0! pt-0!'
-      contentClassName='p-0!'
+      contentClassName='p-0! w-full'
     >
       <RepositoryForm setRepositoryUrl={setRepositoryUrl} repositoryUrl={repositoryUrl} />
       <RepositoryConnection />
