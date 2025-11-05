@@ -14,12 +14,20 @@ export interface InfoPanelProps extends Omit<BasePanelProps, 'children'> {
     children?: React.ReactNode
     expandable?: boolean
     defaultExpanded?: boolean
-    darkMode?: boolean
     titleClassName?: string
 }
 
+export const infoPanelIcon = (iconType: IconType | IconProps | undefined): IconType | IconProps => {
+    if (typeof iconType === 'object') {
+        return iconType;
+    }
+    if (iconType === undefined) {
+        iconType = 'info';
+    }
+    return iconType;
+}
+
 const InfoPanel: React.FC<InfoPanelProps> = ({
-    darkMode = false,
     key,
     icon,
     title,
@@ -35,19 +43,19 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
     const hasContent = children || (actions && actions.length > 0)
     const titleBottomMargin = hasContent ? 'mb-4' : undefined;
     const contentTopMargin = 'mt-4';
-    const titleColor = darkMode ? 'text-gray-300' : 'text-gray-600';
-    const textColor = darkMode ? 'text-gray-400' : 'text-gray-650';
-    const borderColor = darkMode ? 'border-gray-200/50' : 'border-gray-300/50';
-    const blurredBorder = 'border-blur-sm';
+    const titleColor = 'text-gray-600 dark:text-gray-400';
+    const textColor = 'text-gray-600 dark:text-gray-400';
+    const borderColor = 'border-gray-200/10';
+    const blurredBorder = 'border-blur-xs';
 
     const renderHeader = () => {
         if (!title) return null;
-        const iconProps = typeof icon === 'string' || icon === undefined ? { iconType: icon || 'info', width: 'w-5', height: 'h-5', fill: 'currentColor', className: 'mt-0.5 text-gray-300' } : icon
+        const iconProps = infoPanelIcon(icon);
 
         return (
             <div key={key} className={`${titleBottomMargin}`}>
-                <h2 className={`font-georgia font-semibold flex items-center gap-2 ${titleColor} ${titleClassName}`}>
-                    {iconProps && getIcon(iconProps)}
+                <h2 className={`font-georgia flex items-center gap-2 h-5 ${titleColor} ${titleClassName}`}>
+                    {getIcon(iconProps)}
                     <span>{title}</span>
                 </h2>
             </div>
@@ -90,7 +98,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
             </div>
         )
     }
-    const transparentBg = `${darkMode ? 'bg-gray-900/20' : 'bg-blue-500/10'} backdrop-blur-xs border-none ${textColor}`;
+    const transparentBg = `bg-white dark:bg-blue-500/10 backdrop-blur-xs border-none ${textColor}`;
 
 
     if (hasContent && expandable) {

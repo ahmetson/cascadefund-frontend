@@ -12,19 +12,19 @@ export type NotificationBannerProps = {
   titleClassName?: string
 } & Omit<PageLikePanelProps, "children" | "title">
 
-const NotificationBanner: React.FC<NotificationBannerProps> = ({ className, titleClassName, icon, type, title, children, expandable }) => {
+const NotificationBanner: React.FC<NotificationBannerProps> = ({ className, icon, type, title, children, expandable }) => {
   const getStyles = () => {
     switch (type) {
       case 'warning':
-        return 'bg-yellow-50 border-yellow-100 border-l-yellow-500'
+        return 'bg-yellow-50/10 border-yellow-100/50 dark:border-yellow-700/50 border-l-yellow-600 dark:border-l-yellow-300'
       case 'info':
-        return 'bg-blue-50/1 border-slate-300 border-l-blue-500'
+        return 'bg-blue-50/10 border-slate-300 dark:border-slate-600/50 border-l-blue-600 dark:border-l-blue-300'
       case 'success':
-        return 'bg-green-50 border-green-100 border-l-green-500'
+        return 'bg-green-50/10 border-green-100 dark:border-green-600/50 border-l-green-600 dark:border-l-green-300'
       case 'error':
-        return 'bg-red-50 border-red-100 border-l-red-500'
+        return 'bg-red-50/10 border-rose-100 dark:border-rose-400/40 border-l-red-600 dark:border-l-rose-500'
       default:
-        return 'bg-gray-50 border-gray-50 border-l-gray-500'
+        return 'bg-gray-50/10 border-gray-50 border-l-gray-600 dark:border-l-gray-300'
     }
   }
 
@@ -43,31 +43,23 @@ const NotificationBanner: React.FC<NotificationBannerProps> = ({ className, titl
     }
   }
 
-  const getIconComponent = () => {
-    const iconType = icon || getDefaultIcon()
-    return { iconType, width: 'w-5', height: 'h-5' }
-  }
-
   const fullClassName = `p-4 
     border-2
     border-dashed 
     flex 
     items-start 
     rounded-xs 
-    rounded-r-0 
     shadow-md
     ${getStyles()} 
     ${className}
   `
-  const titleColor = type === 'info' ? 'text-gray-200 dark:text-gray-100' : 'text-gray-400 dark:text-gray-200';
-  const contentColor = type === 'info' ? 'text-gray-200 dark:text-gray-100' : 'text-gray-600 dark:text-gray-200';
-
   return (
-    <InfoPanel title={title}
-      titleClassName={`${titleColor} ${titleClassName}`}
-      icon={getIconComponent()}
+    <InfoPanel
+      title={title}
+      icon={icon || getDefaultIcon()}
       expandable={expandable}
-      className={`${fullClassName} ${contentColor} ${className}`}>
+      className={`${fullClassName} ${className}`}
+    >
       {children}
     </InfoPanel>
   )
