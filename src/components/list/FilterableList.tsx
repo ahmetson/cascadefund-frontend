@@ -135,23 +135,21 @@ const FilterableList = <T,>({
 
             {/* Filters */}
             {filters && filters.length > 0 && (
-                <div className="mb-6">
-                    <FilterToggle
-                        filters={filters}
-                        onValueChange={handleFilterChange}
-                    />
-                </div>
+                <FilterToggle
+                    filters={filters}
+                    className='mb-6 text-sm'
+                    onValueChange={handleFilterChange}
+                />
             )}
 
             {/* Search Bar */}
             {!hideSearchbar && (
-                <div className="mb-4">
-                    <SearchBar
-                        value={searchQuery}
-                        onChange={setSearchQuery}
-                        placeholder={searchPlaceholder}
-                    />
-                </div>
+                <SearchBar
+                    className='mb-4'
+                    value={searchQuery}
+                    onChange={setSearchQuery}
+                    placeholder={searchPlaceholder}
+                />
             )}
 
             {/* List Content */}

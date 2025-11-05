@@ -1,9 +1,9 @@
 import React from 'react'
-import InteractivePanel, { InteractivePanelProps } from './InteractivePanel'
+import InteractivePanel, { InteractivePanelProps } from './InteractiveContainer'
 import { getIcon, IconType } from '@/components/icon'
 import { cn } from '@/lib/utils'
 import type { ActionProps } from '@/types/eventTypes'
-import BasePanel from './BasePanel'
+import BasePanel from './Panel'
 import PanelAction from './PanelAction'
 
 export interface PageLikePanelProps extends Omit<InteractivePanelProps, 'children' | 'expandableTitle'> {
@@ -32,13 +32,13 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
     ...interactiveProps
 }) => {
     const renderHeader = () => {
-        const titleColor = 'text-gray-700';
+        const titleColor = 'text-slate-700 dark:text-slate-400';
 
         if (titleCenter) {
             return (
                 <div className="mb-4 text-center">
-                    <h2 className={`font-georgia flex items-center justify-center gap-2 ${titleColor}`}>
-                        {icon && getIcon(icon)}
+                    <h2 className={`font-georgia flex items-center justify-center gap-1 h-5 ${titleColor}`}>
+                        {icon && getIcon({ iconType: icon, width: 'w-5', height: 'h-5', className: 'mt-1 text-slate-600 dark:text-slate-400' })}
                         <span>{title}</span>
                     </h2>
                 </div>
@@ -47,8 +47,8 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
 
         return (
             <div className="mb-4">
-                <h2 className={`font-georgia flex items-center gap-2 justify-between ${titleColor}`}>
-                    {icon && getIcon(icon)}
+                <h2 className={`font-georgia flex items-center gap-1 h-5 ${titleColor}`}>
+                    {icon && getIcon({ iconType: icon, width: 'w-5', height: 'h-5', className: 'mt-0.5 text-slate-600 dark:text-slate-400' })}
                     <span>{title}</span>
                     {rightHeader}
                 </h2>
@@ -59,7 +59,7 @@ const PageLikePanel: React.FC<PageLikePanelProps> = ({
     const renderContent = () => {
         return (
             <div
-                className="font-noto-sans space-y-3 text-sm text-gray-600 overflow-y-auto"
+                className="font-noto-sans space-y-3 text-sm text-slate-600 dark:text-slate-500 overflow-y-auto"
             >
                 {children}
             </div>

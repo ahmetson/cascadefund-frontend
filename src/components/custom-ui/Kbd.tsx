@@ -16,7 +16,7 @@ const Kbd: React.FC<Props> = ({ className, children, overwrittenChildren, onPres
   }, { enableOnFormTags: true });
 
   return (
-    <kbd className={cn("kbd border border-gray-300 rounded-sm border-solid px-1 w-12 text-xs flex text-center items-center text-gray-600 h-4!", className)}>
+    <kbd className={cn("kbd border border-gray-300 dark:border-gray-600 rounded-sm border-solid px-1 py-2 w-12 text-xs flex text-center items-center dark:bg-slate-500 text-gray-600 dark:text-gray-300 h-4!", className)}>
       {capitalizeFirstLetter(children as string)}
     </kbd>
   )

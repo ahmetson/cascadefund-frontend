@@ -28,11 +28,13 @@ const ProfileRating: React.FC<ProfileRatingProps> = ({ ratingType, lvl, maxLvl, 
   const getTrophyColor = (top: string | number): string => {
     const topNumber = typeof top === 'string' ? parseInt(top, 10) : top
 
-    if (topNumber <= 10) return '#FFD700' // Gold
+
+    if (topNumber <= 10) return '#dabb17' // Gold
     if (topNumber <= 50) return '#C0C0C0' // Silver
     if (topNumber <= 100) return '#CD7F32' // Bronze
     return '#4CAF50' // Green (Herald style for 101+)
   }
+
 
   const starColor = getStarColor(lvl, maxLvl)
   const trophyColor = getTrophyColor(top)
@@ -41,7 +43,7 @@ const ProfileRating: React.FC<ProfileRatingProps> = ({ ratingType, lvl, maxLvl, 
     <div className="flex items-center space-x-1 font-noto-sans">
       <span className="font-medium text-xl" style={{ color: starColor }}>★</span>
       <span className="-ml-0.5 mr-2">{lvl}</span>
-      <span style={{ color: trophyColor }}>🏆</span>
+      <span className='mr-2' style={{ color: trophyColor }}>🏆</span>
       <span className="-ml-1.5 mr-2 " style={{ color: trophyColor }}>{top}</span>
       <span className='font-medium font-georgia' style={{ color: trophyColor }}>{ratingType.charAt(0).toUpperCase() + ratingType.slice(1)}</span>
     </div>

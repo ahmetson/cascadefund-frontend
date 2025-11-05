@@ -4,7 +4,7 @@ import PageLikePanel from '@/components/panel/PageLikePanel'
 import Badge from '@/components/badge/Badge'
 import TaskItem from './TaskItem'
 import { GridStyle } from '@/types/eventTypes'
-import Tooltip from '../utilitified_decorations/Tooltip'
+import Tooltip from '../custom-ui/Tooltip'
 import Button from '../custom-ui/Button'
 import { useHotkeys } from 'react-hotkeys-hook';
 import Kbd from '../custom-ui/Kbd'

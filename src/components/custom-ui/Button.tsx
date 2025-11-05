@@ -50,19 +50,36 @@ const Button: React.FC<ButtonProps> = ({
   focus = false,
 }) => {
 
-
-  const getVariantStyles = () => {
-    const defaultStyle = 'border border-gray-300 bg-teal-50 hover:bg-gray-200'
+  const getDisabledButtonStyles = () => {
+    const defaultStyle = 'border! text-white! border-gray-300! bg-blue-500! hover:bg-gray-200! dark:border-gray-700! dark:bg-blue-600! dark:hover:bg-gray-700!'
 
     switch (variant) {
       case 'primary':
-        return 'bg-rose-500 text-white hover:bg-sky-600'
+        return 'text-white! bg-sky-400! text-gray-100! dark:bg-sky-400! dark:text-white! dark:hover:bg-sky-700!'
       case 'secondary':
-        return 'bg-gray-400 text-white hover:bg-teal-300'
+        return 'text-gray-100! bg-gray-500! dark:bg-gray-700! dark:text-white! dark:hover:bg-teal-700!'
       case 'danger':
-        return 'bg-orange-500 text-white hover:bg-violet-600'
+        return 'text-gray-100! bg-orange-500! dark:bg-orange-700! dark:text-white! dark:hover:bg-violet-700!'
       case 'success':
-        return 'bg-green-500 text-white hover:bg-indigo-600'
+        return 'text-gray-100! bg-green-500! dark:bg-green-700! dark:text-gray-50! dark:hover:bg-indigo-700!'
+      default:
+        return defaultStyle
+    }
+  }
+
+
+  const getVariantStyles = () => {
+    const defaultStyle = 'border text-white border-gray-300 bg-blue-500 hover:bg-gray-200 dark:border-gray-700 dark:bg-blue-600 dark:text-white dark:hover:bg-gray-700'
+
+    switch (variant) {
+      case 'primary':
+        return 'bg-rose-500 text-white hover:bg-sky-500 dark:bg-rose-700 dark:text-white dark:hover:bg-sky-700'
+      case 'secondary':
+        return 'bg-gray-500 text-white hover:bg-teal-500 dark:bg-gray-700 dark:text-white dark:hover:bg-teal-700'
+      case 'danger':
+        return 'bg-orange-500 text-white hover:bg-violet-500 dark:bg-orange-700 dark:text-white! dark:bg-orange-700 dark:hover:bg-violet-700'
+      case 'success':
+        return 'bg-green-500 text-white hover:bg-indigo-500 dark:bg-green-700 dark:text-white dark:hover:bg-indigo-700'
       default:
         return defaultStyle
     }
@@ -116,11 +133,10 @@ const Button: React.FC<ButtonProps> = ({
         disabled={disabled}
         className={`
           ${disabled ? '' : 'hyperlink'}
-          ${getVariantStyles()}
+          ${disabled ? getDisabledButtonStyles() : getVariantStyles()}
           ${getOutlineStyles()}
           ${focus ? '' : getSizeStyles()}
           ${RoundedSize.roundedXs} font-medium transition-colors duration-200
-          ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
           ${className}
           `}
       >

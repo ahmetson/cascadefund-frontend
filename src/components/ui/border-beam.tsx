@@ -114,12 +114,9 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
 
 
   const normalStyle = {
-    boxShadow: `0 0 20px ${colorFrom}80, inset 0 0 5px ${colorTo}40`,
   }
 
   const hoveredStyle = {
-    boxShadow: `0 0 20px ${colorFrom}80, inset 0 0 5px ${colorTo}40`,
-    animation: 'pulse 2s ease-in-out infinite',
   }
 
   const getBeamStyle = () => {
@@ -152,7 +149,6 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
           height: '3px',
           background: createGradient('90deg'),
           animation: 'beamTop 10s ease-in-out',
-          boxShadow: `0 0 8px ${colorFrom}60, 0 0 16px ${colorTo}40`,
         };
       case 1: // Right
         return {
@@ -164,7 +160,6 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
           height: `${size}px`,
           background: createGradient('180deg'),
           animation: 'beamRight 4s ease-in-out',
-          boxShadow: `0 0 8px ${colorFrom}60, 0 0 16px ${colorTo}40`,
         };
       case 2: // Bottom
         return {
@@ -176,7 +171,6 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
           height: '3px',
           background: createGradient('270deg'),
           animation: 'beamBottom 8s ease-in-out',
-          boxShadow: `0 0 8px ${colorFrom}60, 0 0 16px ${colorTo}40`,
         };
       case 3: // Left
         return {
@@ -188,7 +182,6 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
           height: `${size}px`,
           background: createGradient('0deg'),
           animation: 'beamLeft 4s ease-in-out',
-          boxShadow: `0 0 8px ${colorFrom}60, 0 0 16px ${colorTo}40`,
         };
       default:
         return baseStyle;
@@ -280,7 +273,6 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
             height: '8px',
             borderRadius: '50%',
             background: `radial-gradient(circle, ${colorTo} 0%, ${colorFrom} 50%, transparent 100%)`,
-            boxShadow: `0 0 20px ${colorTo}, 0 0 40px ${colorFrom}`,
             animation: `moveLight 5s linear infinite`,
             transform: `translate(${lightPosition * 4}px, 0)`, // This will be overridden by CSS animation
             pointerEvents: 'none',
@@ -400,18 +392,6 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
           100% {
             transform: translate(32px, 0) scale(0.5);
             opacity: 0;
-          }
-        }
-
-        @keyframes pulse {
-          0% {
-            box-shadow: 0 0 0px #3b82f680, inset 0 0 0px #8b5cf640;
-          }
-          50% {
-            box-shadow: 0 0 5px #3b82f6, inset 0 0 5px #8b5cf6;
-          }
-          100% {
-            box-shadow: 0 0 1px #3b82f680, inset 0 0 1px #8b5cf640;
           }
         }
 

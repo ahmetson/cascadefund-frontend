@@ -4,11 +4,12 @@ interface SearchBarProps {
   value: string
   onChange: (value: string) => void
   placeholder?: string
+  className?: string
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ value, onChange, placeholder }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ value, onChange, placeholder, className }) => {
   return (
-    <div className="relative mb-4">
+    <div className={`relative ${className}`}>
       <input
         type="text"
         value={value}

@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from '@/components/custom-ui/Link'
-import Tooltip from './utilitified_decorations/Tooltip'
+import Tooltip from './custom-ui/Tooltip'
 
 interface MenuAvatarProps {
   src?: string
@@ -22,7 +22,7 @@ const MenuAvatar: React.FC<MenuAvatarProps> = ({ src, alt, className, imgClassNa
         </div>
       }
     >
-      <Link uri={uri} className={`hover:bg-teal-300 bg-blue-200 rounded-full h-8 w-8 flex items-center p-1! ${className}`}>
+      <Link uri={uri} className={`hover:bg-teal-300 bg-blue-200 dark:bg-blue-400 rounded-full h-8 w-8 flex items-center p-1! ${className}`}>
         <img src={src || defaultSrc} alt={alt || defaultAlt} className={`w-full h-full rounded-full ${imgClassName}`} />
       </Link>
     </Tooltip>

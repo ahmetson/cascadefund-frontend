@@ -1,7 +1,7 @@
-export { default as BasePanel } from './BasePanel'
-export { default as InteractivePanel } from './InteractivePanel'
+export { default as BasePanel } from './Panel'
+export { default as InteractivePanel } from './InteractiveContainer'
 export { default as PageLikePanel } from './PageLikePanel'
 
-export type { BasePanelProps } from './BasePanel'
-export type { InteractivePanelProps } from './InteractivePanel'
+export type { BasePanelProps } from './Panel'
+export type { InteractivePanelProps } from './InteractiveContainer'
 export type { PageLikePanelProps } from './PageLikePanel'

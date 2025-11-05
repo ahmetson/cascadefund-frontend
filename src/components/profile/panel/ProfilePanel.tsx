@@ -8,24 +8,24 @@ import MenuAvatar from '../../MenuAvatar'
 import Link from '../../custom-ui/Link'
 import { FaGithub, FaLinkedin, FaTelegram } from 'react-icons/fa'; // Import the LinkedIn icon from Font Awesome
 import { getIcon } from '../../icon'
-import Tooltip from '../../utilitified_decorations/Tooltip'
+import Tooltip from '../../custom-ui/Tooltip'
 import { BasePanel } from '../../panel'
 import { ProfileProps, ProfileSocialLink } from '../types'
 import Editable from '../../custom-ui/Editable'
 import { Editor } from '@tiptap/react'
 import EditableMenuPanel from '../../custom-ui/EditableMenuPanel'
-import YourBadge from '../../badge/YourBadge'
 import EditableBadge from '../../badge/EditableBadge'
 import { Popover } from '@base-ui-components/react/popover'
 import PanelFooter from '@/components/panel/PanelFooter'
 import PanelStat from '@/components/panel/PanelStat'
+import YourProfileBadge from '@/components/badge/YourBadge'
 
 const getSocialProfile = (selfProfile: boolean, social: ProfileSocialLink, setSocialUrl: (socialType: string, url: string) => void) => {
   const content = social.type === 'linkedin' ?
-    <FaLinkedin color="gray" className="w-6 h-6 text-blue-500! hover:text-teal-800!" /> :
+    <FaLinkedin color="gray" className="w-5 h-5 text-blue-500 dark:text-blue-400! hover:text-teal-800! dark:hover:text-teal-200!" /> :
     social.type === 'github' ?
-      <FaGithub color="gray" className="w-6 h-6 text-blue-500! hover:text-teal-800!" /> :
-      <FaTelegram color="gray" className="w-6 h-6 text-blue-500! hover:text-teal-800!" />
+      <FaGithub color="gray" className="w-5 h-5 text-blue-500 dark:text-blue-400! hover:text-teal-800! dark:hover:text-teal-200!" /> :
+      <FaTelegram color="gray" className="w-5 h-5 text-blue-500 dark:text-blue-400! hover:text-teal-800! dark:hover:text-teal-200!" />
 
   const trigger = (
     <Link key={social.type} asNewTab={true} uri={social.url} className="flex items-center space-x-2">
@@ -141,7 +141,7 @@ const ProfilePanel: React.FC<ProfileProps & PanelEvents> = ({ onActionClick, ...
                 </div>
               }
             >
-              <h1 className="text-xl font-bold text-gray-500 flex flex-row items-center space-x-1">
+              <h1 className="text-xl font-bold text-slate-800 dark:text-slate-300 flex flex-row items-center space-x-1">
                 {props.selfProfile ? <Editable id="name"
                   content={value['name']}
                   editable={!saving}
@@ -168,7 +168,7 @@ const ProfilePanel: React.FC<ProfileProps & PanelEvents> = ({ onActionClick, ...
               </div>
             }
           >
-            <div className="text-gray-600 text-sm mb-1 -mt-2">
+            <div className="text-slate-800 dark:text-slate-300 text-sm mb-1 -mt-2">
               {props.selfProfile ? <Editable id="subtitle"
                 content={value['subtitle']}
                 editable={!saving}
@@ -186,7 +186,7 @@ const ProfilePanel: React.FC<ProfileProps & PanelEvents> = ({ onActionClick, ...
               </div>
             }
           >
-            <div className="text-md mb-4">
+            <div className="text-md mb-4 text-slate-700 dark:text-slate-400">
               {props.selfProfile ? <Editable id="description"
                 content={value['description']}
                 editable={!saving}
@@ -215,8 +215,10 @@ const ProfilePanel: React.FC<ProfileProps & PanelEvents> = ({ onActionClick, ...
               <VotingPower totalVotingPower={props.totalVotingPower} onActionClick={() => { }} />
               <PanelStat
                 href={"/data/projects?userName=" + props.id || 'any'}
-                iconType="project" hint={`${value['name']} involved in ${props.projectAmount} projects.`}
+                iconType="project"
+                hint={`${value['name']} involved in ${props.projectAmount} projects.`}
                 fill={true}
+                triggerClassName='text-slate-500 dark:text-slate-400'
               >
                 {props.projectAmount} Projects
               </PanelStat>

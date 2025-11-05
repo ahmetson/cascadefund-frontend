@@ -49,7 +49,8 @@ export const CustomHref: Story = {
 // Interactive playground
 export const Playground: Story = {
     args: {
-        href: '/issue/post'
+        href: '/issue/post',
+        active: true
     },
     parameters: {
         docs: {

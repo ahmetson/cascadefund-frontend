@@ -121,8 +121,8 @@ const isBadgedItemAnimated = (onlyCustomChildren: boolean, children: any, active
   return activeItem === 'work' || activeItem === 'cwork';
 }
 
-const noChildren = <div className="text-center py-8 text-gray-500">
-  <svg viewBox="0 0 24 24" className="w-12 h-12 mx-auto mb-4 text-gray-300" fill="currentColor">
+const noChildren = <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+  <svg viewBox="0 0 24 24" className="w-12 h-12 mx-auto mb-4 text-gray-300 dark:text-gray-400" fill="currentColor">
     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.58L19 8l-9 9z" />
   </svg>
   <p className="text-sm">No menu items available</p>
@@ -130,19 +130,21 @@ const noChildren = <div className="text-center py-8 text-gray-500">
 </div>
 
 const Panel: React.FC<Props> = ({ activeMenuItem, focusMenuItem, title = 'Main Menu', onlyCustomChildren = false, children }) => {
-  const titleC = <div className='text-sm font-medium text-gray-500'>{title}</div>
+  const titleC = <div className='text-sm font-medium   text-gray-500'>{title}</div>
   const disableAnimation = isBadgedItemAnimated(onlyCustomChildren, children, activeMenuItem);
 
   return <PageLikePanel interactive={false} title={titleC} >
-    {onlyCustomChildren && !children ? noChildren : children}
-    {!onlyCustomChildren && (!isOnlyInfluencerMenu(activeMenuItem) ? maintainerMainItems(activeMenuItem, focusMenuItem) : influencerMainItems(activeMenuItem, focusMenuItem))}
-    {!onlyCustomChildren &&
-      (<>
-        <h3 className="text-sm font-medium text-gray-500 mb-3 mt-3">Collaboration Menu</h3>
-        <div className="space-y-1">
-          {!isOnlyInfluencerMenu(activeMenuItem) ? maintainerCollabItems(activeMenuItem, disableAnimation, focusMenuItem) : influencerCollabItems(activeMenuItem, focusMenuItem)}
-        </div>
-      </>)}
+    <div className="p-1 z-10 w-full overflow-hidden justify-between">
+      {onlyCustomChildren && !children ? noChildren : children}
+      {!onlyCustomChildren && (!isOnlyInfluencerMenu(activeMenuItem) ? maintainerMainItems(activeMenuItem, focusMenuItem) : influencerMainItems(activeMenuItem, focusMenuItem))}
+      {!onlyCustomChildren &&
+        (<>
+          <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3 mt-3">Collaboration Menu</h3>
+          <div className="p-1 w-full overflow-hidden justify-between">
+            {!isOnlyInfluencerMenu(activeMenuItem) ? maintainerCollabItems(activeMenuItem, disableAnimation, focusMenuItem) : influencerCollabItems(activeMenuItem, focusMenuItem)}
+          </div>
+        </>)}
+    </div>
   </PageLikePanel>
 }
 

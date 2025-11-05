@@ -13,7 +13,6 @@ interface VotePopoverProps {
     currentVP: number          // Current VP allocated to this issue
     topVP: number             // Top contributor's VP on this issue
     minVP: number             // Minimum VP required to vote
-    issueTitle?: string       // Optional issue title for context
     onApply: (newVP: number) => void  // Callback when Apply is clicked
 }
 
@@ -22,7 +21,6 @@ const VotePopover: React.FC<VotePopoverProps> = ({
     currentVP,
     topVP,
     minVP,
-    issueTitle,
     onApply
 }) => {
     const [sliderValue, setSliderValue] = useState(currentVP)
@@ -56,7 +54,6 @@ const VotePopover: React.FC<VotePopoverProps> = ({
     const maxVP = topVP > currentVP + vpAmount ? topVP : currentVP + vpAmount
     const topPercentage = (topVP / maxVP) * 100
     const minPercentage = (minVP / maxVP) * 100
-    const currentPercentage = (currentVP / maxVP) * 100
 
     const trigger = (
         <Button variant="primary" size="sm" className="h-7 text-xs">
@@ -77,7 +74,7 @@ const VotePopover: React.FC<VotePopoverProps> = ({
                             {getIcon('arrow')}
                         </Popover.Arrow>
 
-                        <Popover.Title className="text-gray-500 font-medium text-md flex items-center flex-row p-1 mb-4">
+                        <Popover.Title className="text-gray-500 font-medium text-md flex items-center flex-row p-1 mb-4 gap-1">
                             Issue's Voting Power
                             <Badge variant="success" static={true}>
                                 <NumberFlowGroup>
@@ -85,7 +82,7 @@ const VotePopover: React.FC<VotePopoverProps> = ({
                                         value={currentVP}
                                         locales="en-US"
                                         format={{ useGrouping: false }}
-                                        className="font-semibold text-sky-500"
+                                        className="font-semibold text-sky-500 dark:text-sky-200"
                                     />
                                     {hasChanged && (
                                         <>
@@ -94,7 +91,7 @@ const VotePopover: React.FC<VotePopoverProps> = ({
                                                 value={sliderValue}
                                                 locales="en-US"
                                                 format={{ useGrouping: false }}
-                                                className="text-xs"
+                                                className="text-xs text-slate-500 dark:text-slate-200"
                                             />
                                         </>
                                     )}
@@ -108,22 +105,22 @@ const VotePopover: React.FC<VotePopoverProps> = ({
                                 <div
                                     style={{ "--my-padding-left": `${minPercentage}%` }}
                                     className={`flex flex-col items-center ml-[var(--my-padding-left)]`}>
-                                    <span className="absolute -mt-4 text-gray-500 text-xs w-10 text-center">Min VP</span>
+                                    <span className="absolute -mt-4 text-slate-500 dark:text-slate-400 text-xs w-10 text-center">Min VP</span>
                                     <NumberFlow
                                         value={minVP}
                                         locales="en-US"
                                         format={{ useGrouping: false }}
-                                        className="font-semibold"
+                                        className="font-semibold text-slate-500 dark:text-slate-400"
                                     />
                                 </div>
                                 <div style={{ "--my-padding-left": `${topPercentage - (minPercentage)}%` }}
                                     className={`flex flex-col items-center ml-[var(--my-padding-left)]`}>
-                                    <span className="absolute -mt-4 text-gray-500 text-xs w-24 text-center">Top 1 Issue's VP</span>
+                                    <span className="absolute -mt-4 text-slate-500 dark:text-slate-400 text-xs w-24 text-center">Top 1 Issue's VP</span>
                                     <NumberFlow
                                         value={topVP}
                                         locales="en-US"
                                         format={{ useGrouping: false }}
-                                        className="font-semibold -ml-8"
+                                        className="font-semibold -ml-8 text-slate-500 dark:text-slate-400"
                                     />
                                 </div>
                             </div>
@@ -139,7 +136,7 @@ const VotePopover: React.FC<VotePopoverProps> = ({
                                     className="relative flex h-5 w-full touch-none select-none items-center"
                                 >
                                     <RadixSlider.Track className="relative h-[3px] grow rounded-full bg-zinc-300 dark:bg-zinc-800">
-                                        <RadixSlider.Range className="absolute h-full rounded-full bg-black dark:bg-white" />
+                                        <RadixSlider.Range className="absolute h-full rounded-full bg-black dark:bg-gray-400" />
                                         {/* Dashed line from original position when dragging */}
                                         {hasChanged && (
                                             <div
@@ -148,7 +145,7 @@ const VotePopover: React.FC<VotePopoverProps> = ({
                                             />
                                         )}
                                     </RadixSlider.Track>
-                                    <RadixSlider.Thumb className="relative hyperlink block h-5 w-5 rounded-[1rem] bg-white shadow-md ring ring-black/10">
+                                    <RadixSlider.Thumb className="relative hyperlink block h-5 w-5 rounded-[1rem] bg-white dark:bg-slate-300 dark:hover:bg-slate-200 shadow-md ring ring-black/10">
                                         <NumberFlow
                                             value={sliderValue}
                                             locales="en-US"

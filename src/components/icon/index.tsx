@@ -39,6 +39,7 @@ export type IconType =
   | 'new-project'
   | 'success'
   | 'arrow'
+  | 'arrow-left'
   | 'behance'
   | 'discord'
   | 'facebook'
@@ -143,7 +144,7 @@ export const getIcon = (props: IconProps | IconType): React.ReactNode => {
       </svg>
     )
     case 'heart': return (
-      <svg className={`text-red-700 ${className}`} fill={fill} stroke="currentColor" viewBox="0 0 24 24">
+      <svg className={`${className} text-rose-700 dark:text-rose-500`} fill={fill} stroke="currentColor" viewBox="0 0 24 24">
         <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
       </svg>
     )
@@ -309,6 +310,11 @@ export const getIcon = (props: IconProps | IconType): React.ReactNode => {
           d="M10.3333 3.34539L5.47654 7.71648C4.55842 8.54279 3.36693 9 2.13172 9H0V8H2.13172C3.11989 8 4.07308 7.63423 4.80758 6.97318L9.66437 2.60207C10.0447 2.25979 10.622 2.2598 11.0023 2.60207L15.8591 6.97318C16.5936 7.63423 17.5468 8 18.5349 8H20V9H18.5349C17.2998 9 16.1083 8.54278 15.1901 7.71648L10.3333 3.34539Z"
           className="dark:fill-gray-300"
         />
+      </svg>
+    )
+    case 'arrow-left': return (
+      <svg className={className} fill={fill} stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
       </svg>
     )
     case 'check': return (

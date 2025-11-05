@@ -1,5 +1,5 @@
 import React from 'react'
-import BasePanel, { BasePanelProps } from './BasePanel'
+import BasePanel, { BasePanelProps } from './Panel'
 import Button from '@/components/custom-ui/Button'
 import Link from '@/components/custom-ui/Link'
 import { getIcon, IconType, IconProps } from '@/components/icon'

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import BasePanel from './BasePanel';
+import BasePanel from './Panel';
 
 const meta = {
   component: BasePanel,

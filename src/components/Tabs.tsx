@@ -30,14 +30,14 @@ const C: React.FC<Props> = ({ activeTab: initialTab, tabs, id }) => {
   return (
     <Tabs
       onValueChange={setTab}
-      value={activeTab as any} className="relative mb-6 bg-blue-100 text-gray-700 py-1">
+      value={activeTab as any} className="relative mb-6 bg-blue-100 dark:bg-transparent text-slate-600 dark:text-slate-400 py-1">
       <TabsHighlight className="">
         <TabsList className="h-10 inline-flex p-0 w-full ">
           {tabs.map((tab) =>
-            <TabsHighlightItem key={tab.key} value={tab.key} className={baseClassName + (activeTab === tab.key ? ' bg-white shadow-sm shadow-b-none' : 'bg-blue-100 border-b-2 border-blue-300')}>
+            <TabsHighlightItem key={tab.key} value={tab.key} className={baseClassName + (activeTab === tab.key ? ' bg-white dark:bg-slate-700 shadow-none shadow-b-none' : 'bg-blue-200/50 dark:bg-slate-800/50 border-b-2 border-blue-200 dark:border-slate-700')}>
               <TabsTrigger
                 value={tab.key}
-                className={"hyperlink h-full leading-0 w-full text-sm text-blue-500 cursor-pointer " + (tab.className || '')}
+                className={"hyperlink h-full leading-0 w-full text-sm text-blue-500 dark:text-blue-300 cursor-pointer " + (tab.className || '')}
               >
                 {tab.label}
               </TabsTrigger>
@@ -46,7 +46,7 @@ const C: React.FC<Props> = ({ activeTab: initialTab, tabs, id }) => {
         </TabsList>
       </TabsHighlight>
       <TabsContents
-        className="bg-white p-0 h-80 m-0"
+        className="bg-white dark:bg-slate-800 p-0 h-80 m-0"
       >
         {tabs.map((tab) =>
           <TabsContent value={tab.key} className="space-y-4">

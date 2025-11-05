@@ -1,5 +1,5 @@
 import React from 'react'
-import BasePanel from '@/components/panel/BasePanel'
+import BasePanel from '@/components/panel/Panel'
 
 const Sidebar: React.FC = () => {
   return (

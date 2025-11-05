@@ -30,10 +30,10 @@ const BasePanel: React.FC<BasePanelProps> = ({
     children,
     className = '',
     padding = 'p-4',
-    bg = 'bg-white dark:bg-gray-900',
+    bg = 'bg-white dark:bg-slate-900',
     border = {
         size: 'border-1',
-        color: 'border-gray-300 dark:border-gray-700',
+        color: 'border-slate-300 dark:border-slate-700',
         className: ''
     },
     shadowSize = ShadowSize.shadowMd,

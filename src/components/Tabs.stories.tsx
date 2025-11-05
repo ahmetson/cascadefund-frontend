@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 import Tabs from './Tabs';
 import type { TabProps } from './Tabs';
-import WorkStylePanel from '@/components/profile/panel/WorkStylePanel';
+import WorkStylePanel from '@/components/profile/panel/WorkStyleContent';
 import ProjectTimeAllocationPanel from '@/components/profile/panel/ProjectTimeAllocationPanel';
 
 const meta = {
@@ -108,7 +108,7 @@ const tabsWithIcons: TabProps[] = [
     },
     {
         label: (
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 ml-2">
                 <span>⚙️</span>
                 <span>Settings</span>
             </div>

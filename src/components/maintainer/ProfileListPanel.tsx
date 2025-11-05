@@ -1,7 +1,7 @@
 import React from 'react'
 import FilterBar from '@/components/maintainer/ProfileFilterBar'
 import UserCard from '@/components/profile/panel/ProfileLinkPanel'
-import BasePanel from '@/components/panel/BasePanel'
+import BasePanel from '@/components/panel/Panel'
 
 const MainContent: React.FC = () => {
   const filters = [

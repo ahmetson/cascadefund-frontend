@@ -37,12 +37,12 @@ const Component: React.FC<ProfileRatingTooltipProps> = ({ ratings, topRating }) 
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Positioner sideOffset={8} side='bottom' className={'z-700!'}>
-          <Popover.Popup className="origin-[var(--transform-origin)]  rounded-xs bg-[canvas] px-6 py-4 text-gray-900 shadow-sm shadow-gray-900 transition-[transform,scale,opacity] data-[ending-style]:scale-90 data-[ending-style]:opacity-0 data-[starting-style]:scale-90 data-[starting-style]:opacity-0 ">
+          <Popover.Popup className="origin-[var(--transform-origin)]  rounded-xs bg-[canvas] px-6 py-4 text-slate-900 shadow-sm shadow-slate-900 dark:text-slate-300 dark:shadow-slate-300 transition-[transform,scale,opacity] data-[ending-style]:scale-90 data-[ending-style]:opacity-0 data-[starting-style]:scale-90 data-[starting-style]:opacity-0 ">
             <Popover.Arrow className="data-[side=bottom]:top-[-8px] data-[side=left]:right-[-13px] data-[side=left]:rotate-90 data-[side=right]:left-[-13px] data-[side=right]:-rotate-90 data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180">
               {getIcon('arrow')}
             </Popover.Arrow>
-            <Popover.Title className="text-gray-500 font-medium text-sm">Ratings</Popover.Title>
-            <Popover.Description className="text-gray-600">
+            <Popover.Title className="text-slate-800 dark:text-slate-300 font-medium text-sm">Ratings</Popover.Title>
+            <Popover.Description className="text-slate-800 dark:text-slate-300">
               {/* Rating List */}
               <div className="space-y-4">
                 {Object.entries(ratings).map(([ratingType, rating]) => {
@@ -52,12 +52,12 @@ const Component: React.FC<ProfileRatingTooltipProps> = ({ ratings, topRating }) 
                   return (
                     <div key={ratingType} className="space-y-1">
                       {/* Top Ranking Info */}
-                      <div className="text-sm text-gray-600">
-                        Top <span className="font-semibold" style={{ color: maxColor }}>{rating.top}</span> {ratingType}
+                      <div className="text-sm text-slate-800 dark:text-slate-300">
+                        Top <span className="font-semibold text-yellow-900 dark:text-yellow-300" style={{ color: maxColor }}>{rating.top}</span> {ratingType}
                       </div>
 
                       {/* Rating Display */}
-                      <div className="flex items-center space-x-2 text-sm text-gray-600">
+                      <div className="flex items-center space-x-2 text-sm text-slate-800 dark:text-slate-300">
                         <span>Rating:</span>
                         <span className="text-xl" style={{ color: '#FFD700' }}>★</span>
                         <span className="font-semibold">{rating.lvl}</span>

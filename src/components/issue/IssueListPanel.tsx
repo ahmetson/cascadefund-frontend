@@ -1,7 +1,7 @@
 import React from 'react'
 import FilterableList from '@/components/list/FilterableList'
 import IssueLink from '@/components/issue/IssueLink'
-import BasePanel from '@/components/panel/BasePanel'
+import BasePanel from '@/components/panel/Panel'
 import { Issue } from '@/components/issue/types'
 import DraggableIssueLink from './DraggableIssueLink'
 import { FilterOption } from '@/components/list/FilterToggle'

@@ -1,6 +1,5 @@
 import React from 'react'
 import PageLikePanel from '@/components/panel/PageLikePanel'
-import Button from '@/components/custom-ui/Button'
 import TimeAgo from 'timeago-react'
 import LabeledInput from '../custom-ui/LabeledInput'
 import Label from '../custom-ui/Label'
@@ -21,11 +20,11 @@ const CascadingBalance: React.FC = () => {
         }
       ]}
       className="mb-6"
-      title={<>Cascading Balance
+      title={<div className="flex items-center gap-2">Cascading Balance
         <Badge variant="info" static={true}>
           {<TimeAgo datetime={new Date(updatedAt)} />}
         </Badge>
-      </>}
+      </div>}
     >
       <p className="text-sm text-gray-600 mb-4">
         Indirectly received funds from other projects. Withdraw, and transfer or use for yourself. Check out{' '}

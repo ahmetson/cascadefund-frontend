@@ -2,7 +2,7 @@
  * PanelStat is to show stats in the footer
  */
 import React from 'react'
-import Tooltip from '../utilitified_decorations/Tooltip'
+import Tooltip from '../custom-ui/Tooltip'
 import { getIcon, IconType } from '../icon'
 import Link from '@/components/custom-ui/Link'
 import Button from '@/components/custom-ui/Button'
@@ -28,7 +28,7 @@ const Followings: React.FC<Props> = ({ href, onClick = undefined, ...props }) =>
   )
 
   const trigger = (
-    <div className={`flex items-center space-x-1 justify-center ${onClick === undefined && href === undefined && 'text-gray-500'} ${props.triggerClassName}`}>
+    <div className={`flex items-center space-x-1 justify-center ${onClick === undefined && href === undefined && 'text-slate-500 dark:text-slate-400'} ${props.triggerClassName}`}>
       {getIcon({ iconType: props.iconType, fill: props.fill ? 'currentColor' : 'none', className: `w-5 h-5 mt-0.5 mr-1 ${props.iconClassName}` })}
       {props.children}
     </div>
@@ -37,7 +37,7 @@ const Followings: React.FC<Props> = ({ href, onClick = undefined, ...props }) =>
   return (
     <Tooltip content={content} openDelay={500}>
       {href ?
-        <Link href={href} asNewTab={props.asNewTab ?? false}>
+        <Link uri={href} asNewTab={props.asNewTab ?? false}>
           {trigger}
         </Link> :
         onClick ?

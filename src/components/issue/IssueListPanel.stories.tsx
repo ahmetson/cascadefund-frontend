@@ -5,7 +5,7 @@ import { RatingType } from '../rating/ProfileRating'
 import React from 'react'
 import FilterableList from '@/components/list/FilterableList'
 import IssueLink from '@/components/issue/IssueLink'
-import BasePanel from '@/components/panel/BasePanel'
+import BasePanel from '@/components/panel/Panel'
 
 const meta: Meta<typeof IssueListPanel> = {
     title: 'Components/Issue/Issue List Panel',

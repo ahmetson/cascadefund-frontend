@@ -3,7 +3,7 @@ import FilterableList from '@/components/list/FilterableList'
 import ProjectCard, { type ProjectInfoProps } from '@/components/project/ProjectLink'
 import Badge from '../badge/Badge'
 import { FilterOption } from '@/components/list/FilterToggle'
-import BasePanel from '../panel/BasePanel'
+import BasePanel from '../panel/Panel'
 
 interface Props {
   projects: ProjectInfoProps[]

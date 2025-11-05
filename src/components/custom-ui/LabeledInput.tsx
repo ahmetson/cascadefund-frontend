@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Tooltip from '../utilitified_decorations/Tooltip'
+import Tooltip from './Tooltip'
 import Editable from './Editable'
 import Label from './Label'
 
@@ -28,7 +28,8 @@ const FormField: React.FC<FormFieldProps> = ({
 }) => {
   const [idle, setIdle] = useState(true);
   const className = "w-full min-w-40 px-2 py-1 border border-teal-300 rounded-xs shadow-sm focus:outline-none focus:ring-1 focus:ring-cascade-blue focus:border-cascade-blue bg-gray-100 text-gray-600"
-  const classNameIdle = "min-h-2 flex w-full min-w-40 px-2 py-1 border border-gray-50 rounded-xs hover:shadow-sm focus:outline-none focus:ring-1 focus:ring-cascade-blue focus:border-cascade-blue hover:bg-gray-100 cursor-text text-gray-600"
+  const classNameDark = " dark:border-gray-700 dark:bg-gray-700 dark:text-gray-500"
+  const classNameIdle = "min-h-2 flex w-full min-w-40 px-2 py-1 border border-gray-200 dark:border-gray-700 rounded-xs hover:shadow-sm focus:outline-none focus:ring-1 focus:ring-cascade-blue focus:border-cascade-blue hover:bg-gray-100 dark:hover:bg-gray-700 cursor-text text-gray-600 dark:text-gray-100"
 
   return (
     <Tooltip
@@ -44,13 +45,14 @@ const FormField: React.FC<FormFieldProps> = ({
           {label}
         </Label>
         {idle ? <div onClick={() => setIdle(false)} className={classNameIdle}>
-          {value.length > 0 ? value : <span className="text-gray-400 italic">{placeholder}</span>}
+          {value.length > 0 ? value : <span className="text-gray-500 dark:text-gray-500 italic">{placeholder}</span>}
         </div> :
-          <Editable id={id}
+          <Editable
+            id={id}
             autofocus={autofocus}
             content={value}
             editable={!disabled}
-            className={className}
+            className={className + classNameDark}
             onBlur={(e, editor) => {
               onChange?.(editor?.getText() || '');
               setIdle(true);

@@ -1,7 +1,7 @@
 import React from 'react'
 import Badge from '@/components/badge/Badge'
 import InfoPair from '../InfoPair'
-import BasePanel from '../panel/BasePanel'
+import BasePanel from '../panel/Panel'
 import Followings from '../social-network/Followings'
 import ProjectRating, { ProjectRatingProps } from '../rating/ProjectRating'
 import PanelFooter from '../panel/PanelFooter'
@@ -93,7 +93,7 @@ const ProjectCard: React.FC<ProjectInfoProps> = ({
 
           <div className="flex-1 w-full">
             <div className="flex items-center justify-between mb-2">
-              <h1 className="text-xl font-bold text-gray-500 flex flex-row items-center space-x-1">
+              <h1 className="text-xl font-bold text-slate-600 dark:text-slate-300 flex flex-row items-center space-x-1">
                 {title}
                 {isInfluencer && (
                   <Badge variant="info">You are influencer</Badge>
@@ -110,12 +110,12 @@ const ProjectCard: React.FC<ProjectInfoProps> = ({
               </div>
             </div>
 
-            <div className="text-md mb-4">
+            <div className="text-md mb-4 text-slate-600 dark:text-slate-300">
               {description}
             </div>
 
             {/* Issue author and created time */}
-            <div className="flex justify-end items-center space-x-1 text-gray-500 gap-1 text-xs">
+            <div className="flex justify-end items-center space-x-1 text-slate-600 dark:text-slate-300 gap-1 text-xs">
               By <MenuAvatar src={author?.icon} uri={author?.uri} className='w-7! h-7!' />
               {createdTime &&
                 <TimeAgo datetime={createdTime} />

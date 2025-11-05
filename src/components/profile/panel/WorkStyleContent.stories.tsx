@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import WorkStylePanel from './WorkStylePanel'
+import WorkStylePanel from './WorkStyleContent'
 
 const meta: Meta<typeof WorkStylePanel> = {
-    title: 'Components/Profile/Panel/WorkStylePanel',
+    title: 'Components/Profile/Panel/WorkStyleContent',
     component: WorkStylePanel,
     parameters: {
         layout: 'padded',

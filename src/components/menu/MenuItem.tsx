@@ -10,12 +10,16 @@ export interface MenuItemProps {
   badges?: BadgeProps[]
   active?: boolean
   focus?: boolean
+  className?: string
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({ icon, label, badges, uri, active: active = false, focus = false }) => {
+const MenuItem: React.FC<MenuItemProps> = ({ icon, label, badges, uri, active, focus = false, className = '' }) => {
+  const baseClassName = `no-underline! flex items-center justify-between px-3 py-2 rounded-md cursor-pointer`
+  const activeClassName = `bg-blue-100 dark:bg-blue-700 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-600 dark:hover:text-blue-300 `
+  const inactiveClassName = `text-slate-600 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-blue-900 dark:hover:text-blue-500! `
+  const linkClassName = `${baseClassName} ${active ? activeClassName : inactiveClassName} ${className}`
   return (
-    <Link focus={focus} active={active} uri={uri} className={`no-underline! flex items-center justify-between px-3 py-2 rounded-md cursor-pointer ${active ? 'bg-blue-50 text-blue-700 hover:bg-blue-100' : 'text-gray-700 hover:bg-gray-300 hover:text-blue-900!'
-      }`}>
+    <Link focus={focus} uri={uri} className={linkClassName}>
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center space-x-3">
           {getIcon(icon)}

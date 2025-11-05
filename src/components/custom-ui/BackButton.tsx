@@ -1,9 +1,10 @@
 import React from 'react'
-import Link, { LinkComponentProps } from "@/components/custom-ui/Link"
+import { LinkComponentProps } from "@/components/custom-ui/Link"
+import MenuItem from '../menu/MenuItem'
 
 const BackButton: React.FC<LinkComponentProps> = ({ uri = '/data/issue' }) => {
   return (
-    <Link uri={uri} className="flex items-center transition-colors hover:text-sky-400!" >← Back</Link>
+    <MenuItem uri={uri} label={"Back"} icon={"arrow-left"} />
   )
 }
 

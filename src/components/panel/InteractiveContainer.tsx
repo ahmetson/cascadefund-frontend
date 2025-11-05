@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
-import BasePanel, { BasePanelProps } from './BasePanel'
+import { motion } from 'motion/react'
+import BasePanel, { BasePanelProps } from './Panel'
 import BorderBeam from '@/components/ui/border-beam'
 import { cn } from '@/lib/utils'
 import type { PanelEvents } from '@/types/eventTypes'

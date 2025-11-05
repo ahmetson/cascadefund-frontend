@@ -77,7 +77,7 @@ const IssueLinkPanel4: React.FC<Issue & { actions?: ActionProps[] }> = (issue) =
         {/* Issue title and description */}
         <div className='flex justify-between items-center'>
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium">{issue.title}</span>
+            <span className="text-sm font-medium text-slate-700 dark:text-slate-200">{issue.title}</span>
             {/* Voting power badge for cascadefund storage */}
             {issue.storage === 'cascadefund' && (
               <Badge variant={isRatingIssue ? 'success' : 'gray'} static={true}>
@@ -89,11 +89,11 @@ const IssueLinkPanel4: React.FC<Issue & { actions?: ActionProps[] }> = (issue) =
             {issue.type}
           </Badge>
         </div>
-        <p className="text-sm text-gray-600">{issue.description}</p>
+        <p className="text-sm text-slate-600 dark:text-slate-300">{issue.description}</p>
 
         {/* Issue author and created time */}
         {(issue.author || issue.createdTime) &&
-          <div className="flex justify-end items-center space-x-1 text-gray-500 gap-1 text-xs">
+          <div className="flex justify-end items-center space-x-1 text-slate-500 dark:text-slate-900 gap-1 text-xs">
             {issue.author && <>
               By {Array.isArray(issue.author) ? (
                 <AvatarList contributors={issue.author} showLastRating={true} />

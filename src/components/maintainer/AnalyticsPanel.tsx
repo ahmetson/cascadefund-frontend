@@ -1,7 +1,7 @@
 import React from 'react'
 import MetricCard from '@/components/StatInfoPanel2'
 import RowGrid from '@/components/grid/RowGrid'
-import BasePanel from '@/components/panel/BasePanel'
+import BasePanel from '@/components/panel/Panel'
 
 const MainContent: React.FC = () => {
   return (

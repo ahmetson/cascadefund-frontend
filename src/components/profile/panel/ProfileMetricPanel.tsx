@@ -1,6 +1,6 @@
 import React from 'react'
 import type { TabProps } from '@/components/Tabs'
-import WorkStylePanel from './WorkStylePanel'
+import WorkStylePanel from './WorkStyleContent'
 // import ProjectTimeAllocation from './ProjectTimeAllocationPanel'
 import Tabs from '@/components/Tabs'
 
