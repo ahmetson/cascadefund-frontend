@@ -89,23 +89,23 @@ const Button: React.FC<ButtonProps> = ({
     if (!outline) {
       return ''
     }
-    let outlineStyle = 'bg-gray-50! text-gray-700! hover:text-stone-700 border '
+    let outlineStyle = 'bg-transparent! text-gray-700! dark:text-gray-300! hover:text-stone-700 dark:hover:text-gray-300 border-1 border-gray-300! dark:border-teal-700! '
 
     switch (variant) {
       case 'primary':
-        outlineStyle += 'border-rose-300 hover:border-sky-600! hover:bg-sky-100!';
+        outlineStyle += 'border-rose-300 hover:border-sky-600! hover:bg-sky-100/10!';
         break;
       case 'secondary':
-        outlineStyle += 'border-gray-300 hover:border-teal-500! hover:bg-teal-100!';
+        outlineStyle += 'border-gray-300 hover:border-teal-500! hover:bg-teal-100/10!';
         break;
       case 'danger':
-        outlineStyle += 'border-orange-300 hover:border-violet-600! hover:bg-violet-100!';
+        outlineStyle += 'border-orange-300 hover:border-violet-600! hover:bg-violet-100/10!';
         break;
       case 'success':
-        outlineStyle += 'border-green-300 hover:border-indigo-600! hover:bg-indigo-100!';
+        outlineStyle += 'border-green-300 hover:border-indigo-600! hover:bg-indigo-100/10!';
         break;
       default:
-        outlineStyle += 'border-gray-300 hover:border-gray-600 hover:bg-teal-100!';
+        outlineStyle += 'border-gray-300 hover:border-gray-600 hover:bg-teal-100/10!';
         break;
     }
 
@@ -148,7 +148,7 @@ const Button: React.FC<ButtonProps> = ({
           style={{ borderRadius: 2 }}
           className={cn(
             `${getSizeStyles()}`,
-            'mr-1'
+            'mr-1 '
           )}
           disabled={!focus}
         >

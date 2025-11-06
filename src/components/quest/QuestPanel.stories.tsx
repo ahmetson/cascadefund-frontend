@@ -72,22 +72,22 @@ export const EmptyTasks: Story = {
             // Mock the component to show empty state
             return (
                 <div className="w-full max-w-2xl">
-                    <div className="bg-white rounded-lg shadow-lg border border-gray-200">
-                        <div className="p-4 border-b border-gray-200">
+                    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                        <div className="p-4 border-b border-gray-200 dark:border-gray-700">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center space-x-2">
-                                    <h3 className="text-lg font-semibold text-gray-900">Completed Tasks</h3>
-                                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-400">Completed Tasks</h3>
+                                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
                                         0
                                     </span>
                                 </div>
                                 <div className="flex items-center space-x-1">
                                     <div className="flex items-center space-x-1">
-                                        <span className="text-yellow-400">★</span>
-                                        <span className="text-yellow-400">★</span>
-                                        <span className="text-yellow-400">★</span>
-                                        <span className="text-yellow-400">★</span>
-                                        <span className="text-gray-300">★</span>
+                                        <span className="text-yellow-400 dark:text-yellow-300">★</span>
+                                        <span className="text-yellow-400 dark:text-yellow-300">★</span>
+                                        <span className="text-yellow-400 dark:text-yellow-300">★</span>
+                                        <span className="text-yellow-400 dark:text-yellow-300">★</span>
+                                        <span className="text-gray-300 dark:text-gray-600">★</span>
                                     </div>
                                 </div>
                             </div>
@@ -166,44 +166,44 @@ export const WithManyTasks: Story = {
 
                 return (
                     <div className="w-full max-w-2xl">
-                        <div className="bg-white rounded-lg shadow-lg border border-gray-200">
-                            <div className="p-4 border-b border-gray-200">
+                        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                            <div className="p-4 border-b border-gray-200 dark:border-gray-700">
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center space-x-2">
-                                        <h3 className="text-lg font-semibold text-gray-900">Project Sprint Tasks</h3>
+                                        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-400">Project Sprint Tasks</h3>
                                         <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                             {tasks.length}
                                         </span>
-                                        <p className="text-sm text-gray-500 font-normal text-center">
+                                        <p className="text-sm text-gray-500 dark:text-gray-400 font-normal text-center">
                                             Complete the management tasks.
                                         </p>
                                     </div>
                                     <div className="flex items-center space-x-1">
-                                        <span className="text-yellow-400">★</span>
-                                        <span className="text-yellow-400">★</span>
-                                        <span className="text-yellow-400">★</span>
-                                        <span className="text-yellow-400">★</span>
-                                        <span className="text-gray-300">★</span>
+                                        <span className="text-yellow-400 dark:text-yellow-300">★</span>
+                                        <span className="text-yellow-400 dark:text-yellow-300">★</span>
+                                        <span className="text-yellow-400 dark:text-yellow-300">★</span>
+                                        <span className="text-yellow-400 dark:text-yellow-300">★</span>
+                                        <span className="text-gray-300 dark:text-gray-600">★</span>
                                     </div>
                                 </div>
                             </div>
-                            <div className="p-4 space-y-3 max-h-[30vh] overflow-y-auto bg-gray-50">
+                            <div className="p-4 space-y-3 max-h-[30vh] overflow-y-auto bg-gray-50 dark:bg-gray-800">
                                 {tasks.map((task) => (
-                                    <div key={task.id} className="flex items-center justify-between p-3 rounded-lg border bg-white border-gray-300 hover:cursor-pointer shadow-lg hover:bg-gray-200 hover:border-green-400">
+                                    <div key={task.id} className="flex items-center justify-between p-3 rounded-lg border bg-white border-gray-300 dark:bg-gray-800 dark:border-gray-700 hover:cursor-pointer shadow-lg hover:bg-gray-200 hover:border-green-400 dark:hover:bg-gray-700 dark:hover:border-green-400">
                                         <div className="flex items-center space-x-3">
-                                            <div className="w-4 h-4 rounded-full border-2 border-green-300"></div>
-                                            <span className="text-sm text-gray-900">{task.title}</span>
+                                            <div className="w-4 h-4 rounded-full border-2 border-green-300 dark:border-green-600"></div>
+                                            <span className="text-sm text-gray-900 dark:text-gray-400">{task.title}</span>
                                         </div>
                                         <div className="flex items-center space-x-3">
-                                            <span className="text-xs font-medium text-green-600">+{task.points} pts</span>
-                                            <span className="text-xs text-gray-500">{task.time}</span>
+                                            <span className="text-xs font-medium text-green-600 dark:text-green-400">+{task.points} pts</span>
+                                            <span className="text-xs text-gray-500 dark:text-gray-400">{task.time}</span>
                                         </div>
                                     </div>
                                 ))}
                             </div>
-                            <div className="h-6 flex justify-between p-4">
-                                <button className="flex items-center space-x-1 px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-50">
-                                    <kbd className="px-1 py-0.5 text-xs bg-gray-100 rounded">Enter</kbd>
+                            <div className="h-12 flex justify-between p-4">
+                                <button className="flex items-center space-x-1 px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-700 h-6">
+                                    <kbd className="px-1 py-0.5 text-xs bg-gray-100 rounded dark:bg-gray-800">Enter</kbd>
                                     <span>selects a task</span>
                                 </button>
                             </div>

@@ -3,7 +3,7 @@ import ProjectRating from '@/components/rating/ProjectRating'
 import PageLikePanel from '@/components/panel/PageLikePanel'
 import Badge from '@/components/badge/Badge'
 import TaskItem from './TaskItem'
-import { GridStyle } from '@/types/eventTypes'
+import { bgClassNames, GridStyle } from '@/types/eventTypes'
 import Tooltip from '../custom-ui/Tooltip'
 import Button from '../custom-ui/Button'
 import { useHotkeys } from 'react-hotkeys-hook';
@@ -123,7 +123,7 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
   const itemRefs: { [key: string]: any } = {};
 
   const actions = (
-    <div className='mt-2 h-6 flex space-x-4 justify-between'>
+    <div className='mb-3 h-6 flex space-x-4 justify-between'>
       <Tooltip
         content={
           <div className="text-sm">
@@ -135,11 +135,13 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
           onClick={selectedTaskId ? () => deselectTask(selectedTaskId.valueOf() as string) : selectFirstTask}
           variant={selectedTaskId ? 'default' : 'secondary'}
           outline={true}
-          className='flex flex-center items-center space-x-1 m-0 p-1!'>
-          <Kbd className='mt-0.5'>
-            {selectedTaskId ? 'Esc' : 'Enter'}
-          </Kbd>
-          <div>{label}</div>
+          className='flex justify-center items-center space-x-1 m-0 p-1!'>
+          <div className='flex items-center space-x-1 px-2'>
+            <Kbd className='mt-0.5 '>
+              {selectedTaskId ? 'Esc' : 'Enter'}
+            </Kbd>
+            <div className=''>{label}</div>
+          </div>
         </Button>
       </Tooltip>
 
@@ -154,8 +156,10 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
           }
         >
           <Button onClick={playTask} variant={'primary'} className='flex flex-center items-center space-x-1 m-0 p-1!'>
-            <Kbd className='mt-0.5'>Enter</Kbd>
-            <div>Complete</div>
+            <div className='flex items-center space-x-1 px-2'>
+              <Kbd className='mt-0.5'>Enter</Kbd>
+              <div>Complete</div>
+            </div>
           </Button>
         </Tooltip>
       }
@@ -171,8 +175,10 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
           }
         >
           <Button onClick={selectNextTask} outline={true} variant={'secondary'} className='flex flex-center items-center space-x-1 m-0 p-1!'>
-            <Kbd className='mt-0.5'>◀︎    ▶︎</Kbd>
-            <div>Change Task</div>
+            <div className='flex items-center space-x-1 px-2'>
+              <Kbd className='mt-0.5'>◀︎    ▶︎</Kbd>
+              <div>Change Task</div>
+            </div>
           </Button>
         </Tooltip>
       }
@@ -181,13 +187,17 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
 
   return (
     tasks.length > 0 ?
-      <PageLikePanel actions={actions} onHover={(hovered) => { }} className={``} title={
-        <div>{title}<Badge variant='red'>{tasks.length}</Badge>
-          <p className="text-sm text-gray-500 font-normal text-center">
+      <PageLikePanel actions={actions} onHover={(hovered) => { }} title={
+        <div className='flex items-center space-x-2 gap-1'>{title}<Badge variant='red'>{tasks.length}</Badge></div>
+      }
+        subtitle={
+          <p className="text-sm text-gray-500 dark:text-gray-400 font-normal text-left">
             Complete the management tasks.
           </p>
-        </div>} rightHeader={<ProjectRating />}>
-        <List contentHeight="h-48" className='${bgClassNames.listContent}`'>
+        }
+        rightHeader={<ProjectRating rating={0} pointsLeft={0} />}
+      >
+        <List contentHeight="h-48" className={`${bgClassNames.listContent}`}>
           {tasks.map((task) =>
             <TaskItem {...task} ref={(el: any) => (itemRefs[task.id!] = el)} onClick={onTaskClick} completedId={completedTaskId} selectedId={selectedTaskId.valueOf() as string} />,
           )}
@@ -195,7 +205,7 @@ const TasksSection: React.FC<Props> = ({ title = 'My Tasks' }) => {
 
       </PageLikePanel> : hide ? null : <PageLikePanel className={`${GridStyle.panel.margin!.bottom}`} title={
         <div>Tasks are completed<Badge variant='info'>{tasks.length}</Badge>
-        </div>} rightHeader={<ProjectRating />}>
+        </div>} rightHeader={<ProjectRating rating={0} pointsLeft={0} />}>
         <div className={`p-4 space-y-3 lg:max-h-[30vh] overflow-y-auto`}>
           Come back in a few days later. No tasks to do.
         </div>

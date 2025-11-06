@@ -85,7 +85,7 @@ const ProjectCard: React.FC<ProjectInfoProps> = ({
 }) => {
   return (
     <Link uri={uri || '#'}>
-      <BasePanel>
+      <BasePanel className='mb-4'>
         <div className="flex items-start space-x-4">
           <div className="w-16 overflow-hidden flex flex-col space-y-2 items-center">
             <Followings following={isFollowing} followers={followers} onActionClick={() => { }} />

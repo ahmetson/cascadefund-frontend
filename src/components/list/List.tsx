@@ -40,7 +40,11 @@ const List: React.FC<ListProps> = ({
 
     return (
         <div
-            className={cn('font-noto-sans space-y-3 text-sm text-gray-600', contentStyle, className)}
+            className={cn(
+                'font-noto-sans text-sm text-gray-600 dark:text-gray-500 space-y-3',
+                contentStyle,
+                className
+            )}
         >
             {children}
         </div>

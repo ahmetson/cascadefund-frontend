@@ -205,25 +205,25 @@ export interface SectionProps {
 
 export const bgClassNames: { [key in BgType]: string } = {
   [BgType.heroSection]:
-    "bg-gradient-to-br from-blue-500 via-blue-800 to-purple-500 text-white ",
+    "bg-gradient-to-br from-blue-500 via-blue-800 to-purple-500 text-white dark:text-gray-900 dark:from-blue-800 dark:via-blue-500 dark:to-purple-800",
   [BgType.heroToInfoViaBlue]:
-    "bg-gradient-to-bl from-purple-500 via-blue-800 to-gray-100 ",
+    "bg-gradient-to-bl from-purple-500 via-blue-800 to-gray-100 dark:text-gray-900 dark:from-purple-800 dark:via-blue-500 dark:to-gray-800",
   [BgType.infoToInfoViaBlue]:
-    "bg-gradient-to-br from-gray-50 via-blue-200 to-gray-50 ",
-  [BgType.normalSection]: "network-bg text-white ",
-  [BgType.infoSection]: "bg-gray-100 ",
+    "bg-gradient-to-br from-gray-50 via-blue-200 to-gray-50 dark:text-gray-900 dark:from-gray-800 dark:via-blue-500 dark:to-gray-800",
+  [BgType.normalSection]: "network-bg text-white dark:text-gray-900 dark:from-gray-900 dark:via-blue-500 dark:to-gray-900",
+  [BgType.infoSection]: "bg-gray-100 dark:text-gray-900 dark:from-gray-900 dark:via-blue-500 dark:to-gray-900",
   [BgType.purpleToTealViaBlue]:
-    "bg-gradient-to-br from-purple-600 via-blue-600 to-teal-500 text-white ",
+    "bg-gradient-to-br from-purple-600 via-blue-600 to-teal-500 text-white dark:text-gray-900 dark:from-purple-800 dark:via-blue-500 dark:to-teal-800",
   [BgType.blueToPurple]:
-    "bg-gradient-to-r from-blue-600 to-purple-600 text-white ",
+    "bg-gradient-to-r from-blue-600 to-purple-600 text-white dark:text-gray-900 dark:from-blue-800 dark:to-purple-800",
   [BgType.tealToRedViaLime]:
-    "bg-gradient-to-br from-teal-500 via-lime-600 to-red-500 text-white ",
+    "bg-gradient-to-br from-teal-500 via-lime-600 to-red-500 text-white dark:text-gray-900 dark:from-teal-800 dark:via-lime-500 dark:to-red-800",
   [BgType.redToPurpleViaLime]:
-    "bg-gradient-to-bl from-red-500 via-lime-600 to-purple-600 text-white ",
+    "bg-gradient-to-bl from-red-500 via-lime-600 to-purple-600 text-white dark:text-gray-900 dark:from-red-800 dark:via-lime-500 dark:to-purple-800",
   [BgType.footerToTransparent]:
-    "bg-gradient-to-b from-gray-900 to-transparent text-gray-600 ",
+    "bg-gradient-to-b from-gray-900 to-transparent text-gray-600 dark:text-gray-900 dark:from-gray-800 dark:to-transparent",
   [BgType.listContent]:
-    "bg-gradient-to-b from-gray-200 via-transparent to-gray-300 ",
+    "bg-gradient-to-b from-gray-200 via-transparent to-gray-300 dark:text-gray-900 dark:from-gray-800 dark:via-transparent dark:to-gray-800",
 };
 
 export interface LinkProps {

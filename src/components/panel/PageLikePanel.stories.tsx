@@ -72,13 +72,13 @@ export const WithIcon: Story = {
         children: (
             <div>
                 <div className="grid grid-cols-2 gap-4 mb-4">
-                    <div className="p-3 bg-blue-50 rounded">
-                        <p className="text-sm font-medium text-blue-800">Active Projects</p>
-                        <p className="text-lg font-bold text-blue-600">12</p>
+                    <div className="p-3 bg-blue-50 rounded dark:bg-blue-900">
+                        <p className="text-sm font-medium text-blue-800 dark:text-blue-200">Active Projects</p>
+                        <p className="text-lg font-bold text-blue-600 dark:text-blue-200">12</p>
                     </div>
-                    <div className="p-3 bg-green-50 rounded">
-                        <p className="text-sm font-medium text-green-800">Completed</p>
-                        <p className="text-lg font-bold text-green-600">8</p>
+                    <div className="p-3 bg-green-50 rounded dark:bg-green-900">
+                        <p className="text-sm font-medium text-green-800 dark:text-green-200">Completed</p>
+                        <p className="text-lg font-bold text-green-600 dark:text-green-200">8</p>
                     </div>
                 </div>
                 <p className="text-sm text-gray-600">
@@ -148,11 +148,11 @@ export const CenteredTitle: Story = {
         subtitle: 'This panel has a centered title with an icon',
         children: (
             <div>
-                <p className="text-center text-gray-600">
+                <p className="text-center text-gray-600 dark:text-gray-500">
                     This is an example of a panel with a centered title.
                     The content can be any React component or HTML.
                 </p>
-                <div className="mt-4 p-4 bg-yellow-50 rounded border border-yellow-200">
+                <div className="mt-4 p-4 bg-yellow-50 rounded border border-yellow-200 dark:bg-yellow-900 dark:border-yellow-200">
                     <p className="text-sm text-yellow-800 text-center">
                         Centered content area with special styling
                     </p>

@@ -4,7 +4,7 @@ import PageLikePanel, { PageLikePanelProps } from '@/components/panel/PageLikePa
 import Link from '../custom-ui/Link'
 import { ProjectInfo } from './types'
 import { githubUrlToGit } from '@/lib/url'
-import { getIcon, IconType } from '../icon'
+import { getIcon } from '../icon'
 import { Issue } from '../issue/types'
 import List from '../list/List'
 import SelectableItem from '../list/SelectableItem'
@@ -38,9 +38,10 @@ const ForkLinkingPanel: React.FC<ForkLinkingPanelProps> = ({ className, onAction
       storage: 'github',
       author: {
         uri: '',
-        name: '',
-        avatar: ''
-      },
+        children: 'alice-blockchain',
+        icon: 'https://avatars.githubusercontent.com/u/1234567?v=4'
+      }
+      ,
       projectId: '',
       categoryId: ''
     },
@@ -53,8 +54,8 @@ const ForkLinkingPanel: React.FC<ForkLinkingPanelProps> = ({ className, onAction
       storage: 'github',
       author: {
         uri: '',
-        name: '',
-        avatar: ''
+        children: 'bob-blockchain',
+        icon: 'https://avatars.githubusercontent.com/u/1234567?v=4'
       },
       projectId: '',
       categoryId: ''
@@ -68,8 +69,8 @@ const ForkLinkingPanel: React.FC<ForkLinkingPanelProps> = ({ className, onAction
       storage: 'github',
       author: {
         uri: '',
-        name: '',
-        avatar: ''
+        children: 'charlie-blockchain',
+        icon: 'https://avatars.githubusercontent.com/u/1234567?v=4'
       },
       projectId: '',
       categoryId: ''
@@ -83,8 +84,8 @@ const ForkLinkingPanel: React.FC<ForkLinkingPanelProps> = ({ className, onAction
       storage: 'github',
       author: {
         uri: '',
-        name: '',
-        avatar: ''
+        children: 'david-blockchain',
+        icon: 'https://avatars.githubusercontent.com/u/1234567?v=4'
       },
       projectId: '',
       categoryId: ''
@@ -98,8 +99,8 @@ const ForkLinkingPanel: React.FC<ForkLinkingPanelProps> = ({ className, onAction
       storage: 'cascadefund',
       author: {
         uri: '',
-        name: '',
-        avatar: ''
+        children: 'eve-blockchain',
+        icon: 'https://avatars.githubusercontent.com/u/1234567?v=4'
       },
       projectId: '',
       categoryId: ''
@@ -114,7 +115,7 @@ const ForkLinkingPanel: React.FC<ForkLinkingPanelProps> = ({ className, onAction
   const action = <div className="">
     <p className={`text-center text-sm mt-2 mb-1 border-t-1 border-gray-300 ${selectedItem.amount === 0 ? 'text-rose-500' : 'text-sky-600'}`}>
       {selectedItem.amount === 0 ?
-        <span>Select the issue. Didn't find the issue you want? <Link href={`/data/issue/post?project=${githubUrlToGit(fork.repository)}&notYetCreated=true&fork=${githubUrlToGit(project.repository)}`}>Create a new issue</Link></span> :
+        <span>Select the issue. Didn't find the issue you want? <Link uri={`/data/issue/post?project=${githubUrlToGit(fork.repository)}&notYetCreated=true&fork=${githubUrlToGit(project.repository)}`}>Create a new issue</Link></span> :
         <span>Fork is related to {selectedItem.amount} issues</span>}
     </p>
     <div className="flex justify-center">
@@ -134,18 +135,18 @@ const ForkLinkingPanel: React.FC<ForkLinkingPanelProps> = ({ className, onAction
       title={"Reason of the forking"}
       rightHeader={
         <Link
-          href={`/data/issue/post?project=${githubUrlToGit(fork.repository)}&notYetCreated=true&fork=${githubUrlToGit(project.repository)}`}
+          uri={`/data/issue/post?project=${githubUrlToGit(fork.repository)}&notYetCreated=true&fork=${githubUrlToGit(project.repository)}`}
         >
           Create New Issue
         </Link>
       }
       actions={action}>
       <strong className='inline-flex items-center gap-1 h-2 '>Your project has been forked from
-        <Link className='ml-1' href={fork.repository} >
+        <Link className='ml-1' uri={fork.repository} >
           <div className='inline-flex items-center gap-1'>{getIcon('github')} {fork.name}</div>
         </Link>
       </strong>
-      <p className="text-sm text-gray-600 mb-4">
+      <p className="text-sm text-gray-600 dark:text-gray-500 mb-4">
         <span>
           Choose one or many issues that explains why you forked.<br />
           The issues will be attached to the original project to make your fork <b>discoverable</b>.
@@ -171,7 +172,7 @@ const ForkLinkingPanel: React.FC<ForkLinkingPanelProps> = ({ className, onAction
       <List className="mb-6" contentHeight="min-h-48 max-h-96">
         {filteredIssues.map((issue) => (
           <SelectableItem
-            iconClassName={issue.type === 'bug' ? 'border-red-300' : issue.type === 'feature' ? 'border-blue-300' : issue.type === 'improvement' ? 'border-green-300' : issue.type === 'enhancement' ? 'border-purple-300' : 'border-gray-300'}
+            iconClassName={issue.type === 'bug' ? 'border-red-300 dark:border-red-700' : issue.type === 'feature' ? 'border-blue-300 dark:border-blue-700' : issue.type === 'improvement' ? 'border-green-300 dark:border-green-700' : issue.type === 'enhancement' ? 'border-purple-300 dark:border-purple-700' : 'border-gray-300 dark:border-gray-700'}
             key={issue.uri}
             id={issue.uri}
             onClick={setSelectedItem}

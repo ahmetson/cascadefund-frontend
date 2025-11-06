@@ -20,12 +20,12 @@ const TaskItem: React.FC<TaskItemProps> = ({ ref, onClick: onTaskClick, selected
     <div ref={ref}>
       <Strikethrough id={id!} checked={isCompleted}>
         <SelectableItem selectedId={selectedTaskId} id={id!} onClick={onTaskClick} iconClassName={isCompleted ? 'bg-green-700 border-green-700' : 'border-green-300'}>
-          <div className={`text-sm ${isCompleted ? 'line-through text-gray-500' : 'text-gray-900'}`}>
+          <div className={`text-sm ${isCompleted ? 'line-through text-gray-500 dark:text-gray-400' : 'text-gray-900 dark:text-gray-300'}`}>
             {title}
           </div>
           <div className="flex items-center space-x-3">
-            <span className="text-xs font-medium text-green-600">+{points} pts</span>
-            <span className="text-xs text-gray-500">{time}</span>
+            <span className="text-xs font-medium text-green-600 dark:text-green-500">+{points} pts</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">{time}</span>
           </div>
         </SelectableItem>
       </Strikethrough>
