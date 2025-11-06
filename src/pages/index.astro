@@ -6,30 +6,23 @@ import LeftImageRightPanels from "@/layouts/sections/LeftImageRightPanelsSection
 import HorizontalPanels from "@/layouts/sections/HorizontalPanelsSection.astro";
 import HeroSection from "@/layouts/sections/HeroSection.astro";
 import Section from "@/layouts/sections/BaseSection.astro";
-import SectionScrollButton from "@/components/ScrollingToSectionButton";
 import { BgType } from "@/types/eventTypes";
 import type { SectionProps } from "@/types/eventTypes";
-import FAQItem from "@/components/FAQElement";
 import { getIcon } from "@/components/icon";
-import { Accordion } from "../components/animate-ui/components/radix/accordion";
 import FAQ from "@/components/FAQ";
 
-const heroSection = {
+const heroSection: SectionProps = {
   title:
     "Platform where Open Source Maintainers Connect, Collaborate, and Get Funded",
   children:
     "Discover similar projects, network with fellow maintainers and enhance your portfolio through quests " +
     "— all while earning support from users in a reputation-driven ecosystem.",
   actions: [
-    { variant: "blue", children: "Sign Up as a Maintainer", href: "/login/" },
+    { variant: "primary", children: "Sign Up as a Maintainer", uri: "/login/" },
     {
-      variant: "blue",
-      replaceWithChildren: true,
-      children: await SectionScrollButton({
-        children: "Learn More",
-        href: "#WhyMaintainersStruggle",
-        className: " text-white hover:text-gray-200",
-      }),
+      variant: "secondary",
+      children: "Learn More",
+      uri: "/#WhyMaintainersStruggle",
     },
   ],
 };

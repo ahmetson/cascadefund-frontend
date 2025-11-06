@@ -24,7 +24,7 @@ const { subtitle, active, hideLinks } = Astro.props;
     <title>CascadeFund</title>
     <ClientRouter />
   </head>
-  <body class="min-h-screen bg-gray-200 pt-14">
+  <body class="min-h-screen bg-gray-200 dark:bg-gray-700 pt-14">
     <Header active={active} subtitle={subtitle} hideLinks={hideLinks} />
     <slot />
     <Footer />

@@ -4,7 +4,7 @@ import HorizontalRow from "@/components/grid/RowGrid";
 import Section from "./BaseSection.astro";
 import type { SectionBgProps } from "@/types/eventTypes";
 
-interface Props {
+export interface LeftImageRightPanelsSectionProps {
   prefix: string;
   title: string;
   img: {
@@ -38,7 +38,7 @@ if (cols === undefined) {
       <HorizontalRow cols={cols} className="order-1 md:order-2 space-y-6">
         {
           panels &&
-            panels.map((panel, index) => (
+            panels.map((panel: InfoPanelProps, index: number) => (
               <InfoPanel
                 key={prefix + index}
                 icon={panel.icon}
