@@ -5,6 +5,7 @@ import "@/styles/motion.css";
 import Header from "@/components/utilitified_decorations/LandingHeader.astro";
 import Footer from "@/components/utilitified_decorations/Footer.astro";
 import type { ItemName } from "@/components/utilitified_decorations/LandingNavbar.astro";
+import CascadeFundLogo from "@/components/utilitified_decorations/Logo.astro";
 
 interface Props {
   subtitle?: string;
@@ -24,8 +25,9 @@ const { subtitle, active, hideLinks } = Astro.props;
     <title>CascadeFund</title>
     <ClientRouter />
   </head>
-  <body class="min-h-screen bg-gray-200 dark:bg-gray-700 pt-14">
-    <Header active={active} subtitle={subtitle} hideLinks={hideLinks} />
+  <body class="min-h-screen bg-gray-200 dark:bg-gray-700">
+    <CascadeFundLogo className="absolute top-4 left-4" />
+
     <slot />
     <Footer />
   </body>

@@ -1,5 +1,6 @@
 import { ButtonVariant } from "@/components/custom-ui/Button"
 import { IconProps, IconType } from "@/components/icon"
+import React from "react"
 
 export interface ComponentProps {
   children?: any
@@ -173,6 +174,7 @@ export interface ActionProps {
 export enum BgType {
   heroSection = "hero",
   heroToInfoViaBlue = "heroToInfo",
+  heroToSocialization = "heroToSocialization",
   infoToInfoViaBlue = "infoToInfo",
   normalSection = "normal",
   infoSection = "info",
@@ -195,7 +197,7 @@ export interface SectionProps {
   icon?: React.ReactNode,
   title?: string
   titleClassName?: string
-  subtitle?: string
+  subtitle?: string[] | string
   prefix?: string // If panels are listed how to group according to this session
   actions?: ActionProps[]
   children?: any
@@ -208,6 +210,8 @@ export const bgClassNames: { [key in BgType]: string } = {
     "bg-gradient-to-br from-blue-500 via-blue-800 to-purple-500 text-white dark:text-gray-900 dark:from-blue-800 dark:via-blue-500 dark:to-purple-800",
   [BgType.heroToInfoViaBlue]:
     "bg-gradient-to-bl from-purple-500 via-blue-800 to-gray-100 dark:text-gray-900 dark:from-purple-800 dark:via-blue-500 dark:to-gray-800",
+  [BgType.heroToSocialization]:
+    "bg-gradient-to-br from-purple-500 via-blue-500 to-blue-600 text-white dark:text-gray-900 dark:from-purple-800 dark:via-blue-500 dark:to-blue-800",
   [BgType.infoToInfoViaBlue]:
     "bg-gradient-to-br from-gray-50 via-blue-200 to-gray-50 dark:text-gray-900 dark:from-gray-800 dark:via-blue-500 dark:to-gray-800",
   [BgType.normalSection]: "network-bg text-white dark:text-gray-900 dark:from-gray-900 dark:via-blue-500 dark:to-gray-900",

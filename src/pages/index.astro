@@ -2,174 +2,89 @@
 export const prerender = true;
 import V2Layout from "@/layouts/LandingLayout.astro";
 import { ItemName } from "@/components/utilitified_decorations/LandingNavbar.astro";
-import LeftImageRightPanels from "@/layouts/sections/LeftImageRightPanelsSection.astro";
-import HorizontalPanels from "@/layouts/sections/HorizontalPanelsSection.astro";
 import HeroSection from "@/layouts/sections/HeroSection.astro";
 import Section from "@/layouts/sections/BaseSection.astro";
 import { BgType } from "@/types/eventTypes";
 import type { SectionProps } from "@/types/eventTypes";
 import { getIcon } from "@/components/icon";
-import FAQ from "@/components/FAQ";
+import Badge from "@/components/badge/Badge";
 
 const heroSection: SectionProps = {
-  title:
-    "Platform where Open Source Maintainers Connect, Collaborate, and Get Funded",
-  children:
-    "Discover similar projects, network with fellow maintainers and enhance your portfolio through quests " +
-    "— all while earning support from users in a reputation-driven ecosystem.",
+  title: "The first platform for maintainers to grow PRs and support",
+  subtitle:
+    "Turning open-source development into a recognized, collaborative, and financially sustainable pursuit.",
   actions: [
-    { variant: "primary", children: "Sign Up as a Maintainer", uri: "/login/" },
+    { variant: "primary", children: "Get Started", uri: "/login/" },
     {
       variant: "secondary",
       children: "Learn More",
-      uri: "/#WhyMaintainersStruggle",
+      uri: "/#vision",
     },
   ],
-};
-
-const whyMaintainersStruggleSection = {
-  prefix: "whyMaintainersStruggle",
-  panels: [
-    {
-      icon: getIcon("clock"),
-      title: "Unsustainable work",
-      description:
-        "Maintaining open source often means unpaid overtime, burnout from constant demands, and inadequate support.",
-      iconBgColor: "text-green-600",
-    },
-    {
-      icon: getIcon("fire"),
-      title: "Burnout",
-      description:
-        "The pressure to keep projects running while balancing other responsibilities leads to exhaustion and decreased motivation.",
-      iconBgColor: "text-orange-600",
-    },
-    {
-      icon: getIcon("ten-pm-ten-min"),
-      title: "Scalable priorities",
-      description:
-        "Balancing feature requests against maintenance and bug fixing, leading to challenging prioritization and frustration with users.",
-      iconBgColor: "text-purple-600",
-    },
-    {
-      icon: getIcon("energy"),
-      title: "Dependency struggles",
-      description:
-        "Managing complex dependency chains affects stability with other projects, creates technical debt and integration issues.",
-      iconBgColor: "text-gray-600",
-    },
-  ],
-  title: "Why Maintainers Struggle?",
-  img: {
-    src: "https://dummyimage.com/500x400/f8fafc/64748b?text=Struggling+Developer",
-    alt: "Struggling developer",
-  },
-};
-
-const howItWorksSection = {
-  prefix: "howItWorks",
-  title: "How it works?",
-  panels: [
-    {
-      icon: getIcon("better-features"),
-      title: "Users donate → Unlock better features",
-      description:
-        "When users support projects financially, they gain the ability to access premium features and priority support.",
-      iconBgColor: "bg-green-100 text-green-600",
-    },
-    {
-      icon: getIcon("vote-priority"),
-      title: "Votes shape priorities & ratings",
-      description:
-        "Community input helps determine what features get built next and provides feedback on project quality and direction.",
-      iconBgColor: "bg-purple-100 text-purple-600",
-    },
-    {
-      icon: getIcon("recognition"),
-      title: "Maintainers gain funding and recognition",
-      description:
-        "Direct lines, great rating for all maintainers, and sustainable funding for projects. Get helped to other devs as well.",
-      iconBgColor: "bg-blue-100 text-blue-600",
-    },
-  ],
-};
-
-const beAFoundingMaintainerSection = {
-  cols: 2,
-  title: "Be a Founding Maintainer",
-  className: "px-10",
-  panels: [
-    {
-      icon: getIcon("early-visibility"),
-      title: "Early visibility in the ecosystem",
-      color: "text-blue-600",
-    },
-    {
-      icon: getIcon("influence-platform"),
-      title: "Influence platform development",
-      color: "text-blue-600",
-    },
-    {
-      icon: getIcon("first-access"),
-      title: "Easy management of the project in the quest based way",
-      color: "text-blue-600",
-    },
-    {
-      icon: getIcon("pioneer-recognition"),
-      title: "Recognition as a pioneer",
-      color: "text-blue-600",
-    },
-  ],
-};
-
-const partOfAraProjectSection: SectionProps = {
-  title: "CascadeFund is part of Ara Project",
   bg: {
+    sectionBgType: BgType.heroSection,
     overlay: "circles",
-    sectionBgType: BgType.normalSection,
   },
 };
 
-const faqSection: SectionProps = {
-  title: "Frequently Asked Questions",
-  bg: {
-    sectionBgType: BgType.infoSection,
-  },
-};
+const visionSection: SectionProps = {
+  title: "From celebrity culture to creator culture",
+  subtitle: [
+    "Open-source developers build the tools and ideas millions rely on —",
+    "yet most remain unseen, underpaid, and disconnected from the public.",
+  ],
 
-const faqs = [
-  {
-    key: "is-it-free-to-join",
-    question: "Is it free to join?",
-    answer:
-      "Yes, joining the platform is completely free for all open source maintainers. We believe in removing barriers to entry and helping maintainers get started without any upfront costs.",
-  },
-  {
-    key: "how-is-this-different-from-github-sponsors",
-    question: "How is this different from GitHub Sponsors?",
-    answer:
-      "While GitHub Sponsors focuses on direct sponsorship, our platform creates a comprehensive ecosystem with project discovery, collaborative features, quest-based funding, and community-driven prioritization that helps maintainers build sustainable businesses.",
-  },
-  {
-    key: "is-my-project-too-small",
-    question: "Is my project too small?",
-    answer:
-      "Not at all! Projects of all sizes are welcome. Whether you're just starting out or managing a large-scale project, our platform provides tools and opportunities to help you grow and connect with the right supporters and collaborators.",
-  },
-  {
-    key: "do-i-need-a-big-community-already",
-    question: "Do I need a big community already?",
-    answer:
-      "No, you don't need an existing large community. Our platform helps you build and grow your community organically by connecting you with users who value your work and want to support your project's development.",
-  },
-];
-
-const ctaSection: SectionProps = {
-  icon: getIcon("energy"),
-  title: "Ready to Shape the Future of Open Source?",
   bg: {
+    sectionBgType: BgType.heroToSocialization,
     overlay: "rectangles",
+  },
+};
+
+const socializationSection: SectionProps = {
+  title: "How does CascadeFund work?",
+  bg: {
+    sectionBgType: BgType.blueToPurple,
+    overlay: "circles",
+  },
+};
+
+const gamificationSection: SectionProps = {
+  title: "Gamified collaboration",
+  bg: {
     sectionBgType: BgType.normalSection,
+    overlay: "rectangles",
+  },
+};
+
+const timeSavedSection: SectionProps = {
+  title: "Time-Saved Project Management",
+  bg: {
+    sectionBgType: BgType.infoToInfoViaBlue,
+    overlay: "circles",
+  },
+};
+
+const paywallSection: SectionProps = {
+  title: "Efficiency Through Paywalls",
+  bg: {
+    sectionBgType: BgType.infoToInfoViaBlue,
+  },
+};
+
+const fundingSection: SectionProps = {
+  title: "Transparent Funding",
+  bg: {
+    sectionBgType: BgType.tealToRedViaLime,
+    overlay: "circles",
+  },
+};
+
+const earlyStageSection: SectionProps = {
+  title: "Join Us Early",
+  icon: getIcon("energy"),
+  bg: {
+    sectionBgType: BgType.redToPurpleViaLime,
+    overlay: "rectangles",
   },
 };
 ---
@@ -181,33 +96,221 @@ const ctaSection: SectionProps = {
   <HeroSection {...heroSection}>
     {heroSection.children}
   </HeroSection>
-  <LeftImageRightPanels cols={2} {...whyMaintainersStruggleSection} />
-  <HorizontalPanels {...howItWorksSection} />
-  <HorizontalPanels {...beAFoundingMaintainerSection} />
-  <Section
-    title={partOfAraProjectSection.title}
-    bg={partOfAraProjectSection.bg}
-  >
-    Together, we can make the internet open, affordable, and sustainable for
-    everyone — where collaborative tech innovation and maintainers thrive
-    without burnout.
+
+  <div id="vision">
+    <HeroSection {...visionSection}>
+      <div
+        class="absolute top-0 left-10 -mt-10 flex items-center space-x-2 md:w-full lg:justify-start md:justify-center"
+      >
+        <Badge variant="default">It's more than just a platform</Badge>
+        <Badge variant="success">Users make a positive social impact</Badge>
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <p class="text-lg md:text-xl leading-relaxed mt-6">
+          As CascadeFund grows, developers will become as recognizable as
+          today's internet influencers.
+        </p>
+        <p class="text-lg md:text-xl leading-relaxed mt-2">
+          In a decade, when the world celebrates the creators behind what it
+          uses every day, it will be thanks to the users of CascadeFund.
+        </p>
+      </div>
+    </HeroSection>
+  </div>
+
+  <Section {...socializationSection}>
+    <div
+      class="absolute top-0 left-10 -mt-10 flex items-center space-x-2 md:w-full lg:justify-start md:justify-center"
+    >
+      <Badge variant="default"
+        ><span class="h-6 pt-1"
+          >Okay, how does CascadeFund make this happen?</span
+        ></Badge
+      >
+      <Badge variant="info" active={true}
+        ><Badge>1</Badge><span class="ml-1">Collaboration platform</span></Badge
+      >
+    </div>
+    <div class="max-w-4xl mx-auto space-y-4">
+      <p class="text-lg md:text-xl leading-relaxed">
+        CascadeFund is where your project's community comes together.
+      </p>
+      <p class="text-lg md:text-xl leading-relaxed">
+        Instead of scattered issues, docs, articles, across GitHub, Discord,
+        RSS, etc., all collaboration with developers, contributors, and users
+        happens here.
+        <br />
+        This not only makes collaboration easier, it makes your work visible and
+        recognized.
+      </p>
+    </div>
   </Section>
-  <Section title={faqSection.title} bg={faqSection.bg}>
-    <FAQ faqs={faqs} client:load />
+
+  <Section {...gamificationSection}>
+    <div
+      class="absolute top-0 left-10 -mt-10 flex items-center space-x-2 md:w-full lg:justify-start md:justify-center gap-1"
+    >
+      <Badge variant="default"
+        ><span class="h-6 pt-1"
+          >Okay, how does CascadeFund make this happen?</span
+        ></Badge
+      >
+      <Badge variant="info"
+        ><Badge>1</Badge><span class="ml-1">Collaboration platform</span></Badge
+      >
+      <span class="text-gray-500 dark:text-gray-400"> with </span>
+      <Badge variant="green" active={true}
+        ><Badge active={true}>2</Badge><span class="ml-1"
+          >Quest and rating system</span
+        ></Badge
+      >
+      <span class="text-gray-500 dark:text-gray-400 -ml-2 mt-2">, </span>
+      <Badge variant="teal" active={true}
+        ><Badge active={true}>2</Badge><span class="ml-1"
+          >Automation, two click tasks</span
+        ></Badge
+      >
+    </div>
+    <div class="max-w-4xl mx-auto space-y-4">
+      <p class="text-lg md:text-xl leading-relaxed">
+        All activities, such as message replies, roadmap planning, issue
+        readings are turned into quest tasks. Each task contributes to the
+        collaborative rating. Unlike competitive rating, a collaborative rating
+        reflects how you work with others and on which types of projects.
+        Similarly, a project rating reflects what goals preferred by the
+        community, what kind of people are working on it.
+      </p>
+    </div>
   </Section>
+
+  <Section {...timeSavedSection}>
+    <div
+      class="absolute top-0 left-10 -mt-10 flex items-center space-x-2 md:w-full lg:justify-start md:justify-center gap-1"
+    >
+      <Badge variant="default"
+        ><span class="h-6 pt-1"
+          >Okay, how does CascadeFund make this happen?</span
+        ></Badge
+      >
+      <Badge variant="info"
+        ><Badge>1</Badge><span class="ml-1">Collaboration platform</span></Badge
+      >
+      <span class="text-gray-500 dark:text-gray-400"> with </span>
+      <Badge variant="green"
+        ><Badge>2</Badge><span class="ml-1">Quest and rating system</span
+        ></Badge
+      >
+      <span class="text-gray-500 dark:text-gray-400 -ml-2 mt-2">, </span>
+      <Badge variant="teal" active={true}
+        ><Badge active={true}>3</Badge><span class="ml-1"
+          >Automation, two click tasks</span
+        ></Badge
+      >
+    </div>
+    <div class="max-w-4xl mx-auto space-y-6">
+      <p class="text-lg md:text-xl leading-relaxed">
+        Managing your project shouldn't be a chore. CascadeFund turns messages,
+        code reviews, and closing issues into two-click daily tasks.
+      </p>
+      <p class="text-lg md:text-xl leading-relaxed">
+        In CascadeFund, all project management is reduced to just 10 minutes of
+        daily guided task completion. Routine, repetitive, and annoying
+        multi-click actions are minimized, giving you more offline time, saving
+        energy, and helping prevent burnout.
+      </p>
+      <p class="text-lg md:text-xl leading-relaxed font-semibold">
+        It's the easiest, most time-saving system for running an open-source
+        project.
+      </p>
+      <div class="mt-8 space-y-6">
+        <div
+          class="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 border-2 border-dashed border-gray-300 dark:border-gray-600"
+        >
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+            [Screenshot: Quest Panel]
+          </p>
+          <div
+            class="aspect-video bg-gray-200 dark:bg-gray-700 rounded flex items-center justify-center"
+          >
+            <span class="text-gray-400 dark:text-gray-500"
+              >Quest Panel Screenshot</span
+            >
+          </div>
+        </div>
+        <div
+          class="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 border-2 border-dashed border-gray-300 dark:border-gray-600"
+        >
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+            [Screenshot: Chat Reply Flow]
+          </p>
+          <div
+            class="aspect-video bg-gray-200 dark:bg-gray-700 rounded flex items-center justify-center"
+          >
+            <span class="text-gray-400 dark:text-gray-500"
+              >Chat Reply Flow Screenshot</span
+            >
+          </div>
+        </div>
+        <div
+          class="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 border-2 border-dashed border-gray-300 dark:border-gray-600"
+        >
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+            [Screenshot: Code Review Flow]
+          </p>
+          <div
+            class="aspect-video bg-gray-200 dark:bg-gray-700 rounded flex items-center justify-center"
+          >
+            <span class="text-gray-400 dark:text-gray-500"
+              >Code Review Flow Screenshot</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section {...paywallSection}>
+    <div class="max-w-4xl mx-auto space-y-4">
+      <p class="text-lg md:text-xl leading-relaxed">
+        To avoid the bots, and to save your scarce time, for all user's
+        necessary work, for socialization put a paywall.
+      </p>
+      <p class="text-lg md:text-xl leading-relaxed">
+        Ask them to raise an issue on cascade fund, that will turn for you to 2
+        click task, speeding up user satisfaction.
+      </p>
+    </div>
+  </Section>
+
+  <Section {...fundingSection}>
+    <div class="max-w-4xl mx-auto space-y-4">
+      <p class="text-lg md:text-xl leading-relaxed">
+        We don't charge anything, all goes to you, and to the packages you use
+        in the cascading manner. In return you get the rating power to pass
+        their paywall, and scarce time. Join to the group of the libraries,
+        favorite languages. Raise the issues, and features you want. And in
+        CascadeFund it's satisfying, because for your peers its also a two
+        click.
+      </p>
+    </div>
+  </Section>
+
   <Section
-    title={ctaSection.title}
-    bg={ctaSection.bg}
+    {...earlyStageSection}
     actions={[
       {
         uri: "/login",
         variant: "primary",
-        children: "Sign In as a Maintainer",
+        children: "Join as a Maintainer",
       },
     ]}
-    icon={ctaSection.icon}
   >
-    Join a growing community of maintainers who are changing how open source
-    development works.
+    <div class="max-w-4xl mx-auto space-y-4">
+      <p class="text-lg md:text-xl leading-relaxed">
+        We are just started, and keep the core features. Slowly adding more
+        peers and more features. Want to increase some features, put the rating
+        votes in the issue, that affects mutual rating by passing the paywall.
+      </p>
+    </div>
   </Section>
 </V2Layout>
