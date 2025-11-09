@@ -8,6 +8,8 @@ import { BgType } from "@/types/eventTypes";
 import type { SectionProps } from "@/types/eventTypes";
 import { getIcon } from "@/components/icon";
 import Badge from "@/components/badge/Badge";
+import Link from "@/components/custom-ui/Link";
+import ReactComponentImporter from "@/components/ReactComponentImporter";
 
 const heroSection: SectionProps = {
   title: "The first platform for maintainers to grow PRs and support",
@@ -71,8 +73,15 @@ const paywallSection: SectionProps = {
   },
 };
 
+const interconnectedSection: SectionProps = {
+  title: "Interconnected for Maintainers",
+  bg: {
+    sectionBgType: BgType.tealToRedViaLime,
+  },
+};
+
 const fundingSection: SectionProps = {
-  title: "Transparent Funding",
+  title: "No Pricing?",
   bg: {
     sectionBgType: BgType.tealToRedViaLime,
     overlay: "circles",
@@ -80,8 +89,16 @@ const fundingSection: SectionProps = {
 };
 
 const earlyStageSection: SectionProps = {
-  title: "Join Us Early",
+  title: "Join Us",
   icon: getIcon("energy"),
+  bg: {
+    sectionBgType: BgType.redToPurpleViaLime,
+    overlay: "rectangles",
+  },
+};
+
+const teamSection: SectionProps = {
+  title: "Our Team",
   bg: {
     sectionBgType: BgType.redToPurpleViaLime,
     overlay: "rectangles",
@@ -162,12 +179,6 @@ const earlyStageSection: SectionProps = {
       <Badge variant="green" active={true}
         ><Badge active={true}>2</Badge><span class="ml-1"
           >Quest and rating system</span
-        ></Badge
-      >
-      <span class="text-gray-500 dark:text-gray-400 -ml-2 mt-2">, </span>
-      <Badge variant="teal" active={true}
-        ><Badge active={true}>2</Badge><span class="ml-1"
-          >Automation, two click tasks</span
         ></Badge
       >
     </div>
@@ -270,14 +281,63 @@ const earlyStageSection: SectionProps = {
   </Section>
 
   <Section {...paywallSection}>
+    <div
+      class="absolute top-0 left-10 -mt-10 flex items-center space-x-2 md:w-full lg:justify-start md:justify-center gap-1"
+    >
+      <Badge variant="default"
+        ><span class="h-6 pt-1"
+          >Okay, how does CascadeFund make this happen?</span
+        ></Badge
+      >
+      <Badge variant="info"
+        ><Badge>1</Badge><span class="ml-1">Collaboration platform</span></Badge
+      >
+      <span class="text-gray-500 dark:text-gray-400"> with </span>
+      <Badge variant="green"
+        ><Badge>2</Badge><span class="ml-1">Quest and rating system</span
+        ></Badge
+      >
+      <span class="text-gray-500 dark:text-gray-400 -ml-2 mt-2">, </span>
+      <Badge variant="teal"
+        ><Badge>3</Badge><span class="ml-1">Automation, two click tasks</span
+        ></Badge
+      >
+      <span class="text-gray-500 dark:text-gray-400 -ml-2 mt-2">, </span>
+      <Badge variant="purple" active={true}>
+        <Badge active={true}>4</Badge><span class="ml-1">Easy Monetization</span
+        >
+      </Badge>
+    </div>
     <div class="max-w-4xl mx-auto space-y-4">
       <p class="text-lg md:text-xl leading-relaxed">
-        To avoid the bots, and to save your scarce time, for all user's
-        necessary work, for socialization put a paywall.
+        To keep your time focused, CascadeFund adds a gamified paywall to user
+        requests. It filters out noise while making participation meaningful.
       </p>
       <p class="text-lg md:text-xl leading-relaxed">
-        Ask them to raise an issue on cascade fund, that will turn for you to 2
-        click task, speeding up user satisfaction.
+        Users spend voting power to raise issues and when they collaborate well
+        with maintainers, their ratings and influence grow. Those who write
+        thoughtful feature requests or help projects move forward earn bonus
+        points and recognition, becoming community voices who can bring people
+        together to build his own features.
+      </p>
+    </div>
+  </Section>
+
+  <Section {...interconnectedSection}>
+    <div class="max-w-4xl mx-auto space-y-4">
+      <p class="text-lg md:text-xl leading-relaxed">
+        CascadeFund keeps your project moving even when your time is limited. If
+        there's a task you'd rather not handle, you can let a contributor take
+        it and earn the rating, while you simply guide and consult.
+      </p>
+      <p class="text-lg md:text-xl leading-relaxed">
+        Others can also link a fork to solve the issue independently, so
+        progress never stalls. Your project grows, adapts, and keeps moving
+        toward its goals without too much worry on rating.
+      </p>
+      <p class="text-lg md:text-xl leading-relaxed">
+        It's a connected system that rewards collaboration, frees your time, and
+        keeps every maintainer in control of their direction.
       </p>
     </div>
   </Section>
@@ -285,12 +345,19 @@ const earlyStageSection: SectionProps = {
   <Section {...fundingSection}>
     <div class="max-w-4xl mx-auto space-y-4">
       <p class="text-lg md:text-xl leading-relaxed">
-        We don't charge anything, all goes to you, and to the packages you use
-        in the cascading manner. In return you get the rating power to pass
-        their paywall, and scarce time. Join to the group of the libraries,
-        favorite languages. Raise the issues, and features you want. And in
-        CascadeFund it's satisfying, because for your peers its also a two
-        click.
+        CascadeFund doesn't charge you anything. All earnings go directly to you
+        and, through the <Link
+          asNewTab={true}
+          uri="https://www.hyperpayment.org/specification/opensource-hyperpayment-specification"
+          >Hyperpayment Protocol</Link
+        >, 20% is automatically shared with the open-source libraries your
+        project depends on. This happens in a gamified way. In exchange you get
+        voting power that affects collaborative ratings, strengthening the
+        ecosystem that supports your work.
+      </p>
+      <p class="text-lg md:text-xl leading-relaxed">
+        It's open, fair, and built to keep creators optimize their dependencies
+        for their projects.
       </p>
     </div>
   </Section>
@@ -301,16 +368,66 @@ const earlyStageSection: SectionProps = {
       {
         uri: "/login",
         variant: "primary",
-        children: "Join as a Maintainer",
+        children: "Subscribe for newsletter",
       },
     ]}
   >
     <div class="max-w-4xl mx-auto space-y-4">
       <p class="text-lg md:text-xl leading-relaxed">
-        We are just started, and keep the core features. Slowly adding more
-        peers and more features. Want to increase some features, put the rating
-        votes in the issue, that affects mutual rating by passing the paywall.
+        CascadeFund is currently in active development. We plan to launch by the
+        end of this year.
       </p>
     </div>
+    <div class="mx-auto">
+      <p
+        class="text-lg md:text-xl leading-relaxed flex items-center justify-center space-x-1 gap-2"
+      >
+        Follow our progress on <Link
+          className="flex items-center space-x-1 gap-1 -mr-2 underline"
+          asNewTab={true}
+          uri="https://github.com/ara-foundation/cascade-fund"
+        >
+          <ReactComponentImporter element={getIcon("github")} /> GitHub
+        </Link>, for chatting with us join our <Link
+          className="flex items-center space-x-1 gap-1 -mr-2 underline"
+          asNewTab={true}
+          uri="https://t.me/cascadefund"
+        >
+          <ReactComponentImporter element={getIcon("telegram")} /> Telegram
+        </Link>, and to catch updates on subscribe to our <Link
+          className="flex items-center space-x-1 gap-1 -mr-2 underline"
+          asNewTab={true}
+          uri="https://www.youtube.com/@cascadefund"
+        >
+          <ReactComponentImporter element={getIcon("youtube")} /> YouTube
+        </Link>.
+      </p>
+    </div>
+    <div class="mx-auto">
+      <p class="text-lg md:text-xl leading-relaxed">
+        Subscribe with your email, it helps us a feedback. Our early adopters
+        will receive +20 voting power points on CascadeFund when we launch.
+      </p>
+    </div>
+  </Section>
+
+  <Section {...teamSection}>
+    <p
+      class="text-lg md:text-xl leading-relaxed flex items-center justify-center space-x-1 gap-2"
+    >
+      CascadeFund is built by two developers whose top achievements shaped their
+      paths in tech.
+    </p>
+    <p class="text-lg md:text-xl leading-relaxed">
+      Medet taught himself programming and, as his first major project in 2015,
+      created a full programming language from scratch in C. He later became CTO
+      and Chief of Blocklords, leading its technical development. LinkedIn
+    </p>
+    <p class="text-lg md:text-xl leading-relaxed">
+      Sergey has been coding since the early internet. A veteran of the first
+      dot-com era, he built CRMs and frameworks still in use today. He now
+      serves as CTO at one of the largest data analytics companies, working with
+      leading banks worldwide.
+    </p>
   </Section>
 </V2Layout>
