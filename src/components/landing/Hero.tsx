@@ -2,10 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Terminal, GitBranch, Code2, Users, Zap } from 'lucide-react'
 import Button from '../custom-ui/Button'
+import SuccessModal from './SuccessModal'
 
 const Hero = () => {
   const [terminalText, setTerminalText] = useState('')
   const [showCursor, setShowCursor] = useState(true)
+  const [email, setEmail] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const fullText = 'open https://cascadefund.org/'
 
@@ -30,6 +35,58 @@ const Hero = () => {
 
     return () => clearInterval(cursorTimer)
   }, [])
+
+  const handleJoinWishlist = async () => {
+    if (!email.trim()) {
+      setError('Please enter your email address')
+      return
+    }
+
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch('/api-json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          jsonrpc: '2.0',
+          method: 'joinwishlist',
+          params: {
+            email: email.trim()
+          },
+          id: 1
+        })
+      })
+
+      const data = await response.json()
+
+      if (data.error) {
+        setError(data.error.data || data.error.message || 'Failed to join waitlist')
+        setIsLoading(false)
+        return
+      }
+
+      if (data.result && data.result.success) {
+        setShowSuccessModal(true)
+        setEmail('')
+      } else {
+        setError('Failed to join waitlist')
+      }
+    } catch (err: any) {
+      setError(err.message || 'An error occurred. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleJoinWishlist()
+    }
+  }
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -90,15 +147,33 @@ const Hero = () => {
                 </div>
 
                 <div className="mt-6 flex flex-col sm:flex-row gap-4">
-                  <input
-                    type="email"
-                    placeholder="user@example.com"
-                    className="flex-1 px-4 py-3 bg-gray-800 border border-gray-600 rounded-xs text-green-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent font-mono"
-                  />
-                  <Button className="h-12 btn-primary group flex items-center justify-center space-x-2">
+                  <div className="flex-1">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value)
+                        setError(null)
+                      }}
+                      onKeyPress={handleKeyPress}
+                      placeholder="user@example.com"
+                      className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-xs text-green-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent font-mono"
+                      disabled={isLoading}
+                    />
+                    {error && (
+                      <p className="mt-2 text-sm text-red-400 font-mono">{error}</p>
+                    )}
+                  </div>
+                  <Button
+                    className="h-12 btn-primary group flex items-center justify-center space-x-2"
+                    onClick={handleJoinWishlist}
+                    disabled={isLoading}
+                  >
                     <Terminal className="w-4 h-4" />
-                    <span>Join Waitlist</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <span>{isLoading ? 'Joining...' : 'Join Waitlist'}</span>
+                    {!isLoading && (
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    )}
                   </Button>
                 </div>
                 <p className="text-gray-500 text-xs mt-3 font-mono">
@@ -158,6 +233,11 @@ const Hero = () => {
           </motion.div>
         </div>
       </div>
+
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+      />
     </section>
   )
 }

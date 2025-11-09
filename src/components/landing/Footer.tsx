@@ -27,6 +27,16 @@ const Footer = () => {
             <p className="text-white/70 leading-relaxed max-w-md">
               The first platform for maintainers to grow PRs and support. Turning open-source development into a recognized, collaborative, and financially sustainable pursuit.
             </p>
+
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="font-display text-lg font-semibold mb-6">Stay Connected</h3>
             <div className="flex space-x-4 mt-6">
               <a
                 href="https://github.com/ara-foundation/cascadefund-frontend"
@@ -49,24 +59,7 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="font-display text-lg font-semibold mb-6">Resources</h3>
-            <div className="space-y-3">
-              <a href="/meta/work" className="block text-white/70 hover:text-white transition-colors">
-                How it Works?
-              </a>
-              <a href="/meta/quest" className="block text-white/70 hover:text-white transition-colors">
-                Quest Task List
-              </a>
-            </div>
-          </motion.div>
-
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -80,11 +73,8 @@ const Footer = () => {
               <a href="/meta/policy" className="block text-white/70 hover:text-white transition-colors">
                 Privacy Policy (no-boring-lawyer-edition)
               </a>
-              <a href="/meta/contact" className="block text-white/70 hover:text-white transition-colors">
-                Contact/Follow
-              </a>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         <motion.div

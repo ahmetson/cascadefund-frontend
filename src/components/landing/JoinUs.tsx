@@ -1,9 +1,66 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Github, MessageCircle, Youtube, Mail } from 'lucide-react'
 import Button from '../custom-ui/Button'
+import SuccessModal from './SuccessModal'
 
 const JoinUs = () => {
+  const [email, setEmail] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const handleJoinWishlist = async () => {
+    if (!email.trim()) {
+      setError('Please enter your email address')
+      return
+    }
+
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch('/api-json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          jsonrpc: '2.0',
+          method: 'joinwishlist',
+          params: {
+            email: email.trim()
+          },
+          id: 1
+        })
+      })
+
+      const data = await response.json()
+
+      if (data.error) {
+        setError(data.error.data || data.error.message || 'Failed to join wishlist')
+        setIsLoading(false)
+        return
+      }
+
+      if (data.result && data.result.success) {
+        setShowSuccessModal(true)
+        setEmail('')
+      } else {
+        setError('Failed to join wishlist')
+      }
+    } catch (err: any) {
+      setError(err.message || 'An error occurred. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleJoinWishlist()
+    }
+  }
   return (
     <section id="contact" className="py-24 bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20">
       <div className="section-padding max-w-7xl mx-auto">
@@ -120,13 +177,30 @@ const JoinUs = () => {
               </div>
 
               <div className="mt-8 space-y-4">
-                <input
-                  type="email"
-                  placeholder="Enter your email address"
-                  className="w-full px-4 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xs text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all"
-                />
-                <Button variant='secondary' className="w-full h-12 font-semibold px-8 py-4 transition-colors">
-                  Join to wish list
+                <div>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value)
+                      setError(null)
+                    }}
+                    onKeyPress={handleKeyPress}
+                    placeholder="Enter your email address"
+                    className="w-full px-4 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xs text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all"
+                    disabled={isLoading}
+                  />
+                  {error && (
+                    <p className="mt-2 text-sm text-red-200 text-center">{error}</p>
+                  )}
+                </div>
+                <Button
+                  variant='secondary'
+                  className="w-full h-12 font-semibold px-8 py-4 transition-colors"
+                  onClick={handleJoinWishlist}
+                  disabled={isLoading}
+                >
+                  {isLoading ? 'Joining...' : 'Join to wish list'}
                 </Button>
                 <p className="text-white/80 text-sm text-center">
                   Get notified when we launch + receive your bonus points
@@ -136,6 +210,11 @@ const JoinUs = () => {
           </motion.div>
         </div>
       </div>
+
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+      />
     </section>
   )
 }
