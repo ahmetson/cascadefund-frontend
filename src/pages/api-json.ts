@@ -6,6 +6,7 @@ const projectID = "ara-foundation-453112"
 const client = new RecaptchaEnterpriseServiceClient({
     apiKey: import.meta.env.GOOGLE_API_KEY,
 });
+console.log(`Loading recaptcha by API key: ${import.meta.env.GOOGLE_API_KEY}`);
 const projectPath = client.projectPath(projectID);
 
 interface JSONRPCRequest {
