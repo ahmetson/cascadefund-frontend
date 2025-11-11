@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import vercelServerless from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 import node from '@astrojs/node';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -11,7 +11,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
   integrations: [react()],
   output: 'server',
-  adapter: process.env.NODE_ENV === "DEVELOPMENT" ? node({ mode: 'standalone' }) : vercelServerless({}),
+  adapter: process.env.NODE_ENV === "DEVELOPMENT" ? node({ mode: 'standalone' }) : vercel({}),
   vite: {
     plugins: [tailwindcss(), tsconfigPaths()],
     build: {
@@ -22,6 +22,12 @@ export default defineConfig({
     },
     ssr: {
       noExternal: ['timeago-react']
+    },
+    server: {
+      https: {
+        key: './localhost-key.pem',
+        cert: './localhost.pem',
+      },
     }
   }
 });

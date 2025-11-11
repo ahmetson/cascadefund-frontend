@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, Terminal, GitBranch, Code2, Users, Zap } from 'lucide-react'
 import Button from '../custom-ui/Button'
 import SuccessModal from './SuccessModal'
+import { recaptchaHandleJoinWishlist } from '@/scripts/landing'
 
 const Hero = () => {
   const [terminalText, setTerminalText] = useState('')
@@ -36,55 +37,10 @@ const Hero = () => {
     return () => clearInterval(cursorTimer)
   }, [])
 
-  const handleJoinWishlist = async () => {
-    if (!email.trim()) {
-      setError('Please enter your email address')
-      return
-    }
-
-    setIsLoading(true)
-    setError(null)
-
-    try {
-      const response = await fetch('/api-json', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          jsonrpc: '2.0',
-          method: 'joinwishlist',
-          params: {
-            email: email.trim()
-          },
-          id: 1
-        })
-      })
-
-      const data = await response.json()
-
-      if (data.error) {
-        setError(data.error.data || data.error.message || 'Failed to join waitlist')
-        setIsLoading(false)
-        return
-      }
-
-      if (data.result && data.result.success) {
-        setShowSuccessModal(true)
-        setEmail('')
-      } else {
-        setError('Failed to join waitlist')
-      }
-    } catch (err: any) {
-      setError(err.message || 'An error occurred. Please try again.')
-    } finally {
-      setIsLoading(false)
-    }
-  }
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      handleJoinWishlist()
+      recaptchaHandleJoinWishlist('hero', email, setIsLoading, setError, setShowSuccessModal, setEmail)
     }
   }
 
@@ -166,7 +122,7 @@ const Hero = () => {
                   </div>
                   <Button
                     className="h-12 btn-primary group flex items-center justify-center space-x-2"
-                    onClick={handleJoinWishlist}
+                    onClick={() => recaptchaHandleJoinWishlist('hero', email, setIsLoading, setError, setShowSuccessModal, setEmail)}
                     disabled={isLoading}
                   >
                     <Terminal className="w-4 h-4" />

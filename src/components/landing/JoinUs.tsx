@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Github, MessageCircle, Youtube, Mail } from 'lucide-react'
 import Button from '../custom-ui/Button'
 import SuccessModal from './SuccessModal'
+import { recaptchaHandleJoinWishlist } from '@/scripts/landing'
 
 const JoinUs = () => {
   const [email, setEmail] = useState('')
@@ -10,57 +11,12 @@ const JoinUs = () => {
   const [showSuccessModal, setShowSuccessModal] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const handleJoinWishlist = async () => {
-    if (!email.trim()) {
-      setError('Please enter your email address')
-      return
-    }
-
-    setIsLoading(true)
-    setError(null)
-
-    try {
-      const response = await fetch('/api-json', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          jsonrpc: '2.0',
-          method: 'joinwishlist',
-          params: {
-            email: email.trim()
-          },
-          id: 1
-        })
-      })
-
-      const data = await response.json()
-
-      if (data.error) {
-        setError(data.error.data || data.error.message || 'Failed to join wishlist')
-        setIsLoading(false)
-        return
-      }
-
-      if (data.result && data.result.success) {
-        setShowSuccessModal(true)
-        setEmail('')
-      } else {
-        setError('Failed to join wishlist')
-      }
-    } catch (err: any) {
-      setError(err.message || 'An error occurred. Please try again.')
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      handleJoinWishlist()
+      recaptchaHandleJoinWishlist('join-us', email, setIsLoading, setError, setShowSuccessModal, setEmail)
     }
   }
+
   return (
     <section id="contact" className="py-24 bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20">
       <div className="section-padding max-w-7xl mx-auto">
@@ -197,7 +153,7 @@ const JoinUs = () => {
                 <Button
                   variant='secondary'
                   className="w-full h-12 font-semibold px-8 py-4 transition-colors"
-                  onClick={handleJoinWishlist}
+                  onClick={() => recaptchaHandleJoinWishlist('join-us', email, setIsLoading, setError, setShowSuccessModal, setEmail)}
                   disabled={isLoading}
                 >
                   {isLoading ? 'Joining...' : 'Join to wish list'}
