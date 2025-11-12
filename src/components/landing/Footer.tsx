@@ -1,6 +1,5 @@
-import React from 'react'
 import { motion } from 'framer-motion'
-import { Github, MessageCircle, Youtube } from 'lucide-react'
+import { FaYoutube, FaGithub, FaTwitter, FaTelegram } from 'react-icons/fa'; // Import the LinkedIn icon from Font Awesome
 
 const Footer = () => {
   return (
@@ -42,19 +41,25 @@ const Footer = () => {
                 href="https://github.com/ara-foundation/cascadefund-frontend"
                 className="p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
               >
-                <Github className="w-5 h-5" />
+                <FaGithub color="white" />
               </a>
               <a
                 href="https://t.me/arasangha"
                 className="p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
               >
-                <MessageCircle className="w-5 h-5" />
+                <FaTelegram color="white" />
               </a>
               <a
                 href="https://www.youtube.com/@medet-ahmetson"
                 className="p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
               >
-                <Youtube className="w-5 h-5" />
+                <FaYoutube color="white" />
+              </a>
+              <a
+                href="https://x.com/ara_foundation_"
+                className="p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
+              >
+                <FaTwitter color="white" />
               </a>
             </div>
           </motion.div>

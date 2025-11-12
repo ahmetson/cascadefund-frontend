@@ -54,7 +54,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mb-8 mt-8"
+            className="mb-8 mt-12"
           >
             <h1 className="font-mono text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
               <span className="text-gray-400">&gt;</span> The Future of
@@ -98,7 +98,7 @@ const Hero = () => {
                     <span className="text-blue-400">✓</span> Setting up project in the databases...
                   </div>
                   <div className="text-gray-400">
-                    <span className="text-yellow-400">⚡</span> Ready to revolutionize open source!
+                    <span className="text-yellow-400">⚡</span> Ready to 10 minute work PR, and earning!
                   </div>
                 </div>
 
@@ -149,7 +149,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-8"
+            className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-4xl mx-auto mb-8"
           >
             {[
               {
@@ -160,14 +160,20 @@ const Hero = () => {
               },
               {
                 icon: <Users className="w-8 h-8" />,
-                title: "Community Driven",
-                description: "Gamified system that rewards meaningful contributions",
+                title: "Gamified System",
+                description: "Collaboration is two click tasks. Project management = 10 minutes of daily guided tasks.",
                 platform: "bitbucket"
+              },
+              {
+                icon: <Users className="w-8 h-8" />,
+                title: "Non-competitive Rating",
+                description: "Rating represents how you work with others and on which types of projects.",
+                platform: "gogs"
               },
               {
                 icon: <Zap className="w-8 h-8" />,
                 title: "Sustainable Growth",
-                description: "Financial sustainability through innovative monetization",
+                description: "Financial sustainability through innovative gamified paywall.",
                 platform: "gitlab"
               }
             ].map((feature, index) => (
@@ -179,10 +185,10 @@ const Hero = () => {
                 className={`card-terminal text-left platform-${feature.platform}`}
               >
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="text-green-400">
+                  <div className="text-teal-400">
                     {feature.icon}
                   </div>
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  <div className="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></div>
                 </div>
                 <h3 className="font-mono text-lg font-semibold text-white mb-2">
                   {feature.title}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Github, MessageCircle, Youtube, Mail } from 'lucide-react'
+import { FaYoutube, FaGithub, FaTwitter, FaTelegram } from 'react-icons/fa'; // Import the LinkedIn icon from Font Awesome
 
 interface SuccessModalProps {
     isOpen: boolean
@@ -10,28 +10,28 @@ interface SuccessModalProps {
 const SuccessModal: React.FC<SuccessModalProps> = ({ isOpen, onClose }) => {
     const socialLinks = [
         {
-            icon: <Github className="w-6 h-6" />,
+            icon: <FaGithub color="white" className="w-6 h-6" />,
             label: 'GitHub',
             href: 'https://github.com/ara-foundation/cascade-fund',
-            description: 'Follow development progress'
+            description: 'Source Code'
         },
         {
-            icon: <MessageCircle className="w-6 h-6" />,
+            icon: <FaTelegram color="white" className="w-6 h-6" />,
             label: 'Telegram',
             href: 'https://t.me/cascadefund',
-            description: 'Chat with the community'
+            description: 'Community Chat'
         },
         {
-            icon: <Youtube className="w-6 h-6" />,
+            icon: <FaYoutube color="white" className="w-6 h-6" />,
             label: 'YouTube',
             href: 'https://www.youtube.com/@cascadefund',
-            description: 'Watch updates and demos'
+            description: 'Videos and Tutorials'
         },
         {
-            icon: <Mail className="w-6 h-6" />,
+            icon: <FaTwitter color="white" className="w-6 h-6" />,
             label: 'X.com',
             href: 'https://x.com/cascadefund',
-            description: 'Follow us on X.com'
+            description: 'For updates'
         }
     ]
 

@@ -64,13 +64,13 @@ const HeroSection: React.FC = () => {
         </div>
 
         <div className="lg:pl-8">
-          <Card className="bg-white text-gray-900 p-6 space-y-4" title='Obtain voting power for "NodeDB Toolkit"'>
+          <PageLikePanel title='Obtain voting power for "NodeDB Toolkit"'>
             <div>
               <label className="block text-sm font-medium mb-2">Amount</label>
               <div className="flex space-x-2">
-                <Button variant="outline" size="sm">$1</Button>
-                <Button variant="outline" size="sm">$5</Button>
-                <Button variant="outline" size="sm">$20</Button>
+                <Button outline={true} size="sm">$1</Button>
+                <Button outline={true} size="sm">$5</Button>
+                <Button outline={true} size="sm">$20</Button>
               </div>
               <div className="flex items-center mt-2">
                 <span className="text-2xl font-bold text-blue-500">+100 VP</span>
@@ -104,7 +104,7 @@ const HeroSection: React.FC = () => {
             <p className="text-xs text-center text-gray-500">
               Powered by NodePay
             </p>
-          </Card>
+          </PageLikePanel>
         </div>
       </div>
     </section>

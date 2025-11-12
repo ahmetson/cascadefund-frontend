@@ -34,9 +34,9 @@ const Vision = () => {
             <div className="bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 p-8 rounded-2xl">
               <div className="flex items-center space-x-4 mb-4">
                 <div className="p-3 bg-primary-100 rounded-xl">
-                  <Star className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+                  <Star className="w-6 h-6 text-primary-600 dark:text-slate-200" />
                 </div>
-                <h3 className="font-display text-2xl font-semibold text-neutral-900 dark:text-white">
+                <h3 className="font-display text-2xl font-semibold text-neutral-900 dark:text-slate-200">
                   Recognition & Visibility
                 </h3>
               </div>
@@ -48,9 +48,9 @@ const Vision = () => {
             <div className="bg-gradient-to-br from-accent-50 to-primary-50 dark:from-accent-900/20 dark:to-primary-900/20 p-8 rounded-2xl">
               <div className="flex items-center space-x-4 mb-4">
                 <div className="p-3 bg-accent-100 dark:bg-accent-800 rounded-xl">
-                  <TrendingUp className="w-6 h-6 text-accent-600 dark:text-accent-400" />
+                  <TrendingUp className="w-6 h-6 text-accent-600 dark:text-slate-200" />
                 </div>
-                <h3 className="font-display text-2xl font-semibold text-neutral-900">
+                <h3 className="font-display text-2xl font-semibold text-neutral-900 dark:text-slate-200">
                   Financial Sustainability
                 </h3>
               </div>
@@ -62,7 +62,7 @@ const Vision = () => {
             <div className="bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 p-8 rounded-2xl">
               <div className="flex items-center space-x-4 mb-4">
                 <div className="p-3 bg-primary-100 dark:bg-primary-800 rounded-xl">
-                  <Heart className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+                  <Heart className="w-6 h-6 text-primary-600 dark:text--400" />
                 </div>
                 <h3 className="font-display text-2xl font-semibold text-neutral-900 dark:text-white">
                   Positive Social Impact

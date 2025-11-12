@@ -9,7 +9,6 @@ interface ThemeToggleProps {
 
 const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
   const { theme, toggleTheme } = useTheme()
-  const [showTooltip, setShowTooltip] = useState(false)
   const isDark = theme === 'dark'
 
   return (
@@ -18,8 +17,6 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={toggleTheme}
-      onMouseEnter={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}
       aria-label="Toggle theme"
     >
       <div className="relative w-6 h-6">
@@ -48,13 +45,6 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
         </motion.div>
       </div>
 
-      {/* Tooltip */}
-      <div
-        className={`absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs px-2 py-1 rounded transition-opacity duration-200 pointer-events-none whitespace-nowrap ${showTooltip ? 'opacity-100' : 'opacity-0'
-          }`}
-      >
-        Switch to {isDark ? 'light' : 'dark'} mode
-      </div>
     </motion.button>
   )
 }

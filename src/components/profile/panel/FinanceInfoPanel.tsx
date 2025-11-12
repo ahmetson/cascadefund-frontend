@@ -5,7 +5,7 @@ import InfoPair from '../../InfoPair'
 
 const FinancialStatus: React.FC<FinanceInfoProps> = ({ balance, cascadingBalance, totalDonated, totalReceived }) => {
   return (
-    <PageLikePanel interactive={false} title="Finance Info" actions={[]}>
+    <PageLikePanel className="my-6" interactive={false} title="Finance Info" actions={[]}>
       <div className="space-y-4">
         <div className="flex justify-start items-center gap-4">
           <InfoPair title1="Balance" value1={balance} title2="Cascading Balance" value2={cascadingBalance} belowThresholdColor={10} />

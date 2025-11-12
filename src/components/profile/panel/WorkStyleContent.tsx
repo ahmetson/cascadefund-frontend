@@ -28,13 +28,13 @@ const WorkStyleSection: React.FC<WorkStyleProps> = ({
   const badgeVariant = availabilityStatus ? getBadgeVariant(availabilityStatus) : 'yellow'
   return (
     <PageLikePanel interactive={false} title="Availability & Work Style" actions={[]} bg='green-50'>
-      <p className='text-rose-600 dark:text-rose-900'>
+      {/* <p className='text-rose-600 dark:text-rose-400'>
         <p className='text-lg w-full gap-1 flex items-center'>{getIcon('clock')} Feature is on the roadmap.</p>
         CascadeFund tracks the way how a person interacts in the platform
         and tries to draw the portrait. Interact with the people
         whose communication style is matching your preferences
         or use it as the hint how to reach out to the person.
-      </p>
+      </p> */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
           <h4 className="font-medium mb-4">Availability Status</h4>

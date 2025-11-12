@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Menu, X, Terminal, Github, GitBranch } from 'lucide-react'
-// import ThemeToggle from './ThemeToggle'
+import { Menu, X } from 'lucide-react'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isLogoHovered, setIsLogoHovered] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,11 +41,31 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <div className="flex items-center space-x-2">
-                <Terminal className="w-8 h-8 text-green-400" />
-                <span className="font-mono text-xl font-bold text-green-400">
+              <div className="flex items-center space-x-2"
+                onMouseEnter={() => setIsLogoHovered(true)}
+                onMouseLeave={() => setIsLogoHovered(false)}
+              >
+                <div
+                  className="w-8 h-8 bg-transparent rounded flex items-center justify-center"
+                >
+                  <img
+                    src="/cascadefund_logo.png"
+                    id="logoImg"
+                    alt="CascadeFund Logo"
+                    className="w-full h-full"
+                    style={{ display: isLogoHovered ? 'none' : 'block' }}
+                  />
+                  <img
+                    src="/cascadefund_logo_hover.png"
+                    id="hoveredLogoImg"
+                    alt="CascadeFund Logo"
+                    className="w-full h-full"
+                    style={{ display: isLogoHovered ? 'block' : 'none' }}
+                  />
+                </div>
+                <span className="font-mono text-xl font-bold text-teal-400">
                   cascade<span className="text-blue-400">fund</span>
-                  <span className="text-green-400 animate-pulse">_</span>
+                  <span className="text-teal-400 animate-pulse">_</span>
                 </span>
               </div>
             </motion.a>
@@ -67,8 +87,6 @@ const Header = () => {
                 </motion.a>
               ))}
 
-              {/* <ThemeToggle /> */}
-
               {/* <motion.a
                 href="https://www.cascadefund.org/login/"
                 className="btn-primary flex items-center space-x-2"
@@ -85,7 +103,7 @@ const Header = () => {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2 rounded-lg transition-colors text-green-400 hover:text-green-300"
+              className="md:hidden p-2 rounded-lg transition-colors text-teal-400 hover:text-teal-300"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -98,14 +116,14 @@ const Header = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden mt-4 py-4 border-t border-gray-700 dark:border-gray-600"
+              className="md:hidden mt-4 py-4 border-t border-gray-700 dark:border-gray-600 bg-gray-900/95 dark:bg-gray-900/95"
             >
               <div className="flex flex-col space-y-4">
                 {navItems.map((item) => (
                   <a
                     key={item.label}
                     href={item.href}
-                    className="font-mono text-sm text-gray-300 dark:text-gray-300 hover:text-green-400 transition-colors"
+                    className="font-mono text-sm text-gray-300 dark:text-gray-300 hover:text-teal-400 transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}

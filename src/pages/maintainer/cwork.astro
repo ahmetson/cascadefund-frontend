@@ -24,33 +24,33 @@ import InfoPanel from "@/components/panel/InfoPanel";
 
   <CworkPanel slot="center" client:load />
   <InfoPanel slot="right" title="Dependencies Info">
-    <div class="space-y-3">
+    <div class="space-y-3 text-gray-800 dark:text-gray-300">
       <div>
         <div class="flex justify-between items-center">
-          <span class="text-sm text-gray-600">Current version:</span>
+          <span>Current version:</span>
           <span class="font-semibold">v2.4.3</span>
         </div>
       </div>
       <div>
         <div class="flex justify-between items-center">
-          <span class="text-sm text-gray-600">Recent version:</span>
+          <span>Recent version:</span>
           <span class="font-semibold text-cascade-blue">v2.5.0</span>
         </div>
       </div>
       <div>
         <div class="flex justify-between items-center">
-          <span class="text-sm text-gray-600">Last commit:</span>
+          <span class="text-sm">Last commit:</span>
           <span class="font-semibold">2 hours ago</span>
         </div>
       </div>
     </div>
 
     <div class="mt-4 pt-4 border-t border-gray-200">
-      <p class="text-xs text-gray-500 mb-2">
+      <p class="text-xs mb-2">
         Dependencies List is generated using project's SBOM. To fetch the SBOM,
         we use GitHub API.
       </p>
-      <p class="text-xs text-gray-500">
+      <p class="text-xs">
         The management of the packages is done on your IDE, once it's updated,
         deleted or added a new package, then click on "Update Dependencies"
         button above.

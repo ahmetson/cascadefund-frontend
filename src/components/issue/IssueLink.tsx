@@ -47,7 +47,6 @@ const IssueLinkPanel4: React.FC<Issue & { actions?: ActionProps[] }> = (issue) =
       currentVP={issue.currentVP}
       topVP={issue.topVP}
       minVP={issue.minVP}
-      issueTitle={issue.title}
       onApply={handleVPChange}
     />
   ) : null
@@ -66,7 +65,7 @@ const IssueLinkPanel4: React.FC<Issue & { actions?: ActionProps[] }> = (issue) =
         <Link uri={issue.uri} asNewTab={issue.storage !== 'cascadefund'}>
           <Badge variant='info' static={true}>
             <div className="flex items-center space-x-1">
-              {getIcon(issue.storage as IconType)}
+              {getIcon(issue.storage as IconType || 'cascadefund')}
               <span className="text-xs font-medium">{issue.number}</span>
             </div>
           </Badge>

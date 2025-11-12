@@ -25,7 +25,7 @@ const BalanceCard: React.FC = () => {
           value={3.45928}
           locales="en-US"
           format={{ style: 'currency', currency: 'USD', maximumFractionDigits: 2, signDisplay: 'negative' }}
-          className="~text-xl/4xl text-gray-700 px-2 cursor-no-drop"
+          className="~text-xl/4xl text-gray-700 dark:text-gray-300 px-2 cursor-no-drop"
         />
       </div>
       <div className="mb-6">

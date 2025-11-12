@@ -48,7 +48,8 @@ export const highBalance: FinanceInfoProps = {
 <V2Layout hideLinks={[MenuName.ProjectName]} subtitle="Data Section: Profile">
   <BackButton uri="/maintainer/work" slot="left" />
   <ProfilePanel {...highRatedProfile} slot="center" client:only />
-  {highRatedProfile.selfProfile && <FinanceInfo {...highBalance} />}
+  <!-- {highRatedProfile.selfProfile && <FinanceInfo {...highBalance} client:load slot="center" />} -->
+  <FinanceInfo {...highBalance} client:load slot="center" />
   <ProfileMetric slot="center" client:load />
 
   <!-- <RecentActivity slot="right" /> -->

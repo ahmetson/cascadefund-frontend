@@ -1,6 +1,6 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import { Check, ExternalLink } from 'lucide-react'
+import Link from '../custom-ui/Link'
 
 const Pricing = () => {
   return (
@@ -17,7 +17,9 @@ const Pricing = () => {
             No Pricing?
           </h2>
           <p className="text-xl text-white/80 max-w-4xl mx-auto leading-relaxed">
-            CascadeFund doesn't charge you anything. All earnings go directly to you and, through the Hyperpayment Protocol, 20% is automatically shared with the open-source libraries your project depends on.
+            CascadeFund doesn't charge you anything.
+            All funds go to you and, open-source libraries your project depends on.
+            Using <Link uri="https://www.hyperpayment.org/specification/opensource-hyperpayment-specification">Hyperpayment Protocol</Link>, 20% is automatically shared with libraries.
           </p>
         </motion.div>
 

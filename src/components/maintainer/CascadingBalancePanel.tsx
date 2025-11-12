@@ -26,7 +26,7 @@ const CascadingBalance: React.FC = () => {
         </Badge>
       </div>}
     >
-      <p className="text-sm text-gray-600 mb-4">
+      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
         Indirectly received funds from other projects. Withdraw, and transfer or use for yourself. Check out{' '}
         <a href="#" className="text-cascade-blue hover:underline">Work page</a>{' '}
         to improve the rating to have more funds.
@@ -38,7 +38,7 @@ const CascadingBalance: React.FC = () => {
           value={3.45928}
           locales="en-US"
           format={{ style: 'currency', currency: 'USD', maximumFractionDigits: 2, signDisplay: 'negative' }}
-          className="~text-xl/4xl text-gray-700 px-2 cursor-no-drop"
+          className="~text-xl/4xl text-gray-700 dark:text-gray-300 px-2 cursor-no-drop"
         />
       </div>
       <div className="mb-6">

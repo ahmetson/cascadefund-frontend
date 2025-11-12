@@ -58,7 +58,7 @@ const NotificationBanner: React.FC<NotificationBannerProps> = ({ className, icon
       title={title}
       icon={icon || getDefaultIcon()}
       expandable={expandable}
-      className={`${fullClassName} ${className}`}
+      className={`dark:text-slate-200 text-slate-800 ${fullClassName} ${className}`}
     >
       {children}
     </InfoPanel>

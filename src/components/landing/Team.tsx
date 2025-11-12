@@ -1,6 +1,8 @@
-import React from 'react'
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Terminal, Code, GitBranch } from 'lucide-react'
+
+import { FaGithub, FaLinkedin, FaTelegram } from 'react-icons/fa'; // Import the LinkedIn icon from Font Awesome
+
+
 
 const Team = () => {
   return (
@@ -34,11 +36,11 @@ const Team = () => {
                 <div className="terminal-dot bg-red-500"></div>
                 <div className="terminal-dot bg-yellow-500"></div>
                 <div className="terminal-dot bg-green-500"></div>
-                <span className="font-mono text-xs text-gray-400 ml-4">medet.dev</span>
+                <span className="font-mono text-xs text-gray-400 ml-4">Medet Ahmetson</span>
               </div>
               <div className="p-4 bg-gray-900 text-center">
                 <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-2xl font-mono font-bold text-black">M</span>
+                  <img src="https://api.backdropbuild.com/storage/v1/object/public/avatars/9nFM8HasgS.jpeg" alt="Medet" className="w-full h-full rounded-full" />
                 </div>
                 <h3 className="font-mono text-xl font-bold text-white mb-1">
                   Medet
@@ -50,7 +52,7 @@ const Team = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="space-y-4 text-gray-400 font-mono text-sm">
               <div className="bg-gray-800/50 p-3 rounded border border-gray-700">
                 <p className="leading-relaxed">
@@ -63,21 +65,31 @@ const Team = () => {
                 </p>
               </div>
             </div>
-            
+
             <div className="mt-6 flex justify-center space-x-4">
               <a
-                href="#"
+                target='_blank'
+                href="https://github.com/ahmetson"
                 className="inline-flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors font-mono text-sm group"
               >
-                <Github className="w-4 h-4" />
+                <FaGithub color="gray" className="w-4 h-4 text-green-500 dark:text-green-400! hover:text-green-800! dark:hover:text-green-200!" />
                 <span>GitHub</span>
               </a>
               <a
-                href="#"
+                target='_blank'
+                href="https://www.linkedin.com/in/ahmetson/"
                 className="inline-flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors font-mono text-sm group"
               >
-                <Linkedin className="w-4 h-4" />
+                <FaLinkedin color="gray" className="w-4 h-4 text-blue-500 dark:text-blue-400! hover:text-teal-800! dark:hover:text-teal-200!" />
                 <span>LinkedIn</span>
+              </a>
+              <a
+                target='_blank'
+                href="https://t.me/blocklord"
+                className="inline-flex items-center space-x-2 text-slate-400 hover:text-slate-300 transition-colors font-mono text-sm group"
+              >
+                <FaTelegram color="gray" className="w-4 h-4 text-slate-500 dark:text-slate-400! hover:text-slate-800! dark:hover:text-slate-200!" />
+                <span>Telegram</span>
               </a>
             </div>
           </motion.div>
@@ -94,11 +106,11 @@ const Team = () => {
                 <div className="terminal-dot bg-red-500"></div>
                 <div className="terminal-dot bg-yellow-500"></div>
                 <div className="terminal-dot bg-green-500"></div>
-                <span className="font-mono text-xs text-gray-400 ml-4">sergey.dev</span>
+                <span className="font-mono text-xs text-gray-400 ml-4">Sergey Pak</span>
               </div>
               <div className="p-4 bg-gray-900 text-center">
                 <div className="w-24 h-24 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-2xl font-mono font-bold text-white">S</span>
+                  <img src="/sergey.jpg" alt="Sergey" className="w-full h-full rounded-full" />
                 </div>
                 <h3 className="font-mono text-xl font-bold text-white mb-1">
                   Sergey
@@ -110,7 +122,7 @@ const Team = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="space-y-4 text-gray-400 font-mono text-sm">
               <div className="bg-gray-800/50 p-3 rounded border border-gray-700">
                 <p className="leading-relaxed">
@@ -123,21 +135,31 @@ const Team = () => {
                 </p>
               </div>
             </div>
-            
+
             <div className="mt-6 flex justify-center space-x-4">
               <a
-                href="#"
+                target='_blank'
+                href="https://github.com/pak-git"
                 className="inline-flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors font-mono text-sm group"
               >
-                <Github className="w-4 h-4" />
+                <FaGithub color="gray" className="w-4 h-4 text-green-500 dark:text-green-400! hover:text-green-800! dark:hover:text-green-200!" />
                 <span>GitHub</span>
               </a>
               <a
-                href="#"
+                target='_blank'
+                href="https://www.linkedin.com/in/sergei-pak/"
                 className="inline-flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors font-mono text-sm group"
               >
-                <Linkedin className="w-4 h-4" />
+                <FaLinkedin color="gray" className="w-4 h-4 text-blue-500 dark:text-blue-400! hover:text-teal-800! dark:hover:text-teal-200!" />
                 <span>LinkedIn</span>
+              </a>
+              <a
+                target='_blank'
+                href="https://t.me/paktelegram"
+                className="inline-flex items-center space-x-2 text-slate-400 hover:text-slate-300 transition-colors font-mono text-sm group"
+              >
+                <FaTelegram color="gray" className="w-4 h-4 text-slate-500 dark:text-slate-400! hover:text-slate-800! dark:hover:text-slate-200!" />
+                <span>Telegram</span>
               </a>
             </div>
           </motion.div>
