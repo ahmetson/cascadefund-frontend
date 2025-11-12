@@ -64,7 +64,7 @@ const HowItWorks = () => {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="h-60 bg-white dark:bg-neutral-800 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-neutral-200/50 dark:border-neutral-700/50">
+              <div className="h-60 bg-white dark:bg-neutral-800 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-neutral-200/50 dark:border-neutral-700/50 h-auto">
                 <div className="flex items-start space-x-6">
                   <div className={`p-4 rounded-2xl bg-gradient-to-r ${step.color} text-white flex-shrink-0`}>
                     {step.icon}

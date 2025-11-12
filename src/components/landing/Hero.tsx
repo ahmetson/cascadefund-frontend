@@ -80,7 +80,7 @@ const Hero = () => {
           >
             {/* Terminal Window */}
             <PreviewContainer previewUrl='cascadefund@terminal:~$'>
-              <div className="font-mono text-green-400 mb-4">
+              <div className="font-mono text-green-400 mb-4 ">
                 <span className="text-gray-500">$</span> {terminalText}
                 {showCursor && <span className="text-green-400">|</span>}
               </div>
@@ -118,7 +118,7 @@ const Hero = () => {
 
                 </div>
                 <Button
-                  className="h-12 btn-primary group flex items-center justify-center space-x-2"
+                  className="h-12 btn-primary group w-full md:w-60 flex items-center justify-center space-x-2 sm:w-full sm:mb-2"
                   onClick={() => recaptchaHandleJoinWishlist('hero', 'hero-turnstile-container', email, setIsLoading, setError, setShowSuccessModal, setEmail)}
                   disabled={isLoading}
                 >
