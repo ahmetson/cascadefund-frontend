@@ -1,40 +1,36 @@
 ---
-const recaptchaKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
+const recaptchaKey = import.meta.env.PUBLIC_TURNSTYLE_KEY;
 ---
 
 <script
     is:inline
-    src={`https://www.google.com/recaptcha/enterprise.js?render=${recaptchaKey}`}
-></script>
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+    defer></script>
 
 <script is:inline define:vars={{ recaptchaKey }}>
     // Listen for request-captcha event to trigger reCAPTCHA execution
-    document.addEventListener("request-captcha", async function (action) {
+    document.addEventListener("request-captcha", async function (e) {
         console.log(
             "request-captcha event received, ready to execute reCAPTCHA? for ",
-            action,
+            e.detail.action,
+            e.detail.id,
         );
-        grecaptcha.enterprise.ready(async () => {
-            console.log("grecaptcha loaded, executing reCAPTCHA");
-            const token = await grecaptcha.enterprise.execute(recaptchaKey, {
-                action,
-            });
-
-            console.log("onSubmit token(32): ", token.substring(0, 32), "...");
-            // Dispatch custom event with the captcha token
-            const event = new CustomEvent("captcha-response", {
-                detail: { token: token },
-            });
-            console.log("captcha-response event dispatched", event);
-            document.dispatchEvent(event);
+        const widgetId = turnstile.render(`#${e.detail.id}`, {
+            sitekey: recaptchaKey,
+            callback: function (token) {
+                console.log(
+                    "onSubmit token(32): ",
+                    token.substring(0, 32),
+                    "...",
+                );
+                // Dispatch custom event with the captcha token
+                const event = new CustomEvent("captcha-response", {
+                    detail: { token: token },
+                });
+                console.log("captcha-response event dispatched", event);
+                document.dispatchEvent(event);
+                turnstile.remove(widgetId);
+            },
         });
     });
 </script>
-
-<div
-    class="g-recaptcha"
-    data-sitekey={recaptchaKey}
-    data-callback="onSubmit"
-    data-size="invisible"
->
-</div>

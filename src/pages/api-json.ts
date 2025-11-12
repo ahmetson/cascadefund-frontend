@@ -1,13 +1,5 @@
 import type { APIRoute } from 'astro'
-import { RecaptchaEnterpriseServiceClient } from '@google-cloud/recaptcha-enterprise'
-const recaptchaKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
-
-const projectID = "ara-foundation-453112"
-const client = new RecaptchaEnterpriseServiceClient({
-    apiKey: import.meta.env.GOOGLE_API_KEY,
-});
-console.log(`Loading recaptcha by API key: ${import.meta.env.GOOGLE_API_KEY}`);
-const projectPath = client.projectPath(projectID);
+const secretKey = import.meta.env.TURNSTYLE_SECRET_KEY;
 
 interface JSONRPCRequest {
     jsonrpc: string
@@ -70,53 +62,42 @@ async function handleJoinWishlist(params: { email?: string, recaptchaToken?: str
         }
     }
 
-    const request = ({
-        assessment: {
-            event: {
-                token: params.recaptchaToken,
-                siteKey: recaptchaKey,
-            },
-        },
-        parent: projectPath,
-    });
 
-    const [response] = await client.createAssessment(request);
+    let result: any;
+    try {
+        const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+            method: 'POST',
+            body: JSON.stringify({
+                secret: secretKey,
+                response: params.recaptchaToken,
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+
+        result = await response.json();
+    } catch (error) {
+        console.error('Error verifying recaptcha token', error);
+        throw {
+            code: -32602,
+            message: 'Invalid params',
+            data: 'Error verifying recaptcha token'
+        }
+    }
 
     // Check if the token is valid.
-    if (!response?.tokenProperties?.valid) {
-        console.log(`The CreateAssessment call failed because the token was: ${response?.tokenProperties?.invalidReason}`);
+    if (!result.success) {
+        console.log('Invalid token:', result['error-codes']);
+
         throw {
             code: -32602,
             message: 'Invalid params',
-            data: 'Recaptcha verification failed'
+            data: result['error-codes'].join(', ')
         }
     }
 
-    if (response.tokenProperties.action !== params.action) {
-        throw {
-            code: -32602,
-            message: 'Invalid params',
-            data: 'Recaptcha action does not match'
-        }
-    }
-
-    // For more information on interpreting the assessment, see:
-    // https://cloud.google.com/recaptcha-enterprise/docs/interpret-assessment
-    console.log(`The reCAPTCHA score is: ${response?.riskAnalysis?.score}`);
-    response?.riskAnalysis?.reasons?.forEach((reason) => {
-        console.log(reason);
-    });
-
-    const score = response?.riskAnalysis?.score;
-    if (!score || score < 0.9) {
-        throw {
-            code: -32602,
-            message: 'Invalid params',
-            data: `Recaptcha score ${score} below threshold`
-        }
-    }
-
-    console.log(`Recaptcha verification was successful, join to wishlist`)
+    console.log(`Bot protection was successful, join to wishlist`)
 
     await new Promise(resolve => setTimeout(resolve, 1000));
 

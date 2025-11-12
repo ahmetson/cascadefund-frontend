@@ -1,12 +1,13 @@
 export const recaptchaHandleJoinWishlist = async (
     action: 'hero' | 'join-us',
+    id: string, // Element ID wher we show the captcha (turnstile-container)
     email: string,
     setIsLoading: (isLoading: boolean) => void,
     setError: (error: string | null) => void,
     setShowSuccessModal: (showSuccessModal: boolean) => void,
     setEmail: (email: string) => void
 ): Promise<void> => {
-    console.log('recaptchaHandleJoinWishlist', email)
+    console.log('recaptchaHandleJoinWishlist', email, id)
     if (!email.trim()) {
         setError('Please enter your email address')
         return
@@ -17,7 +18,7 @@ export const recaptchaHandleJoinWishlist = async (
 
     // Set up temporary event listener for captcha-response
     const handleCaptchaResponse = async (event: Event) => {
-        console.log('handleCaptchaResponse', event, 'for action', action)
+        console.log('handleCaptchaResponse', event, 'for action', action, 'and id', id)
         const customEvent = event as CustomEvent<{ token: string }>
         const recaptchaToken = customEvent.detail.token
 
@@ -47,6 +48,7 @@ export const recaptchaHandleJoinWishlist = async (
             if (data.error) {
                 setError(data.error.data || data.error.message || 'Failed to join wishlist')
                 setIsLoading(false)
+
                 return
             }
 
@@ -69,6 +71,6 @@ export const recaptchaHandleJoinWishlist = async (
 
     console.log('request-captcha event dispatched')
     // Dispatch request-captcha event to trigger reCAPTCHA execution
-    const requestEvent = new CustomEvent('request-captcha', { detail: { action } })
+    const requestEvent = new CustomEvent('request-captcha', { detail: { action, id } })
     document.dispatchEvent(requestEvent)
 }

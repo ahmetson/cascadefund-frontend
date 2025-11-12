@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Github, MessageCircle, Youtube, Mail } from 'lucide-react'
+import { MessageCircle, Mail, Github, Youtube } from 'lucide-react'
 import Button from '../custom-ui/Button'
 import SuccessModal from './SuccessModal'
 import { recaptchaHandleJoinWishlist } from '@/scripts/landing'
@@ -13,7 +13,7 @@ const JoinUs = () => {
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      recaptchaHandleJoinWishlist('join-us', email, setIsLoading, setError, setShowSuccessModal, setEmail)
+      recaptchaHandleJoinWishlist('join-us', 'join-us-turnstile-container', email, setIsLoading, setError, setShowSuccessModal, setEmail)
     }
   }
 
@@ -52,25 +52,25 @@ const JoinUs = () => {
                   {
                     icon: <Github className="w-6 h-6" />,
                     label: "GitHub",
-                    href: "https://github.com/ara-foundation/cascade-fund",
+                    href: "https://github.com/ara-foundation/cascadefund-frontend",
                     description: "Follow development progress"
                   },
                   {
                     icon: <MessageCircle className="w-6 h-6" />,
                     label: "Telegram",
-                    href: "https://t.me/cascadefund",
+                    href: "https://t.me/arasangha",
                     description: "Chat with the community"
                   },
                   {
                     icon: <Youtube className="w-6 h-6" />,
                     label: "YouTube",
-                    href: "https://www.youtube.com/@cascadefund",
+                    href: "https://www.youtube.com/@medet-ahmetson",
                     description: "Watch updates and demos"
                   },
                   {
                     icon: <Mail className="w-6 h-6" />,
                     label: "X.com",
-                    href: "https://x.com/cascadefund",
+                    href: "https://x.com/ara_foundation_",
                     description: "Follow us on X.com"
                   }
                 ].map((social, index) => (
@@ -150,10 +150,11 @@ const JoinUs = () => {
                     <p className="mt-2 text-sm text-red-200 text-center">{error}</p>
                   )}
                 </div>
+                <div id="join-us-turnstile-container"></div>
                 <Button
                   variant='secondary'
                   className="w-full h-12 font-semibold px-8 py-4 transition-colors"
-                  onClick={() => recaptchaHandleJoinWishlist('join-us', email, setIsLoading, setError, setShowSuccessModal, setEmail)}
+                  onClick={() => recaptchaHandleJoinWishlist('join-us', 'join-us-turnstile-container', email, setIsLoading, setError, setShowSuccessModal, setEmail)}
                   disabled={isLoading}
                 >
                   {isLoading ? 'Joining...' : 'Join to wish list'}
