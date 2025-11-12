@@ -16,7 +16,7 @@ const PreviewContainer = ({ children, previewUrl = 'preview.cascadefund.org' }: 
           {previewUrl}
         </Link>
       </div>
-      <div className="p-6 bg-gray-900 dark:bg-gray-800">
+      <div className="p-6 bg-gray-700 dark:bg-gray-800">
         {children}
       </div>
     </div>

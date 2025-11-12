@@ -187,13 +187,14 @@ function CarouselPrevious({
         orientation === "horizontal"
           ? "top-1/2 -left-12 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+        canScrollPrev ? 'border-blue-300 dark:border-blue-800' : 'border-gray-400 dark:border-gray-400',
         className
       )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
       {...props}
     >
-      <ArrowLeft />
+      <ArrowLeft className={canScrollPrev ? 'text-blue-300 dark:text-blue-800' : 'text-gray-400 dark:text-gray-400'} />
       <span className="sr-only">Previous slide</span>
     </Button>
   )
@@ -217,13 +218,14 @@ function CarouselNext({
         orientation === "horizontal"
           ? "top-1/2 -right-12 -translate-y-1/2"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+        canScrollNext ? 'border-blue-300 dark:border-blue-800' : 'border-gray-400 dark:border-gray-400',
         className
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRight />
+      <ArrowRight className={canScrollNext ? 'text-blue-300 dark:text-blue-800' : 'text-gray-400 dark:text-gray-400'} />
       <span className="sr-only">Next slide</span>
     </Button>
   )

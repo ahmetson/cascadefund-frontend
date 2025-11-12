@@ -40,14 +40,11 @@ const Features = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-mono text-3xl sm:text-4xl font-bold text-white mb-6">
-            <span className="text-gray-400">&gt;</span> Key Features &
+          <h2 className="font-mono text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+            <span className="text-teal-400">&gt;</span> Key Features &
             <br />
             <span className="gradient-text">Benefits</span>
           </h2>
-          <p className="font-mono text-gray-400 text-sm">
-            <span className="text-gray-600">// </span>Revolutionizing open source development
-          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -105,13 +102,13 @@ const Features = () => {
                     #{index + 1}
                   </span>
                 </div>
-                <h3 className="font-mono text-lg font-semibold text-white mb-3">
+                <h3 className="font-mono text-lg font-semibold text-gray-600 dark:text-gray-100 mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-gray-400 text-sm font-mono leading-relaxed mb-4">
+                <p className="text-gray-600 dark:text-gray-400 text-sm font-mono leading-relaxed mb-4">
                   <span className="text-gray-600">// </span>{feature.description}
                 </p>
-                <div className="flex items-center justify-between text-xs font-mono text-gray-500">
+                <div className="flex items-center justify-between text-xs font-mono text-gray-600 dark:text-gray-400">
                   <span>Status: {feature.status}</span>
                   <div className="flex items-center space-x-1">
                     <GitBranch className="w-3 h-3" />
@@ -132,11 +129,11 @@ const Features = () => {
         >
 
           <div className="lg:col-span-2">
-            <h3 className="font-mono text-xl font-bold text-white mb-4 flex items-center">
+            <h3 className="font-mono text-xl font-bold text-gray-600 dark:text-gray-100 mb-4 flex items-center">
               <Terminal className="w-5 h-5 mr-2 text-green-400" />
               Screenshot Previews
             </h3>
-            <p className="text-gray-400 mb-6 font-mono text-sm">
+            <p className="text-gray-600 dark:text-gray-400 mb-6 font-mono text-sm">
               <span className="text-gray-600">// </span>Get a glimpse of the CascadeFund interface
             </p>
             <Carousel
@@ -206,13 +203,13 @@ const Features = () => {
 
           <div className="github-card sm:ml-0 md:ml-8 sm:mt-0 md:mt-22">
             <div className="flex items-center space-x-2 mb-4">
-              <span className="font-mono text-sm text-white">Repositories</span>
+              <span className="font-mono text-sm text-gray-600 dark:text-gray-100">Repositories</span>
             </div>
-            <p className="text-gray-400 mb-6 font-mono text-sm">
-              <span className="text-gray-600">// </span>Interactive demos and detailed feature previews will be available as we approach our launch date.
+            <p className="text-gray-600 dark:text-gray-400 mb-6 font-mono text-sm">
+              <span className="text-gray-600/90 dark:text-gray-400/90">// </span>Interactive demos and detailed feature previews will be available as we approach our launch date.
             </p>
-            <p className="text-gray-400 mb-6 font-mono text-sm">
-              <span className="text-gray-600">// </span>For now, here is our source codes.
+            <p className="text-gray-600 dark:text-gray-400 mb-6 font-mono text-sm">
+              <span className="text-gray-600/90 dark:text-gray-400/90">// </span>For now, here is our source codes.
             </p>
             <a
               href="https://github.com/ara-foundation/cascadefund-frontend"

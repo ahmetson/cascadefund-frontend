@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 
 import { FaGithub, FaLinkedin, FaTelegram } from 'react-icons/fa'; // Import the LinkedIn icon from Font Awesome
+import PreviewContainer from './PreviewContainer';
 
 
 
@@ -15,11 +16,11 @@ const Team = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-mono text-3xl sm:text-4xl font-bold text-white mb-6">
-            <span className="text-gray-400">&gt;</span> Our Team
+          <h2 className="font-mono text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+            <span className="text-teal-400">&gt;</span> Our Team
           </h2>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto font-mono">
-            <span className="text-gray-600">// </span>CascadeFund is built by two developers whose top achievements shaped their paths in tech.
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto font-mono">
+            <span className="text-gray-600/90 dark:text-gray-400/90">// </span>CascadeFund is built by two developers whose top achievements shaped their paths in tech.
           </p>
         </motion.div>
 
@@ -31,37 +32,29 @@ const Team = () => {
             viewport={{ once: true }}
             className="github-card platform-github"
           >
-            <div className="terminal-window mb-6">
-              <div className="terminal-header">
-                <div className="terminal-dot bg-red-500"></div>
-                <div className="terminal-dot bg-yellow-500"></div>
-                <div className="terminal-dot bg-green-500"></div>
-                <span className="font-mono text-xs text-gray-400 ml-4">Medet Ahmetson</span>
+            <PreviewContainer previewUrl="Medet Ahmetson">
+              <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <img src="https://api.backdropbuild.com/storage/v1/object/public/avatars/9nFM8HasgS.jpeg" alt="Medet" className="w-full h-full rounded-full" />
               </div>
-              <div className="p-4 bg-gray-900 text-center">
-                <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <img src="https://api.backdropbuild.com/storage/v1/object/public/avatars/9nFM8HasgS.jpeg" alt="Medet" className="w-full h-full rounded-full" />
-                </div>
-                <h3 className="font-mono text-xl font-bold text-white mb-1">
-                  Medet
-                </h3>
-                <p className="text-green-400 font-mono text-sm">Co-Founder & Developer</p>
-                <div className="flex items-center justify-center space-x-2 mt-2">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="font-mono text-xs text-gray-400">Online</span>
-                </div>
+              <h3 className="font-mono text-xl font-bold text-white text-center mb-1">
+                Medet
+              </h3>
+              <p className="text-green-400 font-mono text-sm text-center">Co-Founder & Developer</p>
+              <div className="flex items-center justify-center space-x-2 mt-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="font-mono text-xs text-gray-300 dark:text-gray-400">Online</span>
               </div>
-            </div>
+            </PreviewContainer>
 
-            <div className="space-y-4 text-gray-400 font-mono text-sm">
-              <div className="bg-gray-800/50 p-3 rounded border border-gray-700">
+            <div className="space-y-4 text-gray-600 dark:text-gray-400 font-mono text-sm mt-6">
+              <div className="dark:bg-gray-800/50 bg-gray-600/10 p-3 rounded border border-gray-700 dark:border-gray-700">
                 <p className="leading-relaxed">
-                  <span className="text-gray-600">// </span>Medet taught himself programming and, as his first major project in 2015, created a full programming language from scratch in C.
+                  <span className="text-gray-600/90 dark:text-gray-400/90">// </span>Medet taught himself programming and, as his first major project in 2015, created a full programming language from scratch in C.
                 </p>
               </div>
-              <div className="bg-gray-800/50 p-3 rounded border border-gray-700">
-                <p className="leading-relaxed">
-                  <span className="text-gray-600">// </span>He later became CTO and Chief of Blocklords, leading its technical development and bringing innovative solutions to the gaming industry.
+              <div className="dark:bg-gray-800/50 bg-gray-600/10 p-3 rounded border border-gray-700 dark:border-gray-700">
+                <p className="leading-relaxed text-gray-600 dark:text-gray-400  ">
+                  <span className="text-gray-600/90 dark:text-gray-400/90">// </span>He later became CTO and Chief of Blocklords, leading its technical development and bringing innovative solutions to the gaming industry.
                 </p>
               </div>
             </div>
@@ -101,37 +94,29 @@ const Team = () => {
             viewport={{ once: true }}
             className="github-card platform-bitbucket"
           >
-            <div className="terminal-window mb-6">
-              <div className="terminal-header">
-                <div className="terminal-dot bg-red-500"></div>
-                <div className="terminal-dot bg-yellow-500"></div>
-                <div className="terminal-dot bg-green-500"></div>
-                <span className="font-mono text-xs text-gray-400 ml-4">Sergey Pak</span>
+            <PreviewContainer previewUrl="Sergey Pak">
+              <div className="w-24 h-24 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <img src="/sergey.jpg" alt="Sergey" className="w-full h-full rounded-full" />
               </div>
-              <div className="p-4 bg-gray-900 text-center">
-                <div className="w-24 h-24 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <img src="/sergey.jpg" alt="Sergey" className="w-full h-full rounded-full" />
-                </div>
-                <h3 className="font-mono text-xl font-bold text-white mb-1">
-                  Sergey
-                </h3>
-                <p className="text-blue-400 font-mono text-sm">Co-Founder & Developer</p>
-                <div className="flex items-center justify-center space-x-2 mt-2">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-                  <span className="font-mono text-xs text-gray-400">Online</span>
-                </div>
+              <h3 className="font-mono text-xl font-bold text-white text-center mb-1">
+                Sergey
+              </h3>
+              <p className="text-blue-400 font-mono text-sm text-center">Co-Founder & Developer</p>
+              <div className="flex items-center justify-center space-x-2 mt-2">
+                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                <span className="font-mono text-xs text-gray-400">Online</span>
               </div>
-            </div>
+            </PreviewContainer>
 
-            <div className="space-y-4 text-gray-400 font-mono text-sm">
-              <div className="bg-gray-800/50 p-3 rounded border border-gray-700">
-                <p className="leading-relaxed">
-                  <span className="text-gray-600">// </span>Sergey has been coding since the early internet. A veteran of the first dot-com era, he built CRMs and frameworks still in use today.
+            <div className="space-y-4 text-gray-400 font-mono text-sm mt-6">
+              <div className="dark:bg-gray-800/50 bg-gray-600/10 p-3 rounded border border-gray-700 dark:border-gray-700">
+                <p className="leading-relaxed text-gray-600 dark:text-gray-400">
+                  <span className="text-gray-600/90 dark:text-gray-400/90">// </span>Sergey has been coding since the early internet. A veteran of the first dot-com era, he built CRMs and frameworks still in use today.
                 </p>
               </div>
-              <div className="bg-gray-800/50 p-3 rounded border border-gray-700">
-                <p className="leading-relaxed">
-                  <span className="text-gray-600">// </span>He now serves as CTO at one of the largest data analytics companies, working with leading banks worldwide and bringing enterprise-level expertise to CascadeFund.
+              <div className="dark:bg-gray-800/50 bg-gray-600/10 p-3 rounded border border-gray-700 dark:border-gray-700">
+                <p className="leading-relaxed text-gray-600 dark:text-gray-400">
+                  <span className="text-gray-600/90 dark:text-gray-400/90">// </span>He now serves as CTO at one of the largest data analytics companies, working with leading banks worldwide and bringing enterprise-level expertise to CascadeFund.
                 </p>
               </div>
             </div>
@@ -173,30 +158,22 @@ const Team = () => {
           viewport={{ once: true }}
           className="mt-16"
         >
-          <div className="terminal-window max-w-4xl mx-auto">
-            <div className="terminal-header">
-              <div className="terminal-dot bg-red-500"></div>
-              <div className="terminal-dot bg-yellow-500"></div>
-              <div className="terminal-dot bg-green-500"></div>
-              <span className="font-mono text-xs text-gray-400 ml-4">git log --oneline --graph</span>
-            </div>
-            <div className="p-6 bg-gray-900">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-sm">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-green-400 mb-2">15+</div>
-                  <div className="text-gray-400">Years Combined Experience</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-400 mb-2">100k+</div>
-                  <div className="text-gray-400">Lines of Code Written</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-yellow-400 mb-2">50+</div>
-                  <div className="text-gray-400">Projects Deployed</div>
-                </div>
+          <PreviewContainer previewUrl="git log --oneline --graph">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-sm">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-400 mb-2">15+</div>
+                <div className="text-gray-400">Years Combined Experience</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-blue-400 mb-2">100k+</div>
+                <div className="text-gray-400">Lines of Code Written</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-yellow-400 mb-2">50+</div>
+                <div className="text-gray-400">Projects Deployed</div>
               </div>
             </div>
-          </div>
+          </PreviewContainer>
         </motion.div>
       </div>
     </section>

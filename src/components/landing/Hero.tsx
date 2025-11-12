@@ -4,6 +4,7 @@ import { ArrowRight, Terminal, Code2, Users, Zap } from 'lucide-react'
 import Button from '../custom-ui/Button'
 import SuccessModal from './SuccessModal'
 import { recaptchaHandleJoinWishlist } from '@/scripts/landing'
+import PreviewContainer from './PreviewContainer'
 
 const Hero = () => {
   const [terminalText, setTerminalText] = useState('')
@@ -54,20 +55,20 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mb-8 mt-12"
+            className="mb-8 mt-14"
           >
-            <h1 className="font-mono text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
-              <span className="text-gray-400">&gt;</span> The Future of
+            <h1 className="font-mono text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+              <span className="text-teal-400">&gt;</span> The Future of
               <br />
               <span className="gradient-text">
                 Open Source
               </span>
-              <span className="text-green-400 animate-pulse">_</span>
+              <span className="text-green-700 animate-pulse">_</span>
             </h1>
-            <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 font-mono max-w-4xl mx-auto leading-relaxed">
-              <span className="text-gray-500">// </span>The first platform for maintainers to grow PRs and support.
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 font-mono max-w-4xl mx-auto leading-relaxed">
+              <span className="text-gray-600 dark:text-gray-400">// </span>The first platform for maintainers to grow PRs and support.
               <br />
-              <span className="text-gray-500">// </span>Turning open-source development into a recognized, collaborative, and financially sustainable pursuit.
+              <span className="text-gray-600 dark:text-gray-400">// </span>Turning open-source development into a recognized, collaborative, and financially sustainable pursuit.
             </p>
           </motion.div>
 
@@ -78,71 +79,63 @@ const Hero = () => {
             className="max-w-2xl mx-auto mb-16"
           >
             {/* Terminal Window */}
-            <div className="terminal-window">
-              <div className="terminal-header">
-                <div className="terminal-dot bg-red-500"></div>
-                <div className="terminal-dot bg-yellow-500"></div>
-                <div className="terminal-dot bg-green-500"></div>
-                <span className="font-mono text-xs text-gray-400 ml-4">cascadefund@terminal:~$</span>
+            <PreviewContainer previewUrl='cascadefund@terminal:~$'>
+              <div className="font-mono text-green-400 mb-4">
+                <span className="text-gray-500">$</span> {terminalText}
+                {showCursor && <span className="text-green-400">|</span>}
               </div>
-              <div className="p-6 bg-gray-900">
-                <div className="font-mono text-green-400 mb-4">
-                  <span className="text-gray-500">$</span> {terminalText}
-                  {showCursor && <span className="text-green-400">|</span>}
+              <div className="space-y-2 text-sm">
+                <div className="text-gray-400">
+                  <span className="text-blue-400">✓</span> Add Your Repository...
                 </div>
-                <div className="space-y-2 text-sm">
-                  <div className="text-gray-400">
-                    <span className="text-blue-400">✓</span> Add Your Repository...
-                  </div>
-                  <div className="text-gray-400">
-                    <span className="text-blue-400">✓</span> Setting up project in the databases...
-                  </div>
-                  <div className="text-gray-400">
-                    <span className="text-yellow-400">⚡</span> Ready to 10 minute work PR, and earning!
-                  </div>
+                <div className="text-gray-400">
+                  <span className="text-blue-400">✓</span> Setting up project in the databases...
                 </div>
+                <div className="text-gray-400">
+                  <span className="text-yellow-400">⚡</span> Ready to 10 minute work PR, and earning!
+                </div>
+              </div>
 
-                <div className="mt-6 flex flex-col sm:flex-row gap-4">
-                  <div className="flex-1">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => {
-                        setEmail(e.target.value)
-                        setError(null)
-                      }}
-                      onKeyPress={handleKeyPress}
-                      placeholder="user@example.com"
-                      className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-xs text-green-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent font-mono"
-                      disabled={isLoading}
-                    />
-                    {error && (
-                      <p className="mt-2 text-sm text-red-400 font-mono">{error}</p>
-                    )}
-                  </div>
-                  <div id="hero-turnstile-container">
-
-                  </div>
-                  <Button
-                    className="h-12 btn-primary group flex items-center justify-center space-x-2"
-                    onClick={() => recaptchaHandleJoinWishlist('hero', 'hero-turnstile-container', email, setIsLoading, setError, setShowSuccessModal, setEmail)}
+              <div className="mt-6 flex flex-col sm:flex-row gap-4">
+                <div className="flex-1">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value)
+                      setError(null)
+                    }}
+                    onKeyPress={handleKeyPress}
+                    placeholder="user@example.com"
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-xs text-green-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent font-mono"
                     disabled={isLoading}
-                  >
-                    <Terminal className="w-4 h-4" />
-                    <span>{isLoading ? 'Joining...' : 'Join Waitlist'}</span>
-                    {!isLoading && (
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    )}
-                  </Button>
+                  />
+                  {error && (
+                    <p className="mt-2 text-sm text-red-400 font-mono">{error}</p>
+                  )}
                 </div>
-                <p className="text-gray-500 dark:text-gray-400 text-xs mt-3 font-mono">
-                  // Be the first to know when we launch
-                </p>
-                <p className="text-gray-500 dark:text-gray-400 text-xs mt-3 font-mono">
-                  // Protected by CloudFlare Turnstile
-                </p>
+                <div id="hero-turnstile-container">
+
+                </div>
+                <Button
+                  className="h-12 btn-primary group flex items-center justify-center space-x-2"
+                  onClick={() => recaptchaHandleJoinWishlist('hero', 'hero-turnstile-container', email, setIsLoading, setError, setShowSuccessModal, setEmail)}
+                  disabled={isLoading}
+                >
+                  <Terminal className="w-4 h-4" />
+                  <span>{isLoading ? 'Joining...' : 'Join Waitlist'}</span>
+                  {!isLoading && (
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  )}
+                </Button>
               </div>
-            </div>
+              <p className="text-gray-600 dark:text-gray-400 text-xs mt-3 font-mono">
+                  // Be the first to know when we launch
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 text-xs mt-3 font-mono">
+                  // Protected by CloudFlare Turnstile
+              </p>
+            </PreviewContainer>
           </motion.div>
 
           <motion.div
@@ -168,7 +161,7 @@ const Hero = () => {
                 icon: <Users className="w-8 h-8" />,
                 title: "Non-competitive Rating",
                 description: "Rating represents how you work with others and on which types of projects.",
-                platform: "gogs"
+                platform: "github"
               },
               {
                 icon: <Zap className="w-8 h-8" />,
@@ -190,10 +183,10 @@ const Hero = () => {
                   </div>
                   <div className="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></div>
                 </div>
-                <h3 className="font-mono text-lg font-semibold text-white mb-2">
+                <h3 className="font-mono text-lg font-semibold text-gray-600 dark:text-gray-100 mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-gray-400 text-sm font-mono">
+                <p className="text-gray-600 dark:text-gray-400 text-sm font-mono">
                   <span className="text-gray-600">// </span>{feature.description}
                 </p>
               </motion.div>

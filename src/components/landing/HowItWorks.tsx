@@ -95,11 +95,11 @@ const HowItWorks = () => {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <div className="bg-gradient-to-r from-primary-600 to-accent-600 rounded-3xl p-12 text-white">
+          <div className="bg-gradient-to-r from-primary-600 to-accent-600 rounded-3xl p-12 text-gray-600 dark:text-gray-100">
             <h3 className="font-display text-3xl font-bold mb-6">
               Interconnected for Maintainers
             </h3>
-            <p className="text-xl leading-relaxed max-w-4xl mx-auto text-white/90">
+            <p className="text-xl leading-relaxed max-w-4xl mx-auto text-gray-600/90 dark:text-gray-400/90">
               CascadeFund keeps your project moving even when your time is limited. If there's a task you'd rather not handle, you can let a contributor take it and earn the rating, while you simply guide and consult. It's a connected system that rewards collaboration, frees your time, and keeps every maintainer in control of their direction.
             </p>
           </div>

@@ -81,29 +81,29 @@ const Vision = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="bg-gradient-to-br from-primary-600 to-accent-600 p-12 rounded-3xl text-white">
+            <div className="bg-gradient-to-br from-primary-600 to-accent-600 p-12 rounded-3xl text-gray-900 dark:text-gray-100">
               <h3 className="font-display text-3xl font-bold mb-6">
                 The Platform Revolution
               </h3>
-              <p className="text-xl leading-relaxed mb-8 text-white/90">
+              <p className="text-xl leading-relaxed mb-8 text-gray-600/90 dark:text-gray-400/90">
                 It's more than just a platform — it's a movement to transform how the world sees and supports open-source creators.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                  <span className="text-white/90">Unified collaboration workspace</span>
+                  <div className="w-2 h-2 bg-gray-600 dark:bg-gray-400 rounded-full"></div>
+                  <span className="text-gray-600/90 dark:text-gray-400/90">Unified collaboration workspace</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                  <span className="text-white/90">Gamified contribution system</span>
+                  <div className="w-2 h-2 bg-gray-600 dark:bg-gray-400 rounded-full"></div>
+                  <span className="text-gray-600/90 dark:text-gray-400/90">Gamified contribution system</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                  <span className="text-white/90">Sustainable monetization model</span>
+                  <div className="w-2 h-2 bg-gray-600 dark:bg-gray-400 rounded-full"></div>
+                  <span className="text-gray-600/90 dark:text-gray-400/90">Sustainable monetization model</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                  <span className="text-white/90">Community-driven growth</span>
+                  <div className="w-2 h-2 bg-gray-600 dark:bg-gray-400 rounded-full"></div>
+                  <span className="text-gray-600/90 dark:text-gray-400/90">Community-driven growth</span>
                 </div>
               </div>
             </div>

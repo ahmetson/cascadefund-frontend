@@ -18,7 +18,7 @@ const JoinUs = () => {
   }
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20">
+    <section id="contact" className="py-24 bg-gradient-to-br dark:from-primary-900/20 dark:to-accent-900/20 from-primary-50 to-accent-50">
       <div className="section-padding max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -103,11 +103,11 @@ const JoinUs = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="bg-gradient-to-br from-primary-600 to-accent-600 p-12 rounded-3xl text-white">
+            <div className="bg-gradient-to-br dark:from-primary-600 dark:to-accent-600 from-primary-600 to-accent-600 p-12 rounded-3xl text-gray-600 dark:text-gray-100">
               <h3 className="font-display text-3xl font-bold mb-6">
                 Early Adopter Benefits
               </h3>
-              <p className="text-xl leading-relaxed mb-8 text-white/90">
+              <p className="text-xl leading-relaxed mb-8 text-gray-600/90 dark:text-gray-400/90">
                 Subscribe with your email to help us gather feedback. Our early adopters will receive +20 voting power points on CascadeFund when we launch.
               </p>
 
@@ -116,19 +116,19 @@ const JoinUs = () => {
                   <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                     <span className="text-sm font-bold">+20</span>
                   </div>
-                  <span className="text-white/90">Bonus voting power points</span>
+                  <span className="text-gray-600/90 dark:text-gray-400/90">Bonus voting power points</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                     <span className="text-sm font-bold">🚀</span>
                   </div>
-                  <span className="text-white/90">Priority access to beta features</span>
+                  <span className="text-gray-600/90 dark:text-gray-400/90">Priority access to beta features</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                     <span className="text-sm font-bold">📧</span>
                   </div>
-                  <span className="text-white/90">Exclusive development updates</span>
+                  <span className="text-gray-600/90 dark:text-gray-400/90">Exclusive development updates</span>
                 </div>
               </div>
 
@@ -143,7 +143,7 @@ const JoinUs = () => {
                     }}
                     onKeyPress={handleKeyPress}
                     placeholder="Enter your email address"
-                    className="w-full px-4 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xs text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-white/20 backdrop-blur-sm border border-gray-400 dark:border-white/30 rounded-xs text-gray-600 dark:text-white placeholder-gray-600/90 dark:placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all"
                     disabled={isLoading}
                   />
                   {error && (
@@ -159,7 +159,7 @@ const JoinUs = () => {
                 >
                   {isLoading ? 'Joining...' : 'Join to wish list'}
                 </Button>
-                <p className="text-white/80 text-sm text-center">
+                <p className="text-gray-600/90 dark:text-gray-400/90 text-sm text-center">
                   Get notified when we launch + receive your bonus points
                 </p>
               </div>
