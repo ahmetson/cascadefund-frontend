@@ -1,4 +1,6 @@
 import type { APIRoute } from 'astro'
+import { isWishlisted, joinWishlist } from '../scripts/db'
+
 const secretKey = import.meta.env.TURNSTYLE_SECRET_KEY;
 
 interface JSONRPCRequest {
@@ -99,10 +101,24 @@ async function handleJoinWishlist(params: { email?: string, recaptchaToken?: str
 
     console.log(`Bot protection was successful, join to wishlist`)
 
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    const wishlisted = await isWishlisted(params.email)
+    if (wishlisted) {
+        throw {
+            code: -32603,
+            message: 'Duplicate request',
+            data: 'Email already in wishlist'
+        }
+    }
 
-    // TODO: Store email in database
-    // For now, just return success
+    const success = await joinWishlist(params.email)
+    if (!success) {
+        throw {
+            code: -32603,
+            message: 'Internal error',
+            data: 'Failed to join wishlist'
+        }
+    }
+
     return {
         success: true,
         message: 'Successfully joined wishlist'

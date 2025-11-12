@@ -135,8 +135,11 @@ const Hero = () => {
                     )}
                   </Button>
                 </div>
-                <p className="text-gray-500 text-xs mt-3 font-mono">
+                <p className="text-gray-500 dark:text-gray-400 text-xs mt-3 font-mono">
                   // Be the first to know when we launch
+                </p>
+                <p className="text-gray-500 dark:text-gray-400 text-xs mt-3 font-mono">
+                  // Protected by CloudFlare Turnstile
                 </p>
               </div>
             </div>
