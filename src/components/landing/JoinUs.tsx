@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { MessageCircle, Mail, Github, Youtube } from 'lucide-react'
 import Button from '../custom-ui/Button'
 import SuccessModal from './SuccessModal'
-import { recaptchaHandleJoinWishlist } from '@/scripts/landing'
+import { handleJoinWishlist } from '@/scripts/landing'
 
 const JoinUs = () => {
   const [email, setEmail] = useState('')
@@ -13,7 +13,7 @@ const JoinUs = () => {
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      recaptchaHandleJoinWishlist('join-us', 'join-us-turnstile-container', email, setIsLoading, setError, setShowSuccessModal, setEmail)
+      handleJoinWishlist('join-us', 'join-us-turnstile-container', email, setIsLoading, setError, setShowSuccessModal, setEmail)
     }
   }
 
@@ -154,7 +154,7 @@ const JoinUs = () => {
                 <Button
                   variant='secondary'
                   className="w-full h-12 font-semibold px-8 py-4 transition-colors"
-                  onClick={() => recaptchaHandleJoinWishlist('join-us', 'join-us-turnstile-container', email, setIsLoading, setError, setShowSuccessModal, setEmail)}
+                  onClick={() => handleJoinWishlist('join-us', 'join-us-turnstile-container', email, setIsLoading, setError, setShowSuccessModal, setEmail)}
                   disabled={isLoading}
                 >
                   {isLoading ? 'Joining...' : 'Join to wish list'}

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, Terminal, Code2, Users, Zap } from 'lucide-react'
 import Button from '../custom-ui/Button'
 import SuccessModal from './SuccessModal'
-import { recaptchaHandleJoinWishlist } from '@/scripts/landing'
+import { handleJoinWishlist } from '@/scripts/landing'
 import PreviewContainer from './PreviewContainer'
 
 const Hero = () => {
@@ -41,7 +41,7 @@ const Hero = () => {
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      recaptchaHandleJoinWishlist('hero', 'hero-turnstile-container', email, setIsLoading, setError, setShowSuccessModal, setEmail)
+      handleJoinWishlist('hero', 'hero-turnstile-container', email, setIsLoading, setError, setShowSuccessModal, setEmail)
     }
   }
 
@@ -119,7 +119,7 @@ const Hero = () => {
                 </div>
                 <Button
                   className="h-12 btn-primary group w-full md:w-60 flex items-center justify-center space-x-2 sm:w-full sm:mb-2"
-                  onClick={() => recaptchaHandleJoinWishlist('hero', 'hero-turnstile-container', email, setIsLoading, setError, setShowSuccessModal, setEmail)}
+                  onClick={() => handleJoinWishlist('hero', 'hero-turnstile-container', email, setIsLoading, setError, setShowSuccessModal, setEmail)}
                   disabled={isLoading}
                 >
                   <Terminal className="w-4 h-4" />

@@ -32,22 +32,6 @@ function validateEmail(email: string): boolean {
 }
 
 async function handleJoinWishlist(params: { email?: string, recaptchaToken?: string, action: 'hero' | 'join-us' }): Promise<{ success: boolean; message: string }> {
-    if (!params.email) {
-        throw {
-            code: -32602,
-            message: 'Invalid params',
-            data: 'Email parameter is required'
-        }
-    }
-
-    if (!validateEmail(params.email)) {
-        throw {
-            code: -32602,
-            message: 'Invalid params',
-            data: 'Invalid email format'
-        }
-    }
-
     if (!params.recaptchaToken) {
         throw {
             code: -32602,
@@ -55,15 +39,6 @@ async function handleJoinWishlist(params: { email?: string, recaptchaToken?: str
             data: 'Recaptcha token is required'
         }
     }
-
-    if (!params.action) {
-        throw {
-            code: -32602,
-            message: 'Invalid params',
-            data: 'Recaptcha action is required'
-        }
-    }
-
 
     let result: any;
     try {
@@ -100,6 +75,35 @@ async function handleJoinWishlist(params: { email?: string, recaptchaToken?: str
     }
 
     console.log(`Bot protection was successful, join to wishlist`)
+
+    return await handleJoinWishlistUnsafe(params)
+}
+
+async function handleJoinWishlistUnsafe(params: { email?: string, action: 'hero' | 'join-us' }): Promise<{ success: boolean; message: string }> {
+    if (!params.email) {
+        throw {
+            code: -32602,
+            message: 'Invalid params',
+            data: 'Email parameter is required'
+        }
+    }
+
+    if (!validateEmail(params.email)) {
+        throw {
+            code: -32602,
+            message: 'Invalid params',
+            data: 'Invalid email format'
+        }
+    }
+
+    if (!params.action) {
+        throw {
+            code: -32602,
+            message: 'Invalid params',
+            data: 'Recaptcha action is required'
+        }
+    }
+
 
     const wishlisted = await isWishlisted(params.email)
     if (wishlisted) {
@@ -176,6 +180,29 @@ export const POST: APIRoute = async ({ request }) => {
         let result: any
 
         switch (body.method) {
+            case 'joinwishlist-unsafe':
+                try {
+                    result = await handleJoinWishlistUnsafe(body.params)
+                } catch (error: any) {
+                    return new Response(
+                        JSON.stringify({
+                            jsonrpc: '2.0',
+                            error: {
+                                code: error.code || -32603,
+                                message: error.message || 'Internal error',
+                                data: error.data
+                            },
+                            id: body.id ?? null
+                        } as JSONRPCResponse),
+                        {
+                            status: 200, // JSON-RPC errors still return 200
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        }
+                    )
+                }
+                break
             case 'joinwishlist':
                 try {
                     result = await handleJoinWishlist(body.params)
