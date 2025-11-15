@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaYoutube, FaGithub, FaTwitter, FaTelegram } from 'react-icons/fa'; // Import the LinkedIn icon from Font Awesome
+import { getIcon } from '../icon';
 
 interface SuccessModalProps {
     isOpen: boolean
@@ -18,19 +19,25 @@ const SuccessModal: React.FC<SuccessModalProps> = ({ isOpen, onClose }) => {
         {
             icon: <FaTelegram color="white" className="w-6 h-6" />,
             label: 'Telegram',
-            href: 'https://t.me/cascadefund',
+            href: 'https://t.me/arasangha',
             description: 'Community Chat'
         },
         {
             icon: <FaYoutube color="white" className="w-6 h-6" />,
             label: 'YouTube',
-            href: 'https://www.youtube.com/@cascadefund',
+            href: 'https://www.youtube.com/@medet-ahmetson',
             description: 'Videos and Tutorials'
         },
         {
             icon: <FaTwitter color="white" className="w-6 h-6" />,
             label: 'X.com',
-            href: 'https://x.com/cascadefund',
+            href: 'https://x.com/ara_foundation_',
+            description: 'For updates'
+        },
+        {
+            icon: getIcon('bluesky'),
+            label: 'BlueSky',
+            href: 'https://bsky.app/profile/cascadefund.bsky.social',
             description: 'For updates'
         }
     ]

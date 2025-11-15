@@ -193,9 +193,9 @@ export const SocialMediaHeavy: Story = {
         name: 'Social Media Influencer',
         description: 'Active on all major social platforms. Follow me for the latest updates on technology, development tips, and industry insights.',
         socialLinks: [
-            { type: 'github', url: 'https://github.com/socialuser' },
-            { type: 'linkedin', url: 'https://linkedin.com/in/socialuser' },
-            { type: 'telegram', url: 'https://t.me/socialuser' },
+            { type: 'github', url: 'https://github.com/ara-foundation' },
+            { type: 'linkedin', url: 'https://linkedin.com/in/ahmetson' },
+            { type: 'telegram', url: 'https://t.me/arasangha' },
             { type: 'github', url: 'https://github.com/socialuser2' },
             { type: 'linkedin', url: 'https://linkedin.com/in/socialuser2' }
         ],

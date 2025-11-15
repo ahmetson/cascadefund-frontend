@@ -4,6 +4,7 @@ import { MessageCircle, Mail, Github, Youtube } from 'lucide-react'
 import Button from '../custom-ui/Button'
 import SuccessModal from './SuccessModal'
 import { handleJoinWishlist } from '@/scripts/landing'
+import { getIcon } from '../icon'
 
 const JoinUs = () => {
   const [email, setEmail] = useState('')
@@ -72,6 +73,12 @@ const JoinUs = () => {
                     label: "X.com",
                     href: "https://x.com/ara_foundation_",
                     description: "Follow us on X.com"
+                  },
+                  {
+                    icon: getIcon('bluesky'),
+                    label: 'BlueSky',
+                    href: 'https://bsky.app/profile/cascadefund.bsky.social',
+                    description: 'For updates'
                   }
                 ].map((social, index) => (
                   <motion.a
