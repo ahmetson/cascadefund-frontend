@@ -167,7 +167,7 @@ const Hero = () => {
                 icon: <Zap className="w-8 h-8" />,
                 title: "Sustainable Growth",
                 description: "Financial sustainability through innovative gamified paywall.",
-                platform: "gitlab"
+                platform: "bitbucket"
               }
             ].map((feature, index) => (
               <motion.div

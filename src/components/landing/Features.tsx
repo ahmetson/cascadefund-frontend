@@ -67,14 +67,14 @@ const Features = () => {
               icon: <Users className="w-6 h-6" />,
               title: "Collaborative Rating",
               description: "Rating system that reflects how you work with others and on which types of projects.",
-              platform: "gitlab",
+              platform: "github",
               status: "review"
             },
             {
               icon: <Target className="w-6 h-6" />,
               title: "Quest System",
               description: "Turn all activities into quest tasks that contribute to your collaborative rating.",
-              platform: "stackoverflow",
+              platform: "bitbucket",
               status: "merged"
             }
           ].map((feature, index) => (
