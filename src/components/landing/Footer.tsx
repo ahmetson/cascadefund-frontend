@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { FaYoutube, FaGithub, FaTwitter, FaTelegram } from 'react-icons/fa'; // Import the LinkedIn icon from Font Awesome
+import { getIcon } from '../icon';
 
 const Footer = () => {
   return (
@@ -60,6 +61,12 @@ const Footer = () => {
                 className="p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
               >
                 <FaTwitter color="white" />
+              </a>
+              <a
+                href="https://bsky.app/profile/cascadefund.bsky.social"
+                className="p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
+              >
+                {getIcon({ iconType: 'bluesky', className: 'text-white' })}
               </a>
             </div>
           </motion.div>
