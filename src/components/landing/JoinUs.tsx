@@ -70,9 +70,9 @@ const JoinUs = () => {
                   },
                   {
                     icon: <Mail className="w-6 h-6" />,
-                    label: "X.com",
+                    label: "ex-twitter.com",
                     href: "https://x.com/ara_foundation_",
-                    description: "Follow us on X.com"
+                    description: "For updates"
                   },
                   {
                     icon: getIcon('bluesky'),

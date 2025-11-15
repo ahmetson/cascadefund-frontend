@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { X } from 'lucide-react'
 import { FaYoutube, FaGithub, FaTwitter, FaTelegram } from 'react-icons/fa'; // Import the LinkedIn icon from Font Awesome
 import { getIcon } from '../icon';
 
@@ -30,12 +31,12 @@ const SuccessModal: React.FC<SuccessModalProps> = ({ isOpen, onClose }) => {
         },
         {
             icon: <FaTwitter color="white" className="w-6 h-6" />,
-            label: 'X.com',
+            label: 'ex-twitter',
             href: 'https://x.com/ara_foundation_',
             description: 'For updates'
         },
         {
-            icon: getIcon('bluesky'),
+            icon: getIcon({ iconType: 'bluesky', className: 'text-white w-6 h-6' }),
             label: 'BlueSky',
             href: 'https://bsky.app/profile/cascadefund.bsky.social',
             description: 'For updates'
@@ -139,7 +140,7 @@ const SuccessModal: React.FC<SuccessModalProps> = ({ isOpen, onClose }) => {
                                 {/* Benefits Reminder */}
                                 <div className="bg-primary-50 dark:bg-primary-900/20 rounded-lg p-4">
                                     <p className="text-sm text-neutral-700 dark:text-neutral-300 text-center">
-                                        <span className="font-semibold">+20 voting power points</span> will be added to your account when we launch!
+                                        <span className="font-semibold underline">+20 voting power points</span> will be added to your account when we launch!
                                     </p>
                                 </div>
                             </div>
