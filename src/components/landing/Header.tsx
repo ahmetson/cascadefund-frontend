@@ -3,10 +3,10 @@ import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isLogoHovered, setIsLogoHovered] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,40 +35,7 @@ const Header = () => {
       >
         <nav className="section-padding py-4">
           <div className="flex items-center justify-between">
-            <motion.a
-              href="/"
-              className="flex items-center space-x-3"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <div className="flex items-center space-x-2"
-                onMouseEnter={() => setIsLogoHovered(true)}
-                onMouseLeave={() => setIsLogoHovered(false)}
-              >
-                <div
-                  className="w-8 h-8 bg-transparent rounded flex items-center justify-center"
-                >
-                  <img
-                    src="/cascadefund_logo.png"
-                    id="logoImg"
-                    alt="CascadeFund Logo"
-                    className="w-full h-full"
-                    style={{ display: isLogoHovered ? 'none' : 'block' }}
-                  />
-                  <img
-                    src="/cascadefund_logo_hover.png"
-                    id="hoveredLogoImg"
-                    alt="CascadeFund Logo"
-                    className="w-full h-full"
-                    style={{ display: isLogoHovered ? 'block' : 'none' }}
-                  />
-                </div>
-                <span className="font-mono text-xl font-bold text-teal-400">
-                  cascade<span className="text-blue-400">fund</span>
-                  <span className="text-teal-400 animate-pulse">_</span>
-                </span>
-              </div>
-            </motion.a>
+            <div></div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-6">

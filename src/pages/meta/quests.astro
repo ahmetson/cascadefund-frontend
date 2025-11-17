@@ -14,15 +14,16 @@ import { Accent } from "../scripts/data";
 ---
 
 <Layout>
-  <Header client:load homePage="/" />
+  <Header client:load homePage="/quests" />
   <main>
-    <Hero client:load accent={Accent.monetizationPrimaryAccent} />
+    <Hero client:load accent={Accent.questSystemAccent} />
     <HowItWorks client:load />
-    <Pricing client:load />
     <Features client:load />
     <Vision client:load />
+    <Pricing client:load />
     <JoinUs client:load />
     <Team client:load />
   </main>
   <Footer client:load />
 </Layout>
+

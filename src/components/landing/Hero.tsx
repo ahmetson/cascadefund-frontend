@@ -5,16 +5,26 @@ import Button from '../custom-ui/Button'
 import SuccessModal from './SuccessModal'
 import { handleJoinWishlist } from '@/scripts/landing'
 import PreviewContainer from './PreviewContainer'
+import { Accent, data } from '@/scripts/data'
+import Link from '../custom-ui/Link'
 
-const Hero = () => {
+interface HeroProps {
+  accent?: Accent | string
+  homePage?: string
+}
+
+const Hero = ({ accent = Accent.monetizationPrimaryAccent, homePage = '/' }: HeroProps) => {
+  const accentKey = (accent as Accent) || Accent.monetizationPrimaryAccent
+  const accentData = data[accentKey]
   const [terminalText, setTerminalText] = useState('')
   const [showCursor, setShowCursor] = useState(true)
   const [email, setEmail] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [showSuccessModal, setShowSuccessModal] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [isLogoHovered, setIsLogoHovered] = useState(false)
 
-  const fullText = 'open https://cascadefund.org/'
+  const fullText = 'visit https://app.cascadefund.org/'
 
   useEffect(() => {
     let index = 0
@@ -49,7 +59,7 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="grid-bg absolute inset-0 opacity-20"></div>
 
-      <div className="section-padding w-full max-w-7xl mx-auto relative z-10">
+      <div className="section-padding w-full max-w-8xl mx-auto relative z-10">
         <div className="text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -58,17 +68,44 @@ const Hero = () => {
             className="mb-8 mt-14"
           >
             <h1 className="font-mono text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-              <span className="text-teal-400">&gt;</span> The Future of
-              <br />
-              <span className="gradient-text">
-                Open Source
-              </span>
-              <span className="text-green-700 animate-pulse">_</span>
+              <div className="flex items-center space-x-2 w-full justify-center"
+                onMouseEnter={() => setIsLogoHovered(true)}
+                onMouseLeave={() => setIsLogoHovered(false)}
+              >
+                <div
+                  className="w-20 h-20 bg-transparent rounded flex items-center justify-center"
+                >
+                  <img
+                    src="/cascadefund_logo.png"
+                    id="logoImg"
+                    alt="CascadeFund Logo"
+                    className="w-full h-full"
+                    style={{ display: isLogoHovered ? 'none' : 'block' }}
+                  />
+                  <img
+                    src="/cascadefund_logo_hover.png"
+                    id="hoveredLogoImg"
+                    alt="CascadeFund Logo"
+                    className="w-full h-full"
+                    style={{ display: isLogoHovered ? 'block' : 'none' }}
+                  />
+                </div>
+                <span className="font-mono font-bold text-teal-500">
+                  cascade<span className="text-blue-400">fund</span>
+                  <span className="text-teal-400 animate-pulse">_</span>
+                </span>
+              </div>
             </h1>
             <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 font-mono max-w-4xl mx-auto leading-relaxed">
-              <span className="text-gray-600 dark:text-gray-400">// </span>The first platform for maintainers to grow PRs and support.
-              <br />
-              <span className="text-gray-600 dark:text-gray-400">// </span>Turning open-source development into a recognized, collaborative, and financially sustainable pursuit.
+              The first <strong>Social Media + Collaboration Platform</strong> for
+              open source  devs.
+            </p>
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 mt-4 font-mono max-w-4xl mx-auto leading-relaxed">
+              <span className="text-gray-600 dark:text-gray-400">- </span>{accentData.title1} -
+              {/* <br /> */}
+              {/* <span className="text-xl sm:text-lg lg:text-xl text-gray-600 dark:text-gray-400 mt-4 font-mono mx-auto leading-relaxed"> */}
+              {/* {accentData.title2} */}
+              {/* </span> */}
             </p>
           </motion.div>
 
@@ -79,20 +116,19 @@ const Hero = () => {
             className="max-w-2xl mx-auto mb-16"
           >
             {/* Terminal Window */}
-            <PreviewContainer previewUrl='cascadefund@terminal:~$'>
+            <PreviewContainer previewUrl=''>
               <div className="font-mono text-green-400 mb-4 ">
                 <span className="text-gray-500">$</span> {terminalText}
-                {showCursor && <span className="text-green-400">|</span>}
               </div>
-              <div className="space-y-2 text-sm">
+              <div className="space-y-2 text-sm text-left ml-4">
                 <div className="text-gray-400">
-                  <span className="text-blue-400">✓</span> Add Your Repository...
+                  <span className="text-blue-400">1</span> Add Your Repository...
                 </div>
-                <div className="text-gray-400">
-                  <span className="text-blue-400">✓</span> Setting up project in the databases...
+                <div className="text-gray-400 ml-4 lg:ml-16">
+                  <span className="text-blue-400">2</span> Complete quests from notifications...
                 </div>
-                <div className="text-gray-400">
-                  <span className="text-yellow-400">⚡</span> Ready to 10 minute work PR, and earning!
+                <div className="text-gray-400 ml-8 lg:ml-32">
+                  <span className="text-yellow-400">3</span> Ready!
                 </div>
               </div>
 
@@ -129,11 +165,10 @@ const Hero = () => {
                   )}
                 </Button>
               </div>
-              <p className="text-gray-600 dark:text-gray-400 text-xs mt-3 font-mono">
-                  // Be the first to know when we launch
-              </p>
-              <p className="text-gray-600 dark:text-gray-400 text-xs mt-3 font-mono">
-                  // Protected by CloudFlare Turnstile
+              <p className="text-gray-600 dark:text-gray-400 text-xs font-mono my-1">
+                Join the Waitlist.
+                <br />
+                Demo: <Link uri="https://app.cascadefund.org/" asNewTab={true} className='underline'>CascadeFund Demo</Link>
               </p>
             </PreviewContainer>
           </motion.div>
@@ -199,7 +234,7 @@ const Hero = () => {
         isOpen={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
       />
-    </section>
+    </section >
   )
 }
 
