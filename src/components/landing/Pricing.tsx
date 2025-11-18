@@ -12,13 +12,14 @@ const Pricing = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h3 className="font-display text-4xl sm:text-5xl font-bold mb-6">
+          <h3 className="font-display text-4xl sm:text-5xl gradient-text font-bold mb-6">
             Cascade Funding
           </h3>
           <p className="text-xl text-gray-600/90 dark:text-gray-400/90 max-w-4xl mx-auto leading-relaxed">
-            Pricing? No pricing. CascadeFund is completely free.<br />
-            If users contribute to gain voting power for your project, the funds go directly to you, while 20% is automatically shared with the your project's open-source dependencies. <br />
-            In return, you receive voting power for your dependencies.<br />
+            CascadeFund is open-source and free made for open-source projects.<br />
+            If users contribute to gain voting power to your project, the funds go directly to you, <br />
+            while 20% is shared with the your project dependencies. <br />
+            In return, you receive voting power to your dependencies.<br />
           </p>
         </motion.div>
 
