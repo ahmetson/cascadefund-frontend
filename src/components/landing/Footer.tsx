@@ -1,6 +1,8 @@
+import React from 'react'
 import { motion } from 'framer-motion'
-import { FaYoutube, FaGithub, FaTwitter, FaTelegram } from 'react-icons/fa'; // Import the LinkedIn icon from Font Awesome
-import { getIcon } from '../icon';
+import { FaYoutube, FaGithub, FaTwitter, FaTelegram } from 'react-icons/fa'
+import { getIcon } from '../icon'
+import { socialLinks, SocialLinkType } from '@/scripts/data'
 
 const Footer = () => {
   return (
@@ -38,36 +40,33 @@ const Footer = () => {
           >
             <h3 className="font-display text-lg font-semibold mb-6">Stay Connected</h3>
             <div className="flex space-x-4 mt-6">
-              <a
-                href="https://github.com/ara-foundation/cascadefund-frontend"
-                className="p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
-              >
-                <FaGithub color="white" />
-              </a>
-              <a
-                href="https://t.me/arasangha"
-                className="p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
-              >
-                <FaTelegram color="white" />
-              </a>
-              <a
-                href="https://www.youtube.com/@medet-ahmetson"
-                className="p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
-              >
-                <FaYoutube color="white" />
-              </a>
-              <a
-                href="https://x.com/ara_foundation_"
-                className="p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
-              >
-                <FaTwitter color="white" />
-              </a>
-              <a
-                href="https://bsky.app/profile/cascadefund.bsky.social"
-                className="p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
-              >
-                {getIcon({ iconType: 'bluesky', className: 'text-white' })}
-              </a>
+              {socialLinks.map((link) => {
+                const renderIcon = () => {
+                  if (link.useCustomIcon) {
+                    return getIcon({ iconType: link.type as any, className: 'text-white' })
+                  }
+
+                  const iconMap: Record<SocialLinkType, React.ReactNode> = {
+                    github: <FaGithub color="white" />,
+                    telegram: <FaTelegram color="white" />,
+                    youtube: <FaYoutube color="white" />,
+                    twitter: <FaTwitter color="white" />,
+                    bluesky: getIcon({ iconType: 'bluesky', className: 'text-white' }),
+                  }
+
+                  return iconMap[link.type]
+                }
+
+                return (
+                  <a
+                    key={link.url}
+                    href={link.url}
+                    className="p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
+                  >
+                    {renderIcon()}
+                  </a>
+                )
+              })}
             </div>
           </motion.div>
 

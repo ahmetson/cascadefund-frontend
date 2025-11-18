@@ -77,3 +77,39 @@ export const accentToUrl: Record<Accent, string> = {
     [Accent.timeSavedProjectManagementAccent]: '/meta/management',
     // [Accent.visionaryAccent]: '/meta/vision',
 }
+
+export type SocialLinkType = 'github' | 'telegram' | 'youtube' | 'twitter' | 'bluesky'
+
+export interface SocialLink {
+    url: string
+    type: SocialLinkType
+    useCustomIcon?: boolean // true for bluesky (uses getIcon), false for react-icons
+}
+
+export const socialLinks: SocialLink[] = [
+    {
+        url: 'https://github.com/ara-foundation/cascadefund-frontend',
+        type: 'github',
+        useCustomIcon: false,
+    },
+    {
+        url: 'https://t.me/arasangha',
+        type: 'telegram',
+        useCustomIcon: false,
+    },
+    {
+        url: 'https://www.youtube.com/@medet-ahmetson',
+        type: 'youtube',
+        useCustomIcon: false,
+    },
+    {
+        url: 'https://x.com/ara_foundation_',
+        type: 'twitter',
+        useCustomIcon: false,
+    },
+    {
+        url: 'https://bsky.app/profile/cascadefund.bsky.social',
+        type: 'bluesky',
+        useCustomIcon: true,
+    },
+]
