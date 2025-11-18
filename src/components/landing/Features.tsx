@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { motion } from 'framer-motion'
-import { Shield, Clock, Users, Target, Github, GitBranch, Code, Terminal } from 'lucide-react'
+import { Github, GitBranch, GlassesIcon as Globe2 } from 'lucide-react'
 import PreviewContainer from './PreviewContainer'
 import {
   Carousel,
@@ -12,6 +12,8 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel"
+import Link from '../custom-ui/Link'
+import { getIcon } from '../icon'
 
 const Features = () => {
   const [api, setApi] = React.useState<CarouselApi>()
@@ -31,110 +33,24 @@ const Features = () => {
     })
   }, [api])
   return (
-    <section id="features" className="py-24 relative">
+    <section id="features" className="py-18 relative">
       <div className="section-padding max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="font-mono text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-            <span className="text-teal-400">&gt;</span> Key Features &
-            <br />
-            <span className="gradient-text">Benefits</span>
-          </h2>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {[
-            {
-              icon: <Shield className="w-6 h-6" />,
-              title: "Efficiency Through Paywalls",
-              description: "Gamified paywall system filters out noise while making participation meaningful and rewarding.",
-              platform: "github",
-              status: "active"
-            },
-            {
-              icon: <Clock className="w-6 h-6" />,
-              title: "Time-Saved Management",
-              description: "Reduce project management to just 10 minutes of daily guided task completion.",
-              platform: "bitbucket",
-              status: "pending"
-            },
-            {
-              icon: <Users className="w-6 h-6" />,
-              title: "Collaborative Rating",
-              description: "Rating system that reflects how you work with others and on which types of projects.",
-              platform: "github",
-              status: "review"
-            },
-            {
-              icon: <Target className="w-6 h-6" />,
-              title: "Quest System",
-              description: "Turn all activities into quest tasks that contribute to your collaborative rating.",
-              platform: "bitbucket",
-              status: "merged"
-            }
-          ].map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group"
-            >
-              <div className={`github-card platform-${feature.platform} h-full`}>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center space-x-2">
-                    <div className="text-green-400">
-                      {feature.icon}
-                    </div>
-                    <div className={`w-2 h-2 rounded-full ${feature.status === 'active' ? 'bg-green-400' :
-                      feature.status === 'pending' ? 'bg-yellow-400' :
-                        feature.status === 'review' ? 'bg-blue-400' :
-                          'bg-purple-400'
-                      }`}></div>
-                  </div>
-                  <span className="font-mono text-xs text-gray-500">
-                    #{index + 1}
-                  </span>
-                </div>
-                <h3 className="font-mono text-lg font-semibold text-gray-600 dark:text-gray-100 mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm font-mono leading-relaxed mb-4">
-                  <span className="text-gray-600">// </span>{feature.description}
-                </p>
-                <div className="flex items-center justify-between text-xs font-mono text-gray-600 dark:text-gray-400">
-                  <span>Status: {feature.status}</span>
-                  <div className="flex items-center space-x-1">
-                    <GitBranch className="w-3 h-3" />
-                    <span>main</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
+        <h2 className="font-mono text-5xl font-bold text-gray-600 dark:text-gray-400 mb-4 flex items-center justify-center">
+          <Globe2 className="w-12 h-12 mr-6 text-slate-900 dark:text-slate-500 " />
+          Demo Previews
+        </h2>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8"
+          className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8"
         >
 
           <div className="lg:col-span-2">
-            <h3 className="font-mono text-xl font-bold text-gray-600 dark:text-gray-100 mb-4 flex items-center">
-              <Terminal className="w-5 h-5 mr-2 text-green-400" />
-              Screenshot Previews
-            </h3>
+
             <p className="text-gray-600 dark:text-gray-400 mb-6 font-mono text-sm">
-              <span className="text-gray-600">// </span>Get a glimpse of the CascadeFund interface
+              <span className="text-gray-600 dark:text-gray-400">Demo available at </span> <Link asNewTab={true} className="font-mono text-sm text-gray-300 dark:text-gray-300 hover:text-green-400 transition-colors duration-200 relative group" uri="https://app.cascadefund.org/">app.cascadefund.org</Link>
             </p>
             <Carousel
               setApi={setApi}
@@ -201,33 +117,30 @@ const Features = () => {
             </div>
           </div>
 
-          <div className="github-card sm:ml-0 md:ml-8 sm:mt-0 md:mt-22">
+          <div className="sm:ml-0 md:ml-8">
             <div className="flex items-center space-x-2 mb-4">
-              <span className="font-mono text-sm text-gray-600 dark:text-gray-100">Repositories</span>
+              <span className="font-mono text-sm text-gray-600 dark:text-slate-400">Source Code</span>
             </div>
-            <p className="text-gray-600 dark:text-gray-400 mb-6 font-mono text-sm">
-              <span className="text-gray-600/90 dark:text-gray-400/90">// </span>Interactive demos and detailed feature previews will be available as we approach our launch date.
-            </p>
-            <p className="text-gray-600 dark:text-gray-400 mb-6 font-mono text-sm">
-              <span className="text-gray-600/90 dark:text-gray-400/90">// </span>For now, here is our source codes.
-            </p>
-            <a
-              href="https://github.com/ara-foundation/cascadefund-frontend"
-              className="inline-flex items-center text-green-400 font-mono text-sm hover:text-green-300 transition-colors group"
+            <Link
+              uri="https://github.com/ara-foundation/cascadefund-app"
+              className="inline-flex items-center font-mono text-sm hover:text-green-300 transition-colors group"
             >
-              <Github className="w-5 h-5 text-green-400 mr-2 group-hover:-translate-x-1 transition-transform" />
+              <Github className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
               <span>CascadeFund Frontend</span>
               <GitBranch className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a
-              href="https://github.com/ara-foundation/cascadefund-smartcontracts"
+            </Link>
+            <Link
+              uri="https://github.com/ara-foundation/cascadefund-smartcontracts"
               className="inline-flex items-center text-green-400 font-mono text-sm hover:text-green-300 transition-colors group"
             >
-              <Github className="w-5 h-5 text-green-400 mr-2 group-hover:-translate-x-1 transition-transform" />
+              <Github className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
               <span>CascadeFund Smartcontracts</span>
               <GitBranch className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <span className="text-teal-400 font-mono text-sm">CascadeFund Backend coming soon</span>
+            </Link>
+            <span className="text-gray-500 dark:text-gray-400/80 font-mono text-sm flex"
+            >
+              {getIcon({ iconType: 'clock', className: 'w-4 h-4 mr-2' })}
+              CascadeFund Backend ...</span>
           </div>
         </motion.div>
       </div>
