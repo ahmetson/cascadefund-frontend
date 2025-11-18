@@ -17,7 +17,7 @@ const Vision = () => {
         >
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-neutral-400 mb-6 flex items-center justify-center gap-4">
             <TrendingUp className="w-10 h-10 text-accent-600 dark:text-neutral-400" />
-            To
+            Mission:
             <span className="gradient-text">Creator Culture</span>
             <Heart className="w-10 h-10 text-primary-600 dark:text-rose-400" />
           </h2>
