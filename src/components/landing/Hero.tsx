@@ -119,6 +119,7 @@ const Hero = ({ accent = Accent.monetizationPrimaryAccent, homePage = '/' }: Her
             {/* Terminal Window */}
             <BorderBeam
               className='relative p-5'
+              isHovered={true}
             >
 
               <PreviewContainer

@@ -8,6 +8,7 @@ interface BorderBeamProps {
   colorFrom?: string;
   colorTo?: string;
   children?: React.ReactNode;
+  isHovered?: boolean; // Force hover state regardless of mouse position
 }
 
 const BorderBeam: React.FC<BorderBeamProps> = ({
@@ -17,10 +18,20 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
   colorFrom = '#8b82f6',
   colorTo = '#8b5cf6',
   children,
+  isHovered: forceHovered = false,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  // Effective hover state: use prop if set, otherwise use actual hover state
+  const effectiveHovered = forceHovered || isHovered;
   const [currentSide, setCurrentSide] = useState(0); // 0: top, 1: right, 2: bottom, 3: left
+
+  // Initialize visibility when forceHovered is set
+  useEffect(() => {
+    if (forceHovered) {
+      setIsVisible(true);
+    }
+  }, [forceHovered]);
   const [shapes, setShapes] = useState<Array<{ id: number, x: number, y: number, color: string, shape: string, direction: string }>>([]);
   const [lightPosition, setLightPosition] = useState(0); // 0-100% around the border
   const containerRef = useRef<HTMLDivElement>(null);
@@ -34,7 +45,7 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
   useEffect(() => {
     const startAnimation = () => {
       const timer = setTimeout(() => {
-        if (!isHovered) {
+        if (!effectiveHovered) {
           setIsVisible(true);
         }
       }, Math.floor(Math.random() * 50));
@@ -43,17 +54,17 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
 
     const timer = startAnimation();
     return () => clearTimeout(timer);
-  }, [isHovered, currentSide]);
+  }, [effectiveHovered, currentSide]);
 
   const handleAnimationEnd = () => {
     setIsVisible(false);
-    if (!isHovered) {
+    if (!effectiveHovered) {
       // Move to next side
       setCurrentSide((prev) => (prev + 1) % 4);
 
       // Restart animation with constant delay
       setTimeout(() => {
-        if (!isHovered) {
+        if (!effectiveHovered) {
           setIsVisible(true);
         }
       }, 200); // Small constant delay between sides
@@ -62,18 +73,18 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
 
   // Moving light effect when hovered
   useEffect(() => {
-    if (isHovered) {
+    if (effectiveHovered) {
       const interval = setInterval(() => {
         setLightPosition(prev => (prev + 1) % 100);
       }, 50); // Move every 50ms for smooth movement
 
       return () => clearInterval(interval);
     }
-  }, [isHovered]);
+  }, [effectiveHovered]);
 
   // Generate shapes at beam position when hovered
   useEffect(() => {
-    if (isHovered && isVisible) {
+    if (effectiveHovered && isVisible) {
       const interval = setInterval(() => {
         const newShape = {
           id: shapeIdRef.current++,
@@ -94,7 +105,7 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
 
       return () => clearInterval(interval);
     }
-  }, [isHovered, isVisible]);
+  }, [effectiveHovered, isVisible]);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -246,12 +257,12 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
       className={cn(
         'relative overflow-hidden bg-transparent',
         className)}
-      style={isHovered ? hoveredStyle : normalStyle}
+      style={effectiveHovered ? hoveredStyle : normalStyle}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {/* Single beam - one at a time */}
-      {isVisible && !isHovered && (
+      {isVisible && !effectiveHovered && (
         <div
           ref={beamRef}
           className="absolute z-10"
@@ -261,10 +272,10 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
       )}
 
       {/* Flying geometric shapes on hover */}
-      {isHovered && shapes.map(renderShape)}
+      {effectiveHovered && shapes.map(renderShape)}
 
       {/* Moving light around border when hovered */}
-      {isHovered && (
+      {effectiveHovered && (
         <div
           className="absolute z-10 "
           style={{
