@@ -1,6 +1,5 @@
-import React from 'react'
 import { motion } from 'framer-motion'
-import { Star, TrendingUp, Heart } from 'lucide-react'
+import { TrendingUp, Heart } from 'lucide-react'
 import { socialLinks } from '@/scripts/data'
 import SocialLink from './SocialLink'
 
