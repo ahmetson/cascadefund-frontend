@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { MessageSquare, Trophy, Zap, DollarSign } from 'lucide-react'
+import { GravityStarsBackground } from '../animate-ui/components/backgrounds/gravity-stars'
 
 const HowItWorks = () => {
   const steps = [
@@ -35,8 +36,21 @@ const HowItWorks = () => {
   ]
 
   return (
-    <section id="how-it-works" className="py-24 bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-800 dark:to-neutral-900">
-      <div className="section-padding max-w-7xl mx-auto">
+    <section id="how-it-works" className="relative py-24 bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-gray-800 dark:to-slate-900">
+      <GravityStarsBackground
+        starsCount={100}
+        starsSize={2}
+        starsOpacity={0.75}
+        glowIntensity={15}
+        glowAnimation="ease"
+        movementSpeed={0.3}
+        mouseInfluence={100}
+        mouseGravity="attract"
+        gravityStrength={75}
+        starsInteraction={true}
+        starsInteractionType="bounce"
+        className="absolute text-blue-600 dark:text-blue-400 left-0 top-0 w-full h-full" />
+      <div className="section-padding max-w-7xl mx-auto relative ">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
