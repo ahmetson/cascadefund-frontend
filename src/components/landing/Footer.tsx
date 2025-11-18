@@ -1,8 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaYoutube, FaGithub, FaTwitter, FaTelegram } from 'react-icons/fa'
-import { getIcon } from '../icon'
-import { socialLinks, SocialLinkType } from '@/scripts/data'
+import { socialLinks } from '@/scripts/data'
+import SocialLink from './SocialLink'
 
 const Footer = () => {
   return (
@@ -40,33 +39,9 @@ const Footer = () => {
           >
             <h3 className="font-display text-lg font-semibold mb-6">Stay Connected</h3>
             <div className="flex space-x-4 mt-6">
-              {socialLinks.map((link) => {
-                const renderIcon = () => {
-                  if (link.useCustomIcon) {
-                    return getIcon({ iconType: link.type as any, className: 'text-white' })
-                  }
-
-                  const iconMap: Record<SocialLinkType, React.ReactNode> = {
-                    github: <FaGithub color="white" />,
-                    telegram: <FaTelegram color="white" />,
-                    youtube: <FaYoutube color="white" />,
-                    twitter: <FaTwitter color="white" />,
-                    bluesky: getIcon({ iconType: 'bluesky', className: 'text-white' }),
-                  }
-
-                  return iconMap[link.type]
-                }
-
-                return (
-                  <a
-                    key={link.url}
-                    href={link.url}
-                    className="p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
-                  >
-                    {renderIcon()}
-                  </a>
-                )
-              })}
+              {socialLinks.map((link) => (
+                <SocialLink key={link.url} link={link} />
+              ))}
             </div>
           </motion.div>
 
