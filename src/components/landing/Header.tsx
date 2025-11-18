@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { ThemeProvider } from '@/contexts/ThemeContext'
+import Logo from './Logo'
+import Link from '../custom-ui/Link'
 
 
 const Header = () => {
@@ -16,13 +18,6 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navItems = [
-    { label: '~/how-it-works', href: '#how-it-works' },
-    { label: '~/features', href: '#features' },
-    { label: '~/team', href: '#team' },
-    { label: '~/contact', href: '#contact' }
-  ]
-
   return (
     <ThemeProvider>
       <motion.header
@@ -35,37 +30,27 @@ const Header = () => {
       >
         <nav className="section-padding py-4">
           <div className="flex items-center justify-between">
-            <div></div>
+            <div>
+              {isScrolled ? <Link uri="/"><Logo imgSize="h-6 w-6" /></Link> : null}
+            </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-6">
-              {navItems.map((item, index) => (
+              <p className="text-gray-600 dark:text-gray-400 text-xs font-mono">
+                View our
                 <motion.a
-                  key={item.label}
-                  href={item.href}
-                  className={`font-mono text-sm text-gray-300 dark:text-gray-300 hover:text-green-400 transition-colors duration-200 relative group ${isScrolled ? 'text-gray-300 dark:text-gray-300' : 'text-gray-600 dark:text-gray-300'}`}
+                  target='_blank'
+                  href={'https://app.cascadefund.org/'}
+                  className={`ml-2 font-mono text-sm text-gray-300 dark:text-gray-300 hover:text-green-400 transition-colors duration-200 relative group ${isScrolled ? 'text-gray-300 dark:text-gray-300' : 'text-gray-600 dark:text-gray-300'}`}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: 0 * 0.1 }}
                   whileHover={{ y: -2 }}
                 >
-                  {item.label}
+                  Demo (WIP)
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-400 group-hover:w-full transition-all duration-300"></span>
                 </motion.a>
-              ))}
-
-              {/* <motion.a
-                href="https://www.cascadefund.org/login/"
-                className="btn-primary flex items-center space-x-2"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <GitBranch className="w-4 h-4" />
-                <span>git clone</span>
-              </motion.a> */}
+              </p>
             </div>
 
             {/* Mobile Menu Button */}
@@ -86,30 +71,26 @@ const Header = () => {
               className="md:hidden mt-4 py-4 border-t border-gray-700 dark:border-gray-600 bg-gray-900/95 dark:bg-gray-900/95"
             >
               <div className="flex flex-col space-y-4">
-                {navItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="font-mono text-sm text-gray-300 dark:text-gray-300 hover:text-teal-400 transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                <p className="text-gray-600 dark:text-gray-400 text-xs font-mono">
+                  View our
+                  <motion.a
+                    target='_blank'
+                    href={'https://app.cascadefund.org/'}
+                    className={`ml-2 font-mono text-sm text-gray-300 dark:text-gray-300 hover:text-green-400 transition-colors duration-200 relative group ${isScrolled ? 'text-gray-300 dark:text-gray-300' : 'text-gray-600 dark:text-gray-300'}`}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0 * 0.1 }}
+                    whileHover={{ y: -2 }}
                   >
-                    {item.label}
-                  </a>
-                ))}
+                    Demo (WIP)
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                  </motion.a>
+                </p>
 
                 {/* <div className="flex items-center justify-between pt-2">
                   <span className="font-mono text-sm text-gray-400">Theme:</span>
                   <ThemeToggle />
                 </div> */}
-
-                {/* <a
-                  href="https://www.cascadefund.org/login/"
-                  className="btn-primary inline-block text-center"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <GitBranch className="w-4 h-4 inline mr-2" />
-                  git clone
-                </a> */}
               </div>
             </motion.div>
           )}

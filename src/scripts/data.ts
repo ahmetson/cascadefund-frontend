@@ -7,27 +7,32 @@ export enum Accent {
 }
 
 export const data: Record<Accent, {
+    icon: string;
     title: string;
     subtitle: string;
     description: string;
 }> = {
     [Accent.monetizationPrimaryAccent]: {
-        title: "Get help with branding and monetization.",
+        icon: 'money',
+        title: "Get help with branding and monetization",
         subtitle: "Turning open-source development into a recognized, collaborative, and financially sustainable pursuit.",
         description: "For maintainers, helping with PRs and monetization.",
     },
     [Accent.formalResponsibleCollaborationAccent]: {
-        title: "Standardized contractlike-workflow",
+        icon: 'project',
+        title: "Collaborate in contractlike-workflow",
         subtitle: "Formal definition, and requirements for issues, and adapted century old practice for responsible collaboration. Inspired by government/private contractlike workflows.",
         description: "Formal definition, and requirements for issues, and adapted century old practice for responsible collaboration. Inspired by government/private contractlike workflows.",
     },
     [Accent.questSystemAccent]: {
-        title: "Gamified, with non-competitive rating system.",
+        icon: 'play',
+        title: "Use gamified guide",
         subtitle: "Turning open-source development into a recognized, collaborative, and financially sustainable pursuit.",
         description: "Turning open-source development into a recognized, collaborative, and financially sustainable pursuit.",
     },
     [Accent.timeSavedProjectManagementAccent]: {
-        title: "Self-checking smart todo list as project management.",
+        icon: 'ten-pm-ten-min',
+        title: "Manage projects with self-checking todo list",
         subtitle: "Turning open-source development into a recognized, collaborative, and financially sustainable pursuit.",
         description: "Turning open-source development into a recognized, collaborative, and financially sustainable pursuit.",
     },
@@ -70,5 +75,5 @@ export const accentToUrl: Record<Accent, string> = {
     [Accent.formalResponsibleCollaborationAccent]: '/meta/collaboration',
     [Accent.questSystemAccent]: '/meta/quests',
     [Accent.timeSavedProjectManagementAccent]: '/meta/management',
-    [Accent.visionaryAccent]: '/meta/vision',
+    // [Accent.visionaryAccent]: '/meta/vision',
 }
