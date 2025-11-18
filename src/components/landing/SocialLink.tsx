@@ -26,7 +26,7 @@ const SocialLink: React.FC<SocialLinkProps> = ({ link,
     github: 'text-gray-900', // GitHub dark gray/black
     telegram: 'text-[#0088cc]', // Telegram blue
     youtube: 'text-red-600', // YouTube red
-    twitter: 'text-black', // Twitter/X black
+    twitter: 'text-gray-900', // Twitter/X black
     bluesky: 'text-[#00A3FF]', // Bluesky blue
   }
 
