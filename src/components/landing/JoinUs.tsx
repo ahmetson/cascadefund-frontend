@@ -22,7 +22,7 @@ const JoinUs = () => {
   }
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-br dark:from-primary-900/20 dark:to-accent-900/20 from-primary-50 to-accent-50">
+    <section id="contact" className="py-24 bg-gradient-to-br dark:from-primary-900/90 dark:to-accent-900/20 from-primary-50 to-accent-50">
       <div className="section-padding max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, x: 50 }}

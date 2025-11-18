@@ -2,12 +2,27 @@ import { motion } from 'framer-motion'
 
 import { FaGithub, FaLinkedin, FaTelegram } from 'react-icons/fa'; // Import the LinkedIn icon from Font Awesome
 import PreviewContainer from './PreviewContainer';
+import { GravityStarsBackground } from '../animate-ui/components/backgrounds/gravity-stars';
 
 
 
 const Team = () => {
   return (
-    <section id="team" className="py-24 relative">
+    <section id="team" className="py-16 relative bg-gradient-to-b dark:from-primary-900/90 dark:to-slate-950/40 from-primary-50 to-accent-50">
+      <GravityStarsBackground
+        starsCount={100}
+        starsSize={2}
+        starsOpacity={0.75}
+        glowIntensity={15}
+        glowAnimation="ease"
+        movementSpeed={0.3}
+        mouseInfluence={100}
+        mouseGravity="attract"
+        gravityStrength={75}
+        starsInteraction={true}
+        starsInteractionType="bounce"
+        className="absolute text-blue-600 dark:text-blue-400 left-0 top-0 w-full h-full" />
+
       <div className="section-padding max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -17,7 +32,7 @@ const Team = () => {
           className="text-center mb-16"
         >
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-gray-900 dark:text-slate-400 mb-6">
-            <span className="gradient-text"> CascadeFund</span> Maintainers
+            Maintainers
           </h2>
         </motion.div>
 

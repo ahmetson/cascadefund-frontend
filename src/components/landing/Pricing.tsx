@@ -3,7 +3,7 @@ import { Check, ExternalLink } from 'lucide-react'
 
 const Pricing = () => {
   return (
-    <section className="py-24 bg-gradient-to-br dark:from-neutral-900 dark:to-neutral-800 text-gray-600 dark:text-gray-100">
+    <section className="py-24 bg-gradient-to-b dark:from-neutral-900 dark:to-neutral-900/80 text-gray-600 dark:text-gray-100">
       <div className="section-padding max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
