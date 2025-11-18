@@ -2,12 +2,16 @@ import React from 'react'
 import { FaYoutube, FaGithub, FaTwitter, FaTelegram } from 'react-icons/fa'
 import { getIcon } from '../icon'
 import { SocialLink as SocialLinkType, SocialLinkType as LinkType } from '@/scripts/data'
+import { motion } from 'framer-motion'
 
 interface SocialLinkProps {
   link: SocialLinkType
+  className?: string
 }
 
-const SocialLink: React.FC<SocialLinkProps> = ({ link }) => {
+const SocialLink: React.FC<SocialLinkProps> = ({ link,
+  className = "p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
+}) => {
   // Brand colors for each social platform
   const brandColors: Record<LinkType, string> = {
     github: '#181717', // GitHub dark gray/black
@@ -28,8 +32,8 @@ const SocialLink: React.FC<SocialLinkProps> = ({ link }) => {
 
   const renderIcon = () => {
     if (link.useCustomIcon) {
-      return getIcon({ 
-        iconType: link.type as any, 
+      return getIcon({
+        iconType: link.type as any,
         className: brandColorClasses[link.type]
       })
     }
@@ -46,15 +50,19 @@ const SocialLink: React.FC<SocialLinkProps> = ({ link }) => {
   }
 
   return (
-    <a
+    <motion.a
       href={link.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
+      className={className}
       aria-label={`Visit our ${link.type} page`}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0 * 0.1 }}
+      whileHover={{ y: -2 }}
     >
       {renderIcon()}
-    </a>
+    </motion.a>
   )
 }
 
