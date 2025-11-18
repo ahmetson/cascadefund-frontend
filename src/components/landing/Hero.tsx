@@ -91,12 +91,12 @@ const Hero = ({ accent = Accent.monetizationPrimaryAccent, homePage = '/' }: Her
               const url = accentToUrl[accent]
               return (
                 <motion.li
-                  key={accent}
+                  key={accent as Key}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.8 + index * 0.2 }}
                 >
-                  <Link asNewTab={true} className={`font-mono text-xs  ml-1`} uri={accent === accentKey ? '#' : url}>
+                  <Link className={`font-mono text-xs  ml-1`} uri={accent === accentKey ? '#' : url}>
                     <div className="text-left flex gap-2 transition-colors cursor-pointer h-full items-center">
                       {getIcon({ iconType: accentData.icon as IconType, className: `w-8 h-8 animate-pulse ${accent === accentKey ? 'text-slate-600' : 'text-teal-500'}` })}
                       <h3 className={`font-mono text-lg font-semibold mb-2 mt-2 justify-center items-center  transition-colors ${accent === accentKey ? 'text-slate-600' : 'text-gray-600 dark:text-slate-500 hover:text-blue-400'}`}>

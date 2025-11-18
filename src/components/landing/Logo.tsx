@@ -30,8 +30,8 @@ const Logo = ({ imgSize = 'w-20 h-20' }: { imgSize?: string }) => {
         />
       </div>
 
-      <span className="font-mono font-bold text-teal-500">
-        cascade<span className="text-blue-400">fund</span>
+      <span className="font-mono font-bold gradient-text">
+        cascade<span className="">fund</span>
         <span className="text-teal-400 animate-pulse">_</span>
       </span>
     </motion.div>
