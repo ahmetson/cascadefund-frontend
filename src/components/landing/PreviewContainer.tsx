@@ -3,11 +3,13 @@ import Link from "../custom-ui/Link"
 interface PreviewContainerProps {
   children: React.ReactNode
   previewUrl?: string
+  className?: string
+  childrenClassName?: string
 }
 
-const PreviewContainer = ({ children, previewUrl = 'preview.cascadefund.org' }: PreviewContainerProps) => {
+const PreviewContainer = ({ children, previewUrl = 'preview.cascadefund.org', className = '', childrenClassName = '' }: PreviewContainerProps) => {
   return (
-    <div className="terminal-window">
+    <div className={`terminal-window ${className}`}>
       <div className="terminal-header">
         <div className="terminal-dot bg-red-500"></div>
         <div className="terminal-dot bg-yellow-500"></div>
@@ -18,7 +20,7 @@ const PreviewContainer = ({ children, previewUrl = 'preview.cascadefund.org' }: 
           </Link><span className="no-underline text-xs text-gray-400 ml-1">view on browser</span>
         </>}
       </div>
-      <div className="p-6 bg-gray-700 dark:bg-gray-800">
+      <div className={`p-6 bg-gray-700 dark:bg-gray-800 ${childrenClassName}`}>
         {children}
       </div>
     </div>
