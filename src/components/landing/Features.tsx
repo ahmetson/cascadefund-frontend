@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { motion } from 'framer-motion'
-import { Github, GitBranch, GlassesIcon as Globe2 } from 'lucide-react'
+import { Github, GitBranch, GlassesIcon as Globe2, Globe } from 'lucide-react'
 import PreviewContainer from './PreviewContainer'
 import {
   Carousel,
@@ -32,6 +32,9 @@ const Features = () => {
       setCurrent(api.selectedScrollSnap() + 1)
     })
   }, [api])
+
+  const linkClassName = "w-full inline-flex items-center text-green-600 font-mono text-sm hover:text-green-300 transition-colors group"
+
   return (
     <section id="features" className="py-18 relative">
       <div className="section-padding max-w-7xl mx-auto">
@@ -48,10 +51,6 @@ const Features = () => {
         >
 
           <div className="lg:col-span-2">
-
-            <p className="text-gray-600 dark:text-gray-400 mb-6 font-mono text-sm">
-              <span className="text-gray-600 dark:text-gray-400">Demo available at </span> <Link asNewTab={true} className="font-mono text-sm text-gray-300 dark:text-gray-300 hover:text-green-400 transition-colors duration-200 relative group" uri="https://app.cascadefund.org/">app.cascadefund.org</Link>
-            </p>
             <Carousel
               setApi={setApi}
               opts={{
@@ -111,36 +110,57 @@ const Features = () => {
               <CarouselNext />
             </Carousel>
             <div className="text-center mt-4">
-              <p className="text-gray-400 font-mono text-sm">
-                <span className="text-gray-600">// </span>preview {current} of {count}
+              <p className="text-gray-600 dark:text-slate-500 font-mono text-sm">
+                Slide <span className="text-gray-600 dark:text-slate-500 font-bold">{current}</span><span className='mx-1'>/</span><span className="text-gray-600 dark:text-slate-500 font-bold">{count}</span>
               </p>
             </div>
           </div>
 
           <div className="sm:ml-0 md:ml-8">
-            <div className="flex items-center space-x-2 mb-4">
-              <span className="font-mono text-sm text-gray-600 dark:text-slate-400">Source Code</span>
-            </div>
             <Link
-              uri="https://github.com/ara-foundation/cascadefund-app"
-              className="inline-flex items-center font-mono text-sm hover:text-green-300 transition-colors group"
+              asNewTab={true}
+              uri="https://app.cascadefund.org/"
+              className={linkClassName}
             >
-              <Github className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
-              <span>CascadeFund Frontend</span>
-              <GitBranch className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              <Globe2
+                className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform"
+              />
+              <span className="">Demo App</span>
+              <Globe
+                className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
+              />
             </Link>
             <Link
-              uri="https://github.com/ara-foundation/cascadefund-smartcontracts"
-              className="inline-flex items-center text-green-400 font-mono text-sm hover:text-green-300 transition-colors group"
+              asNewTab={true}
+              uri="https://github.com/ara-foundation/cascadefund-app"
+              className={linkClassName}
             >
-              <Github className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
-              <span>CascadeFund Smartcontracts</span>
-              <GitBranch className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              <Github
+                className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform"
+              />
+              <span>App Source Code</span>
+              <GitBranch
+                className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
+              />
+            </Link>
+            <Link
+              asNewTab={true}
+              uri="https://github.com/ara-foundation/cascadefund-smartcontracts"
+              className={linkClassName}
+            >
+              <Github
+                className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform"
+              />
+              <span>Smartcontracts</span>
+              <GitBranch
+                className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
+              />
             </Link>
             <span className="text-gray-500 dark:text-gray-400/80 font-mono text-sm flex"
             >
               {getIcon({ iconType: 'clock', className: 'w-4 h-4 mr-2' })}
-              CascadeFund Backend ...</span>
+              Backend Source Code Coming Soon
+            </span>
           </div>
         </motion.div>
       </div>
