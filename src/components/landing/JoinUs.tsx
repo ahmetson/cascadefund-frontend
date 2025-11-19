@@ -1,12 +1,8 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { MessageCircle, Mail, Github, Youtube } from 'lucide-react'
 import Button from '../custom-ui/Button'
 import SuccessModal from './SuccessModal'
 import { handleJoinWishlist } from '@/scripts/landing'
-import { getIcon } from '../icon'
-import SocialLink from './SocialLink'
-import { socialLinks } from '@/scripts/data'
 import Badge from '../badge/Badge'
 
 const JoinUs = () => {
@@ -33,16 +29,12 @@ const JoinUs = () => {
         >
           <div className="bg-gradient-to-br dark:from-primary-600 dark:to-accent-600 from-primary-600 to-accent-600 p-12 rounded-3xl text-gray-600 dark:text-gray-100">
             <h3 className="font-display text-3xl text-gray-600 dark:text-gray-400 font-bold mb-6">
-              Join our beta join list
+              Join our beta wishlist
             </h3>
-            <p className="text-xl leading-relaxed mb-8 text-gray-600/90 dark:text-gray-400/90">
-              Subscribe with your email to help us gather feedback. Our early adopters will receive +20 voting power points on CascadeFund when we launch.
-            </p>
-
             <div className="space-y-6">
               <div className="flex items-center space-x-4">
                 <Badge variant="green" className="text-sm font-bold">+200</Badge>
-                <span className="text-gray-600/90 dark:text-gray-400/90">Bonus voting power points</span>
+                <span className="text-gray-600/90 dark:text-gray-400/90">Bonus voting power points for CascadeFund</span>
               </div>
             </div>
 

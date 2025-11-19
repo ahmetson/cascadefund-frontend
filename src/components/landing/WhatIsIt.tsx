@@ -26,21 +26,21 @@ const HowItWorks = ({ accent }: { accent: Accent }) => {
       number: "03",
       icon: <Zap className="w-8 h-8" />,
       title: "Self-checking todo list",
-      description: "For collaboration flow, we adapted e-procurement for web collaboration. Due to well established process, project management automated so much, that it feels like notification checkings.",
+      description: "Our standardized flow is heavily inspired by public procurement. Due to well established process, project management automated so much, that it feels like notification checkings.",
       color: "from-green-500 to-emerald-500"
     },
     {
       "number": "04",
       "icon": <DollarSign className="w-8 h-8" />,
       "title": "Rating is a shared reward",
-      "description": "When an issue is solved, everyone involved earns rating. It highlights your work, boosts project trust, and you can share it with contributors.",
+      "description": "When an issue is solved, everyone involved earns rating. It highlights your work, boosts project trust, and you share it with contributors.",
       "color": "from-orange-500 to-red-500"
     },
     {
       "number": "05",
       "icon": <Zap className="w-8 h-8" />,
       "title": "Optional Paywall With Shared Governance",
-      "description": "Users may contribute financially, and in return they gain voting power to decide the issue's rating points. This boosts rewards for everyone while preventing pay-to-increase rating.",
+      "description": "Users may contribute financially, and in return they gain voting power to decide the issue's rating points. That takes the rating of the project, and returns it until it resolves the issue.",
       "color": "from-purple-500 to-pink-500"
     }
 

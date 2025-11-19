@@ -16,7 +16,7 @@ const Pricing = () => {
             Cascade Funding
           </h3>
           <p className="text-xl text-gray-600/90 dark:text-gray-400/90 max-w-4xl mx-auto leading-relaxed">
-            CascadeFund is open-source and free made for open-source projects.<br />
+            CascadeFund is free and open-source, made for OSS maintainers.<br />
             If users contribute to gain voting power to your project, the funds go directly to you, <br />
             while 20% is shared with the your project dependencies. <br />
             In return, you receive voting power to your dependencies.<br />
