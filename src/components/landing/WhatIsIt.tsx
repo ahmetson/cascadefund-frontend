@@ -17,7 +17,7 @@ const HowItWorks = ({ accent }: { accent: Accent }) => {
       icon: <Trophy className="w-8 h-8" />,
       title: "Collaboration flow",
       description:
-        "Social interaction followes standardized workflow: Users open an issue, contributors submit patches, maintainers manage the releases, " +
+        "Social interaction followes standardized workflow: users open an issue, contributors submit patches, maintainers manage the releases, " +
         "and rating is automatically rewarded to every participant.",
       // description: "All activities, such as message replies, roadmap planning, issue readings are turned into quest tasks. Each task contributes to the collaborative rating that reflects how you work with others.",
       color: "from-purple-500 to-pink-500"
@@ -26,7 +26,7 @@ const HowItWorks = ({ accent }: { accent: Accent }) => {
       number: "03",
       icon: <Zap className="w-8 h-8" />,
       title: "Self-checking todo list",
-      description: "Our standardized flow is heavily inspired by public procurement. Due to well established process, project management automated so much, that it feels like notification checkings.",
+      description: "Management according to formal procurement is seamless and fast, due to gamified guide. User actions generates the todo tasks. They are always shown in the interactive mini-player that users can 'play'.",
       color: "from-green-500 to-emerald-500"
     },
     {
