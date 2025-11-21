@@ -10,7 +10,7 @@ const HowItWorks = ({ accent }: { accent: Accent }) => {
       icon: <MessageSquare className="w-8 h-8" />,
       title: "Collaboration Platform",
       description: "CascadeFund acts as a collaboration layer on top of an existing GitHub repository. It does not replace GitHub; instead, it adds a structured interface that helps users, contributors, and maintainers interact around issues and patches in a predictable way.",
-      color: "from-blue-500 to-cyan-500"
+      color: "from-blue-500 to-cyan-500 dark:from-blue-500/50 dark:to-cyan-500/50"
     },
     {
       number: "02",
@@ -18,28 +18,28 @@ const HowItWorks = ({ accent }: { accent: Accent }) => {
       title: "Standardized Workflow",
       description:
         "All projects on CascadeFund follow the same formal collaboration cycle: users open issues, contributors submit patches, maintainers review, merge, or release. Then, every participant may receive project coins as the proof of traction.",
-      color: "from-purple-500 to-pink-500"
+      color: "from-purple-500 to-pink-500 dark:from-purple-500/50 dark:to-pink-500/50"
     },
     {
       number: "03",
       icon: <Zap className="w-8 h-8" />,
       title: "Self-checking todo list",
       description: "For every repository, CascadeFund has a system generated todo list. On web app, these todo tasks are shown inside mini-player. Clicking on \"Play\", takes user to the required page, focuses the relevant input, and automatically checks off, once user completes it or selects an AI suggestion. Then, repeats the process for the next task, until all won't become checked off.",
-      color: "from-green-500 to-emerald-500"
+      color: "from-green-500 to-emerald-500 dark:from-green-500/50 dark:to-emerald-500/50"
     },
     {
       "number": "04",
       "icon": <DollarSign className="w-8 h-8" />,
       "title": "Proof of Traction",
       "description": "For a community to build trust, it must show the progress that cannot be altered by any single party. CascadeFund uses 'coins' stored on blockchain. Because only you or users of your project can create these coins. Each coin must be linked to the specific issue or patch. When its completed, the coin is distributed among all participants including to the minter.",
-      "color": "from-orange-500 to-red-500"
+      "color": "from-orange-500 to-red-500 dark:from-orange-500/50 dark:to-red-500/50"
     },
     {
       "number": "05",
       "icon": <Zap className="w-8 h-8" />,
       "title": "Optional Paywall",
       "description": "If users want to create coins, they do so by donating real funds. This gives achievement coins real value and its distributed to maintainers, users themselves once issue is resolved. All donated funds go to the developers; CascadeFund does not charge any fee.",
-      "color": "from-purple-500 to-pink-500"
+      "color": "from-purple-500 to-pink-500 dark:from-purple-500/50 dark:to-pink-500/50"
     }
 
   ]
@@ -71,7 +71,7 @@ const HowItWorks = ({ accent }: { accent: Accent }) => {
             What is <span className="gradient-text">CascadeFund</span>?
           </h3>
           <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
-            Textual description of the platform. Visual representations coming soon.
+            Visual representations coming soon.
           </p>
         </motion.div>
 
@@ -87,19 +87,19 @@ const HowItWorks = ({ accent }: { accent: Accent }) => {
             >
               <div className="h-60 bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-neutral-200/50 dark:border-neutral-700/50 min-h-55 h-auto">
                 <div className="flex items-start space-x-6">
-                  <div className={`p-4 rounded-2xl bg-gradient-to-r ${step.color} text-white flex-shrink-0`}>
+                  <div className={`p-4 rounded-2xl bg-gradient-to-r ${step.color} text-slate-600 dark:text-slate-400 flex-shrink-0`}>
                     {step.icon}
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center space-x-4 mb-4">
-                      <span className="font-mono text-sm font-semibold text-neutral-400 dark:text-neutral-500">
+                      <span className="font-mono text-sm font-semibold text-slate-600 dark:text-slate-400">
                         {step.number}
                       </span>
-                      <h3 className="font-display text-2xl font-bold text-neutral-900 dark:text-white">
+                      <h3 className="font-display text-2xl font-bold text-slate-600 dark:text-slate-400">
                         {step.title}
                       </h3>
                     </div>
-                    <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                       {step.description}
                     </p>
                   </div>
@@ -113,7 +113,7 @@ const HowItWorks = ({ accent }: { accent: Accent }) => {
             transition={{ duration: 0.8, delay: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="bg-gradient-to-r from-primary-600 to-accent-600 rounded-3xl pl-10 text-gray-600 dark:text-gray-100">
+            <div className="bg-gradient-to-br from-neutral-900  to-accent-600 rounded-3xl pl-10 pb-10 pt-6 text-gray-600 dark:text-gray-400">
               <h3 className="font-display text-2xl font-bold mb-6 mt-6">
                 How to {data[accent].title.toLowerCase()}?
               </h3>

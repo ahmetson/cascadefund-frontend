@@ -1,7 +1,5 @@
 import { motion } from 'framer-motion'
 import { TrendingUp, Heart } from 'lucide-react'
-import { socialLinks } from '@/scripts/data'
-import SocialLink from './SocialLink'
 import Link from '../custom-ui/Link'
 import JoinUsPanel from './JoinUsPanel'
 
@@ -33,8 +31,8 @@ const Vision = () => {
           </p>
 
           <p className="text-2xl text-neutral-600 dark:text-neutral-400 max-w-4xl mt-8 mx-auto ">
-            🚀 What can developers and users collaborate on? 💻✨
-            Possibilities are endless. Few possible examples: <Link uri="/meta/goal" className="transition-colors">in our goal page</Link>.
+            🚀 Imagine what developers and non-technical users collaborate on? 💻✨
+            {/* Possibilities are endless. Few possible examples: <Link uri="/meta/goal" className="transition-colors">in our goal page</Link>. */}
           </p>
           {/* <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-4xl mt-2 mx-auto">
             Think about a game that a student wants to make.

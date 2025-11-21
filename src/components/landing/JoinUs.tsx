@@ -50,7 +50,7 @@ const JoinUs = () => {
                   }}
                   onKeyPress={handleKeyPress}
                   placeholder="Enter your email address"
-                  className="w-full px-4 py-3 bg-white/20 backdrop-blur-sm border border-gray-400 dark:border-white/30 rounded-xs text-gray-600 dark:text-white placeholder-gray-600/90 dark:placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-white/20 backdrop-blur-sm border border-gray-400 dark:bg-transparent dark:border-white/10 rounded-xs text-gray-600 dark:text-white placeholder-gray-600/90 dark:placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-white dark:focus:ring-white/30 focus:border-transparent transition-all"
                   disabled={isLoading}
                 />
                 {error && (
