@@ -21,8 +21,8 @@ export const data: Record<Accent, {
         title: "Get help with branding and monetization",
         subtitle: "Turning open-source development into a recognized, collaborative, and financially sustainable pursuit.",
         description: "For maintainers, helping with PRs and monetization.",
-        howTo: <div>CascadeFund is a social media, where people interact with your work in a formalized way.<br />
-            <br />Rating rewards highlight your work, boosts project trust. <br />While, self-checking todo list makes everything almost automatic.</div>,
+        howTo: <div>CascadeFund is a collaboration platform, where people interact with you and your project in a standardized way.<br />
+            <br />Here, people are self assessing the rating and achivements for the issues and patches. Represented with the 'user created coins'.<br /><br />User created coins highlights everyone's contribution, boosts project trust, user engagement, and acts as proof of traction.</div>,
     },
     [Accent.formalResponsibleCollaborationAccent]: {
         icon: 'project',
@@ -59,9 +59,24 @@ export const data: Record<Accent, {
             Here is how collaboration is implemented as a gamified guide within the CascadeFund:
             <ul className="space-y-3 mt-2">
                 <li>🔌 Todo Tasks are automatically generated after certain user actions. 😌 You don't have to create them yourself.</li>
-                <li>🎮 It wraps these tasks into an interactive mini-player called "Smart"</li>
-                <li>🚀 When you "play", the system opens the exact page 📄, scrolls to the right section ✍️, and focuses the target element ⚡.</li>
-                <li>🤖 Adds 3 the AI suggestions, for quick solution.</li>
+                <li>🎮 Web pages show these tasks inside an interactive mini-player.</li>
+                <li>
+                    🚀 When you "play":
+                    <ul className="ml-6 mt-2 space-y-2 list-disc">
+                        <li>the system opens the exact page 📄</li>
+                        <li>scrolls to the correct section ✍️</li>
+                        <li>and focuses the required element ⚡</li>
+                        <li>might add three quick solutions by 🤖</li>
+                        <li>
+                            after you:
+                            <div className="ml-6 mt-1 space-y-1">
+                                <div>wrote the data  | choose one of the options</div>
+                            </div>
+                            the task is automatically checked off ✅.
+                        </li>
+                    </ul>
+                </li>
+                <li>⏭️ The player automatically proceeds to the next task, letting you keep momentum without interruption.</li>
             </ul>
         </motion.div>
     },
@@ -74,12 +89,24 @@ export const data: Record<Accent, {
             In CascadeFund collaboration is done using todo tasks.
             <ul className="space-y-3 mt-2">
                 <li>🔌 Todo Tasks are automatically generated after certain user actions. 😌 You don't have to create them yourself.</li>
-                <li>🎮 It wraps these tasks into an interactive mini-player called "Smart"</li>
-                <li>🚀 When you "play", the system opens the exact page 📄, scrolls to the right section ✍️, and focuses the target element ⚡.</li>
-                <li>🤖 +3 the AI suggestions, for quick solution.</li>
-                <li>🏆 When a step is done, CascadeFund automatically ✅, marks it complete, updates your progress 📈, and even the tasks for next people.
-                    And as a super bonus 🤖 it adds 3 AI suggestions for every step 💡, giving you quick-click options so you’re never stuck and reducing routine even more.
+                <li>🎮 Web pages show these tasks inside an interactive mini-player.</li>
+                <li>
+                    🚀 When you "play":
+                    <ul className="ml-6 mt-2 space-y-2 list-disc">
+                        <li>the system opens the exact page 📄</li>
+                        <li>scrolls to the correct section ✍️</li>
+                        <li>and focuses the required element ⚡</li>
+                        <li>might show solutions by 🤖</li>
+                        <li>
+                            after you:
+                            <div className="ml-6 mt-1 space-y-1">
+                                <div>wrote the data  | choose one of the options</div>
+                            </div>
+                            the task is automatically checked off ✅.
+                        </li>
+                    </ul>
                 </li>
+                <li>⏭️ The player automatically proceeds to the next task, letting you keep momentum without interruption.</li>
             </ul>
         </motion.div>
     },

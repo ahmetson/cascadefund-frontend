@@ -73,7 +73,7 @@ const Hero = ({ accent = Accent.monetizationPrimaryAccent, homePage = '/' }: Her
             <Logo imgSize="h-20 w-20" />
           </h1>
           <p className="text-xl sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 font-mono max-w-8xl mx-auto leading-relaxed">
-            <strong>Social Media + Collaboration Platform</strong> for
+            <strong>Gamified Collaboration Platform</strong> for
             open source maintainers.
           </p>
 
@@ -124,7 +124,8 @@ const Hero = ({ accent = Accent.monetizationPrimaryAccent, homePage = '/' }: Her
             >
 
               <PreviewContainer
-                previewUrl=''
+                previewUrl='With CascadeFund'
+                staticUrl={true}
                 className='relative z-2'
                 childrenClassName='flex flex-col items-center justify-center'>
                 <div className="font-mono text-green-400 mt-4 text-xl">

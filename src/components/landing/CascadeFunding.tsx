@@ -15,11 +15,10 @@ const Pricing = () => {
           <h3 className="font-display text-4xl sm:text-5xl gradient-text font-bold mb-6">
             Cascade Funding
           </h3>
-          <p className="text-xl text-gray-600/90 dark:text-gray-400/90 max-w-4xl mx-auto leading-relaxed">
-            CascadeFund is free and open-source, made for OSS maintainers.<br />
-            If users contribute to gain voting power to your project, the funds go directly to you, <br />
-            while 20% is shared with the your project dependencies. <br />
-            In return, you receive voting power to your dependencies.<br />
+          <p className="text-xl text-gray-600/90 dark:text-gray-400/90 max-w-4xl mx-auto leading-relaxed ">
+            CascadeFund is free and open-source.<br />
+            <span className="text-gray-600/90 dark:text-gray-400/50 text-lg -mt-0.5 mb-2 flex justify-center">Except, some transaction fees charged by the payment processors.</span>
+            User funds go directly to you, and to your dependencies.<br />
           </p>
         </motion.div>
 
@@ -36,10 +35,10 @@ const Pricing = () => {
             </h3>
             <div className="space-y-4">
               {[
-                "- Voting power for your project goes to the user -",
-                "+ 80% of user fund +",
+                "+ Achievement coins for your project minted by a user",
+                "+ 80% of user donations +",
                 "~ 20% of user fund to be shared with open-source libraries your project depends on ~",
-                "+ Voting power for your dependencies +",
+                "+ Achivement coins for your dependencies mintable by your portraits on them +",
               ].map((feature, index) => (
                 <div key={index} className="flex items-start space-x-3">
                   <Check className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
@@ -59,16 +58,24 @@ const Pricing = () => {
               Hyperpayment Protocol
             </h3>
             <p className="text-gray-600/90 dark:text-gray-400/90 mb-4">
-              To implement 80/20 percentage splitting we use the Hyperpayment Protocol and it's implementation on the blockchain.
+              The cascadefunding mechanism is implemented with the Hyperpayment Protocol and blockchain technology.
             </p>
             <a
               target='_blank'
               href="https://www.hyperpayment.org/"
               className="inline-flex items-center space-x-2 text-blue-500 hover:text-teal-300 transition-colors"
             >
-              <span>Website</span>
+              <span>Hyperpayment Website</span>
               <ExternalLink className="w-4 h-4" />
             </a>
+            <motion.a
+              target='_blank'
+              href="https://www.hyperpayment.org/"
+              className="ml-4 inline-flex items-center space-x-2 text-blue-500 hover:text-teal-300 transition-colors"
+            >
+              <span>Smartcontract implementation</span>
+              <ExternalLink className="w-4 h-4" />
+            </motion.a>
           </motion.div>
         </div>
       </div>

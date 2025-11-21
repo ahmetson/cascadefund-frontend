@@ -4,6 +4,7 @@ import Button from '../custom-ui/Button'
 import SuccessModal from './SuccessModal'
 import { handleJoinWishlist } from '@/scripts/landing'
 import Badge from '../badge/Badge'
+import JoinUsPanel from './JoinUsPanel'
 
 const JoinUs = () => {
   const [email, setEmail] = useState('')
@@ -27,14 +28,14 @@ const JoinUs = () => {
           viewport={{ once: true }}
           className="relative"
         >
-          <div className="bg-gradient-to-br dark:from-primary-600 dark:to-accent-600 from-primary-600 to-accent-600 p-12 rounded-3xl text-gray-600 dark:text-gray-100">
-            <h3 className="font-display text-3xl text-gray-600 dark:text-gray-400 font-bold mb-6">
+          <div className="bg-gradient-to-br dark:from-primary-600 dark:to-accent-600 from-primary-600 to-accent-600 p-12 py-0 rounded-3xl text-gray-600 dark:text-gray-100">
+            <h3 className="font-display text-3xl text-gray-600 dark:text-gray-400 font-bold mb-6 text-center">
               Join our beta wishlist
             </h3>
             <div className="space-y-6">
               <div className="flex items-center space-x-4">
                 <Badge variant="green" className="text-sm font-bold">+200</Badge>
-                <span className="text-gray-600/90 dark:text-gray-400/90">Bonus voting power points for CascadeFund</span>
+                <span className="text-gray-600/90 dark:text-gray-400/90">CascadeFund achievement coins mintable by your portraits on them and reward for CascadeFund issues</span>
               </div>
             </div>
 
@@ -70,6 +71,8 @@ const JoinUs = () => {
               </p>
             </div>
           </div>
+
+          <JoinUsPanel title="" />
         </motion.div>
       </div>
 

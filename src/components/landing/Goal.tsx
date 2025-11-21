@@ -3,6 +3,7 @@ import { TrendingUp, Heart } from 'lucide-react'
 import { socialLinks } from '@/scripts/data'
 import SocialLink from './SocialLink'
 import Link from '../custom-ui/Link'
+import JoinUsPanel from './JoinUsPanel'
 
 const Vision = () => {
   return (
@@ -49,21 +50,7 @@ const Vision = () => {
             🌍🚀 Create lasting connections between users and developers, shaping a collaborative world.
           </p> */}
 
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className=" bg-gradient-to-r dark:from-primary-600/20 dark:to-accent-600/20 from-primary-600 to-accent-600 border border-gray-500 dark:border-primary-400/10 rounded-2xl p-4 mt-8 "
-          >
-            <h3 className="font-display text-2xl font-bold mb-4 text-gray-600/90 dark:text-slate-400/90">
-              💬 Do you like our goal?
-            </h3>
-            <p className="text-gray-600/90 dark:text-gray-400/90 mb-4 mt-8 mx-auto leading-relaxed flex items-center justify-center gap-2">
-              Join our community on <SocialLink link={socialLinks[1]} />
-              or subscribe us on <SocialLink link={socialLinks[4]} /> | <SocialLink link={socialLinks[3]} /> to hear about new channels.
-            </p>
-          </motion.div>
+          <JoinUsPanel title="Do you like our goal?" />
 
         </motion.div>
       </div>

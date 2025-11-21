@@ -8,39 +8,37 @@ const HowItWorks = ({ accent }: { accent: Accent }) => {
     {
       number: "01",
       icon: <MessageSquare className="w-8 h-8" />,
-      title: "Social Media",
-      description: "CascadeFund is like a social media on top of the GitHub repository.",
+      title: "Collaboration Platform",
+      description: "CascadeFund acts as a collaboration layer on top of an existing GitHub repository. It does not replace GitHub; instead, it adds a structured interface that helps users, contributors, and maintainers interact around issues and patches in a predictable way.",
       color: "from-blue-500 to-cyan-500"
     },
     {
       number: "02",
       icon: <Trophy className="w-8 h-8" />,
-      title: "Collaboration flow",
+      title: "Standardized Workflow",
       description:
-        "Social interaction followes standardized workflow: users open an issue, contributors submit patches, maintainers manage the releases, " +
-        "and rating is automatically rewarded to every participant.",
-      // description: "All activities, such as message replies, roadmap planning, issue readings are turned into quest tasks. Each task contributes to the collaborative rating that reflects how you work with others.",
+        "All projects on CascadeFund follow the same formal collaboration cycle: users open issues, contributors submit patches, maintainers review, merge, or release. Then, every participant may receive project coins as the proof of traction.",
       color: "from-purple-500 to-pink-500"
     },
     {
       number: "03",
       icon: <Zap className="w-8 h-8" />,
       title: "Self-checking todo list",
-      description: "Management according to formal procurement is seamless and fast, due to gamified guide. User actions generates the todo tasks. They are always shown in the interactive mini-player that users can 'play'.",
+      description: "For every repository, CascadeFund has a system generated todo list. On web app, these todo tasks are shown inside mini-player. Clicking on \"Play\", takes user to the required page, focuses the relevant input, and automatically checks off, once user completes it or selects an AI suggestion. Then, repeats the process for the next task, until all won't become checked off.",
       color: "from-green-500 to-emerald-500"
     },
     {
       "number": "04",
       "icon": <DollarSign className="w-8 h-8" />,
-      "title": "Rating is a shared reward",
-      "description": "When an issue is solved, everyone involved earns rating. It highlights your work, boosts project trust, and you share it with contributors.",
+      "title": "Proof of Traction",
+      "description": "For a community to build trust, it must show the progress that cannot be altered by any single party. CascadeFund uses 'coins' stored on blockchain. Because only you or users of your project can create these coins. Each coin must be linked to the specific issue or patch. When its completed, the coin is distributed among all participants including to the minter.",
       "color": "from-orange-500 to-red-500"
     },
     {
       "number": "05",
       "icon": <Zap className="w-8 h-8" />,
-      "title": "Optional Paywall With Shared Governance",
-      "description": "Users may contribute financially, and in return they gain voting power to decide the issue's rating points. That takes the rating of the project, and returns it until it resolves the issue.",
+      "title": "Optional Paywall",
+      "description": "If users want to create coins, they do so by donating real funds. This gives achievement coins real value and its distributed to maintainers, users themselves once issue is resolved. All donated funds go to the developers; CascadeFund does not charge any fee.",
       "color": "from-purple-500 to-pink-500"
     }
 
