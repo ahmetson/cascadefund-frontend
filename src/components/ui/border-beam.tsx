@@ -25,6 +25,21 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
   // Effective hover state: use prop if set, otherwise use actual hover state
   const effectiveHovered = forceHovered || isHovered;
   const [currentSide, setCurrentSide] = useState(0); // 0: top, 1: right, 2: bottom, 3: left
+  const [isLargeScreen, setIsLargeScreen] = useState(true);
+
+  // Check screen size to disable animations on small/medium screens
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024); // lg breakpoint
+    };
+
+    // Check on mount
+    checkScreenSize();
+
+    // Listen for resize events
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   // Initialize visibility when forceHovered is set
   useEffect(() => {
@@ -43,6 +58,8 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
   const shapesList = ['circle', 'square', 'triangle', 'diamond'];
 
   useEffect(() => {
+    if (!isLargeScreen) return; // Disable animations on small/medium screens
+
     const startAnimation = () => {
       const timer = setTimeout(() => {
         if (!effectiveHovered) {
@@ -54,9 +71,10 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
 
     const timer = startAnimation();
     return () => clearTimeout(timer);
-  }, [effectiveHovered, currentSide]);
+  }, [effectiveHovered, currentSide, isLargeScreen]);
 
   const handleAnimationEnd = () => {
+    if (!isLargeScreen) return; // Don't handle animation end on small/medium screens
     setIsVisible(false);
     if (!effectiveHovered) {
       // Move to next side
@@ -73,6 +91,8 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
 
   // Moving light effect when hovered
   useEffect(() => {
+    if (!isLargeScreen) return; // Disable animations on small/medium screens
+
     if (effectiveHovered) {
       const interval = setInterval(() => {
         setLightPosition(prev => (prev + 1) % 100);
@@ -80,10 +100,12 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
 
       return () => clearInterval(interval);
     }
-  }, [effectiveHovered]);
+  }, [effectiveHovered, isLargeScreen]);
 
   // Generate shapes at beam position when hovered
   useEffect(() => {
+    if (!isLargeScreen) return; // Disable animations on small/medium screens
+
     if (effectiveHovered && isVisible) {
       const interval = setInterval(() => {
         const newShape = {
@@ -105,14 +127,16 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
 
       return () => clearInterval(interval);
     }
-  }, [effectiveHovered, isVisible]);
+  }, [effectiveHovered, isVisible, isLargeScreen]);
 
   const handleMouseEnter = () => {
+    if (!isLargeScreen) return; // Don't trigger animations on small/medium screens
     setIsHovered(true);
     setIsVisible(true);
   };
 
   const handleMouseLeave = () => {
+    if (!isLargeScreen) return; // Don't trigger animations on small/medium screens
     setIsHovered(false);
     setShapes([]);
     // Restart animation after a short delay
@@ -262,7 +286,7 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
       onMouseLeave={handleMouseLeave}
     >
       {/* Single beam - one at a time */}
-      {isVisible && !effectiveHovered && (
+      {isLargeScreen && isVisible && !effectiveHovered && (
         <div
           ref={beamRef}
           className="absolute z-10"
@@ -272,10 +296,10 @@ const BorderBeam: React.FC<BorderBeamProps> = ({
       )}
 
       {/* Flying geometric shapes on hover */}
-      {effectiveHovered && shapes.map(renderShape)}
+      {isLargeScreen && effectiveHovered && shapes.map(renderShape)}
 
       {/* Moving light around border when hovered */}
-      {effectiveHovered && (
+      {isLargeScreen && effectiveHovered && (
         <div
           className="absolute z-10 "
           style={{

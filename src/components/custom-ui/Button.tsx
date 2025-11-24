@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import BorderBeam from '../ui/border-beam'
 import ElectricBorder from '../ElectricBorder'
 import { cn } from '@/lib/utils'
@@ -49,6 +49,22 @@ const Button: React.FC<ButtonProps> = ({
   outline = false,
   focus = false,
 }) => {
+  const [isLargeScreen, setIsLargeScreen] = useState(false)
+
+  // Check if screen is large (>= 1024px, Tailwind's lg breakpoint)
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024)
+    }
+
+    // Check on mount
+    checkScreenSize()
+
+    // Listen for resize events
+    window.addEventListener('resize', checkScreenSize)
+
+    return () => window.removeEventListener('resize', checkScreenSize)
+  }, [])
 
   const getDisabledButtonStyles = () => {
     const defaultStyle = 'border! text-white! border-gray-300! bg-blue-500! hover:bg-gray-200! dark:border-gray-700! dark:bg-blue-600! dark:hover:bg-gray-700!'
@@ -150,7 +166,7 @@ const Button: React.FC<ButtonProps> = ({
             `${getSizeStyles()}`,
             'mr-1 '
           )}
-          disabled={!focus}
+          disabled={!focus || !isLargeScreen}
         >
           {children}
         </ElectricBorder>
