@@ -35,7 +35,7 @@ const Header = () => {
             <div className="flex items-center space-x-2">
               {isScrolled ? <Link uri="/" className='hidden lg:block'><Logo imgSize="h-6 w-6" /></Link> : null}
               <motion.div className="flex space-x-2">
-                {socialLinks.map((link) => (
+                {Object.values(socialLinks).map((link) => (
                   <SocialLink className='mx-4 bg-white/10 rounded-sm p-2 hover:bg-white/20 transition-colors w-8 h-8 flex ' key={link.url} link={link} />
                 ))}
               </motion.div>

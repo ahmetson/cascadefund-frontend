@@ -152,7 +152,7 @@ export const accentToUrl: Record<Accent, string> = {
     // [Accent.visionaryAccent]: '/meta/vision',
 }
 
-export type SocialLinkType = 'github' | 'telegram' | 'youtube' | 'twitter' | 'bluesky'
+export type SocialLinkType = 'github' | 'telegram' | 'twitter' | 'bluesky'
 
 export interface SocialLink {
     url: string
@@ -160,30 +160,25 @@ export interface SocialLink {
     useCustomIcon?: boolean // true for bluesky (uses getIcon), false for react-icons
 }
 
-export const socialLinks: SocialLink[] = [
-    {
+export const socialLinks: Record<SocialLinkType, SocialLink> = {
+    github: {
         url: 'https://github.com/ara-foundation/cascadefund-frontend',
         type: 'github',
         useCustomIcon: false,
     },
-    {
+    telegram: {
         url: 'https://t.me/arasangha',
         type: 'telegram',
         useCustomIcon: false,
     },
-    {
-        url: 'https://www.youtube.com/@medet-ahmetson',
-        type: 'youtube',
-        useCustomIcon: false,
-    },
-    {
+    twitter: {
         url: 'https://x.com/ara_foundation_',
         type: 'twitter',
         useCustomIcon: false,
     },
-    {
+    bluesky: {
         url: 'https://bsky.app/profile/cascadefund.bsky.social',
         type: 'bluesky',
         useCustomIcon: true,
     },
-]
+} as const

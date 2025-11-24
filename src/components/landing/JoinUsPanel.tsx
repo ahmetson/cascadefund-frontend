@@ -19,10 +19,10 @@ const JoinUsPanel = ({ title = 'Do you like our goal?' }: JoinUsPanelProps) => {
         💬 {title}
       </h3>
       <p className="text-gray-600/90 dark:text-gray-400/90 mt-8 mx-auto leading-relaxed flex items-center justify-center gap-2">
-        Join our community on <SocialLink link={socialLinks[1]} />, where we discuss ideas and project plans.
+        Join our community on <SocialLink link={socialLinks.telegram} />, where we discuss ideas and project plans.
       </p>
       <p className="text-gray-600/90 dark:text-gray-400/90 mb-4 mx-auto leading-relaxed flex items-center justify-center gap-2">
-        or subscribe us on <SocialLink link={socialLinks[4]} /> | <SocialLink link={socialLinks[3]} /> to keep updated with only short headlines.
+        or subscribe us on <SocialLink link={socialLinks.twitter} /> | <SocialLink link={socialLinks.bluesky} /> to keep updated with only short headlines.
       </p>
     </motion.div>
   )

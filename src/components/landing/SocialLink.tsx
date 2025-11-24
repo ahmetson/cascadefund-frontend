@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaYoutube, FaGithub, FaTwitter, FaTelegram } from 'react-icons/fa'
+import { FaGithub, FaTwitter, FaTelegram } from 'react-icons/fa'
 import { getIcon } from '../icon'
 import { SocialLink as SocialLinkType, SocialLinkType as LinkType } from '@/scripts/data'
 import { motion } from 'framer-motion'
@@ -16,7 +16,6 @@ const SocialLink: React.FC<SocialLinkProps> = ({ link,
   const brandColors: Record<LinkType, string> = {
     github: '#181717', // GitHub dark gray/black
     telegram: '#0088cc', // Telegram blue
-    youtube: '#FF0000', // YouTube red
     twitter: '#000000', // Twitter/X black
     bluesky: '#00A3FF', // Bluesky blue
   }
@@ -25,7 +24,6 @@ const SocialLink: React.FC<SocialLinkProps> = ({ link,
   const brandColorClasses: Record<LinkType, string> = {
     github: 'text-gray-900', // GitHub dark gray/black
     telegram: 'text-[#0088cc]', // Telegram blue
-    youtube: 'text-red-600', // YouTube red
     twitter: 'text-gray-900', // Twitter/X black
     bluesky: 'text-[#00A3FF]', // Bluesky blue
   }
@@ -41,7 +39,6 @@ const SocialLink: React.FC<SocialLinkProps> = ({ link,
     const iconMap: Record<LinkType, React.ReactNode> = {
       github: <FaGithub color={brandColors.github} size={20} />,
       telegram: <FaTelegram color={brandColors.telegram} size={20} />,
-      youtube: <FaYoutube color={brandColors.youtube} size={20} />,
       twitter: <FaTwitter color={brandColors.twitter} size={20} />,
       bluesky: getIcon({ iconType: 'bluesky', className: brandColorClasses.bluesky }),
     }

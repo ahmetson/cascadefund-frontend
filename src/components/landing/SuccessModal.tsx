@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
-import { FaYoutube, FaGithub, FaTwitter, FaTelegram } from 'react-icons/fa'; // Import the LinkedIn icon from Font Awesome
+import { FaGithub, FaTwitter, FaTelegram } from 'react-icons/fa'; // Import the LinkedIn icon from Font Awesome
 import { getIcon } from '../icon';
 
 interface SuccessModalProps {
@@ -22,12 +22,6 @@ const SuccessModal: React.FC<SuccessModalProps> = ({ isOpen, onClose }) => {
             label: 'Telegram',
             href: 'https://t.me/arasangha',
             description: 'Community Chat'
-        },
-        {
-            icon: <FaYoutube color="white" className="w-6 h-6" />,
-            label: 'YouTube',
-            href: 'https://www.youtube.com/@medet-ahmetson',
-            description: 'Videos and Tutorials'
         },
         {
             icon: <FaTwitter color="white" className="w-6 h-6" />,
