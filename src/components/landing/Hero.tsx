@@ -62,7 +62,7 @@ const Hero = ({ accent = Accent.monetizationPrimaryAccent, homePage = '/' }: Her
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-8 sm:py-12 lg:py-16">
       <div className="grid-bg absolute inset-0 opacity-20"></div>
 
-      <div className="sm:mt-12 section-padding w-full max-w-8xl mx-auto relative z-10">
+      <div className="mt-16 section-padding w-full max-w-8xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -103,8 +103,8 @@ const Hero = ({ accent = Accent.monetizationPrimaryAccent, homePage = '/' }: Her
                       <h3 className={`font-mono text-sm sm:text-base md:text-lg font-semibold mb-1 sm:mb-2 mt-1 sm:mt-2 justify-center items-center transition-colors ${accent === accentKey ? 'text-slate-600' : 'text-gray-600 dark:text-slate-500 hover:text-blue-400'}`}>
                         {accentData.title}
                       </h3>
-                      {accent === accentKey && getIcon({ iconType: 'arrow-right', className: 'w-3 h-3 sm:hidden md:block text-slate-600' })}
-                      {accent === accentKey && getIcon({ iconType: 'arrow-right-down', className: 'w-4 h-4 sm:block md:hidden text-slate-600' })}
+                      {accent === accentKey && getIcon({ iconType: 'arrow-right', className: 'w-3 h-3 hidden md:block text-slate-600' })}
+                      {accent === accentKey && getIcon({ iconType: 'arrow-right-down', className: 'w-4 h-4 block md:hidden text-slate-600' })}
                     </div>
                   </Link>
                 </motion.li>

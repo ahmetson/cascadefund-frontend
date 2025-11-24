@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const Logo = ({
   imgSize = 'w-20 h-20',
@@ -9,6 +9,22 @@ const Logo = ({
   enableBadges?: boolean
 }) => {
   const [isLogoHovered, setIsLogoHovered] = useState(false)
+  const [isLargeScreen, setIsLargeScreen] = useState(false)
+
+  useEffect(() => {
+    // Check if screen is large (>= 1024px, Tailwind's lg breakpoint)
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024)
+    }
+
+    // Check on mount
+    checkScreenSize()
+
+    // Listen for resize events
+    window.addEventListener('resize', checkScreenSize)
+
+    return () => window.removeEventListener('resize', checkScreenSize)
+  }, [])
 
   const badges = [
     { text: 'Always Free' },
@@ -22,10 +38,10 @@ const Logo = ({
         className="flex items-center space-x-2 justify-center relative z-10"
         onMouseEnter={() => setIsLogoHovered(true)}
         onMouseLeave={() => setIsLogoHovered(false)}
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0 * 0.1 }}
-        whileHover={{ y: -2 }}
+        initial={isLargeScreen ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }}
+        animate={isLargeScreen ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
+        transition={isLargeScreen ? { delay: 0 * 0.1 } : { duration: 0 }}
+        whileHover={isLargeScreen ? { y: -2 } : {}}
       >
         <div className={`${imgSize} bg-transparent rounded flex items-center justify-center relative`}>
           <img
@@ -48,22 +64,33 @@ const Logo = ({
                 <motion.div
                   key={badge.text}
                   className="px-3 py-1.5 rounded-full bg-teal-500/20 backdrop-blur-sm border border-teal-400/30 text-xs font-medium text-teal-300 whitespace-nowrap"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                    y: [0, -8, 0],
-                  }}
-                  transition={{
-                    opacity: { delay: index * 0.1 },
-                    scale: { delay: index * 0.1 },
-                    y: {
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                      delay: index * 0.5, // Wave effect: each badge starts after the previous one
-                    },
-                  }}
+                  initial={isLargeScreen ? { opacity: 0, scale: 0.8 } : { opacity: 1, scale: 1 }}
+                  animate={
+                    isLargeScreen
+                      ? {
+                        opacity: 1,
+                        scale: 1,
+                        y: [0, -8, 0],
+                      }
+                      : {
+                        opacity: 1,
+                        scale: 1,
+                      }
+                  }
+                  transition={
+                    isLargeScreen
+                      ? {
+                        opacity: { delay: index * 0.1 },
+                        scale: { delay: index * 0.1 },
+                        y: {
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: 'easeInOut',
+                          delay: index * 0.5, // Wave effect: each badge starts after the previous one
+                        },
+                      }
+                      : { duration: 0 }
+                  }
                 >
                   {badge.text}
                 </motion.div>
