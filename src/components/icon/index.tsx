@@ -41,6 +41,7 @@ export type IconType =
   | 'arrow'
   | 'arrow-left'
   | 'arrow-right'
+  | 'arrow-right-down'
   | 'behance'
   | 'discord'
   | 'facebook'
@@ -322,6 +323,11 @@ export const getIcon = (props: IconProps | IconType): React.ReactNode => {
     case 'arrow-right': return (
       <svg className={className} fill={fill} stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    )
+    case 'arrow-right-down': return (
+      <svg className={className} fill={fill} stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12L15 12M15 12L15 18M13 16L15 18L17 16" />
       </svg>
     )
     case 'check': return (
