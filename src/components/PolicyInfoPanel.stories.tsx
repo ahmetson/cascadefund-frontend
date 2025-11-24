@@ -140,7 +140,7 @@ export const LongContent: Story = {
             },
             {
                 icon: 'R',
-                text: 'Configure your preferences and customize your dashboard to match your workflow and productivity needs'
+                text: 'Configure your preferences and customize your dashboard to match your work cycle and productivity needs'
             },
             {
                 icon: 'E',

@@ -15,7 +15,7 @@ const HowItWorks = ({ accent }: { accent: Accent }) => {
     {
       number: "02",
       icon: <Trophy className="w-8 h-8" />,
-      title: "Standardized Workflow",
+      title: "Standardized Work Cycle",
       description:
         "All projects on CascadeFund follow the same formal collaboration cycle: users open issues, contributors submit patches, maintainers review, merge, or release. Then, every participant may receive project coins as the proof of traction.",
       color: "from-purple-500 to-pink-500 dark:from-purple-500/50 dark:to-pink-500/50"

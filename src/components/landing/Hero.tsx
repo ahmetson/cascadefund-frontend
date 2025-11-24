@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Key } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Terminal } from 'lucide-react'
 import Button from '../custom-ui/Button'
@@ -70,7 +70,7 @@ const Hero = ({ accent = Accent.monetizationPrimaryAccent, homePage = '/' }: Her
           className="mb-8 text-center"
         >
           <h1 className="font-mono text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
-            <Logo imgSize="h-20 w-20" />
+            <Logo enableBadges={true} imgSize="h-20 w-20" />
           </h1>
           <p className="text-xl sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 font-mono max-w-8xl mx-auto leading-relaxed">
             <strong>Gamified Collaboration Platform</strong> for

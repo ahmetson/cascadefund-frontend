@@ -21,14 +21,14 @@ export const data: Record<Accent, {
         title: "Get help with branding and monetization",
         subtitle: "Turning open-source development into a recognized, collaborative, and financially sustainable pursuit.",
         description: "For maintainers, helping with PRs and monetization.",
-        howTo: <div>CascadeFund is a collaboration platform, where people interact with you and your project in a standardized way.<br />
-            <br />Here, people are self assessing the rating and achivements for the issues and patches. Represented with the 'user created coins'.<br /><br />User created coins highlights everyone's contribution, boosts project trust, user engagement, and acts as proof of traction.</div>,
+        howTo: <div>CascadeFund is a collaboration platform with the standardized work cycle.<br />
+            <br />Here, the achivements are awarded for the resolved issues and patches to all participants. We represent them as project coins.<br /><br />These coins highlight everyone's contribution, boosts project trust, user engagement, and acts as proof of traction.</div>,
     },
     [Accent.formalResponsibleCollaborationAccent]: {
         icon: 'project',
-        title: "Collaborate in contractlike-workflow",
-        subtitle: "Formal definition, and requirements for issues, and adapted century old practice for responsible collaboration. Inspired by government/private contractlike workflows.",
-        description: "Formal definition, and requirements for issues, and adapted century old practice for responsible collaboration. Inspired by government/private contractlike workflows.",
+        title: "Collaborate in standardized work cycle",
+        subtitle: "Formal definition, and requirements for issues, and adapted century old practice for responsible collaboration. Inspired by government/private contractlike work cycles.",
+        description: "Formal definition, and requirements for issues, and adapted century old practice for responsible collaboration. Inspired by government/private contractlike work cycles.",
         howTo: <motion.ul className="space-y-3">
             <motion.li className="flex items-start gap-3 ml-4">
                 <span className="mt-1 flex-shrink-0">
